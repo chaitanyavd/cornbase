@@ -110,6 +110,7 @@ var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
+  debugger;
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser: currentUser
@@ -166,7 +167,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
+/* harmony import */ var _greeting_navbar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./greeting/navbar_container */ "./frontend/components/greeting/navbar_container.js");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
@@ -178,7 +179,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "CornBase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_navbar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -193,10 +194,10 @@ var App = function App() {
 
 /***/ }),
 
-/***/ "./frontend/components/greeting/greeting.jsx":
-/*!***************************************************!*\
-  !*** ./frontend/components/greeting/greeting.jsx ***!
-  \***************************************************/
+/***/ "./frontend/components/greeting/navbar.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/greeting/navbar.jsx ***!
+  \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -208,42 +209,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Greeting = function Greeting(_ref) {
-  var currentUser = _ref.currentUser,
-      logout = _ref.logout;
+var NavBar = function NavBar(_ref) {
+  var logout = _ref.logout,
+      currentUser = _ref.currentUser;
 
-  var sessionLinks = function sessionLinks() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+  var loggedOut = function loggedOut() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "CornBase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
       className: "login-signup"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/login"
-    }, "Sign In"), "\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/signup"
-    }, "Sign up"));
+    }, "Get Started")));
   };
 
-  var personalGreeting = function personalGreeting() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hgroup", {
-      className: "header-group"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-      className: "header-name"
-    }, "Hi, ", currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "header-button",
+  var loggedIn = function loggedIn() {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "CornBase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "logout-button",
       onClick: logout
     }, "Log Out"));
   };
 
-  return currentUser ? personalGreeting() : sessionLinks();
+  return currentUser ? loggedIn() : loggedOut();
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Greeting);
+/* harmony default export */ __webpack_exports__["default"] = (NavBar);
 
 /***/ }),
 
-/***/ "./frontend/components/greeting/greeting_container.js":
-/*!************************************************************!*\
-  !*** ./frontend/components/greeting/greeting_container.js ***!
-  \************************************************************/
+/***/ "./frontend/components/greeting/navbar_container.js":
+/*!**********************************************************!*\
+  !*** ./frontend/components/greeting/navbar_container.js ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -251,8 +248,9 @@ var Greeting = function Greeting(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _greeting__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./greeting */ "./frontend/components/greeting/greeting.jsx");
+/* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar */ "./frontend/components/greeting/navbar.jsx");
 
+ // import Greeting from './greeting';
 
 
 
@@ -272,7 +270,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_greeting__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_navbar__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -357,6 +355,7 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleGuestSubmit = _this.handleGuestSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -372,9 +371,26 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this3 = this;
+
       e.preventDefault();
       var user = Object.assign({}, this.state);
-      this.props.login(user);
+      this.props.login(user).then(function () {
+        return _this3.props.history.push("/");
+      });
+    }
+  }, {
+    key: "handleGuestSubmit",
+    value: function handleGuestSubmit(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      this.props.demoUser({
+        email: "demo@user.com",
+        password: "password"
+      }).then(function () {
+        return _this4.props.history.push("/");
+      });
     }
   }, {
     key: "renderErrors",
@@ -413,7 +429,9 @@ function (_React$Component) {
         type: "submit",
         value: "Sign In",
         className: "log-in-submit"
-      }))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleGuestSubmit
+      }, "Demo User"))));
     }
   }]);
 
@@ -456,6 +474,9 @@ var mapStateToProps = function mapStateToProps(_ref) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     login: function login(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
+    },
+    demoUser: function demoUser(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     }
   };
@@ -518,6 +539,7 @@ function (_React$Component) {
       last_name: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleGuestSubmit = _this.handleGuestSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -533,9 +555,26 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this3 = this;
+
       e.preventDefault();
       var user = Object.assign({}, this.state);
-      this.props.signup(user);
+      this.props.signup(user).then(function () {
+        return _this3.props.history.push("/");
+      });
+    }
+  }, {
+    key: "handleGuestSubmit",
+    value: function handleGuestSubmit(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+      this.props.demoUser({
+        email: "demo@user.com",
+        password: "password"
+      }).then(function () {
+        return _this4.props.history.push("/");
+      });
     }
   }, {
     key: "renderErrors",
@@ -582,7 +621,9 @@ function (_React$Component) {
         type: "submit",
         value: "Create Account",
         className: "sign-up-submit"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Already have a Cornbase account?"));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleGuestSubmit
+      }, "Demo User")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Already have a Cornbase account?"));
     }
   }]);
 
@@ -627,6 +668,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     signup: function signup(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"])(user));
+    },
+    demoUser: function demoUser(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     }
   };
 };
@@ -659,8 +703,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  // window.getState = store.getState; 
-  // window.dispatch = store.dispatch; 
   // window.login = login 
   // window.logout = logout 
   // window.signup = signup 
@@ -681,6 +723,8 @@ document.addEventListener("DOMContentLoaded", function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   }
 
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
@@ -773,6 +817,7 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
+      debugger;
       return [];
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
@@ -808,6 +853,7 @@ var sessionReducer = function sessionReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      debugger;
       return {
         id: action.currentUser.id
       };
@@ -848,6 +894,7 @@ var usersReducer = function usersReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
+      debugger;
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
 
     default:

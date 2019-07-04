@@ -7,6 +7,7 @@ class SignupForm extends React.Component {
         super(props)
         this.state = {email: '', password: '', first_name: '', last_name: ''}
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleGuestSubmit = this.handleGuestSubmit.bind(this)
     }
 
     update(field) {
@@ -18,7 +19,12 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault(); 
         const user = Object.assign({}, this.state);
-        this.props.signup(user)
+        this.props.signup(user).then(()=> this.props.history.push("/"))
+    }
+
+    handleGuestSubmit(e) {
+        e.preventDefault();
+        this.props.demoUser({ email: "demo@user.com", password: "password" }).then(() => this.props.history.push("/"))
     }
 
     renderErrors() {
@@ -58,6 +64,7 @@ class SignupForm extends React.Component {
                     <br/>
                     <input type="checkbox" /> <span>By continuing I certify that I am 18 years of age, and I agree to the User Agreement and Privacy Policy</span>
                     <input type="submit" value = "Create Account" className = "sign-up-submit"/>
+                    <button onClick={this.handleGuestSubmit}>Demo User</button>
                 </form>
                 <span>Already have a Cornbase account?</span>
             </div>

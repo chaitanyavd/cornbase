@@ -7,6 +7,7 @@ class LoginForm extends React.Component {
         super(props)
         this.state = {email: '', password: ''}
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleGuestSubmit = this.handleGuestSubmit.bind(this)
 
     }
 
@@ -19,7 +20,12 @@ class LoginForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.login(user)
+        this.props.login(user).then(() => this.props.history.push("/"))
+    }
+
+    handleGuestSubmit(e) {
+        e.preventDefault();
+        this.props.demoUser({email: "demo@user.com", password: "password" }).then(() => this.props.history.push("/"))
     }
 
     renderErrors() {
@@ -52,6 +58,7 @@ class LoginForm extends React.Component {
                     <br />
                     <input type="checkbox" /> <span>Keep me signed in on this computer</span>
                     <input type="submit" value="Sign In" className="log-in-submit" />
+                    <button onClick = {this.handleGuestSubmit}>Demo User</button>
                 </form>
                 </div>
             </div>
