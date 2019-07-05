@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { openModal } from '../../actions/modal_actions';
 
-const NavBar = ({logout, currentUser}) => {
+const NavBar = ({logout, currentUser, openModal}) => {
 
     const loggedOut  = () => (
         <div className = "loggedout-navbar">
@@ -20,7 +21,9 @@ const NavBar = ({logout, currentUser}) => {
     const loggedIn = () => (
         <div className = "loggedin-navbar">
             <h2>cornbase</h2>
-            <button className="logout-button" onClick={logout}>Log Out</button>
+
+                <button className="logout-button" onClick={()=> openModal('profileAvatar')}><img src="profile-avatar.jpeg" width = "32" height = "32"/></button>
+
         </div>
     )
     return currentUser ? loggedIn() : loggedOut();

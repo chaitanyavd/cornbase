@@ -44,7 +44,7 @@ class LoginForm extends React.Component {
         return (
             <div className="login-form-content">
                 <h4 className="login-form-title" >Sign in to Cornbase</h4>
-
+                
                 <div className="login-form-container">
                
                     <form className="login-form-box">
@@ -69,7 +69,7 @@ class LoginForm extends React.Component {
 
                             <button onClick={this.handleSubmit} className="login-button">Sign In</button>
                             <button onClick = {this.handleGuestSubmit} className="demo-button">Demo User</button>
-                        
+                            
                         </div>
 
                     </form>

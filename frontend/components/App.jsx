@@ -4,8 +4,10 @@ import NavBarContainer from './navbar/navbar_container';
 import LoginFormContainer from './session_form/login_form_container'; 
 import SignupFormContainer from './session_form/signup_form_container'; 
 import { AuthRoute } from '../util/route_util';
+import Modal from './modal/modal'; 
 const App = () => (
     <div className = "main-container">
+        <Modal/>
         <NavBarContainer/>
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />

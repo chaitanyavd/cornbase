@@ -1,4 +1,4 @@
-.loggedin-navbar, .loggedout-navbar {
+.loggedout-navbar{
     display: flex; 
     justify-content: space-around;
     box-sizing: border-box; 
@@ -12,6 +12,21 @@
     font-size: 30px;
     padding: 24px;
 } 
+
+.loggedin-navbar {
+    display: flex; 
+    justify-content: space-around;
+    box-sizing: border-box; 
+    flex-direction: row;
+    align-items: center;
+    color: rgb(22, 82, 240); 
+    min-height: 10vh; 
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400; 
+    background-color: rgb(255, 255, 255);
+    font-size: 30px;
+    padding: 24px;
+}
 
 .login-signup-container {
     display: flex; 
@@ -68,4 +83,58 @@
     border-color: rgb(255, 255, 255);
     border-image: initial;
 }
+
+.signup-link:hover{
+    background-color: rgb(255, 255, 255); 
+    color: navy; 
 }
+
+/* .login-button, .demo-button {
+    color: #fff;
+    padding: 1em 2em;
+    background:  rgb(22, 82, 240); 
+    border-color:  rgb(22, 82, 240); ;
+    font-size: 11px;
+    text-transform: uppercase;
+    height: 42px;
+    letter-spacing: .05em;;
+}
+
+.login-button:focus { 
+    border-color: rgb(22, 82, 240);
+    outline: none;     
+} */
+
+.logout-button:focus { 
+    outline: none;     
+}
+.logout-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 0px; 
+    overflow: hidden; 
+    border-radius: 50%; 
+    border: none; 
+    width:32px; 
+    height:32px; 
+    padding: 0; 
+    -webkit-box-align: center;
+}
+
+ .modal-background {
+   position: fixed;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   background: rgba(0, 0, 0, 0.7);
+   z-index: 10;
+ }
+
+ .modal-child {
+   position: absolute;
+   top: 11%;
+   left: 75.7%;
+   transform: translate(-50%, -50%);
+ }
