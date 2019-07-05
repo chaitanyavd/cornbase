@@ -217,19 +217,25 @@ var NavBar = function NavBar(_ref) {
   var loggedOut = function loggedOut() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "loggedout-navbar"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "CornBase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-      className: "login-signup"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "cornbase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+      className: "login-signup-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "login-link-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "login-link",
       to: "/login"
-    }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    }, "Sign In")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "signup-link-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "signup-link",
       to: "/signup"
-    }, "Get Started")));
+    }, "Get Started"))));
   };
 
   var loggedIn = function loggedIn() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "loggedin-navbar"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "CornBase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "cornbase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "logout-button",
       onClick: logout
     }, "Log Out"));
@@ -410,33 +416,42 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "log-in-page-container"
+        className: "login-form-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "log-in-form-title"
-      }, "Sign in to Cornbase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "log-in-form-container"
+        className: "login-form-title"
+      }, "Sign in to Cornbase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
-        className: "log-in-form-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "login-form-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-form-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Email",
         type: "text",
         value: this.state.email,
         onChange: this.update("email"),
-        className: "log-in-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "login-input"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-form-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Password",
         type: "text",
         value: this.state.password,
         onChange: this.update("password"),
-        className: "log-in-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "checkbox"
-      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Keep me signed in on this computer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Sign In",
-        className: "log-in-submit"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleGuestSubmit
-      }, "Demo User"))));
+        className: "login-input"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-form-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleSubmit,
+        className: "login-button"
+      }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleGuestSubmit,
+        className: "demo-button"
+      }, "Demo User")))));
     }
   }]);
 
@@ -662,7 +677,7 @@ function (_React$Component) {
       }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "By continuing I certify that I am 18 years of age, and I agree to the User Agreement and Privacy Policy")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit,
         className: "signup-button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Create Account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Create account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleGuestSubmit
       }, "Demo User"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signup-redirect"
@@ -860,7 +875,7 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
-      return [];
+      return action.errors;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return [];

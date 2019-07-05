@@ -51,7 +51,6 @@ class SignupForm extends React.Component {
                         <div className = "sign-up-form-row">
 
                             <label className = "signup-label-container">
-
                                 <div className="signup-label-content">
                                     <div>
                                         First name
@@ -61,21 +60,17 @@ class SignupForm extends React.Component {
                                 <div className="signup-input-container">
                                     <input className="signup-input" placeholder = "First name" type="text" value={this.state.first_name} onChange={this.update("first_name")} className="sign-up-input"/>
                                 </div>
-
                             </label>
 
                             <label className = "signup-label-container" >
-
                                 <div className="signup-label-content">
                                     <div>
                                         Last name
                                     </div>
                                 </div>
-
                                 <div className="signup-input-container">
                                     <input className = "signup-input" placeholder="Last name" type="text" value={this.state.last_name} onChange={this.update("last_name")} className="sign-up-input"/>
                                 </div>
-
                             </label>
 
                         </div>
@@ -125,7 +120,7 @@ class SignupForm extends React.Component {
                         </div>
 
                         <button onClick = {this.handleSubmit} className = "signup-button">
-                            <span>Create Account</span>
+                            <span>Create account</span>
                         </button>
 
                         <button onClick={this.handleGuestSubmit}>Demo User</button>

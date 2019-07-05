@@ -42,25 +42,40 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className="log-in-page-container">
-                <h4 className="log-in-form-title" >Sign in to Cornbase</h4>
-                <br />
-                <div className="log-in-form-container">
-                <form onSubmit={this.handleSubmit} className="log-in-form-box">
-                    <label>Email
-                    <input type="text" value={this.state.email} onChange={this.update("email")} className="log-in-input" />
-                    </label>
-                    <br />
-                    <br />
-                    <label>Password
-                    <input type="text" value={this.state.password} onChange={this.update("password")} className="log-in-input" />
-                    </label>
-                    <br />
-                    <input type="checkbox" /> <span>Keep me signed in on this computer</span>
-                    <input type="submit" value="Sign In" className="log-in-submit" />
-                    <button onClick = {this.handleGuestSubmit}>Demo User</button>
-                </form>
+            <div className="login-form-content">
+                <h4 className="login-form-title" >Sign in to Cornbase</h4>
+
+                <div className="login-form-container">
+               
+                    <form className="login-form-box">
+
+                        <div className = "login-form-row" >
+
+                            <div className = "login-container">
+                                <input placeholder = "Email" type="text" value={this.state.email} onChange={this.update("email")} className="login-input" />
+                            </div>
+
+                        </div>
+
+                        <div className = "login-form-row" >
+
+                            <div className = "login-container">
+                                <input placeholder="Password" type="text" value={this.state.password} onChange={this.update("password")} className="login-input" />
+                            </div>
+
+                        </div>
+
+                        <div className="login-form-row" >
+
+                            <button onClick={this.handleSubmit} className="login-button">Sign In</button>
+                            <button onClick = {this.handleGuestSubmit} className="demo-button">Demo User</button>
+                        
+                        </div>
+
+                    </form>
+                   
                 </div>
+
             </div>
         )
     }
