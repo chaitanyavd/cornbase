@@ -41,32 +41,102 @@ class SignupForm extends React.Component {
 
     render() {
         return (
-            <div className = "sign-up-form-container">
+            <div className = "sign-up-form-content">
                 <h4 className = "sign-up-form-title" >Create your account</h4>
-                <br/>
-                <form onSubmit={this.handleSubmit} className="sign-up-form-box">
-                    <label>First name
-                    <input type="text" value={this.state.first_name} onChange={this.update("first_name")} className="sign-up-input"/>
-                    </label>
-                    <label>Last name
-                    <input type="text" value={this.state.last_name} onChange={this.update("last_name")} className="sign-up-input"/>
-                    </label>
-                    <br/>
-                    <br/>
-                    <label>Email
-                    <input type="text" value={this.state.email} onChange={this.update("email")} className="sign-up-input"/>
-                    </label>
-                    <br/>
-                    <br/>
-                    <label>Password
-                    <input type="text" value={this.state.password} onChange={this.update("password")} className="sign-up-input"/>
-                    </label>
-                    <br/>
-                    <input type="checkbox" /> <span>By continuing I certify that I am 18 years of age, and I agree to the User Agreement and Privacy Policy</span>
-                    <input type="submit" value = "Create Account" className = "sign-up-submit"/>
-                    <button onClick={this.handleGuestSubmit}>Demo User</button>
-                </form>
-                <span>Already have a Cornbase account?</span>
+
+                <div className = "sign-up-form-container">
+
+                    <form className="sign-up-form-box">
+
+                        <div className = "sign-up-form-row">
+
+                            <label className = "signup-label-container">
+
+                                <div className="signup-label-content">
+                                    <div>
+                                        First name
+                                    </div>
+                                </div>
+
+                                <div className="signup-input-container">
+                                    <input className="signup-input" placeholder = "First name" type="text" value={this.state.first_name} onChange={this.update("first_name")} className="sign-up-input"/>
+                                </div>
+
+                            </label>
+
+                            <label className = "signup-label-container" >
+
+                                <div className="signup-label-content">
+                                    <div>
+                                        Last name
+                                    </div>
+                                </div>
+
+                                <div className="signup-input-container">
+                                    <input className = "signup-input" placeholder="Last name" type="text" value={this.state.last_name} onChange={this.update("last_name")} className="sign-up-input"/>
+                                </div>
+
+                            </label>
+
+                        </div>
+
+                    
+
+                        <div className= "sign-up-form-row">
+
+                            <label className="signup-label-container" >
+
+                                <div className="signup-label-content">
+                                    <div>
+                                        Email
+                                    </div>
+                                </div>
+
+                                <div className="signup-input-container">
+                                    <input className="signup-input" placeholder="Your email address" type="text" value={this.state.email} onChange={this.update("email")} className="sign-up-input" />
+                                </div>
+
+                            </label>
+                        </div>
+
+                    
+
+                        <div className="sign-up-form-row">
+                           
+                            <label className="signup-label-container" >
+
+                                <div className="signup-label-content">
+                                    <div>
+                                        Password
+                                    </div>
+                                </div>
+
+                                <div className="signup-input-container">
+                                    <input className="signup-input" placeholder="Choose a password" type="text" value={this.state.password} onChange={this.update("password")} className="sign-up-input" />
+                                </div>
+
+                            </label>
+
+                        </div>
+
+
+                        <div className="sign-up-form-row">
+                            <input type="checkbox" /> <span>By continuing I certify that I am 18 years of age, and I agree to the User Agreement and Privacy Policy</span>
+                        </div>
+
+                        <button onClick = {this.handleSubmit} className = "signup-button">
+                            <span>Create Account</span>
+                        </button>
+
+                        <button onClick={this.handleGuestSubmit}>Demo User</button>
+                    </form>
+                
+                </div>
+
+                <div className="signup-redirect">
+                    <span>Already have a Cornbase account?</span>
+                </div>
+
             </div>
         )
     }

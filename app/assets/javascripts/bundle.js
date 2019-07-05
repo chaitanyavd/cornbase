@@ -110,7 +110,6 @@ var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
-  debugger;
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser: currentUser
@@ -167,7 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _greeting_navbar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./greeting/navbar_container */ "./frontend/components/greeting/navbar_container.js");
+/* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
@@ -179,7 +178,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_navbar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -194,10 +195,10 @@ var App = function App() {
 
 /***/ }),
 
-/***/ "./frontend/components/greeting/navbar.jsx":
-/*!*************************************************!*\
-  !*** ./frontend/components/greeting/navbar.jsx ***!
-  \*************************************************/
+/***/ "./frontend/components/navbar/navbar.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/navbar/navbar.jsx ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -214,7 +215,9 @@ var NavBar = function NavBar(_ref) {
       currentUser = _ref.currentUser;
 
   var loggedOut = function loggedOut() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "CornBase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "loggedout-navbar"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "CornBase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
       className: "login-signup"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/login"
@@ -224,7 +227,9 @@ var NavBar = function NavBar(_ref) {
   };
 
   var loggedIn = function loggedIn() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "CornBase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "loggedin-navbar"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "CornBase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "logout-button",
       onClick: logout
     }, "Log Out"));
@@ -237,10 +242,10 @@ var NavBar = function NavBar(_ref) {
 
 /***/ }),
 
-/***/ "./frontend/components/greeting/navbar_container.js":
-/*!**********************************************************!*\
-  !*** ./frontend/components/greeting/navbar_container.js ***!
-  \**********************************************************/
+/***/ "./frontend/components/navbar/navbar_container.js":
+/*!********************************************************!*\
+  !*** ./frontend/components/navbar/navbar_container.js ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -248,7 +253,7 @@ var NavBar = function NavBar(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar */ "./frontend/components/greeting/navbar.jsx");
+/* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar */ "./frontend/components/navbar/navbar.jsx");
 
  // import Greeting from './greeting';
 
@@ -589,41 +594,79 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sign-up-form-container"
+        className: "sign-up-form-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "sign-up-form-title"
-      }, "Create your account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
+      }, "Create your account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sign-up-form-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "sign-up-form-box"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "First name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sign-up-form-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "signup-label-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-label-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "First name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-input-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
+        className: "signup-input",
+        placeholder: "First name",
         type: "text",
         value: this.state.first_name,
-        onChange: this.update("first_name"),
-        className: "sign-up-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Last name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this.update("first_name")
+      }, "className", "sign-up-input")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "signup-label-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-label-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Last name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-input-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
+        className: "signup-input",
+        placeholder: "Last name",
         type: "text",
         value: this.state.last_name,
-        onChange: this.update("last_name"),
-        className: "sign-up-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this.update("last_name")
+      }, "className", "sign-up-input"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sign-up-form-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "signup-label-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-label-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Email")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-input-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
+        className: "signup-input",
+        placeholder: "Your email address",
         type: "text",
         value: this.state.email,
-        onChange: this.update("email"),
-        className: "sign-up-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this.update("email")
+      }, "className", "sign-up-input"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sign-up-form-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "signup-label-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-label-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Password")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-input-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _defineProperty({
+        className: "signup-input",
+        placeholder: "Choose a password",
         type: "text",
         value: this.state.password,
-        onChange: this.update("password"),
-        className: "sign-up-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this.update("password")
+      }, "className", "sign-up-input"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sign-up-form-row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox"
-      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "By continuing I certify that I am 18 years of age, and I agree to the User Agreement and Privacy Policy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Create Account",
-        className: "sign-up-submit"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "By continuing I certify that I am 18 years of age, and I agree to the User Agreement and Privacy Policy")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleSubmit,
+        className: "signup-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Create Account")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleGuestSubmit
-      }, "Demo User")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Already have a Cornbase account?"));
+      }, "Demo User"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-redirect"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Already have a Cornbase account?")));
     }
   }]);
 
@@ -817,7 +860,6 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
-      debugger;
       return [];
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
@@ -853,7 +895,6 @@ var sessionReducer = function sessionReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      debugger;
       return {
         id: action.currentUser.id
       };
@@ -894,7 +935,6 @@ var usersReducer = function usersReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
-      debugger;
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
 
     default:

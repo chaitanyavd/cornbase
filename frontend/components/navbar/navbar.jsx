@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const NavBar = ({logout, currentUser}) => {
 
     const loggedOut  = () => (
-        <div>
+        <div className = "loggedout-navbar">
         <h2>CornBase</h2>
         <nav className = "login-signup" >
             <Link to="/login">Sign In</Link>
@@ -15,7 +15,7 @@ const NavBar = ({logout, currentUser}) => {
     )
 
     const loggedIn = () => (
-        <div>
+        <div className = "loggedin-navbar">
             <h2>CornBase</h2>
                 <button className="logout-button" onClick={logout}>Log Out</button>
         </div>
