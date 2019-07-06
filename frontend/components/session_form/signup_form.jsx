@@ -132,7 +132,7 @@ class SignupForm extends React.Component {
                             <span>Create account</span>
                         </button>
 
-                        <button onClick={this.handleGuestSubmit}>Demo User</button>
+                        <button onClick={this.handleGuestSubmit} className="signupdemo-button" >Demo User</button>
                     </form>
                 
                 </div>

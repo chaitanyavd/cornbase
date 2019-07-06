@@ -133,3 +133,27 @@
 .errors{
     color: darkred; 
 }
+
+.signupdemo-button {
+
+    position: relative;
+    width: 100%;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    background-color: rgb(22, 82, 240);
+    margin: 1px;
+    border-radius: 4px;
+    padding: 10px 35px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(22, 82, 240);
+    border-image: initial;
+
+}
+
+.signupdemo-button:focus { 
+    outline: none;   
+}

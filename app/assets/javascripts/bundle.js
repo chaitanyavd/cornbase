@@ -968,7 +968,8 @@ function (_React$Component) {
         onClick: this.handleSubmit,
         className: "signup-button"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", null, "Create account")), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
-        onClick: this.handleGuestSubmit
+        onClick: this.handleGuestSubmit,
+        className: "signupdemo-button"
       }, "Demo User"))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         className: "signup-redirect"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", null, "Already have a Cornbase account?")));
