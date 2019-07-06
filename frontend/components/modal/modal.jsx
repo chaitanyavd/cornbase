@@ -13,12 +13,14 @@ class Modal extends React.Component{
     }
 
     handleSubmit() {
+        // debugger 
         this.props.logout().then(()=> this.props.closeModal())
+        // this.props.logout().then(() => this.props.history.push("/"))
     }
 
     render() {
 
-        if (!this.props.modal) {
+        if (!this.props.modal || !this.props.user) {
             return null;
         }
         
@@ -30,11 +32,28 @@ class Modal extends React.Component{
             default:
                 return null;
         }
+
         return (
             <div className="modal-background" onClick={this.props.closeModal}>
-                <div className="modal-child" onClick={e => e.stopPropagation()}>
-                    <button onClick={this.handleSubmit} >Logout</button>
+
+                <div className="modal-content" onClick={e => e.stopPropagation()}>
+                    <div className="modal-container">
+                        <div className = "modal-user-container">
+                            <div className = "modal-user-name">
+                                {`${this.props.user.first_name} ${this.props.user.last_name} `}
+                            </div>
+                            <div className = "modal-user-email">
+                                {this.props.user.email}
+                            </div>
+                        </div>
+
+                        <div className = "modal-logout-container">
+                            <button className = "modal-logout-button" onClick={this.handleSubmit} >Sign out</button>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
         );   
     }
@@ -43,9 +62,13 @@ class Modal extends React.Component{
 
 
 const mapStateToProps = state => {
+    let userId = state.session.id
+
     return {
-        modal: state.ui.modal
+        modal: state.ui.modal, 
+        user: state.entities.users[userId]
     };
+
 };
 
 const mapDispatchToProps = dispatch => {

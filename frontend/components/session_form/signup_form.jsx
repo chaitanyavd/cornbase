@@ -8,12 +8,17 @@ class SignupForm extends React.Component {
         this.state = {email: '', password: '', first_name: '', last_name: ''}
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleGuestSubmit = this.handleGuestSubmit.bind(this)
+        this.renderErrors = this.renderErrors.bind(this)
     }
 
     update(field) {
         return e => this.setState({
             [field]: e.currentTarget.value
         })
+    }
+    
+    componentWillMount() {
+        this.props.clearErrors();
     }
 
     handleSubmit(e) {
@@ -26,6 +31,7 @@ class SignupForm extends React.Component {
         e.preventDefault();
         this.props.demoUser({ email: "demo@user.com", password: "password" }).then(() => this.props.history.push("/"))
     }
+
 
     renderErrors() {
         return (
@@ -58,7 +64,7 @@ class SignupForm extends React.Component {
                                 </div>
 
                                 <div className="signup-input-container">
-                                    <input className="signup-input" placeholder = "First name" type="text" value={this.state.first_name} onChange={this.update("first_name")} className="sign-up-input"/>
+                                    <input className="signup-input" placeholder = "First name" type="text" value={this.state.first_name} onChange={this.update("first_name")} />
                                 </div>
                             </label>
 
@@ -69,7 +75,7 @@ class SignupForm extends React.Component {
                                     </div>
                                 </div>
                                 <div className="signup-input-container">
-                                    <input className = "signup-input" placeholder="Last name" type="text" value={this.state.last_name} onChange={this.update("last_name")} className="sign-up-input"/>
+                                    <input className= "signup-input" placeholder="Last name" type="text" value={this.state.last_name} onChange={this.update("last_name")}/>
                                 </div>
                             </label>
 
@@ -88,7 +94,7 @@ class SignupForm extends React.Component {
                                 </div>
 
                                 <div className="signup-input-container">
-                                    <input className="signup-input" placeholder="Your email address" type="text" value={this.state.email} onChange={this.update("email")} className="sign-up-input" />
+                                    <input className="signup-input" placeholder="Your email address" type="text" value={this.state.email} onChange={this.update("email")}  />
                                 </div>
 
                             </label>
@@ -107,7 +113,10 @@ class SignupForm extends React.Component {
                                 </div>
 
                                 <div className="signup-input-container">
-                                    <input className="signup-input" placeholder="Choose a password" type="text" value={this.state.password} onChange={this.update("password")} className="sign-up-input" />
+                                    <input className="signup-input" placeholder="Choose a password" type="text" value={this.state.password} onChange={this.update("password")} />
+                                </div>
+                                <div className="errors">
+                                    {this.renderErrors()}
                                 </div>
 
                             </label>

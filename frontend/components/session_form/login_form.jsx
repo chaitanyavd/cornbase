@@ -7,8 +7,13 @@ class LoginForm extends React.Component {
         super(props)
         this.state = {email: '', password: ''}
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleGuestSubmit = this.handleGuestSubmit.bind(this)
+        // this.handleGuestSubmit = this.handleGuestSubmit.bind(this)
+        this.demoLogin = this.demoLogin.bind(this); 
 
+    }
+
+    componentWillMount(){
+        this.props.clearErrors(); 
     }
 
     update(field) {
@@ -23,9 +28,35 @@ class LoginForm extends React.Component {
         this.props.login(user).then(() => this.props.history.push("/"))
     }
 
-    handleGuestSubmit(e) {
+
+    async demoLogin(e) {
         e.preventDefault();
-        this.props.demoUser({email: "demo@user.com", password: "password" }).then(() => this.props.history.push("/"))
+
+        const demoUser = {
+            email: 'demo@cornbase.com',
+            password: 'buysomecorns'
+        };
+
+        const sleep = ms => new Promise(res => setTimeout(res, ms));
+
+        document.querySelector('.email-input').focus();
+        for (let i = 1; i <= demoUser.email.length; i++) {
+            this.setState({ email: demoUser.email.substr(0, i) });
+            await sleep(50);
+        }
+
+        await sleep(250);
+
+        document.querySelector('.password-input').focus();
+        for (let i = 1; i <= demoUser.password.length; i++) {
+            this.setState({ password: demoUser.password.substr(0, i) });
+            await sleep(50);
+        }
+
+        await sleep(250);
+
+        document.querySelector('.login-button').click();
+        document.querySelector('.password-input').blur();
     }
 
     renderErrors() {
@@ -48,11 +79,14 @@ class LoginForm extends React.Component {
                 <div className="login-form-container">
                
                     <form className="login-form-box">
+                            <div className="errors">
+                                {this.renderErrors()}
+                            </div>
 
                         <div className = "login-form-row" >
 
                             <div className = "login-container">
-                                <input placeholder = "Email" type="text" value={this.state.email} onChange={this.update("email")} className="login-input" />
+                                <input placeholder = "Email" type="text" value={this.state.email} onChange={this.update("email")} className="email-input" />
                             </div>
 
                         </div>
@@ -60,7 +94,7 @@ class LoginForm extends React.Component {
                         <div className = "login-form-row" >
 
                             <div className = "login-container">
-                                <input placeholder="Password" type="text" value={this.state.password} onChange={this.update("password")} className="login-input" />
+                                <input placeholder="Password" type="text" value={this.state.password} onChange={this.update("password")} className="password-input" />
                             </div>
 
                         </div>
@@ -68,7 +102,7 @@ class LoginForm extends React.Component {
                         <div className="login-form-row" >
 
                             <button onClick={this.handleSubmit} className="login-button">Sign In</button>
-                            <button onClick = {this.handleGuestSubmit} className="demo-button">Demo User</button>
+                            <button onClick = {this.demoLogin} className="demo-button">Demo User</button>
                             
                         </div>
 
