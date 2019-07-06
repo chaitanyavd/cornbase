@@ -878,8 +878,8 @@ function (_React$Component) {
 
       e.preventDefault();
       this.props.demoUser({
-        email: "demo@user.com",
-        password: "password"
+        email: "demo@cornbase.com",
+        password: "buysomecorns"
       }).then(function () {
         return _this4.props.history.push("/");
       });

@@ -29,7 +29,7 @@ class SignupForm extends React.Component {
 
     handleGuestSubmit(e) {
         e.preventDefault();
-        this.props.demoUser({ email: "demo@user.com", password: "password" }).then(() => this.props.history.push("/"))
+        this.props.demoUser({ email: "demo@cornbase.com", password: "buysomecorns" }).then(() => this.props.history.push("/"))
     }
 
 
