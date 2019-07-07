@@ -105,10 +105,10 @@ var RECEIVE_COINS = "RECEIVE_COINS";
 var RECEIVE_COIN = "RECEIVE_COIN";
 var fetchCoins = function fetchCoins() {
   return function (dispatch) {
-    return _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCoins"]().then(function (coins) {
+    return _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCoins"]().then(function (data) {
       return dispatch({
         type: RECEIVE_COINS,
-        coins: coins
+        data: data
       });
     });
   };
@@ -374,6 +374,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(_ref) {
   var coins = _ref.entities.coins;
+  // debugger
   return {
     coins: Object.values(coins)
   };
@@ -1285,6 +1286,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/coin_actions */ "./frontend/actions/coin_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 
@@ -1292,13 +1296,19 @@ var coinsReducer = function coinsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
+  var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state);
 
   switch (action.type) {
     case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_COINS"]:
-      return action.coins;
+      // debugger
+      action.data.data.forEach(function (coin) {
+        return newState[coin.rank] = coin;
+      });
+      return newState;
+    // return action.data
 
     case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_COIN"]:
-      return merge({}, state, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, action.coin.id, action.coin));
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, action.coin.id, action.coin));
 
     default:
       return state;
@@ -1584,8 +1594,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
 var fetchCoins = function fetchCoins() {
   return $.ajax({
+    url: "https://api.coincap.io/v2/assets/?limit=5",
     method: "GET",
-    url: "api/coins"
+    timeout: 0
   });
 };
 var fetchCoin = function fetchCoin(id) {

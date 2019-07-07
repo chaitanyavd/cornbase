@@ -1,8 +1,9 @@
 
 export const fetchCoins = () => (
     $.ajax({
+        url: "https://api.coincap.io/v2/assets/?limit=5",
         method: "GET", 
-        url: "api/coins"
+        timeout: 0
     })
 )
 
@@ -12,4 +13,5 @@ export const fetchCoin = (id) => (
         url: `api/coin/${id}`
     })
 )
+
 

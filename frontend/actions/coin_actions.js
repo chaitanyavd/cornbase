@@ -4,7 +4,7 @@ export const RECEIVE_COINS = "RECEIVE_COINS";
 export const RECEIVE_COIN = "RECEIVE_COIN";
 
 export const fetchCoins = () => (dispatch) => (
-    coinApiUtil.fetchCoins().then(coins => dispatch({type: RECEIVE_COINS, coins}))
+    coinApiUtil.fetchCoins().then(data => dispatch({type: RECEIVE_COINS, data}))
 )
 
 export const fetchCoin = (id) => (dispatch) => (

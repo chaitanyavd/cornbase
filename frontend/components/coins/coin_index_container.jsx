@@ -3,6 +3,7 @@ import {fetchCoins, fetchCoin} from '../../actions/coin_actions';
 import CoinIndex from './coin_index'; 
 
 const msp = ({ entities: { coins } }) => {
+    // debugger
     return ({
     coins: Object.values(coins)
 })
