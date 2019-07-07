@@ -1,4 +1,5 @@
 import React from "react"; 
+import { parse } from "querystring";
 
 // const CoinIndexItem = ({coin, fetchCoin}) => (
 //     <tr>
@@ -38,22 +39,32 @@ class CoinIndexItem extends React.Component {
     render() {
 
         const {coin, fetchCoin} = this.props; 
+
+        // There has to be a better way 
+        let color = parseFloat(coin.changePercent24Hr).toFixed(2) >= 0 ? 'pospercent' : 'negpercent'; 
+        let marketCap = parseFloat(coin.marketCapUsd) > 1000000000 ? `$${(parseFloat(coin.marketCapUsd) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.marketCapUsd) / 1000000).toFixed(1)}M`
+        let price = parseFloat(coin.priceUsd) > 0.1 ? parseFloat(coin.priceUsd).toFixed(2) : parseFloat(coin.priceUsd).toFixed(4)
+        let tagName = coin.name.split(' ').join('-').toLowerCase(); 
+
+
         return (
             <tr>
                 <th>
                     {coin.rank}
                 </th>
                 <th>
+
                     {coin.name} {coin.symbol}
                 </th>
-                <th className= "percent-change">
-                    {parseFloat(this.props.coin.changePercent24Hr).toFixed(2)}%
+                <th className= {`${color}`}>
+                    {parseFloat(coin.changePercent24Hr).toFixed(2)}%
+                </th> 
+
+                <th>
+                    ${price}
                 </th>
                 <th>
-                    ${parseFloat(coin.priceUsd).toFixed(2)}
-                </th>
-                <th>
-                    ${(parseFloat(coin.marketCapUsd) / 1000000000).toFixed(1)}B
+                    {marketCap}
                 </th>
             </tr>
         )
@@ -61,3 +72,4 @@ class CoinIndexItem extends React.Component {
 }
 
 export default CoinIndexItem
+

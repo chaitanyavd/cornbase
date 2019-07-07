@@ -83,4 +83,10 @@ tr:hover {
     border: 1px; 
 }
 
- 
+ .negpercent {
+   color: rgb(223, 95, 103)
+ }
+
+ .pospercent {
+   color: rgb(5, 177, 105);
+ }
