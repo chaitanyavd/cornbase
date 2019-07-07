@@ -6,11 +6,12 @@ class CoinIndex extends React.Component {
 
     componentDidMount() {
         this.props.fetchCoins(); 
+
     }
 
     render() {
         const {coins, fetchCoin} = this.props
-
+        
         return (
             <div className = "index-table-container">
                     <table className = "index-table">
@@ -20,7 +21,9 @@ class CoinIndex extends React.Component {
                         </tr>
                         
                         <tr className = "tabletitles">
+                            <th>#</th>
                             <th>NAME</th>
+                            <th>CHANGE</th>
                             <th>PRICE</th>
                             <th>MARKET CAP</th>
                         </tr>

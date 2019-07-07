@@ -339,7 +339,7 @@ function (_React$Component) {
         className: "tableheader"
       }, "Available on Coinbase")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", {
         className: "tabletitles"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "NAME"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "PRICE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "MARKET CAP")), coins.map(function (coin) {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "NAME"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "CHANGE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "PRICE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "MARKET CAP")), coins.map(function (coin) {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_coin_index_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
           coin: coin,
           fetchCoin: fetchCoin,
@@ -374,7 +374,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(_ref) {
   var coins = _ref.entities.coins;
-  // debugger
+  // debugger 
   return {
     coins: Object.values(coins)
   };
@@ -404,15 +404,77 @@ var mdp = function mdp(dispatch) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 
 
-var CoinIndexItem = function CoinIndexItem(_ref) {
-  var coin = _ref.coin,
-      fetchCoin = _ref.fetchCoin;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, coin.name, " ", coin.ticker), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "10 Corns"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "100000 Corns"));
-};
+
+
+
+ // const CoinIndexItem = ({coin, fetchCoin}) => (
+//     <tr>
+//         <th>
+//             {coin.rank}
+//         </th>
+//         <th>
+//             {coin.name} {coin.symbol}
+//         </th>
+//         <th>
+//             {parseFloat(coin.changePercent24Hr).toFixed(2)}%
+//         </th>
+//         <th>
+//             ${parseFloat(coin.priceUsd).toFixed(2)}
+//         </th>
+//         <th>
+//             ${(parseFloat(coin.marketCapUsd) / 1000000000).toFixed(1)}B
+//         </th>
+//     </tr>
+// )
+// export default CoinIndexItem
+// parseFloat(coin.priceUsd).formatMoney(),
+
+var CoinIndexItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(CoinIndexItem, _React$Component);
+
+  function CoinIndexItem() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CoinIndexItem);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinIndexItem).apply(this, arguments));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndexItem, [{
+    key: "render",
+    // Trying to change % color to green/red based on + or -
+    // percentChange() {
+    //     let percentChange = parseFloat(this.props.coin.changePercent24Hr).toFixed(2); 
+    //     let res = document.querySelector('.percent-change')
+    //     res.style.color = percentChange >= 0 ? 'green' : 'red';
+    //     return percentChange
+    // }
+    value: function render() {
+      var _this$props = this.props,
+          coin = _this$props.coin,
+          fetchCoin = _this$props.fetchCoin;
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, coin.rank), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, coin.name, " ", coin.symbol), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "percent-change"
+      }, parseFloat(this.props.coin.changePercent24Hr).toFixed(2), "%"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "$", parseFloat(coin.priceUsd).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "$", (parseFloat(coin.marketCapUsd) / 1000000000).toFixed(1), "B"));
+    }
+  }]);
+
+  return CoinIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (CoinIndexItem);
 
@@ -1594,7 +1656,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
 var fetchCoins = function fetchCoins() {
   return $.ajax({
-    url: "https://api.coincap.io/v2/assets/?limit=5",
+    url: "https://api.coincap.io/v2/assets/?limit=50",
     method: "GET",
     timeout: 0
   });
