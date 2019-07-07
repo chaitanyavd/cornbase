@@ -86,6 +86,46 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/coin_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/coin_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_COINS, RECEIVE_COIN, fetchCoins, fetchCoin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COINS", function() { return RECEIVE_COINS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COIN", function() { return RECEIVE_COIN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoins", function() { return fetchCoins; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
+/* harmony import */ var _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/coin_api_util */ "./frontend/util/coin_api_util.js");
+
+var RECEIVE_COINS = "RECEIVE_COINS";
+var RECEIVE_COIN = "RECEIVE_COIN";
+var fetchCoins = function fetchCoins() {
+  return function (dispatch) {
+    return _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCoins"]().then(function (coins) {
+      return dispatch({
+        type: RECEIVE_COINS,
+        coins: coins
+      });
+    });
+  };
+};
+var fetchCoin = function fetchCoin(id) {
+  return function (dispatch) {
+    return _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCoin"](id).then(function (coin) {
+      return dispatch({
+        type: RECEIVE_COIN,
+        coin: coin
+      });
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/modal_actions.js":
 /*!*******************************************!*\
   !*** ./frontend/actions/modal_actions.js ***!
@@ -206,8 +246,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
+/* harmony import */ var _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./coins/coin_index_container */ "./frontend/components/coins/coin_index_container.jsx");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
+
 
 
 
@@ -219,11 +261,14 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/price",
+    component: _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["AuthRoute"], {
     exact: true,
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -231,6 +276,144 @@ var App = function App() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/coins/coin_index.jsx":
+/*!**************************************************!*\
+  !*** ./frontend/components/coins/coin_index.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _coin_index_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coin_index_item */ "./frontend/components/coins/coin_index_item.jsx");
+
+
+
+
+
+
+
+
+var CoinIndex =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(CoinIndex, _React$Component);
+
+  function CoinIndex() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CoinIndex);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinIndex).apply(this, arguments));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchCoins();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          coins = _this$props.coins,
+          fetchCoin = _this$props.fetchCoin;
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "index-table-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("table", {
+        className: "index-table"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "tableheader"
+      }, "Available on Coinbase")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", {
+        className: "tabletitles"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "NAME"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "PRICE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "MARKET CAP")), coins.map(function (coin) {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_coin_index_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          coin: coin,
+          fetchCoin: fetchCoin,
+          key: coin.id
+        });
+      }))));
+    }
+  }]);
+
+  return CoinIndex;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (CoinIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/coins/coin_index_container.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/coins/coin_index_container.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
+/* harmony import */ var _coin_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./coin_index */ "./frontend/components/coins/coin_index.jsx");
+
+
+
+
+var msp = function msp(_ref) {
+  var coins = _ref.entities.coins;
+  return {
+    coins: Object.values(coins)
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchCoins: function fetchCoins() {
+      return dispatch(Object(_actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCoins"])());
+    },
+    fetchCoin: function fetchCoin(id) {
+      return dispatch(Object(_actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCoin"])(id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_coin_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/coins/coin_index_item.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/coins/coin_index_item.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var CoinIndexItem = function CoinIndexItem(_ref) {
+  var coin = _ref.coin,
+      fetchCoin = _ref.fetchCoin;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, coin.name, " ", coin.ticker), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "10 Corns"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "100000 Corns"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CoinIndexItem);
 
 /***/ }),
 
@@ -392,7 +575,13 @@ var NavBar = function NavBar(_ref) {
   var loggedOut = function loggedOut() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "loggedout-navbar"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "cornbase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "cornbase-logo-loggedin",
+      to: "/"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "cornbase")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "login-link",
+      to: "/price"
+    }, "Prices")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
       className: "login-signup-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "login-link-container"
@@ -410,7 +599,13 @@ var NavBar = function NavBar(_ref) {
   var loggedIn = function loggedIn() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "loggedin-navbar"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "cornbase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "cornbase-logo-loggedout",
+      to: "/"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "cornbase")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "login-link-out",
+      to: "/price"
+    }, "Prices")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "logout-button",
       onClick: function onClick() {
         return openModal('profileAvatar');
@@ -444,7 +639,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./navbar */ "./frontend/components/navbar/navbar.jsx");
 
 
- // import Greeting from './greeting';
 
 
 
@@ -1046,17 +1240,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
-
 
 
 
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  // window.login = login 
-  // window.logout = logout 
-  // window.signup = signup 
   var store;
 
   if (window.currentUser) {
@@ -1084,6 +1273,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /***/ }),
 
+/***/ "./frontend/reducers/coins_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/coins_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/coin_actions */ "./frontend/actions/coin_actions.js");
+
+
+
+var coinsReducer = function coinsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_COINS"]:
+      return action.coins;
+
+    case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_COIN"]:
+      return merge({}, state, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, action.coin.id, action.coin));
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (coinsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/entities_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/entities_reducer.js ***!
@@ -1095,10 +1320,13 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _coins_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./coins_reducer */ "./frontend/reducers/coins_reducer.js");
+
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  coins: _coins_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -1340,6 +1568,32 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/coin_api_util.js":
+/*!****************************************!*\
+  !*** ./frontend/util/coin_api_util.js ***!
+  \****************************************/
+/*! exports provided: fetchCoins, fetchCoin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoins", function() { return fetchCoins; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
+var fetchCoins = function fetchCoins() {
+  return $.ajax({
+    method: "GET",
+    url: "api/coins"
+  });
+};
+var fetchCoin = function fetchCoin(id) {
+  return $.ajax({
+    method: "GET",
+    url: "api/coin/".concat(id)
+  });
+};
 
 /***/ }),
 

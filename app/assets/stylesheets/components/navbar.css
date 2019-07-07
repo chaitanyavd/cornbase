@@ -13,6 +13,16 @@
     padding: 24px;
 } 
 
+.cornbase-logo-loggedin{
+    text-decoration: none; 
+    color: rgb(255, 255, 255);
+}
+
+.cornbase-logo-loggedout{
+    text-decoration: none; 
+    color:  rgb(22, 82, 240);
+}
+
 .loggedin-navbar {
     display: flex; 
     justify-content: space-around;
@@ -26,6 +36,7 @@
     background-color: rgb(255, 255, 255);
     font-size: 30px;
     padding: 24px;
+    border-bottom: 1px solid #ddd;
 }
 
 .login-signup-container {
@@ -52,6 +63,14 @@
     justify-content: space-between;
     color: rgb(255, 255, 255);
     font-size: 13px; 
+}
+
+.login-link-out{
+    text-decoration: none;
+    display: flex; 
+    justify-content: space-between;
+    color:  rgb(22, 82, 240);
+    font-size: 15px; 
 }
 
 .login-link{
