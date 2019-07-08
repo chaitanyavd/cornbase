@@ -3,10 +3,13 @@ import {fetchCoins, fetchCoin} from "../../actions/coin_actions"
 import CoinShow from './coin_show'; 
 
 
-const msp = ({ entities: { coins } }, ownProps) => {
-    // debugger
+const msp = (state, ownProps) => {
+
     return ({
-        coin: coins[ownProps.match.params.symbol] 
+        // coin: Object.values(state.entities.coins),
+        // coin: state.entities.coins[ownProps.match.params.symbol], 
+        symbol: ownProps.match.params.symbol,
+        coin: Object.values(state.entities.coins)
     })
 }
 

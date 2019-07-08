@@ -109,3 +109,8 @@ tr:hover {
     padding-right: 16px;
     padding-left: 16px;
 }
+
+.test {
+  font-size: 100px; 
+  color: darkolivegreen; 
+}

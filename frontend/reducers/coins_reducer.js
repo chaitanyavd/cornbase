@@ -7,12 +7,15 @@ const coinsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_COINS:
             // debugger
-            action.coins.forEach(coin => newState[coin.rank] = coin)
+            action.coins.forEach(coin => (newState[coin.rank] = coin))
             // debugger
             return newState; 
+
         case RECEIVE_COIN:
             action.coin.forEach(coin => newState[coin.rank] = coin)
             return newState; 
+
+            
         default:
             return state;
     }

@@ -268,7 +268,6 @@ var App = function App() {
     path: "/price",
     component: _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    exact: true,
     path: "/price/:symbol",
     component: _coins_coin_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
@@ -330,14 +329,15 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchCoins();
+      this.props.fetchCoins(); // debugger
     }
   }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           coins = _this$props.coins,
-          fetchCoin = _this$props.fetchCoin;
+          fetchCoin = _this$props.fetchCoin; // debugger 
+
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "index-table-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("table", {
@@ -381,6 +381,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(_ref) {
   var coins = _ref.entities.coins;
+  //    debugger
   return {
     coins: Object.values(coins)
   };
@@ -449,16 +450,16 @@ function (_React$Component) {
       var _this$props = this.props,
           coin = _this$props.coin,
           fetchCoin = _this$props.fetchCoin; // debugger 
-      // There has to be a better way 
-      // FOR COINCAP API 
-      // let color = parseFloat(coin.changePercent24Hr).toFixed(2) >= 0 ? 'pospercent' : 'negpercent'; 
-      // let marketCap = parseFloat(coin.marketCapUsd) > 1000000000 ? `$${(parseFloat(coin.marketCapUsd) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.marketCapUsd) / 1000000).toFixed(1)}M`
-      // let price = parseFloat(coin.priceUsd) > 0.1 ? parseFloat(coin.priceUsd).toFixed(2) : parseFloat(coin.priceUsd).toFixed(4)
-      // let tagName = coin.name.split(' ').join('-').toLowerCase(); 
-      // FOR NOMICS API 
+      // ? There has to be a better way 
+      // * FOR COINCAP API 
+      // * let color = parseFloat(coin.changePercent24Hr).toFixed(2) >= 0 ? 'pospercent' : 'negpercent'; 
+      // * let marketCap = parseFloat(coin.marketCapUsd) > 1000000000 ? `$${(parseFloat(coin.marketCapUsd) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.marketCapUsd) / 1000000).toFixed(1)}M`
+      // * let price = parseFloat(coin.priceUsd) > 0.1 ? parseFloat(coin.priceUsd).toFixed(2) : parseFloat(coin.priceUsd).toFixed(4)
+      // * let tagName = coin.name.split(' ').join('-').toLowerCase(); 
+      // *FOR NOMICS API 
 
       var price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4);
-      var marketCap = parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M"); // let percent = parseFloat(ytd.price_change_pct)
+      var marketCap = parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M"); // ? let percent = parseFloat(ytd.price_change_pct)
 
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, coin.rank), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
         src: "".concat(coin.logo_url),
@@ -498,14 +499,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _coin_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coin_index_container */ "./frontend/components/coins/coin_index_container.jsx");
 
 
 
 
 
-
-
+ // import coin_index_container from './coin_index_container';
 
 var CoinShow =
 /*#__PURE__*/
@@ -519,14 +518,35 @@ function (_React$Component) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinShow, [{
-    key: "render",
-    // componentDidMount() {
-    //     this.props.fetchCoin(this.props.match.params.symbol)
-    //     // debugger
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // const symbol = this.props.match.params.symbol;
+      // if (!this.props.coin) {
+      //     this.props.fetchCoin(symbol);
+      // }
+      // debugger
+      this.props.fetchCoin(this.props.match.params.symbol);
+    } // componentDidUpdate(prevProps) {
+    //     if (this.props.match.params.symbol !== prevProps.match.params.symbol) {
+    //         const symbol = this.props.match.params.symbol;
+    //         this.props.fetchCoin(symbol);
+    //     }
     // }
+
+  }, {
+    key: "render",
     value: function render() {
-      debugger;
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null);
+      // const coin = this.props.coin[0]
+      var coin = this.props.coin[0] ? this.props.coin[0] : []; // debugger 
+      // const coin = this.props.coin ? this.props.coin : []
+      // if (!coin) return null; 
+      // const blankCoin = { name: 'blank' }
+      // const coin = this.props.coin ? this.props.coin : blankCoin
+      // debugger 
+
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "test"
+      }, coin.name, coin.price, coin.market_cap);
     }
   }]);
 
@@ -553,11 +573,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var msp = function msp(_ref, ownProps) {
-  var coins = _ref.entities.coins;
-  // debugger
+var msp = function msp(state, ownProps) {
   return {
-    coin: coins[ownProps.match.params.symbol]
+    // coin: Object.values(state.entities.coins),
+    // coin: state.entities.coins[ownProps.match.params.symbol], 
+    symbol: ownProps.match.params.symbol,
+    coin: Object.values(state.entities.coins)
   };
 };
 
