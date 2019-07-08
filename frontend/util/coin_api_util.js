@@ -1,11 +1,7 @@
 
-// export const fetchCoins = () => (
-//     $.ajax({
-//         url: "https://api.coincap.io/v2/assets/?limit=50",
-//         method: "GET", 
-//         timeout: 0
-//     })
-// )
+
+const allCoinsIds = "&ids=BTC,ETH,XRP,LTC,BCH,EOS,XLM,LINK,ETC,ZEC,BAT,USDC,ZRX,REP,DAI,BSV,BNB,USDT,TRX,ADA,XMR,DASH,NEO,MIOTA,ATOM,XEM,XTZ,MKR,ONT,CRO,QTUM,BTG, DOGE,VET,OMG,VSYS,DCR,EGT,HOT,TUSD,BCD,HEDG,RVN,LSK,WAVES,HT,NPXS,KMD,AOA,NANO,QBIT,BTM,ICX,BCN,BTS,IOST,DGB,PAX,MONA,QNT,ZIL,KCS,NRG,ABBC,SC"
+
 
 export const fetchCoin = (symbol) => (
     $.ajax({
@@ -19,7 +15,9 @@ export const fetchCoin = (symbol) => (
 
 export const fetchCoins = () => (
     $.ajax({
-        url: "https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206",
+        url: `https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206${allCoinsIds}`,
         method: "GET"
     })
 )
+
+   

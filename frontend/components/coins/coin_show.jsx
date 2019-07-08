@@ -13,17 +13,17 @@ class CoinShow extends React.Component {
 
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.match.params.symbol !== prevProps.match.params.symbol) {
-    //         const symbol = this.props.match.params.symbol;
-    //         this.props.fetchCoin(symbol);
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.symbol !== prevProps.match.params.symbol) {
+            const symbol = this.props.match.params.symbol;
+            this.props.fetchCoin(symbol);
+        }
+    }
 
     render () { 
 
         // const coin = this.props.coin[0]
-        const coin = this.props.coin[0] ? this.props.coin[0] : []
+        const coin = this.props.coin ? this.props.coin : []
         // debugger 
 
         // const coin = this.props.coin ? this.props.coin : []
@@ -34,10 +34,8 @@ class CoinShow extends React.Component {
 
         return (
             <div className = "test">
-                {/* {this.props.symbol} */}
+                <img src={`${coin.logo_url}`} width="80" height="80" />
                 {coin.name}
-                {coin.price}
-                {coin.market_cap}
             </div>
         )
     }

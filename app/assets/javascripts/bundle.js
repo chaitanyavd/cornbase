@@ -268,6 +268,7 @@ var App = function App() {
     path: "/price",
     component: _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/price/:symbol",
     component: _coins_coin_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
@@ -336,7 +337,15 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           coins = _this$props.coins,
-          fetchCoin = _this$props.fetchCoin; // debugger 
+          fetchCoin = _this$props.fetchCoin;
+      var mapper = coins.map(function (coin, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_coin_index_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          coin: coin,
+          orderNum: idx,
+          fetchCoin: fetchCoin,
+          key: coin.id
+        });
+      }); // debugger 
 
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "index-table-container"
@@ -346,13 +355,7 @@ function (_React$Component) {
         className: "tableheader"
       }, "Available on Coinbase")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", {
         className: "tabletitles"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "NAME"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "CHANGE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "PRICE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "MARKET CAP")), coins.map(function (coin) {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_coin_index_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          coin: coin,
-          fetchCoin: fetchCoin,
-          key: coin.id
-        });
-      }))));
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "NAME"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "CHANGE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "PRICE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "MARKET CAP")), mapper)));
     }
   }]);
 
@@ -425,6 +428,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! querystring */ "./node_modules/querystring-es3/index.js");
 /* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(querystring__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -446,10 +451,16 @@ function (_React$Component) {
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndexItem, [{
     key: "render",
+    // constructor(props) {
+    //     super(props)
+    //     this.handleSubmit = this.handleSubmit.bind(this)
+    // }
+    // handleSubmit() {
+    //     this.props.history.push(`/price/${this.props.coin.id}`)
+    // }
     value: function render() {
-      var _this$props = this.props,
-          coin = _this$props.coin,
-          fetchCoin = _this$props.fetchCoin; // debugger 
+      if (this.props.coin === undefined) return null;
+      var coin = this.props.coin; // debugger 
       // ? There has to be a better way 
       // * FOR COINCAP API 
       // * let color = parseFloat(coin.changePercent24Hr).toFixed(2) >= 0 ? 'pospercent' : 'negpercent'; 
@@ -459,15 +470,22 @@ function (_React$Component) {
       // *FOR NOMICS API 
 
       var price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4);
-      var marketCap = parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M"); // ? let percent = parseFloat(ytd.price_change_pct)
+      var marketCap = parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M");
+      var percent = parseFloat(coin["1d"].price_change_pct); // if (this.props.coin['1d'] === undefined) {
+      //     console.log(this.props.coin.symbol);
+      //     return null;}
+      // let percent = coin["1d"].price_change_pct.slice(0,4)
 
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, coin.rank), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, this.props.orderNum + 1), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
         src: "".concat(coin.logo_url),
         width: "32",
         height: "32"
       }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
         className: "crypto-name"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, coin.name, " ", coin.symbol)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "$", price), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, marketCap));
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
+        className: "crypto-link",
+        to: "/price/".concat(coin.symbol)
+      }, coin.name, " ", coin.symbol))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, percent), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "$", price), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, marketCap));
     }
   }]);
 
@@ -526,18 +544,20 @@ function (_React$Component) {
       // }
       // debugger
       this.props.fetchCoin(this.props.match.params.symbol);
-    } // componentDidUpdate(prevProps) {
-    //     if (this.props.match.params.symbol !== prevProps.match.params.symbol) {
-    //         const symbol = this.props.match.params.symbol;
-    //         this.props.fetchCoin(symbol);
-    //     }
-    // }
-
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.match.params.symbol !== prevProps.match.params.symbol) {
+        var symbol = this.props.match.params.symbol;
+        this.props.fetchCoin(symbol);
+      }
+    }
   }, {
     key: "render",
     value: function render() {
       // const coin = this.props.coin[0]
-      var coin = this.props.coin[0] ? this.props.coin[0] : []; // debugger 
+      var coin = this.props.coin ? this.props.coin : []; // debugger 
       // const coin = this.props.coin ? this.props.coin : []
       // if (!coin) return null; 
       // const blankCoin = { name: 'blank' }
@@ -546,7 +566,11 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "test"
-      }, coin.name, coin.price, coin.market_cap);
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        src: "".concat(coin.logo_url),
+        width: "80",
+        height: "80"
+      }), coin.name);
     }
   }]);
 
@@ -576,9 +600,9 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, ownProps) {
   return {
     // coin: Object.values(state.entities.coins),
-    // coin: state.entities.coins[ownProps.match.params.symbol], 
-    symbol: ownProps.match.params.symbol,
-    coin: Object.values(state.entities.coins)
+    coin: state.entities.coins[ownProps.match.params.symbol],
+    symbol: ownProps.match.params.symbol // coin: Object.values(state.entities.coins)
+
   };
 };
 
@@ -621,6 +645,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -655,9 +681,12 @@ function (_React$Component) {
 
       // debugger 
       this.props.logout().then(function () {
-        return _this2.props.closeModal();
-      }); // this.props.logout().then(() => this.props.history.push("/"))
-    }
+        _this2.props.history.push("/");
+
+        _this2.props.closeModal();
+      });
+    } // this.props.logout().then(() => this.props.history.push("/"))
+
   }, {
     key: "render",
     value: function render() {
@@ -723,7 +752,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(mapStateToProps, mapDispatchToProps)(Modal));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(mapStateToProps, mapDispatchToProps)(Modal)));
 
 /***/ }),
 
@@ -1475,14 +1504,14 @@ var coinsReducer = function coinsReducer() {
     case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COINS"]:
       // debugger
       action.coins.forEach(function (coin) {
-        return newState[coin.rank] = coin;
+        return newState[coin.id] = coin;
       }); // debugger
 
       return newState;
 
     case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COIN"]:
       action.coin.forEach(function (coin) {
-        return newState[coin.rank] = coin;
+        return newState[coin.id] = coin;
       });
       return newState;
 
@@ -1768,13 +1797,7 @@ var configureStore = function configureStore() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoins", function() { return fetchCoins; });
-// export const fetchCoins = () => (
-//     $.ajax({
-//         url: "https://api.coincap.io/v2/assets/?limit=50",
-//         method: "GET", 
-//         timeout: 0
-//     })
-// )
+var allCoinsIds = "&ids=BTC,ETH,XRP,LTC,BCH,EOS,XLM,LINK,ETC,ZEC,BAT,USDC,ZRX,REP,DAI,BSV,BNB,USDT,TRX,ADA,XMR,DASH,NEO,MIOTA,ATOM,XEM,XTZ,MKR,ONT,CRO,QTUM,BTG, DOGE,VET,OMG,VSYS,DCR,EGT,HOT,TUSD,BCD,HEDG,RVN,LSK,WAVES,HT,NPXS,KMD,AOA,NANO,QBIT,BTM,ICX,BCN,BTS,IOST,DGB,PAX,MONA,QNT,ZIL,KCS,NRG,ABBC,SC";
 var fetchCoin = function fetchCoin(symbol) {
   return $.ajax({
     method: "GET",
@@ -1783,7 +1806,7 @@ var fetchCoin = function fetchCoin(symbol) {
 };
 var fetchCoins = function fetchCoins() {
   return $.ajax({
-    url: "https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206",
+    url: "https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206".concat(allCoinsIds),
     method: "GET"
   });
 };

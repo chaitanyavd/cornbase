@@ -13,6 +13,8 @@ class CoinIndex extends React.Component {
 
     render() {
         const {coins, fetchCoin} = this.props
+        const mapper =  coins.map((coin, idx) => <CoinIndexItem coin={coin} orderNum={idx} fetchCoin={fetchCoin} key={coin.id} />) 
+
         // debugger 
         return (
             <div className = "index-table-container">
@@ -31,7 +33,7 @@ class CoinIndex extends React.Component {
                             <th>MARKET CAP</th>
                         </tr>
                         
-                            {coins.map((coin)=> <CoinIndexItem coin = {coin} fetchCoin = {fetchCoin} key = {coin.id} />)}
+                            {mapper}
 
                         </tbody>
                     </table>

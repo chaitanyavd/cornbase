@@ -1,9 +1,9 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import NavBarContainer from '../navbar/navbar_container'
-import {logout} from '../../actions/session_actions'
-
+import NavBarContainer from '../navbar/navbar_container'; 
+import {logout} from '../../actions/session_actions'; 
+import {withRouter} from "react-router-dom"; 
 
 
 class Modal extends React.Component{
@@ -14,10 +14,14 @@ class Modal extends React.Component{
 
     handleSubmit() {
         // debugger 
-        this.props.logout().then(()=> this.props.closeModal())
-        // this.props.logout().then(() => this.props.history.push("/"))
+        this.props.logout().then(() => {
+            this.props.history.push("/"); 
+            this.props.closeModal(); 
+        })
+        
     }
-
+        
+        // this.props.logout().then(() => this.props.history.push("/"))
     render() {
 
         if (!this.props.modal || !this.props.user) {
@@ -78,4 +82,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));

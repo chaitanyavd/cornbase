@@ -1,12 +1,23 @@
 import React from "react"; 
 import { parse } from "querystring";
+import {Link} from 'react-router-dom'; 
 
 
 class CoinIndexItem extends React.Component {
 
-    render() {
+    // constructor(props) {
+    //     super(props)
+    //     this.handleSubmit = this.handleSubmit.bind(this)
+    // }
+    
 
-        const {coin, fetchCoin} = this.props; 
+    // handleSubmit() {
+    //     this.props.history.push(`/price/${this.props.coin.id}`)
+    // }
+
+    render() {
+        if (this.props.coin === undefined) return null;
+        const {coin} = this.props; 
 
         // debugger 
         // ? There has to be a better way 
@@ -22,12 +33,16 @@ class CoinIndexItem extends React.Component {
 
         let price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4)
         let marketCap = parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M`
-        // ? let percent = parseFloat(ytd.price_change_pct)
+        let percent = parseFloat(coin["1d"].price_change_pct)
+        // if (this.props.coin['1d'] === undefined) {
+        //     console.log(this.props.coin.symbol);
+        //     return null;}
+        // let percent = coin["1d"].price_change_pct.slice(0,4)
 
         return (
             <tr>
                 <th>
-                    {coin.rank}
+                    {this.props.orderNum + 1}
                 </th>
 
                 <th>
@@ -36,14 +51,17 @@ class CoinIndexItem extends React.Component {
                     </div>
                 </th>
                 
-                <th className="crypto-name">
+                <th className="crypto-name" >
                     <div>
-                        {coin.name} {coin.symbol}
+
+                        <Link className = "crypto-link" to = {`/price/${coin.symbol}`}>
+                            {coin.name} {coin.symbol}
+                        </Link>
                     </div>
                 </th>
                 
                 <th>
-                    {/* {percent}  */}
+                    {percent} 
                 </th>
 
                 <th>

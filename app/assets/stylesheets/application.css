@@ -101,6 +101,7 @@ tr:hover {
 .crypto-name {
     display: flex;
     -webkit-box-align: center;
+
     align-items: flex-end;
     flex-direction: row;
     min-width: 140px;
@@ -108,6 +109,11 @@ tr:hover {
     flex: 1 1 auto;
     padding-right: 16px;
     padding-left: 16px;
+}
+
+.crypto-link {
+  text-decoration: none;
+  color: rgba(17, 51, 83, 0.6); 
 }
 
 .test {

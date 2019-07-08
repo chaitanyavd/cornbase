@@ -7,9 +7,9 @@ const msp = (state, ownProps) => {
 
     return ({
         // coin: Object.values(state.entities.coins),
-        // coin: state.entities.coins[ownProps.match.params.symbol], 
+        coin: state.entities.coins[ownProps.match.params.symbol], 
         symbol: ownProps.match.params.symbol,
-        coin: Object.values(state.entities.coins)
+        // coin: Object.values(state.entities.coins)
     })
 }
 

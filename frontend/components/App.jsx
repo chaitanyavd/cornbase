@@ -14,7 +14,7 @@ const App = () => (
         <Modal/>
         <NavBarContainer/>
         <Route exact path="/price" component={CoinIndexContainer} />
-        <Route  path="/price/:symbol" component={CoinShowContainer} />
+        <Route  exact path="/price/:symbol" component={CoinShowContainer} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
