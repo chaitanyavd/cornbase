@@ -7,14 +7,17 @@ const coinsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_COINS:
             // debugger
-            action.data.data.forEach(coin => newState[coin.rank] = coin)
+            action.coins.forEach(coin => newState[coin.rank] = coin)
+            // debugger
             return newState; 
-            // return action.data
         case RECEIVE_COIN:
-            return merge({}, state, { [action.coin.id]: action.coin });
+            action.coin.forEach(coin => newState[coin.rank] = coin)
+            return newState; 
         default:
             return state;
     }
 };
 
 export default coinsReducer;
+
+
