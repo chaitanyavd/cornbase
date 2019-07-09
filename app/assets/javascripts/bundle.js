@@ -573,50 +573,78 @@ function (_React$Component) {
         this.props.fetchCoin(symbol);
         this.props.fetchYear(symbol);
       }
-    } // const parser = (this.props.data) => {
-    //     debugger
-    //     let coordinates = []; 
-    //     action.forEach((day) => (
-    //         let convertedTime; 
-    //         function timeConverter(day.time) {
-    //             let a = new Date(day.time * 1000);
-    //             let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    //             let year = a.getFullYear();
-    //             let month = months[a.getMonth()];
-    //             let date = a.getDate();
-    //             let hour = a.getHours();
-    //             let min = a.getMinutes();
-    //             let sec = a.getSeconds();
-    //             let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
-    //             convertedTime = time; 
-    //         }
-    //         coordinates.push([convertedTime, day.close])
-    //     ))
-    //         return coordinates
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
-      var coin = this.props.coin ? this.props.coin : []; // debugger 
-
-      console.log(coin);
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "test"
+      var coin = this.props.coin ? this.props.coin : [];
+      var marketCap = parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M");
+      var circSupply = parseFloat(coin.circulating_supply) > 1000000000 ? "".concat((parseFloat(coin.circulating_supply) / 1000000000).toFixed(1), "B ").concat(coin.symbol) : "".concat((parseFloat(coin.circulating_supply) / 1000000).toFixed(1), "M ").concat(coin.symbol);
+      var allTimeHigh = parseFloat(coin.high) > 0.1 ? parseFloat(coin.high).toFixed(2) : parseFloat(coin.high).toFixed(4);
+      var price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4);
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "show-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "header-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "header-information"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        className: "show-logo",
         src: "".concat(coin.logo_url),
         width: "80",
         height: "80"
-      }), coin.name), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["LineChart"], {
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "header-name"
+      }, coin.name), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "header-symbol"
+      }, "(", coin.symbol, ")"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-column"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-controlbar-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-price-content"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-price-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-price-big-number"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "$", price)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-percent-change"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "-"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "$131.91"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "(12%)"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-contolbar-selectors"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "period-selector"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "selects"
+      }, "1hr")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "period-selector"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "selects"
+      }, "24hr")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "period-selector"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "selects"
+      }, "1W")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "period-selector"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "selects"
+      }, "1M")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "period-selector"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "selects"
+      }, "1Y")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "period-selector"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "selects"
+      }, "ALL"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["LineChart"], {
         className: "chart",
-        width: 676,
-        height: 196,
+        width: 784,
+        height: 230,
         data: this.props.data,
         margin: {
-          top: 5,
-          right: 20,
-          left: 10,
-          bottom: 5
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0
         }
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["XAxis"], {
         dataKey: "time",
@@ -624,13 +652,50 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["YAxis"], {
         dataKey: "close",
         hide: true
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Tooltip"], null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Line"], {
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Tooltip"], {
+        className: "tooltip"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Line"], {
+        className: "line",
         type: "monotone",
         dataKey: "close",
         dot: false,
-        stroke: "#21ce99",
+        stroke: "rgb(22, 82, 240)",
         yAxisId: 0
-      })));
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "horizontal-axis"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-assets-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset-title"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "Market cap")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset-value"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, marketCap))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset-title"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "Volume (24 hrs)")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset-value"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "access"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset-title"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "Circulating Supply")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset-value"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, circSupply))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset-title"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "All-time high")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset-value"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "$", allTimeHigh))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset-title"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "Popularity on Cornbase")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-asset-value"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "#", coin.rank, " most held"))))));
     }
   }]);
 
@@ -658,10 +723,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  // let data = {}; 
-  // state.entities.coinData.data.forEach((day, idx)=>(
-  //     data[idx] = day 
-  // ))
   return {
     coin: state.entities.coins[ownProps.match.params.symbol],
     symbol: ownProps.match.params.symbol,
@@ -1569,10 +1630,30 @@ var coinDataReducer = function coinDataReducer() {
     default:
       return state;
   }
-}; // *PARSER FUNCTION 
+};
 
-
-/* harmony default export */ __webpack_exports__["default"] = (coinDataReducer);
+/* harmony default export */ __webpack_exports__["default"] = (coinDataReducer); // *PARSER FUNCTION 
+// const parser = (this.props.data) => {
+//     debugger
+//     let coordinates = []; 
+//     action.forEach((day) => (
+//         let convertedTime; 
+//         function timeConverter(day.time) {
+//             let a = new Date(day.time * 1000);
+//             let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+//             let year = a.getFullYear();
+//             let month = months[a.getMonth()];
+//             let date = a.getDate();
+//             let hour = a.getHours();
+//             let min = a.getMinutes();
+//             let sec = a.getSeconds();
+//             let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+//             convertedTime = time; 
+//         }
+//         coordinates.push([convertedTime, day.close])
+//     ))
+//         return coordinates
+// }
 
 /***/ }),
 

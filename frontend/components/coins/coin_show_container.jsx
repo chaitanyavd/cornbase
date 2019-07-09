@@ -5,12 +5,6 @@ import CoinShow from './coin_show';
 
 const msp = (state, ownProps) => {
 
-    // let data = {}; 
-    // state.entities.coinData.data.forEach((day, idx)=>(
-    //     data[idx] = day 
-    // ))
-
-
     return ({
         coin: state.entities.coins[ownProps.match.params.symbol], 
         symbol: ownProps.match.params.symbol,

@@ -19,72 +19,126 @@ class CoinShow extends React.Component {
 
     }
 
-
-    // const parser = (this.props.data) => {
-    //     debugger
-    //     let coordinates = []; 
-
-    //     action.forEach((day) => (
-    //         let convertedTime; 
-
-    //         function timeConverter(day.time) {
-    //             let a = new Date(day.time * 1000);
-    //             let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    //             let year = a.getFullYear();
-    //             let month = months[a.getMonth()];
-    //             let date = a.getDate();
-    //             let hour = a.getHours();
-    //             let min = a.getMinutes();
-    //             let sec = a.getSeconds();
-    //             let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
-    //             convertedTime = time; 
-    //         }
-
-
-    //         coordinates.push([convertedTime, day.close])
-
-
-    //     ))
-
-    //         return coordinates
-    // }
-
-
-
     render () { 
 
-
         const coin = this.props.coin ? this.props.coin : []
-        // debugger 
-        console.log(coin) 
 
-
-
-
+        let marketCap = parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M`
+        let circSupply = parseFloat(coin.circulating_supply) > 1000000000 ? `${(parseFloat(coin.circulating_supply) / 1000000000).toFixed(1)}B ${coin.symbol}` : `${(parseFloat(coin.circulating_supply) / 1000000).toFixed(1)}M ${coin.symbol}`
+        let allTimeHigh = parseFloat(coin.high) > 0.1 ? parseFloat(coin.high).toFixed(2) : parseFloat(coin.high).toFixed(4)
+        let price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4)
+        
         return (
-            <div>
-                <div className = "test">
-                    <img src={`${coin.logo_url}`} width="80" height="80" />
-                    {coin.name}
+            <div className = "show-container">
+                <div className = "header-container">
+                    <div className="header-information" >
+                        <img  className = "show-logo" src={`${coin.logo_url}`} width="80" height="80" />
+                        <div className="header-name">
+                            {coin.name}
+                        </div>
+                        <div className="header-symbol">
+                            ({coin.symbol})
+                        </div>
+                    </div>
                 </div>
-                <LineChart className='chart'
-                    width={676}
-                    height={196}
-                    data= {this.props.data}
-                    margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
-                >
-                    <XAxis dataKey="time" hide={true} />
-                    <YAxis dataKey="close" hide={true}  />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="close" dot={false} stroke='#21ce99' yAxisId={0} />
-                     {/* <CartesianGrid stroke="#f5f5f5" /> }
-                     <Line type="monotone" dataKey="uv" stroke="#ff7300" yAxisId={0} /> 
-                     <Line type="monotone" dataKey="pv" stroke="#387908" yAxisId={1} />  */}
-                </LineChart>
+                <div className = "graph-column">
+                    <div className = "graph-controlbar-container">
+                        <div className="graph-price-content">
+                            <div className = "graph-price-container">
+                                <div className = "graph-price-big-number">
+                                    <span>${price}</span>
+                                </div>
+                                <div className="graph-percent-change">
+                                    <span>-</span>
+                                    <span>$131.91</span>
+                                    <span>(12%)</span>
+                                </div>
+                            </div>
 
+                            <div className="graph-contolbar-selectors">
+                                <div className="period-selector">
+                                   <span className = "selects">1hr</span> 
+                                </div>
+                                <div className="period-selector">
+                                    <span className="selects">24hr</span> 
+                                </div>
+                                <div className="period-selector">
+                                    <span className="selects">1W</span> 
+                                </div>
+                                <div className="period-selector">
+                                    <span className="selects">1M</span> 
+                                </div>
+                                <div className="period-selector">
+                                    <span className="selects">1Y</span> 
+                                </div>
+                                <div className="period-selector">
+                                    <span className="selects">ALL</span> 
+                                </div>
 
+                            </div>
 
+                        </div>
+                    </div>
+                    
+                    <LineChart className='chart'
+                        width={784}
+                        height={230}
+                        data= {this.props.data}
+                        margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+                    >
 
+                        <XAxis dataKey="time" hide={true} />
+                        <YAxis dataKey="close" hide={true}  />
+                    
+                        <Tooltip className = "tooltip"/>
+
+                        <Line className = "line" type="monotone" dataKey="close" dot={false} stroke='rgb(22, 82, 240)' yAxisId={0} />
+                    </LineChart>
+                    <div className="horizontal-axis">
+                    </div>
+                    <div className="graph-assets-container">
+                        <div className ="graph-asset">
+                                <div className="graph-asset-title">
+                                    <span>Market cap</span>
+                                </div>
+                                <div className="graph-asset-value">
+                                    <span>{marketCap}</span>
+                                </div>
+                        </div>
+                        <div className="graph-asset">
+                                <div className="graph-asset-title">
+                                    <span>Volume (24 hrs)</span>
+                                </div>
+                                <div className="graph-asset-value">
+                                    <span>access</span>
+                                </div>
+                        </div>
+                        <div className="graph-asset">
+                            <div className="graph-asset-title">
+                                <span>Circulating Supply</span>
+                            </div>
+                            <div className="graph-asset-value">
+                                <span>{circSupply}</span>
+                            </div>
+                        </div>                   
+                        <div className="graph-asset">
+                            <div className="graph-asset-title">
+                                <span>All-time high</span>
+                            </div>
+                            <div className="graph-asset-value">
+                                <span>${allTimeHigh}</span>
+                            </div>
+                        </div>
+                        <div className="graph-asset">
+                            <div className="graph-asset-title">
+                                <span>Popularity on Cornbase</span>
+                            </div>
+                            <div className="graph-asset-value">
+                                <span>#{coin.rank} most held</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
