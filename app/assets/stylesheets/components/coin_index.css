@@ -17,6 +17,10 @@
     color: rgba(17, 51, 83, 0.3) 
 }
 
+.ttitles{
+  font-size: 12px;
+}
+
 .index-table-container {
     display: flex; 
     justify-content: center; 

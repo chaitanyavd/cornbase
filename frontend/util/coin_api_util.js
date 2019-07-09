@@ -22,6 +22,13 @@ export const fetchCoins = () => (
 
 //? API CALL FOR GRAPHS: 
 
+export const fetchCoinAllData = (symbol) => (
+    $.ajax({
+        method: "GET", 
+        url: `https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=USD&allData=true`
+    })
+)
+
 export const fetchCoinYearData = (symbol) => (
     $.ajax({
         method: "GET", 

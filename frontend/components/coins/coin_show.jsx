@@ -7,19 +7,25 @@ class CoinShow extends React.Component {
     componentDidMount() {
         this.props.fetchCoin(this.props.match.params.symbol)
         this.props.fetchYear(this.props.match.params.symbol)
-        
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.match.params.symbol !== prevProps.match.params.symbol) {
             const symbol = this.props.match.params.symbol;
             this.props.fetchCoin(symbol);
-            this.props.fetchYear(symbol); 
-        }
+            this.props.fetchAll(symbol); 
+            this.props.fetchYear(symbol);
+            this.props.fetchMonth(symbol);
+            this.props.fetchWeek(symbol);
+            this.props.fetchDay(symbol);
+            this.props.fetchHour(symbol);
 
+        }
     }
 
     render () { 
+
+        if (this.props.coin === undefined) return null;
 
         const coin = this.props.coin ? this.props.coin : []
 
@@ -27,7 +33,8 @@ class CoinShow extends React.Component {
         let circSupply = parseFloat(coin.circulating_supply) > 1000000000 ? `${(parseFloat(coin.circulating_supply) / 1000000000).toFixed(1)}B ${coin.symbol}` : `${(parseFloat(coin.circulating_supply) / 1000000).toFixed(1)}M ${coin.symbol}`
         let allTimeHigh = parseFloat(coin.high) > 0.1 ? parseFloat(coin.high).toFixed(2) : parseFloat(coin.high).toFixed(4)
         let price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4)
-        
+        let volume = parseFloat(coin["1d"].volume) > 1000000000 ? `$${(parseFloat(coin["1d"].volume) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin["1d"].volume) / 1000000).toFixed(1)}M`
+
         return (
             <div className = "show-container">
                 <div className = "header-container">
@@ -46,7 +53,8 @@ class CoinShow extends React.Component {
                         <div className="graph-price-content">
                             <div className = "graph-price-container">
                                 <div className = "graph-price-big-number">
-                                    <span>${price}</span>
+                                    <span className = "dollar-sign">$</span>
+                                    <span>{price}</span>
                                 </div>
                                 <div className="graph-percent-change">
                                     <span>-</span>
@@ -57,22 +65,22 @@ class CoinShow extends React.Component {
 
                             <div className="graph-contolbar-selectors">
                                 <div className="period-selector">
-                                   <span className = "selects">1hr</span> 
+                                    <span className="selects"><button onClick={() => this.props.fetchHour(this.props.coin.symbol)}>1H</button></span> 
                                 </div>
                                 <div className="period-selector">
-                                    <span className="selects">24hr</span> 
+                                    <span className="selects"><button onClick={() => this.props.fetchDay(this.props.coin.symbol)}>24H</button></span> 
                                 </div>
                                 <div className="period-selector">
-                                    <span className="selects">1W</span> 
+                                    <span className="selects"><button onClick={() => this.props.fetchWeek(this.props.coin.symbol)}>1W</button></span> 
                                 </div>
                                 <div className="period-selector">
-                                    <span className="selects">1M</span> 
+                                    <span className="selects"><button onClick={() => this.props.fetchMonth(this.props.coin.symbol)}>1M</button></span> 
                                 </div>
                                 <div className="period-selector">
-                                    <span className="selects">1Y</span> 
+                                    <span className="selects"><button onClick = {()=> this.props.fetchYear(this.props.coin.symbol)}>1Y</button></span> 
                                 </div>
                                 <div className="period-selector">
-                                    <span className="selects">ALL</span> 
+                                    <span className="selects"><button onClick={() => this.props.fetchYear(this.props.coin.symbol)}>ALL</button></span> 
                                 </div>
 
                             </div>
@@ -86,14 +94,14 @@ class CoinShow extends React.Component {
                         data= {this.props.data}
                         margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
                     >
-
                         <XAxis dataKey="time" hide={true} />
                         <YAxis dataKey="close" hide={true}  />
                     
                         <Tooltip className = "tooltip"/>
 
-                        <Line className = "line" type="monotone" dataKey="close" dot={false} stroke='rgb(22, 82, 240)' yAxisId={0} />
+                        <Line className = "line" type="monotone" dataKey="close" dot={false} strokeWidth = {1.75} stroke='rgb(22, 82, 240)' yAxisId={0} />
                     </LineChart>
+
                     <div className="horizontal-axis">
                     </div>
                     <div className="graph-assets-container">
@@ -110,7 +118,7 @@ class CoinShow extends React.Component {
                                     <span>Volume (24 hrs)</span>
                                 </div>
                                 <div className="graph-asset-value">
-                                    <span>access</span>
+                                    <span>{volume}</span>
                                 </div>
                         </div>
                         <div className="graph-asset">

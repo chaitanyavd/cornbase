@@ -5,16 +5,6 @@ import {Link} from 'react-router-dom';
 
 class CoinIndexItem extends React.Component {
 
-    // constructor(props) {
-    //     super(props)
-    //     this.handleSubmit = this.handleSubmit.bind(this)
-    // }
-    
-
-    // handleSubmit() {
-    //     this.props.history.push(`/price/${this.props.coin.id}`)
-    // }
-
     render() {
         if (this.props.coin === undefined) return null;
         const {coin} = this.props; 
@@ -33,11 +23,9 @@ class CoinIndexItem extends React.Component {
 
         let price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4)
         let marketCap = parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M`
-        let percent = parseFloat(coin["1d"].price_change_pct)
-        // if (this.props.coin['1d'] === undefined) {
-        //     console.log(this.props.coin.symbol);
-        //     return null;}
-        // let percent = coin["1d"].price_change_pct.slice(0,4)
+        let percent = parseFloat((coin["1d"].price_change_pct)*100).toFixed(2); 
+        let color = percent >= 0 ? 'pospercent' : 'negpercent'
+
 
         return (
             <tr>
@@ -61,14 +49,17 @@ class CoinIndexItem extends React.Component {
                 </th>
                 
                 <th>
-                    {percent} 
+                    ${price}
+                </th>
+                <th className = {color}>
+                    {percent}%
                 </th>
 
                 <th>
-                    ${price}
+                    {marketCap}
                 </th>
                 <th>
-                    {marketCap}
+                    CHARTGOESHERE
                 </th>
                 
             </tr>

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'; 
-import { fetchCoins, fetchCoin, fetchYear} from "../../actions/coin_actions"
+import { fetchCoins, fetchCoin, fetchAll, fetchYear, fetchMonth, fetchWeek, fetchDay, fetchHour} from "../../actions/coin_actions"
 import CoinShow from './coin_show'; 
 
 
@@ -14,7 +14,12 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => ({
     fetchCoin: (symbol) => dispatch(fetchCoin(symbol)),
-    fetchYear: (symbol) => dispatch(fetchYear(symbol))
+    fetchAll: (symbol) => dispatch(fetchAll(symbol)), 
+    fetchYear: (symbol) => dispatch(fetchYear(symbol)),
+    fetchMonth: (symbol) => dispatch(fetchMonth(symbol)),
+    fetchWeek: (symbol) => dispatch(fetchWeek(symbol)),
+    fetchDay: (symbol) => dispatch(fetchDay(symbol)),
+    fetchHour: (symbol) => dispatch(fetchHour(symbol))
 })
 
 export default connect(msp, mdp)(CoinShow)
