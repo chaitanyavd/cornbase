@@ -94,7 +94,7 @@ class SignupForm extends React.Component {
                                 </div>
 
                                 <div className="signup-input-container">
-                                    <input className="signup-input" placeholder="Your email address" type="text" value={this.state.email} onChange={this.update("email")}  />
+                                    <input className="signup-input" placeholder="Your email address" type="email" value={this.state.email} onChange={this.update("email")}  />
                                 </div>
 
                             </label>
@@ -124,9 +124,9 @@ class SignupForm extends React.Component {
                         </div>
 
 
-                        <div className="sign-up-form-row">
+                        {/* <div className="sign-up-form-row">
                             <input type="checkbox" /> <span>By continuing I certify that I am 18 years of age, and I agree to the User Agreement and Privacy Policy</span>
-                        </div>
+                        </div> */}
 
                         <button onClick = {this.handleSubmit} className = "signup-button">
                             <span>Create account</span>

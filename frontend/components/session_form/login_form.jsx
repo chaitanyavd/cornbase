@@ -86,7 +86,7 @@ class LoginForm extends React.Component {
                         <div className = "login-form-row" >
 
                             <div className = "login-container">
-                                <input placeholder = "Email" type="text" value={this.state.email} onChange={this.update("email")} className="email-input" />
+                                <input placeholder = "Email" type="email" value={this.state.email} onChange={this.update("email")} className="email-input" />
                             </div>
 
                         </div>
