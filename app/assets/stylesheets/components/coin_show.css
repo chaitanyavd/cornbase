@@ -166,6 +166,23 @@ button {
     text-transform: uppercase;
     color: rgba(17, 51, 83, 0.3);
     transition: color 200ms ease-in-out 0s; 
+    border: none; 
+}
+
+.selects:hover {
+    cursor: pointer;
+    background-color: transparent; 
+    color: rgb(5, 15, 25);
+}
+
+.selects:active,
+.selects:focus,
+.selects.focus {
+    outline: none; 
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent; 
+    color: rgb(22, 82, 240);
 }
 
 .graph-assets-container{

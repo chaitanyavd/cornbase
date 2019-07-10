@@ -604,7 +604,7 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchCoin(this.props.match.params.symbol);
-      this.props.fetchYear(this.props.match.params.symbol);
+      this.props.fetchDay(this.props.match.params.symbol);
     }
   }, {
     key: "componentDidUpdate",
@@ -632,6 +632,21 @@ function (_React$Component) {
       var allTimeHigh = parseFloat(coin.high) > 0.1 ? parseFloat(coin.high).toFixed(2) : parseFloat(coin.high).toFixed(4);
       var price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4);
       var volume = parseFloat(coin["1d"].volume) > 1000000000 ? "$".concat((parseFloat(coin["1d"].volume) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin["1d"].volume) / 1000000).toFixed(1), "M");
+      var close = this.props.data ? this.props.data.map(function (object) {
+        return object.close;
+      }) : [];
+      var min = -Infinity;
+      var max = Infinity;
+
+      if (close.length >= 1) {
+        min = close.reduce(function (acc, el) {
+          return Math.min(acc, el);
+        });
+        max = close.reduce(function (acc, el) {
+          return Math.max(acc, el);
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "show-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -665,49 +680,43 @@ function (_React$Component) {
         className: "graph-contolbar-selectors"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "selects"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        className: "selects",
         onClick: function onClick() {
           return _this.props.fetchHour(_this.props.coin.symbol);
         }
       }, "1H"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "selects"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        className: "selects",
         onClick: function onClick() {
           return _this.props.fetchDay(_this.props.coin.symbol);
         }
       }, "24H"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "selects"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        className: "selects",
         onClick: function onClick() {
           return _this.props.fetchWeek(_this.props.coin.symbol);
         }
       }, "1W"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "selects"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        className: "selects",
         onClick: function onClick() {
           return _this.props.fetchMonth(_this.props.coin.symbol);
         }
       }, "1M"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "selects"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        className: "selects",
         onClick: function onClick() {
           return _this.props.fetchYear(_this.props.coin.symbol);
         }
       }, "1Y"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "selects"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        className: "selects",
         onClick: function onClick() {
           return _this.props.fetchYear(_this.props.coin.symbol);
         }
@@ -727,11 +736,13 @@ function (_React$Component) {
         hide: true
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["YAxis"], {
         dataKey: "close",
+        domain: [min, max],
         hide: true
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Tooltip"], {
         className: "tooltip"
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Line"], {
         className: "line",
+        cursor: "cross-hair",
         type: "monotone",
         dataKey: "close",
         dot: false,
