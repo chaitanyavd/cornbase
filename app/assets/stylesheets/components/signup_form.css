@@ -128,6 +128,8 @@
 
 .signup-redirect {
     color: rgb(255, 255, 255);
+    text-decoration: none; 
+    outline: none; 
 }
 
 .errors{

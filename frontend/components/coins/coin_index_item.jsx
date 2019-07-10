@@ -1,25 +1,43 @@
 import React from "react"; 
 import { parse } from "querystring";
+import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 import {Link} from 'react-router-dom'; 
 
 
 class CoinIndexItem extends React.Component {
 
+    // ! There has to be a better way 
+    // componentDidMount() {
+    //     const symbol = this.props.coin.symbol; 
+    //     this.props.fetchYear(symbol); 
+    //     // debugger
+    // }
+    //!
+    
+    // ! There has to be a better way 
+    // componentDidUpdate(prevProps) {
+    //     const symbol = this.props.coin.symbol;
+    //     if (symbol !== prevProps.symbol) {
+    //         this.props.fetchYear(symbol);
+    //     }
+    // }
+    //!
+
     render() {
+
         if (this.props.coin === undefined) return null;
-        const {coin} = this.props; 
+        const {coin, fetchYear, data} = this.props; 
 
-        // debugger 
-        // ? There has to be a better way 
 
-        // * FOR COINCAP API 
-        // * let color = parseFloat(coin.changePercent24Hr).toFixed(2) >= 0 ? 'pospercent' : 'negpercent'; 
-        // * let marketCap = parseFloat(coin.marketCapUsd) > 1000000000 ? `$${(parseFloat(coin.marketCapUsd) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.marketCapUsd) / 1000000).toFixed(1)}M`
-        // * let price = parseFloat(coin.priceUsd) > 0.1 ? parseFloat(coin.priceUsd).toFixed(2) : parseFloat(coin.priceUsd).toFixed(4)
-        // * let tagName = coin.name.split(' ').join('-').toLowerCase(); 
+
+        // ! There has to be a better way 
+        // FOR COINCAP API 
+        // let color = parseFloat(coin.changePercent24Hr).toFixed(2) >= 0 ? 'pospercent' : 'negpercent'; 
+        // let marketCap = parseFloat(coin.marketCapUsd) > 1000000000 ? `$${(parseFloat(coin.marketCapUsd) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.marketCapUsd) / 1000000).toFixed(1)}M`
+        // let price = parseFloat(coin.priceUsd) > 0.1 ? parseFloat(coin.priceUsd).toFixed(2) : parseFloat(coin.priceUsd).toFixed(4)
+        // let tagName = coin.name.split(' ').join('-').toLowerCase(); 
+        //!
         
-        
-        // *FOR NOMICS API 
 
         let price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4)
         let marketCap = parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M`
@@ -58,9 +76,7 @@ class CoinIndexItem extends React.Component {
                 <th>
                     {marketCap}
                 </th>
-                <th>
-                    CHARTGOESHERE
-                </th>
+       
                 
             </tr>
         )

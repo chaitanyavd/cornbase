@@ -39,7 +39,6 @@ class Modal extends React.Component{
 
         return (
             <div className="modal-background" onClick={this.props.closeModal}>
-
                 <div className="modal-content" onClick={e => e.stopPropagation()}>
                     <div className="modal-container">
                         <div className = "modal-user-container">
@@ -50,7 +49,7 @@ class Modal extends React.Component{
                                 {this.props.user.email}
                             </div>
                         </div>
-
+                        
                         <div className = "modal-logout-container">
                             <button className = "modal-logout-button" onClick={this.handleSubmit} >Sign out</button>
                         </div>

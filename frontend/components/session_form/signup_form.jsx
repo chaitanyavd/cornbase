@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+import { Link } from 'react-router-dom'; 
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -137,8 +137,8 @@ class SignupForm extends React.Component {
                 
                 </div>
 
-                <div className="signup-redirect">
-                    <span>Already have a Cornbase account?</span>
+                <div>
+                    <Link className="signup-redirect" to={"./login"}><span>Already have a Cornbase account?</span></Link>
                 </div>
 
             </div>

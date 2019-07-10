@@ -1,12 +1,12 @@
 import React from 'react'; 
-// import coin_index_container from './coin_index_container';
-import { LineChart, Line, ResponsiveContainer, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
+import { GridLoader } from 'halogenium';
 
 class CoinShow extends React.Component {
 
     componentDidMount() {
-        this.props.fetchCoin(this.props.match.params.symbol)
-        this.props.fetchDay(this.props.match.params.symbol)
+        this.props.fetchCoin(this.props.match.params.symbol);
+        this.props.fetchDay(this.props.match.params.symbol);
     }
 
     componentDidUpdate(prevProps) {
@@ -19,11 +19,29 @@ class CoinShow extends React.Component {
             this.props.fetchWeek(symbol);
             this.props.fetchDay(symbol);
             this.props.fetchHour(symbol);
-
         }
     }
 
     render () { 
+
+        //? HOW DO YOU PUT A LOADER? 
+        // const values = Object.values(this.props.data);
+        // let stillFetchingData = false;
+        // for (let i = 0; i < values.length; i++) {
+        //     if (typeof values[i] === undefined) {
+        //         stillFetchingData = true;
+        //         break;
+        //     }
+        // }
+        // if (stillFetchingData) {
+        //     return (
+        //         <div className='loadbar'>
+        //             <GridLoader className="GridLoader" />
+        //         </div>
+        //     );
+        // }
+
+
 
         if (this.props.coin === undefined) return null;
 
@@ -92,7 +110,7 @@ class CoinShow extends React.Component {
                                     <span><button className="selects" onClick = {()=> this.props.fetchYear(this.props.coin.symbol)}>1Y</button></span> 
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchYear(this.props.coin.symbol)}>ALL</button></span> 
+                                    <span><button className="selects" onClick={() => this.props.fetchAll(this.props.coin.symbol)}>ALL</button></span> 
                                 </div>
 
                             </div>

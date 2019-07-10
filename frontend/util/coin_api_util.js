@@ -25,7 +25,7 @@ export const fetchCoins = () => (
 export const fetchCoinAllData = (symbol) => (
     $.ajax({
         method: "GET", 
-        url: `https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=USD&allData=true`
+        url: `https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=USD&aggregate=10&allData=true`
     })
 )
 
@@ -39,7 +39,7 @@ export const fetchCoinYearData = (symbol) => (
 export const fetchCoinMonthData = (symbol) => (
     $.ajax({
         method: "GET", 
-        url: `https://min-api.cryptocompare.com/data/histohour?fsym=${symbol}&tsym=USD&limit=730`
+        url: `https://min-api.cryptocompare.com/data/histohour?fsym=${symbol}&tsym=USD&aggregate=2&limit=365`
     })
 )
 
@@ -53,7 +53,8 @@ export const fetchCoinWeekData = (symbol) => (
 export const fetchCoinDayData = (symbol) => (
     $.ajax({
         method: "GET", 
-        url: `https://min-api.cryptocompare.com/data/histominute?fsym=${symbol}&tsym=USD&limit=1440`
+        url: `https://min-api.cryptocompare.com/data/histominute?fsym=${symbol}&tsym=USD&aggregate=4&limit=360`
+        
     })
 )
 

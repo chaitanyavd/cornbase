@@ -6,14 +6,15 @@ class CoinIndex extends React.Component {
 
     componentDidMount() {
         this.props.fetchCoins(); 
-        // debugger
+
     }
 
 
 
     render() {
-        const {coins, fetchCoin} = this.props
-        const mapper =  coins.map((coin, idx) => <CoinIndexItem coin={coin} orderNum={idx} fetchCoin={fetchCoin} key={coin.id} />) 
+        const {coins, fetchCoin, fetchYear, data} = this.props
+
+        const mapper =  coins.map((coin, idx) => <CoinIndexItem coin={coin} orderNum={idx} fetchCoin={fetchCoin} key={coin.id} fetchYear = {fetchYear} data = {data} />) 
 
         // debugger 
         return (
@@ -31,7 +32,7 @@ class CoinIndex extends React.Component {
                             <th>PRICE</th>
                             <th>CHANGE</th>
                             <th>MARKET CAP</th>
-                            <th>CHART</th>
+
                         </tr>
                         
                             {mapper}

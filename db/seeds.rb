@@ -9,7 +9,7 @@
 
 
 User.destroy_all
-user0 = User.create(first_name: 'Demo', last_name: 'User', email: 'demo@cornbase.com', password: 'buysomecorns')
+user1 = User.create!(first_name: 'Demo', last_name: 'User', email: 'demo@cornbase.com', password: 'buysomecorns')
 # user1 = User.create(first_name: 'John', last_name: 'Ive', email: 'john1@aa.io', password: 'password')
 # user2 = User.create(first_name: 'Kevin', last_name: 'Malone', email: 'jimmy2@aa.io', password: 'password')
 # user3 = User.create(first_name: 'Albert', last_name: 'Einstein', email: 'albert@aa.io', password: 'password')

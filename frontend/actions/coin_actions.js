@@ -28,6 +28,7 @@ export const fetchYear = (symbol) => (dispatch) => (
     coinApiUtil.fetchCoinYearData(symbol).then(data => dispatch({type: RECEIVE_DATA, data}))
 )
  
+
 export const fetchMonth = (symbol) => (dispatch) => (
     coinApiUtil.fetchCoinMonthData(symbol).then(data => dispatch({type: RECEIVE_DATA, data}))
 )
