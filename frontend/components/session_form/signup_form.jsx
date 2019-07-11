@@ -94,7 +94,7 @@ class SignupForm extends React.Component {
                                 </div>
 
                                 <div className="signup-input-container">
-                                    <input className="signup-input" placeholder="Your email address" type="email" value={this.state.email} onChange={this.update("email")}  />
+                                    <input className="signup-input" placeholder="Your email address" type="email" spellCheck="false" value={this.state.email} onChange={this.update("email")}  />
                                 </div>
 
                             </label>
@@ -113,7 +113,7 @@ class SignupForm extends React.Component {
                                 </div>
 
                                 <div className="signup-input-container">
-                                    <input className="signup-input" placeholder="Choose a password" type="text" value={this.state.password} onChange={this.update("password")} />
+                                    <input className="signup-input" placeholder="Choose a password" type="password" value={this.state.password} onChange={this.update("password")} />
                                 </div>
                                 <div className="errors">
                                     {this.renderErrors()}

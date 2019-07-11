@@ -26,12 +26,12 @@ class CoinIndex extends React.Component {
                         </tr>
                         
                         <tr className = "tabletitles">
-                            <th className = "ttiles">#</th>
-                            <th>NAME</th>
-                            <th></th>
-                            <th>PRICE</th>
-                            <th>CHANGE</th>
-                            <th>MARKET CAP</th>
+                            <th className = "ttitles">#</th>
+                            <th className="ttitles" >NAME</th>
+                            <th className="ttitles" ></th>
+                            <th className="ttitles" >PRICE</th>
+                            <th className="ttitles" >CHANGE</th>
+                            <th className="ttitles" >MARKET CAP</th>
 
                         </tr>
                         

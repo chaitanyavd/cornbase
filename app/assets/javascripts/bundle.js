@@ -445,8 +445,18 @@ function (_React$Component) {
       }, "Available on Coinbase")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", {
         className: "tabletitles"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
-        className: "ttiles"
-      }, "#"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "NAME"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "PRICE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "CHANGE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "MARKET CAP")), mapper)));
+        className: "ttitles"
+      }, "#"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "ttitles"
+      }, "NAME"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "ttitles"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "ttitles"
+      }, "PRICE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "ttitles"
+      }, "CHANGE"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "ttitles"
+      }, "MARKET CAP")), mapper)));
     }
   }]);
 
@@ -590,7 +600,11 @@ function (_React$Component) {
       var marketCap = parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M");
       var percent = parseFloat(coin["1d"].price_change_pct * 100).toFixed(2);
       var color = percent >= 0 ? 'pospercent' : 'negpercent';
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, this.props.orderNum + 1), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "index-th"
+      }, this.props.orderNum + 1), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "index-th"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
         src: "".concat(coin.logo_url),
         width: "32",
         height: "32"
@@ -599,9 +613,13 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
         className: "crypto-link",
         to: "/price/".concat(coin.symbol)
-      }, coin.name, " ", coin.symbol))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "$", price), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+      }, coin.name, " ", coin.symbol))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "index-th"
+      }, "$", price), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
         className: color
-      }, percent, "%"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, marketCap));
+      }, percent, "%"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "index-th"
+      }, marketCap));
     }
   }]);
 
@@ -1417,6 +1435,7 @@ function (_React$Component) {
         placeholder: "Email",
         type: "email",
         value: this.state.email,
+        spellCheck: "false",
         onChange: this.update("email"),
         className: "email-input"
       }))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -1425,7 +1444,7 @@ function (_React$Component) {
         className: "login-container"
       }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
         placeholder: "Password",
-        type: "text",
+        type: "password",
         value: this.state.password,
         onChange: this.update("password"),
         className: "password-input"
@@ -1653,6 +1672,7 @@ function (_React$Component) {
         className: "signup-input",
         placeholder: "Your email address",
         type: "email",
+        spellCheck: "false",
         value: this.state.email,
         onChange: this.update("email")
       })))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
@@ -1666,7 +1686,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("input", {
         className: "signup-input",
         placeholder: "Choose a password",
-        type: "text",
+        type: "password",
         value: this.state.password,
         onChange: this.update("password")
       })), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
@@ -1788,11 +1808,15 @@ function (_React$Component) {
     value: function render() {
       var coins = this.props.coins;
       var mapper = coins.map(function (coin, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_logged_out_splash_splash_out_item__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          coin: coin,
-          orderNum: idx,
-          key: coin.id
-        });
+        if (idx <= 5) {
+          return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_logged_out_splash_splash_out_item__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            coin: coin,
+            orderNum: idx,
+            key: coin.id
+          });
+        } else {
+          return null;
+        }
       });
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "splashout-container"
@@ -1853,7 +1877,9 @@ function (_React$Component) {
         className: "splashout-tablehelper-div"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
         className: "tablehead"
-      }, "CHANGE"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tbody", null, mapper)))));
+      }, "CHANGE"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tbody", {
+        className: "t-body"
+      }, mapper)))));
     }
   }]);
 
@@ -1973,7 +1999,52 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(SplashOutItem, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, this.props.coin.name);
+      if (this.props.coin === undefined) return null;
+      var coin = this.props.coin.coin;
+      var price = parseFloat(this.props.coin.price) > 0.1 ? parseFloat(this.props.coin.price).toFixed(2) : parseFloat(this.props.coin.price).toFixed(4);
+      var percent = parseFloat(this.props.coin["1d"].price_change_pct * 100).toFixed(2);
+      var color = percent >= 0 ? 'pospercent' : 'negpercent';
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", {
+        className: "t-row-container "
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+        className: "splashout-tablerow-1"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", {
+        className: "splashout-tablerow-1id"
+      }, this.props.orderNum + 1)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+        className: "splashout-tablerow-2"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
+        className: "splashout-link",
+        to: "/signup"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablerow-name-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablerow-img"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        className: "img",
+        src: "".concat(this.props.coin.logo_url),
+        width: "32",
+        height: "32"
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablerow-name"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "tr-title-span"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", {
+        className: "tr-title"
+      }, this.props.coin.name)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", {
+        className: "tr-symbol"
+      }, this.props.coin.symbol))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+        className: "splashout-tablerow-3"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "tr-price-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", {
+        className: "tr-price"
+      }, "$", price))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+        className: "splashout-tablerow-4"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "tr-percent-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "tr-percent"
+      }, percent, "%"))));
     }
   }]);
 

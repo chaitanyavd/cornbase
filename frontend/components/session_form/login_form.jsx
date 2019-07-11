@@ -86,7 +86,7 @@ class LoginForm extends React.Component {
                         <div className = "login-form-row" >
 
                             <div className = "login-container">
-                                <input placeholder = "Email" type="email" value={this.state.email} onChange={this.update("email")} className="email-input" />
+                                <input placeholder="Email" type="email" value={this.state.email} spellCheck="false" onChange={this.update("email")} className="email-input" />
                             </div>
 
                         </div>
@@ -94,7 +94,7 @@ class LoginForm extends React.Component {
                         <div className = "login-form-row" >
 
                             <div className = "login-container">
-                                <input placeholder="Password" type="text" value={this.state.password} onChange={this.update("password")} className="password-input" />
+                                <input placeholder="Password" type="password" value={this.state.password} onChange={this.update("password")} className="password-input" />
                             </div>
 
                         </div>

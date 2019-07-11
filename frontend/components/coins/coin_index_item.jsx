@@ -47,11 +47,11 @@ class CoinIndexItem extends React.Component {
 
         return (
             <tr>
-                <th>
+                <th className = "index-th">
                     {this.props.orderNum + 1}
                 </th>
 
-                <th>
+                <th className="index-th">
                     <div>
                         <img src={`${coin.logo_url}`} width="32" height="32" />
                     </div>
@@ -66,18 +66,17 @@ class CoinIndexItem extends React.Component {
                     </div>
                 </th>
                 
-                <th>
+                <th className="index-th" >
                     ${price}
                 </th>
-                <th className = {color}>
+                
+                <th className={color}>
                     {percent}%
                 </th>
 
-                <th>
+                <th className="index-th" >
                     {marketCap}
                 </th>
-       
-                
             </tr>
         )
     }

@@ -18,8 +18,18 @@
 }
 
 .ttitles{
-  font-size: 12px;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    text-align: left;
+    padding: 18px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(17, 51, 83, 0.3);
+    transition: color 200ms ease-in-out 0s;
 }
+
 
 .index-table-container {
     display: flex; 
@@ -41,24 +51,24 @@
 }
 
  .negpercent {
-   color: rgb(223, 95, 103)
+   color: rgb(223, 95, 103); 
+   padding: 20px; 
  }
 
  .pospercent {
    color: rgb(5, 177, 105);
+   padding: 20px; 
  }
 
 .crypto-name {
     display: flex;
     -webkit-box-align: center;
-
+    padding: 20px; 
     align-items: flex-end;
     flex-direction: row;
     min-width: 140px;
     color: rgba(17, 51, 83, 0.6);
     flex: 1 1 auto;
-    padding-right: 16px;
-    padding-left: 16px;
 }
 
 .crypto-link {
