@@ -2,16 +2,31 @@ import SplashOutItem from '../logged_out_splash/splash_out_item';
 import React from "react";
 
 class SplashOut extends React.Component {
-
-
-
+    constructor(props) {
+        super(props)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.state = {email: ''}
+    }
+    
     componentDidMount() {
         this.props.fetchSplashCoins();
     }
 
+    update(field) {
+        return e => this.setState({
+            [field]: e.currentTarget.value
+        })
+    }
+
+    handleSubmit(e) {
+        this.props.history.push({pathname: "/signup", email: this.state})
+
+    }
+
     render() {
 
-        const { coins } = this.props;
+        const { coins, currentUser } = this.props;
+
         const mapper = coins.map((coin, idx) => {
             if (idx <= 5) {
                 return <SplashOutItem coin={coin} orderNum={idx} key={coin.id} />
@@ -21,15 +36,17 @@ class SplashOut extends React.Component {
         });
 
 
-        return (
+        
+
+        const loggedOut = () => (
             <div className="splashout-container">
                 <div className="splashout-home-backdrop">
                     <div className="splashout-header-section">
                         <div className="splashout-header-container">
                             <h2 className="splashout-title">Buy and sell cryptocorns</h2>
                             <p className="splashout-para" >"Cornbase is the easiest place to buy, sell, and manage your cryptocorn portfolio."</p>
-                            <form className="splashout-get-started-form">
-                                <input className="splashout-email" type="email" placeholder="Email address" spellCheck="false" />
+                            <form  onSubmit = {this.handleSubmit} className="splashout-get-started-form">
+                                <input className="splashout-email" type="email" placeholder="Email address" spellCheck="false" value = {this.state.email} onChange = {this.update('email')}/>
                                 <button className="splashout-button" ><span className="splashout-button-text">Get Started</span></button>
                             </form>
                         </div>
@@ -80,6 +97,13 @@ class SplashOut extends React.Component {
                 </div>
             </div>
         )
+
+        const loggedIn = () => (
+            null 
+        )
+
+        return  currentUser ? loggedIn() : loggedOut();
+        
     }
 
 }

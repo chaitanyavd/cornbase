@@ -5,10 +5,19 @@ import { Link } from 'react-router-dom';
 class SignupForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {email: '', password: '', first_name: '', last_name: ''}
+
+        const mail = this.props.history.location.email ? this.props.history.location.email.email : ''
+        
+        this.state = {
+            email: mail, 
+            password: '', 
+            first_name: '', 
+            last_name: ''}
+            
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleGuestSubmit = this.handleGuestSubmit.bind(this)
         this.renderErrors = this.renderErrors.bind(this)
+
     }
 
     update(field) {

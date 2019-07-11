@@ -13,9 +13,10 @@ const orderer = (coins) => {
     return ordArr
 }
 
-const msp = ({ entities: { coins } }) => {
+const msp = ({ session, entities: { coins, users } }) => {
     return ({
-        coins: orderer(coins)
+        coins: orderer(coins), 
+        currentUser: users[session.id]
     })
 }
 

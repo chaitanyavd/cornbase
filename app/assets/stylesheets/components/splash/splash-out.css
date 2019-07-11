@@ -84,7 +84,7 @@
     margin-right: 10px;
     -webkit-appearance: none;
     font-family: Graphik, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: normal;
     line-height: 1.75;
     color: rgb(11, 52, 102);
@@ -110,6 +110,14 @@
     cursor: text;
     font: 400 11px system-ui;
 
+}
+
+.splashout-email:focus { 
+    border-color: rgb(22, 82, 240); 
+    outline: none;   
+}
+.splashout-email:focus::placeholder {
+    color: rgb(22, 82, 240);  
 }
 
 .splashout-button {

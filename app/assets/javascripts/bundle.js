@@ -1564,8 +1564,9 @@ function (_React$Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, SignupForm);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(SignupForm).call(this, props));
+    var mail = _this.props.history.location.email ? _this.props.history.location.email.email : '';
     _this.state = {
-      email: '',
+      email: mail,
       password: '',
       first_name: '',
       last_name: ''
@@ -1726,6 +1727,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _signup_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./signup_form */ "./frontend/components/session_form/signup_form.jsx");
+/* harmony import */ var _splash_logged_out_splash_splash_out__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../splash/logged_out_splash/splash_out */ "./frontend/components/splash/logged_out_splash/splash_out.jsx");
+
 
 
 
@@ -1735,7 +1738,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref) {
   var errors = _ref.errors;
   return {
-    errors: errors.session
+    errors: errors.session,
+    email: ''
   };
 };
 
@@ -1766,19 +1770,25 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _logged_out_splash_splash_out_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../logged_out_splash/splash_out_item */ "./frontend/components/splash/logged_out_splash/splash_out_item.jsx");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _logged_out_splash_splash_out_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../logged_out_splash/splash_out_item */ "./frontend/components/splash/logged_out_splash/splash_out_item.jsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+
+
 
 
 
@@ -1790,26 +1800,54 @@ __webpack_require__.r(__webpack_exports__);
 var SplashOut =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(SplashOut, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default()(SplashOut, _React$Component);
 
-  function SplashOut() {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, SplashOut);
+  function SplashOut(props) {
+    var _this;
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(SplashOut).apply(this, arguments));
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, SplashOut);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4___default()(SplashOut).call(this, props));
+    _this.handleSubmit = _this.handleSubmit.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default()(_this));
+    _this.state = {
+      email: ''
+    };
+    return _this;
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(SplashOut, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(SplashOut, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchSplashCoins();
     }
   }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      this.props.history.push({
+        pathname: "/signup",
+        email: this.state
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var coins = this.props.coins;
+      var _this3 = this;
+
+      var _this$props = this.props,
+          coins = _this$props.coins,
+          currentUser = _this$props.currentUser;
       var mapper = coins.map(function (coin, idx) {
         if (idx <= 5) {
-          return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_logged_out_splash_splash_out_item__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_logged_out_splash_splash_out_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
             coin: coin,
             orderNum: idx,
             key: coin.id
@@ -1818,73 +1856,85 @@ function (_React$Component) {
           return null;
         }
       });
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "splashout-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "splashout-home-backdrop"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "splashout-header-section"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "splashout-header-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
-        className: "splashout-title"
-      }, "Buy and sell cryptocorns"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
-        className: "splashout-para"
-      }, "\"Cornbase is the easiest place to buy, sell, and manage your cryptocorn portfolio.\""), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", {
-        className: "splashout-get-started-form"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
-        className: "splashout-email",
-        type: "email",
-        placeholder: "Email address",
-        spellCheck: "false"
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
-        className: "splashout-button"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-        className: "splashout-button-text"
-      }, "Get Started")))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "splashout-table-backdrop"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "splashout-table-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("table", {
-        className: "splashout-table"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("colgroup", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("col", {
-        style: {
-          width: "32px"
-        }
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("thead", {
-        className: "splashout-table-head"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
-        className: "splashout-tablehelpers"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "splashout-tablehelper-div"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-        className: "tablehead"
-      }, "#"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
-        className: "splashout-tablehelpers"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "splashout-tablehelper-div"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-        className: "tablehead"
-      }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
-        className: "splashout-tablehelpers"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "splashout-tablehelper-div"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-        className: "tablehead"
-      }, "PRICE"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
-        className: "splashout-tablehelpers"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "splashout-tablehelper-div"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-        className: "tablehead"
-      }, "CHANGE"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tbody", {
-        className: "t-body"
-      }, mapper)))));
+
+      var loggedOut = function loggedOut() {
+        return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "splashout-container"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "splashout-home-backdrop"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "splashout-header-section"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "splashout-header-container"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
+          className: "splashout-title"
+        }, "Buy and sell cryptocorns"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", {
+          className: "splashout-para"
+        }, "\"Cornbase is the easiest place to buy, sell, and manage your cryptocorn portfolio.\""), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("form", {
+          onSubmit: _this3.handleSubmit,
+          className: "splashout-get-started-form"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("input", {
+          className: "splashout-email",
+          type: "email",
+          placeholder: "Email address",
+          spellCheck: "false",
+          value: _this3.state.email,
+          onChange: _this3.update('email')
+        }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+          className: "splashout-button"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+          className: "splashout-button-text"
+        }, "Get Started")))))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "splashout-table-backdrop"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "splashout-table-container"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("table", {
+          className: "splashout-table"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("colgroup", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("col", {
+          style: {
+            width: "32px"
+          }
+        })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("thead", {
+          className: "splashout-table-head"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+          className: "splashout-tablehelpers"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "splashout-tablehelper-div"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+          className: "tablehead"
+        }, "#"))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+          className: "splashout-tablehelpers"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "splashout-tablehelper-div"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+          className: "tablehead"
+        }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+          className: "splashout-tablehelpers"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "splashout-tablehelper-div"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+          className: "tablehead"
+        }, "PRICE"))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+          className: "splashout-tablehelpers"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "splashout-tablehelper-div"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+          className: "tablehead"
+        }, "CHANGE"))))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("tbody", {
+          className: "t-body"
+        }, mapper)))));
+      };
+
+      var loggedIn = function loggedIn() {
+        return null;
+      };
+
+      return currentUser ? loggedIn() : loggedOut();
     }
   }]);
 
   return SplashOut;
-}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_8___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (SplashOut);
 
@@ -1918,9 +1968,13 @@ var orderer = function orderer(coins) {
 };
 
 var msp = function msp(_ref) {
-  var coins = _ref.entities.coins;
+  var session = _ref.session,
+      _ref$entities = _ref.entities,
+      coins = _ref$entities.coins,
+      users = _ref$entities.users;
   return {
-    coins: orderer(coins)
+    coins: orderer(coins),
+    currentUser: users[session.id]
   };
 };
 
