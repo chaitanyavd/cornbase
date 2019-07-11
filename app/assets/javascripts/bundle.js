@@ -90,7 +90,7 @@
 /*!******************************************!*\
   !*** ./frontend/actions/coin_actions.js ***!
   \******************************************/
-/*! exports provided: RECEIVE_COINS, RECEIVE_COIN, RECEIVE_DATA, fetchCoins, fetchCoin, fetchAll, fetchYear, fetchMonth, fetchWeek, fetchDay, fetchHour */
+/*! exports provided: RECEIVE_COINS, RECEIVE_COIN, RECEIVE_DATA, fetchCoins, fetchSplashCoins, fetchCoin, fetchAll, fetchYear, fetchMonth, fetchWeek, fetchDay, fetchHour */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -99,6 +99,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COIN", function() { return RECEIVE_COIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_DATA", function() { return RECEIVE_DATA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoins", function() { return fetchCoins; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSplashCoins", function() { return fetchSplashCoins; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAll", function() { return fetchAll; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchYear", function() { return fetchYear; });
@@ -114,6 +115,16 @@ var RECEIVE_DATA = "RECEIVE_DATA";
 var fetchCoins = function fetchCoins() {
   return function (dispatch) {
     return _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCoins"]().then(function (coins) {
+      return dispatch({
+        type: RECEIVE_COINS,
+        coins: coins
+      });
+    });
+  };
+};
+var fetchSplashCoins = function fetchSplashCoins() {
+  return function (dispatch) {
+    return _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSplashCoins"]().then(function (coins) {
       return dispatch({
         type: RECEIVE_COINS,
         coins: coins
@@ -312,12 +323,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
-/* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
-/* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
-/* harmony import */ var _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./coins/coin_index_container */ "./frontend/components/coins/coin_index_container.jsx");
-/* harmony import */ var _coins_coin_show_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coins/coin_show_container */ "./frontend/components/coins/coin_show_container.jsx");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
+/* harmony import */ var _splash_logged_out_splash_splash_out_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splash/logged_out_splash/splash_out_container */ "./frontend/components/splash/logged_out_splash/splash_out_container.jsx");
+/* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
+/* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
+/* harmony import */ var _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coins/coin_index_container */ "./frontend/components/coins/coin_index_container.jsx");
+/* harmony import */ var _coins_coin_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coins/coin_show_container */ "./frontend/components/coins/coin_show_container.jsx");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
+
 
 
 
@@ -331,22 +344,26 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_8__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/",
+    component: _splash_logged_out_splash_splash_out_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/price",
-    component: _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/price/:symbol",
-    component: _coins_coin_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
+    component: _coins_coin_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["AuthRoute"], {
     exact: true,
     path: "/login",
-    component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
+    component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["AuthRoute"], {
     exact: true,
     path: "/signup",
-    component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }));
 };
 
@@ -1720,6 +1737,253 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/splash/logged_out_splash/splash_out.jsx":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/splash/logged_out_splash/splash_out.jsx ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _logged_out_splash_splash_out_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../logged_out_splash/splash_out_item */ "./frontend/components/splash/logged_out_splash/splash_out_item.jsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+
+var SplashOut =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(SplashOut, _React$Component);
+
+  function SplashOut() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, SplashOut);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(SplashOut).apply(this, arguments));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(SplashOut, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchSplashCoins();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var coins = this.props.coins;
+      var mapper = coins.map(function (coin, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_logged_out_splash_splash_out_item__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          coin: coin,
+          orderNum: idx,
+          key: coin.id
+        });
+      });
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "splashout-container"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "splashout-home-backdrop"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "splashout-header-section"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "splashout-header-container"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
+        className: "splashout-title"
+      }, "Buy and sell cryptocorns"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
+        className: "splashout-para"
+      }, "\"Cornbase is the easiest place to buy, sell, and manage your cryptocorn portfolio.\""), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", {
+        className: "splashout-get-started-form"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
+        className: "splashout-email",
+        type: "email",
+        placeholder: "Email address",
+        spellCheck: "false"
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+        className: "splashout-button"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        className: "splashout-button-text"
+      }, "Get Started")))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "splashout-table-backdrop"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "splashout-table-container"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("table", {
+        className: "splashout-table"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("colgroup", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("col", {
+        style: {
+          width: "32px"
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("thead", {
+        className: "splashout-table-head"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        className: "splashout-tablehelpers"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "splashout-tablehelper-div"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        className: "tablehead"
+      }, "#"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        className: "splashout-tablehelpers"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "splashout-tablehelper-div"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        className: "tablehead"
+      }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        className: "splashout-tablehelpers"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "splashout-tablehelper-div"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        className: "tablehead"
+      }, "PRICE"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        className: "splashout-tablehelpers"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "splashout-tablehelper-div"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        className: "tablehead"
+      }, "CHANGE"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tbody", null, mapper)))));
+    }
+  }]);
+
+  return SplashOut;
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (SplashOut);
+
+/***/ }),
+
+/***/ "./frontend/components/splash/logged_out_splash/splash_out_container.jsx":
+/*!*******************************************************************************!*\
+  !*** ./frontend/components/splash/logged_out_splash/splash_out_container.jsx ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
+/* harmony import */ var _splash_out__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splash_out */ "./frontend/components/splash/logged_out_splash/splash_out.jsx");
+
+
+
+
+
+var orderer = function orderer(coins) {
+  var ordArr = [];
+  coins = Object.values(coins);
+  coins.forEach(function (coin) {
+    return ordArr[coin.rank - 1] = coin;
+  });
+  return ordArr;
+};
+
+var msp = function msp(_ref) {
+  var coins = _ref.entities.coins;
+  return {
+    coins: orderer(coins)
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchSplashCoins: function fetchSplashCoins() {
+      return dispatch(Object(_actions_coin_actions__WEBPACK_IMPORTED_MODULE_2__["fetchSplashCoins"])());
+    },
+    signup: function signup(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["signup"])(user));
+    },
+    openModal: function (_openModal) {
+      function openModal(_x) {
+        return _openModal.apply(this, arguments);
+      }
+
+      openModal.toString = function () {
+        return _openModal.toString();
+      };
+
+      return openModal;
+    }(function (modal) {
+      return dispatch(openModal(modal));
+    })
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_splash_out__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/splash/logged_out_splash/splash_out_item.jsx":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/splash/logged_out_splash/splash_out_item.jsx ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! querystring */ "./node_modules/querystring-es3/index.js");
+/* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(querystring__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+
+
+
+var SplashOutItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(SplashOutItem, _React$Component);
+
+  function SplashOutItem() {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, SplashOutItem);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(SplashOutItem).apply(this, arguments));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(SplashOutItem, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, this.props.coin.name);
+    }
+  }]);
+
+  return SplashOutItem;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (SplashOutItem);
+
+/***/ }),
+
 /***/ "./frontend/entry.jsx":
 /*!****************************!*\
   !*** ./frontend/entry.jsx ***!
@@ -2139,13 +2403,14 @@ var configureStore = function configureStore() {
 /*!****************************************!*\
   !*** ./frontend/util/coin_api_util.js ***!
   \****************************************/
-/*! exports provided: fetchCoin, fetchCoins, fetchCoinAllData, fetchCoinYearData, fetchCoinMonthData, fetchCoinWeekData, fetchCoinDayData, fetchCoinHourData */
+/*! exports provided: fetchCoin, fetchCoins, fetchSplashCoins, fetchCoinAllData, fetchCoinYearData, fetchCoinMonthData, fetchCoinWeekData, fetchCoinDayData, fetchCoinHourData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoins", function() { return fetchCoins; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSplashCoins", function() { return fetchSplashCoins; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinAllData", function() { return fetchCoinAllData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinYearData", function() { return fetchCoinYearData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinMonthData", function() { return fetchCoinMonthData; });
@@ -2154,6 +2419,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinHourData", function() { return fetchCoinHourData; });
 //? API CALL FOR COIN DATA: 
 var allCoinsIds = "&ids=BTC,ETH,XRP,LTC,BCH,EOS,XLM,LINK,ETC,ZEC,BAT,USDC,ZRX,REP,DAI,BSV,BNB,USDT,TRX,ADA,XMR,DASH,NEO,MIOTA,ATOM,XEM,XTZ,MKR,ONT,CRO,QTUM,BTG, DOGE,VET,OMG,VSYS,DCR,EGT,HOT,TUSD,BCD,HEDG,RVN,LSK,WAVES,HT,NPXS,KMD,AOA,NANO,QBIT,BTM,ICX,BCN,BTS,IOST,DGB,PAX,MONA,QNT,ZIL,KCS,NRG,ABBC,SC";
+var splashCoinsIds = "&ids=BTC,ETH,XRP,LTC,BCH";
 var fetchCoin = function fetchCoin(symbol) {
   return $.ajax({
     method: "GET",
@@ -2163,6 +2429,12 @@ var fetchCoin = function fetchCoin(symbol) {
 var fetchCoins = function fetchCoins() {
   return $.ajax({
     url: "https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206".concat(allCoinsIds),
+    method: "GET"
+  });
+};
+var fetchSplashCoins = function fetchSplashCoins() {
+  return $.ajax({
+    url: "https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206".concat(splashCoinsIds),
     method: "GET"
   });
 }; //? API CALL FOR GRAPHS: 

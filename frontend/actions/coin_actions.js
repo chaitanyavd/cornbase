@@ -13,6 +13,12 @@ export const fetchCoins = () => (dispatch) => (
     coinApiUtil.fetchCoins().then(coins => dispatch({type: RECEIVE_COINS, coins}))
 )
 
+export const fetchSplashCoins = () => (dispatch) => (
+    coinApiUtil.fetchSplashCoins().then(coins => dispatch({type: RECEIVE_COINS, coins}))
+)
+
+
+
 export const fetchCoin = (symbol) => (dispatch) => (
     coinApiUtil.fetchCoin(symbol).then(coin => dispatch({type: RECEIVE_COIN, coin}))
 )
