@@ -149,3 +149,19 @@
 .search:focus {
   outline: none; 
 }
+
+#failed-search-container {
+  margin-top: 12px; 
+  display: flex; 
+  flex-direction: row; 
+  justify-content: center; 
+  align-content: center; 
+}
+
+
+
+#failed-search {
+  font-size: 20px; 
+  color: grey; 
+  border: none; 
+}

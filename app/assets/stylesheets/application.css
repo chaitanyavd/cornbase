@@ -62,3 +62,10 @@ tr:hover {
 .index-th{
   padding: 20px; 
 }
+
+#loader{
+  height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}

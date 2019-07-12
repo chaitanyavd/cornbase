@@ -16,6 +16,7 @@ export const fetchCoins = () => (
     $.ajax({
         url: `https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206${allCoinsIds}`,
         method: "GET"
+
     })
 )
 
@@ -23,6 +24,7 @@ export const fetchSplashCoins = () => (
     $.ajax({
         url: `https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206${splashCoinsIds}`,
         method: "GET"
+
     })
 )
 

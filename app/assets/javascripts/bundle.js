@@ -393,6 +393,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _coin_index_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coin_index_item */ "./frontend/components/coins/coin_index_item.jsx");
+/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! halogenium */ "./node_modules/halogenium/lib/Halogenium.js");
+/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_8__);
+
 
 
 
@@ -453,7 +456,7 @@ function (_React$Component) {
       });
 
       if (matches.length === 0) {
-        matches.push('');
+        matches.push('didnt find ya corns');
       }
 
       return matches;
@@ -475,8 +478,7 @@ function (_React$Component) {
           coins = _this$props.coins,
           fetchCoin = _this$props.fetchCoin,
           fetchYear = _this$props.fetchYear,
-          data = _this$props.data; // const mapper =  coins.map((coin, idx) => <CoinIndexItem coin={coin} orderNum={idx} fetchCoin={fetchCoin} key={coin.id} fetchYear = {fetchYear} data = {data} />) 
-
+          data = _this$props.data;
       var results = this.matches().map(function (coin, idx) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_coin_index_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
           coin: coin,
@@ -689,7 +691,11 @@ function (_React$Component) {
       };
 
       var Absent = function Absent() {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", null, "No results for ", coin));
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", {
+          id: "failed-search-container"
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+          id: "failed-search"
+        }, coin, "..."));
       };
 
       if (typeof coin === "string") {
@@ -776,23 +782,12 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      //? HOW DO YOU PUT A LOADER? 
-      // const values = Object.values(this.props.data);
-      // let stillFetchingData = false;
-      // for (let i = 0; i < values.length; i++) {
-      //     if (typeof values[i] === undefined) {
-      //         stillFetchingData = true;
-      //         break;
-      //     }
-      // }
-      // if (stillFetchingData) {
-      //     return (
-      //         <div className='loadbar'>
-      //             <GridLoader className="GridLoader" />
-      //         </div>
-      //     );
-      // }
-      if (this.props.coin === undefined) return null;
+      if (this.props.coin === undefined) return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(halogenium__WEBPACK_IMPORTED_MODULE_7__["GridLoader"], {
+        id: "loader",
+        color: "rgb(22, 82, 240)",
+        size: "16px",
+        margin: "4px"
+      });
       var coin = this.props.coin ? this.props.coin : [];
       var marketCap = parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M");
       var circSupply = parseFloat(coin.circulating_supply) > 1000000000 ? "".concat((parseFloat(coin.circulating_supply) / 1000000000).toFixed(1), "B ").concat(coin.symbol) : "".concat((parseFloat(coin.circulating_supply) / 1000000).toFixed(1), "M ").concat(coin.symbol);

@@ -84,7 +84,6 @@
     margin-right: 10px;
     -webkit-appearance: none;
     font-family: Graphik, sans-serif;
-    font-size: 18px;
     font-weight: normal;
     line-height: 1.75;
     color: rgb(11, 52, 102);
@@ -108,7 +107,7 @@
     background-color: white;
     -webkit-rtl-ordering: logical;
     cursor: text;
-    font: 400 11px system-ui;
+    font: 400 18px system-ui;
 
 }
 

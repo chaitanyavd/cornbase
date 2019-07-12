@@ -1,6 +1,6 @@
 import React from "react"; 
 import CoinIndexItem from "./coin_index_item"; 
-
+import { GridLoader } from 'halogenium';
 
 class CoinIndex extends React.Component {
 
@@ -13,7 +13,6 @@ class CoinIndex extends React.Component {
 
     componentDidMount() {
         this.props.fetchCoins();
-
     }
 
     handleInput(e) {
@@ -34,7 +33,7 @@ class CoinIndex extends React.Component {
         });
 
         if (matches.length === 0) {
-            matches.push('');
+            matches.push('didnt find ya corns');
         }
 
         return matches;
@@ -47,14 +46,15 @@ class CoinIndex extends React.Component {
 
 
     render() {
-        const {coins, fetchCoin, fetchYear, data} = this.props
-        // const mapper =  coins.map((coin, idx) => <CoinIndexItem coin={coin} orderNum={idx} fetchCoin={fetchCoin} key={coin.id} fetchYear = {fetchYear} data = {data} />) 
 
+        const {coins, fetchCoin, fetchYear, data} = this.props
         const results = this.matches().map((coin, idx) => {
             return (
                 <CoinIndexItem coin={coin} key = {idx} orderNum={idx} onClick={this.selectCoin} />
             );
         });
+        
+       
 
         return (
             <div className = "index-page-content">

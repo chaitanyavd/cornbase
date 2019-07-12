@@ -20,7 +20,6 @@ class SplashOut extends React.Component {
 
     handleSubmit(e) {
         this.props.history.push({pathname: "/signup", email: this.state})
-
     }
 
     render() {
