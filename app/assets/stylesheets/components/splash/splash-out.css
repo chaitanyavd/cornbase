@@ -410,6 +410,7 @@
 }
 
 .tr-percent-container{
+     font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     min-width: 76px;
     margin-right: 20px;
     color: rgb(223, 95, 103);
@@ -418,3 +419,21 @@
     box-sizing: border-box; 
 }  
 
+
+
+.wip-container{
+    position: relative;
+    text-align:center; 
+    color: rgb(13,41,62);
+}
+
+.wip-t {
+  position: absolute;
+  top: 55px;
+  left: 130px;
+  font-size: 60px;
+
+  font-family: fantasy;
+
+  -webkit-font-smoothing: antialiased;
+}

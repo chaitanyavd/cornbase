@@ -28,7 +28,7 @@ class SplashOut extends React.Component {
         const { coins, currentUser } = this.props;
 
         const mapper = coins.map((coin, idx) => {
-            if (idx <= 5) {
+            if (idx <= 4) {
                 return <SplashOutItem coin={coin} orderNum={idx} key={coin.id} />
             } else {
                 return null
@@ -99,7 +99,9 @@ class SplashOut extends React.Component {
         )
 
         const loggedIn = () => (
-            null 
+            <div className = "wip-container">
+                <img className="wip-img" src="https://static-assets.coinbase.com/earn/earn_dash_banner.png" style={{ width: "100%" }}/>
+            </div>
         )
 
         return  currentUser ? loggedIn() : loggedOut();

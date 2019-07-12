@@ -38,14 +38,14 @@ class CoinIndexItem extends React.Component {
         // let tagName = coin.name.split(' ').join('-').toLowerCase(); 
         //!
         
+        let price = coin.price ? parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4) : null 
+        let marketCap = coin.market_cap ? parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M` : null 
+        let percent = coin.price ? parseFloat((coin["1d"].price_change_pct)*100).toFixed(2) : null 
+        let color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null 
 
-        let price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4)
-        let marketCap = parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M`
-        let percent = parseFloat((coin["1d"].price_change_pct)*100).toFixed(2); 
-        let color = percent >= 0 ? 'pospercent' : 'negpercent'
 
 
-        return (
+        const Present = () => (
             <tr>
                 <th className = "index-th">
                     {this.props.orderNum + 1}
@@ -79,7 +79,25 @@ class CoinIndexItem extends React.Component {
                 </th>
             </tr>
         )
+
+        const Absent = ()=> (
+
+            <tr>
+                <th>
+                    No results for {coin}
+                </th>
+            </tr>
+        )
+        
+        
+        if (typeof coin === "string") {
+             return Absent()
+        } else {
+             return Present(); 
+        }
+
     }
+
 }
 
 export default CoinIndexItem

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { openModal } from '../../actions/modal_actions';
-
+import Modal from '../modal/modal'; 
 const NavBar = ({logout, currentUser, openModal}) => {
 
     const loggedOut  = () => (
@@ -30,8 +30,11 @@ const NavBar = ({logout, currentUser, openModal}) => {
                 <nav>
                     <Link className="login-link-out" to="/price">Prices</Link>
                 </nav>
+            <div id = "butt-mod">
+                <button className="logout-button" onClick={() => openModal('profileAvatar')}><img src="profile-avatar.jpeg" width="32" height="32" /></button>
+                <Modal/>
+            </div>
 
-                <button className="logout-button" onClick={()=> openModal('profileAvatar')}><img src="profile-avatar.jpeg" width = "32" height = "32"/></button>
             </div>
         </div>
     )

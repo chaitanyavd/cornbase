@@ -13,7 +13,6 @@ class Modal extends React.Component{
     }
 
     handleSubmit() {
-        // debugger 
         this.props.logout().then(() => {
             this.props.history.push("/"); 
             this.props.closeModal(); 
@@ -21,7 +20,6 @@ class Modal extends React.Component{
         
     }
         
-        // this.props.logout().then(() => this.props.history.push("/"))
     render() {
 
         if (!this.props.modal || !this.props.user) {

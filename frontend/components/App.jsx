@@ -8,12 +8,11 @@ import CoinIndexContainer from './coins/coin_index_container';
 import CoinShowContainer from './coins/coin_show_container'; 
 
 import { AuthRoute } from '../util/route_util';
-import Modal from './modal/modal'; 
+
 
 
 const App = () => (
     <div className = "main-container">
-        <Modal/>
         <NavBarContainer/>
         <Route exact path="/" component={SplashOutContainer} />
         <Route exact path="/price" component={CoinIndexContainer} />
