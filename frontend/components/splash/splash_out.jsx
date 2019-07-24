@@ -1,4 +1,4 @@
-import SplashOutItem from '../logged_out_splash/splash_out_item';
+import SplashOutItem from './splash_out_item';
 import React from "react";
 
 class SplashOut extends React.Component {

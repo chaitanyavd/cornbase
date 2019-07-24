@@ -323,7 +323,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
-/* harmony import */ var _splash_logged_out_splash_splash_out_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splash/logged_out_splash/splash_out_container */ "./frontend/components/splash/logged_out_splash/splash_out_container.jsx");
+/* harmony import */ var _splash_splash_out_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splash/splash_out_container */ "./frontend/components/splash/splash_out_container.jsx");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
 /* harmony import */ var _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coins/coin_index_container */ "./frontend/components/coins/coin_index_container.jsx");
@@ -345,7 +345,7 @@ var App = function App() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
-    component: _splash_logged_out_splash_splash_out_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _splash_splash_out_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/price",
@@ -1804,7 +1804,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _signup_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./signup_form */ "./frontend/components/session_form/signup_form.jsx");
-/* harmony import */ var _splash_logged_out_splash_splash_out__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../splash/logged_out_splash/splash_out */ "./frontend/components/splash/logged_out_splash/splash_out.jsx");
+/* harmony import */ var _splash_splash_out__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../splash/splash_out */ "./frontend/components/splash/splash_out.jsx");
 
 
 
@@ -1838,10 +1838,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/splash/logged_out_splash/splash_out.jsx":
-/*!*********************************************************************!*\
-  !*** ./frontend/components/splash/logged_out_splash/splash_out.jsx ***!
-  \*********************************************************************/
+/***/ "./frontend/components/splash/splash_out.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/splash/splash_out.jsx ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1861,7 +1861,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _logged_out_splash_splash_out_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../logged_out_splash/splash_out_item */ "./frontend/components/splash/logged_out_splash/splash_out_item.jsx");
+/* harmony import */ var _splash_out_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./splash_out_item */ "./frontend/components/splash/splash_out_item.jsx");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
 
@@ -1924,7 +1924,7 @@ function (_React$Component) {
           currentUser = _this$props.currentUser;
       var mapper = coins.map(function (coin, idx) {
         if (idx <= 4) {
-          return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_logged_out_splash_splash_out_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_splash_out_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
             coin: coin,
             orderNum: idx,
             key: coin.id
@@ -2025,19 +2025,19 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/splash/logged_out_splash/splash_out_container.jsx":
-/*!*******************************************************************************!*\
-  !*** ./frontend/components/splash/logged_out_splash/splash_out_container.jsx ***!
-  \*******************************************************************************/
+/***/ "./frontend/components/splash/splash_out_container.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/splash/splash_out_container.jsx ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
-/* harmony import */ var _splash_out__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splash_out */ "./frontend/components/splash/logged_out_splash/splash_out.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
+/* harmony import */ var _splash_out__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splash_out */ "./frontend/components/splash/splash_out.jsx");
 
 
 
@@ -2091,10 +2091,10 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/splash/logged_out_splash/splash_out_item.jsx":
-/*!**************************************************************************!*\
-  !*** ./frontend/components/splash/logged_out_splash/splash_out_item.jsx ***!
-  \**************************************************************************/
+/***/ "./frontend/components/splash/splash_out_item.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/splash/splash_out_item.jsx ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2602,7 +2602,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
@@ -58595,7 +58595,7 @@ exports.default = _ResizeDetector2.default;
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

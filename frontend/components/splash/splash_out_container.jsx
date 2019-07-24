@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { signup } from '../../../actions/session_actions';
-import {fetchSplashCoins} from '../../../actions/coin_actions'; 
+import { signup } from '../../actions/session_actions';
+import {fetchSplashCoins} from '../../actions/coin_actions'; 
 
 import SplashOut from './splash_out'; 
 
