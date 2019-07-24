@@ -809,6 +809,9 @@ function (_React$Component) {
         });
       }
 
+      var change = max - min;
+      var color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null;
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "show-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -837,8 +840,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: "dollar-sign"
       }, "$"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, price)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "graph-percent-change"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "-"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "$131.91"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "(12%)"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "graph-negpercent-change"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "-"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "$", change.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "graph-contolbar-selectors"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
@@ -58592,7 +58595,7 @@ exports.default = _ResizeDetector2.default;
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

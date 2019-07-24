@@ -130,13 +130,25 @@ button {
     font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-.graph-percent-change{
+.graph-pospercent-change{
     display: flex;
     flex-direction: row;
     padding-top: 6px;
     margin-left: 16px;
     font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     color: rgb(5, 177, 105); 
+    font-weight: 50; 
+    line-height: 1.3;
+    font-size: 18px;
+    font-weight: 400;
+}
+.graph-negpercent-change{
+    display: flex;
+    flex-direction: row;
+    padding-top: 6px;
+    margin-left: 16px;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    color: rgb(223, 95, 103);
     font-weight: 50; 
     line-height: 1.3;
     font-size: 18px;

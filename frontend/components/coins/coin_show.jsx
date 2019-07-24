@@ -38,13 +38,13 @@ class CoinShow extends React.Component {
 
         let min = -Infinity;
         let max = Infinity;
-
         if (close.length >= 1) {
             min = close.reduce((acc, el) => (Math.min(acc, el)));
             max = close.reduce((acc, el) => (Math.max(acc, el)));
         }
-
-
+        let change = max - min; 
+        let color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null 
+        debugger
 
         return (
             <div className="show-container">
@@ -67,10 +67,10 @@ class CoinShow extends React.Component {
                                     <span className="dollar-sign">$</span>
                                     <span>{price}</span>
                                 </div>
-                                <div className="graph-percent-change">
+                                <div className="graph-negpercent-change">
                                     <span>-</span>
-                                    <span>$131.91</span>
-                                    <span>(12%)</span>
+                                    <span>${change.toFixed(2)}</span>
+                                    <span></span>
                                 </div>
                             </div>
 

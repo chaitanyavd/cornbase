@@ -54,7 +54,7 @@ class CoinIndex extends React.Component {
             );
         });
         
-       
+
 
         return (
             <div className = "index-page-content">

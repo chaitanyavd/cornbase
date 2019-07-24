@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+Welcome to Cornbase 
+
+This project is an attempt to clone Coinbase - a cryptocurrency exchange and trading platform.
+
+Regarding functionality: At the moment, a User has the ability to sign-up and login in. They can also visit the coin index and show page - which is updated with 
