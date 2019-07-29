@@ -9,7 +9,7 @@ class SplashOut extends React.Component {
     }
     
     componentDidMount() {
-        this.props.fetchSplashCoins();
+        this.props.fetchCoins(); 
     }
 
     update(field) {
@@ -27,7 +27,7 @@ class SplashOut extends React.Component {
         const { coins, currentUser } = this.props;
 
         const mapper = coins.map((coin, idx) => {
-            if (idx <= 4) {
+            if (idx <= 4 && coin.rank <= 5) {
                 return <SplashOutItem coin={coin} orderNum={idx} key={coin.id} />
             } else {
                 return null
@@ -35,7 +35,7 @@ class SplashOut extends React.Component {
         });
 
 
-        
+    
 
         const loggedOut = () => (
             <div className="splashout-container">

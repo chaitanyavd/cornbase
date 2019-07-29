@@ -90,7 +90,7 @@
 /*!******************************************!*\
   !*** ./frontend/actions/coin_actions.js ***!
   \******************************************/
-/*! exports provided: RECEIVE_COINS, RECEIVE_COIN, RECEIVE_DATA, fetchCoins, fetchSplashCoins, fetchCoin, fetchAll, fetchYear, fetchMonth, fetchWeek, fetchDay, fetchHour */
+/*! exports provided: RECEIVE_COINS, RECEIVE_COIN, RECEIVE_DATA, fetchCoins, fetchCoin, fetchAll, fetchYear, fetchMonth, fetchWeek, fetchDay, fetchHour */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -99,7 +99,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COIN", function() { return RECEIVE_COIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_DATA", function() { return RECEIVE_DATA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoins", function() { return fetchCoins; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSplashCoins", function() { return fetchSplashCoins; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAll", function() { return fetchAll; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchYear", function() { return fetchYear; });
@@ -115,16 +114,6 @@ var RECEIVE_DATA = "RECEIVE_DATA";
 var fetchCoins = function fetchCoins() {
   return function (dispatch) {
     return _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCoins"]().then(function (coins) {
-      return dispatch({
-        type: RECEIVE_COINS,
-        coins: coins
-      });
-    });
-  };
-};
-var fetchSplashCoins = function fetchSplashCoins() {
-  return function (dispatch) {
-    return _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSplashCoins"]().then(function (coins) {
       return dispatch({
         type: RECEIVE_COINS,
         coins: coins
@@ -811,7 +800,6 @@ function (_React$Component) {
 
       var change = max - min;
       var color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null;
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "show-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -1360,8 +1348,7 @@ function (_React$Component) {
       email: '',
       password: ''
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default()(_this)); // this.handleGuestSubmit = this.handleGuestSubmit.bind(this)
-
+    _this.handleSubmit = _this.handleSubmit.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default()(_this));
     _this.demoLogin = _this.demoLogin.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_7___default()(_this));
     return _this;
   }
@@ -1895,7 +1882,7 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(SplashOut, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchSplashCoins();
+      this.props.fetchCoins();
     }
   }, {
     key: "update",
@@ -1923,7 +1910,7 @@ function (_React$Component) {
           coins = _this$props.coins,
           currentUser = _this$props.currentUser;
       var mapper = coins.map(function (coin, idx) {
-        if (idx <= 4) {
+        if (idx <= 4 && coin.rank <= 5) {
           return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_splash_out_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
             coin: coin,
             orderNum: idx,
@@ -2065,8 +2052,8 @@ var msp = function msp(_ref) {
 
 var mdp = function mdp(dispatch) {
   return {
-    fetchSplashCoins: function fetchSplashCoins() {
-      return dispatch(Object(_actions_coin_actions__WEBPACK_IMPORTED_MODULE_2__["fetchSplashCoins"])());
+    fetchCoins: function fetchCoins() {
+      return dispatch(Object(_actions_coin_actions__WEBPACK_IMPORTED_MODULE_2__["fetchCoins"])());
     },
     signup: function signup(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["signup"])(user));
@@ -2267,35 +2254,13 @@ var coinDataReducer = function coinDataReducer() {
   switch (action.type) {
     case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_DATA"]:
       return action.data;
-    // return merge({}, state, action.data )
 
     default:
       return state;
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (coinDataReducer); // *PARSER FUNCTION 
-// const parser = (this.props.data) => {
-//     debugger
-//     let coordinates = []; 
-//     action.forEach((day) => (
-//         let convertedTime; 
-//         function timeConverter(day.time) {
-//             let a = new Date(day.time * 1000);
-//             let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-//             let year = a.getFullYear();
-//             let month = months[a.getMonth()];
-//             let date = a.getDate();
-//             let hour = a.getHours();
-//             let min = a.getMinutes();
-//             let sec = a.getSeconds();
-//             let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
-//             convertedTime = time; 
-//         }
-//         coordinates.push([convertedTime, day.close])
-//     ))
-//         return coordinates
-// }
+/* harmony default export */ __webpack_exports__["default"] = (coinDataReducer);
 
 /***/ }),
 
@@ -2322,11 +2287,9 @@ var coinsReducer = function coinsReducer() {
 
   switch (action.type) {
     case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COINS"]:
-      // debugger
       action.coins.forEach(function (coin) {
         return newState[coin.id] = coin;
-      }); // debugger
-
+      });
       return newState;
 
     case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_COIN"]:
@@ -2613,14 +2576,13 @@ var configureStore = function configureStore() {
 /*!****************************************!*\
   !*** ./frontend/util/coin_api_util.js ***!
   \****************************************/
-/*! exports provided: fetchCoin, fetchCoins, fetchSplashCoins, fetchCoinAllData, fetchCoinYearData, fetchCoinMonthData, fetchCoinWeekData, fetchCoinDayData, fetchCoinHourData */
+/*! exports provided: fetchCoin, fetchCoins, fetchCoinAllData, fetchCoinYearData, fetchCoinMonthData, fetchCoinWeekData, fetchCoinDayData, fetchCoinHourData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoins", function() { return fetchCoins; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSplashCoins", function() { return fetchSplashCoins; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinAllData", function() { return fetchCoinAllData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinYearData", function() { return fetchCoinYearData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinMonthData", function() { return fetchCoinMonthData; });
@@ -2628,24 +2590,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinDayData", function() { return fetchCoinDayData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinHourData", function() { return fetchCoinHourData; });
 //? API CALL FOR COIN DATA: 
-var allCoinsIds = "&ids=BTC,ETH,XRP,LTC,BCH,EOS,XLM,LINK,ETC,ZEC,BAT,USDC,ZRX,REP,DAI,BSV,BNB,USDT,TRX,ADA,XMR,DASH,NEO,MIOTA,ATOM,XEM,XTZ,MKR,ONT,CRO,QTUM,BTG, DOGE,VET,OMG,VSYS,DCR,EGT,HOT,TUSD,BCD,HEDG,RVN,LSK,WAVES,HT,NPXS,KMD,AOA,NANO,QBIT,ICX,BCN,BTS,IOST,DGB,PAX,MONA,QNT,ZIL,KCS,NRG,ABBC,SC";
-var splashCoinsIds = "&ids=BTC,ETH,XRP,LTC,BCH";
 var fetchCoin = function fetchCoin(symbol) {
   return $.ajax({
     method: "GET",
-    url: "https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206&ids=".concat(symbol)
+    url: "api/coins/".concat(symbol)
   });
 };
 var fetchCoins = function fetchCoins() {
   return $.ajax({
-    url: "https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206".concat(allCoinsIds),
-    method: "GET"
-  });
-};
-var fetchSplashCoins = function fetchSplashCoins() {
-  return $.ajax({
-    url: "https://api.nomics.com/v1/currencies/ticker?key=66f825496dd3f9963d852713f779e206".concat(splashCoinsIds),
-    method: "GET"
+    method: "GET",
+    url: "api/coins/"
   });
 }; //? API CALL FOR GRAPHS: 
 

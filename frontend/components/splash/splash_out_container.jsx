@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { signup } from '../../actions/session_actions';
-import {fetchSplashCoins} from '../../actions/coin_actions'; 
+import {fetchCoins} from '../../actions/coin_actions'; 
 
 import SplashOut from './splash_out'; 
 
@@ -22,7 +22,7 @@ const msp = ({ session, entities: { coins, users } }) => {
 
 
 const mdp = dispatch => ({
-    fetchSplashCoins: ()=> dispatch(fetchSplashCoins()), 
+    fetchCoins: ()=> dispatch(fetchCoins()),
     signup: (user) => dispatch(signup(user)),
     openModal: (modal) => dispatch(openModal(modal))
 });

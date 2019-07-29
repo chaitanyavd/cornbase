@@ -44,7 +44,7 @@ class CoinShow extends React.Component {
         }
         let change = max - min; 
         let color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null 
-        debugger
+
 
         return (
             <div className="show-container">

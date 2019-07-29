@@ -6,10 +6,7 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container'; 
 import CoinIndexContainer from './coins/coin_index_container'; 
 import CoinShowContainer from './coins/coin_show_container'; 
-
 import { AuthRoute } from '../util/route_util';
-
-
 
 const App = () => (
     <div className = "main-container">

@@ -6,16 +6,13 @@ const coinsReducer = (state = {}, action) => {
     let newState = merge({}, state)
     switch (action.type) {
         case RECEIVE_COINS:
-            // debugger
             action.coins.forEach(coin => (newState[coin.id] = coin))
-            // debugger
             return newState; 
 
         case RECEIVE_COIN:
             action.coin.forEach(coin => newState[coin.id] = coin)
             return newState; 
-
-            
+  
         default:
             return state;
     }
