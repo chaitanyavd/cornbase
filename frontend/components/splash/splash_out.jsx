@@ -1,7 +1,9 @@
 import SplashOutItem from './splash_out_item';
+import CoinIndexItem from '../coins/coin_index_item'
 import React from "react";
 
 class SplashOut extends React.Component {
+    
     constructor(props) {
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -29,6 +31,7 @@ class SplashOut extends React.Component {
         const mapper = coins.map((coin, idx) => {
             if (idx <= 4 && coin.rank <= 5) {
                 return <SplashOutItem coin={coin} orderNum={idx} key={coin.id} />
+                // return  <CoinIndexItem coin={coin} key={idx} orderNum={idx} />
             } else {
                 return null
             }

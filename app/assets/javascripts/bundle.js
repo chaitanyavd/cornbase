@@ -892,7 +892,14 @@ function (_React$Component) {
         domain: [min, max],
         hide: true
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Tooltip"], {
-        className: "tooltip"
+        className: "tooltip",
+        labelStyle: {
+          display: 'none'
+        },
+        itemStyle: {
+          backgroundColor: "rgb(80, 80, 100)",
+          fontSize: 18
+        }
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Line"], {
         className: "line",
         cursor: "cross-hair",
@@ -1849,8 +1856,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _splash_out_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./splash_out_item */ "./frontend/components/splash/splash_out_item.jsx");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _coins_coin_index_item__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../coins/coin_index_item */ "./frontend/components/coins/coin_index_item.jsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+
 
 
 
@@ -1911,88 +1920,88 @@ function (_React$Component) {
           currentUser = _this$props.currentUser;
       var mapper = coins.map(function (coin, idx) {
         if (idx <= 4 && coin.rank <= 5) {
-          return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_splash_out_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_splash_out_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
             coin: coin,
             orderNum: idx,
             key: coin.id
-          });
+          }); // return  <CoinIndexItem coin={coin} key={idx} orderNum={idx} />
         } else {
           return null;
         }
       });
 
       var loggedOut = function loggedOut() {
-        return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "splashout-container"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "splashout-home-backdrop"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "splashout-header-section"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "splashout-header-container"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h2", {
           className: "splashout-title"
-        }, "Buy and sell cryptocorns"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", {
+        }, "Buy and sell cryptocorns"), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("p", {
           className: "splashout-para"
-        }, "\"Cornbase is the easiest place to buy, sell, and manage your cryptocorn portfolio.\""), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("form", {
+        }, "\"Cornbase is the easiest place to buy, sell, and manage your cryptocorn portfolio.\""), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("form", {
           onSubmit: _this3.handleSubmit,
           className: "splashout-get-started-form"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("input", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
           className: "splashout-email",
           type: "email",
           placeholder: "Email address",
           spellCheck: "false",
           value: _this3.state.email,
           onChange: _this3.update('email')
-        }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+        }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("button", {
           className: "splashout-button"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("span", {
           className: "splashout-button-text"
-        }, "Get Started")))))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        }, "Get Started")))))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "splashout-table-backdrop"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "splashout-table-container"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("table", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("table", {
           className: "splashout-table"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("colgroup", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("col", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("colgroup", null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("col", {
           style: {
             width: "32px"
           }
-        })), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("thead", {
+        })), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("thead", {
           className: "splashout-table-head"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("th", {
           className: "splashout-tablehelpers"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("span", {
           className: "tablehead"
-        }, "#"))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+        }, "#"))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("th", {
           className: "splashout-tablehelpers"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("span", {
           className: "tablehead"
-        }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+        }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("th", {
           className: "splashout-tablehelpers"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("span", {
           className: "tablehead"
-        }, "PRICE"))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("th", {
+        }, "PRICE"))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("th", {
           className: "splashout-tablehelpers"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("span", {
           className: "tablehead"
-        }, "CHANGE"))))), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("tbody", {
+        }, "CHANGE"))))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("tbody", {
           className: "t-body"
         }, mapper)))));
       };
 
       var loggedIn = function loggedIn() {
-        return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
           className: "wip-container"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("img", {
+        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("img", {
           className: "wip-img",
           src: "https://static-assets.coinbase.com/earn/earn_dash_banner.png",
           style: {
@@ -2006,7 +2015,7 @@ function (_React$Component) {
   }]);
 
   return SplashOut;
-}(react__WEBPACK_IMPORTED_MODULE_8___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_9___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (SplashOut);
 
@@ -2169,7 +2178,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "tr-percent-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "tr-percent"
+        className: color
       }, percent, "%"))));
     }
   }]);

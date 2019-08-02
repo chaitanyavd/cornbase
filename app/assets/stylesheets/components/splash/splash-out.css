@@ -418,7 +418,25 @@
     box-sizing: border-box; 
 }  
 
+ .negpercent {
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    min-width: 76px;
+    margin-right: 20px;
+    color: rgb(223, 95, 103);
+    text-align: left;
+    display: block; 
+    box-sizing: border-box; 
+ }
 
+ .pospercent {
+    color: rgb(5, 177, 105);
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    min-width: 76px;
+    margin-right: 20px;
+    text-align: left;
+    display: block; 
+    box-sizing: border-box; 
+ }
 
 .wip-container{
     position: relative;
