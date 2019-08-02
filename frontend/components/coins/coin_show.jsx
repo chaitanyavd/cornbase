@@ -108,7 +108,8 @@ class CoinShow extends React.Component {
                         <XAxis dataKey="time" hide={true} />
                         <YAxis dataKey="close" domain={[min, max]} hide={true} />
 
-                        <Tooltip className="tooltip" />
+                        {/* <Tooltip className="tooltip" /> */}
+                        <Tooltip className="tooltip" labelStyle={{ display: 'none' }} itemStyle={{ backgroundColor: "rgb(80, 80, 100)", fontSize: 18 }} />
 
                         <Line className="line" cursor="cross-hair" type="monotone" dataKey="close" dot={false} strokeWidth={1.75} stroke='rgb(22, 82, 240)' yAxisId={0} />
                     </LineChart>

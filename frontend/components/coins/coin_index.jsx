@@ -44,13 +44,13 @@ class CoinIndex extends React.Component {
         this.setState({ inputValue: coin.name });
     }
 
-
+    
     render() {
-
+        
         const {coins, fetchCoin, fetchYear, data} = this.props
         const results = this.matches().map((coin, idx) => {
             return (
-                <CoinIndexItem coin={coin} key = {idx} orderNum={idx} onClick={this.selectCoin} />
+                <CoinIndexItem coin={coin} key = {idx} orderNum={idx} onClick={this.selectCoin} />  
             );
         });
         

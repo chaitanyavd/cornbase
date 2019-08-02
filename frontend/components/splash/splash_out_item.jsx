@@ -47,7 +47,7 @@ class SplashOutItem extends React.Component {
 
                 <td className="splashout-tablerow-4">
                     <div className="tr-percent-container">
-                        <span className="tr-percent">{percent}%</span>
+                        <span className={color}>{percent}%</span>
                     </div>
                 </td>
 
