@@ -41,8 +41,17 @@ class CoinIndexItem extends React.Component {
         let price = coin.price ? parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4) : null 
         let marketCap = coin.market_cap ? parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M` : null 
         let percent = coin.price ? parseFloat((coin["1d"].price_change_pct)*100).toFixed(2) : null 
+        // let percent = (coin["1d"].price_change_pct === undefined) ? null : parseFloat((coin["1d"].price_change_pct) * 100).toFixed(2) 
+        // debugger
+        console.log(percent)
+        console.log(coin.name)
         let color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null 
 
+        // const renderPrice = () => (
+        //     <th className={color}>
+        //         {percent}%
+        //     </th>
+        // )
 
 
         const Present = () => (
@@ -59,7 +68,6 @@ class CoinIndexItem extends React.Component {
                 
                 <th className="crypto-name" >
                     <div>
-
                         <Link className = "crypto-link" to = {`/price/${coin.symbol}`}>
                             {coin.name} {coin.symbol}
                         </Link>
@@ -77,6 +85,7 @@ class CoinIndexItem extends React.Component {
                 <th className="index-th" >
                     {marketCap}
                 </th>
+
             </tr>
         )
 

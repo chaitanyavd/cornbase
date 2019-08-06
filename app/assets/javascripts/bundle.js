@@ -653,8 +653,16 @@ function (_React$Component) {
 
       var price = coin.price ? parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4) : null;
       var marketCap = coin.market_cap ? parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M") : null;
-      var percent = coin.price ? parseFloat(coin["1d"].price_change_pct * 100).toFixed(2) : null;
-      var color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
+      var percent = coin.price ? parseFloat(coin["1d"].price_change_pct * 100).toFixed(2) : null; // let percent = (coin["1d"].price_change_pct === undefined) ? null : parseFloat((coin["1d"].price_change_pct) * 100).toFixed(2) 
+      // debugger
+
+      console.log(percent);
+      console.log(coin.name);
+      var color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null; // const renderPrice = () => (
+      //     <th className={color}>
+      //         {percent}%
+      //     </th>
+      // )
 
       var Present = function Present() {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
@@ -836,42 +844,42 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
         className: "selects",
         onClick: function onClick() {
-          return _this.props.fetchHour(_this.props.coin.symbol);
+          return _this.props.fetchHour(coin.symbol);
         }
       }, "1H"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
         className: "selects",
         onClick: function onClick() {
-          return _this.props.fetchDay(_this.props.coin.symbol);
+          return _this.props.fetchDay(coin.symbol);
         }
       }, "24H"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
         className: "selects",
         onClick: function onClick() {
-          return _this.props.fetchWeek(_this.props.coin.symbol);
+          return _this.props.fetchWeek(coin.symbol);
         }
       }, "1W"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
         className: "selects",
         onClick: function onClick() {
-          return _this.props.fetchMonth(_this.props.coin.symbol);
+          return _this.props.fetchMonth(coin.symbol);
         }
       }, "1M"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
         className: "selects",
         onClick: function onClick() {
-          return _this.props.fetchYear(_this.props.coin.symbol);
+          return _this.props.fetchYear(coin.symbol);
         }
       }, "1Y"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
         className: "selects",
         onClick: function onClick() {
-          return _this.props.fetchAll(_this.props.coin.symbol);
+          return _this.props.fetchAll(coin.symbol);
         }
       }, "ALL")))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["LineChart"], {
         className: "chart",

@@ -76,22 +76,22 @@ class CoinShow extends React.Component {
 
                             <div className="graph-contolbar-selectors">
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchHour(this.props.coin.symbol)}>1H</button></span>
+                                    <span><button className="selects" onClick={() => this.props.fetchHour(coin.symbol)}>1H</button></span>
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchDay(this.props.coin.symbol)}>24H</button></span>
+                                    <span><button className="selects" onClick={() => this.props.fetchDay(coin.symbol)}>24H</button></span>
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchWeek(this.props.coin.symbol)}>1W</button></span>
+                                    <span><button className="selects" onClick={() => this.props.fetchWeek(coin.symbol)}>1W</button></span>
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchMonth(this.props.coin.symbol)}>1M</button></span>
+                                    <span><button className="selects" onClick={() => this.props.fetchMonth(coin.symbol)}>1M</button></span>
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchYear(this.props.coin.symbol)}>1Y</button></span>
+                                    <span><button className="selects" onClick={() => this.props.fetchYear(coin.symbol)}>1Y</button></span>
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchAll(this.props.coin.symbol)}>ALL</button></span>
+                                    <span><button className="selects" onClick={() => this.props.fetchAll(coin.symbol)}>ALL</button></span>
                                 </div>
 
                             </div>
