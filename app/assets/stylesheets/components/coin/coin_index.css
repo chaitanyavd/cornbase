@@ -50,15 +50,15 @@
     border: 1px; 
 }
 
- .negpercent {
-   color: rgb(223, 95, 103); 
-   padding: 20px; 
- }
+.negpercent {
+  color: rgb(223, 95, 103); 
+  padding: 20px; 
+}
 
- .pospercent {
-   color: rgb(5, 177, 105);
-   padding: 20px; 
- }
+.pospercent {
+  color: rgb(5, 177, 105);
+  padding: 20px; 
+}
 
 .crypto-name {
     display: flex;

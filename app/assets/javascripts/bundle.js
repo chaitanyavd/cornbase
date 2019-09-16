@@ -621,21 +621,6 @@ function (_React$Component) {
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndexItem, [{
     key: "render",
-    // ! There has to be a better way 
-    // componentDidMount() {
-    //     const symbol = this.props.coin.symbol; 
-    //     this.props.fetchYear(symbol); 
-    //     // debugger
-    // }
-    //!
-    // ! There has to be a better way 
-    // componentDidUpdate(prevProps) {
-    //     const symbol = this.props.coin.symbol;
-    //     if (symbol !== prevProps.symbol) {
-    //         this.props.fetchYear(symbol);
-    //     }
-    // }
-    //!
     value: function render() {
       var _this = this;
 
@@ -643,26 +628,11 @@ function (_React$Component) {
       var _this$props = this.props,
           coin = _this$props.coin,
           fetchYear = _this$props.fetchYear,
-          data = _this$props.data; // ! There has to be a better way 
-      // FOR COINCAP API 
-      // let color = parseFloat(coin.changePercent24Hr).toFixed(2) >= 0 ? 'pospercent' : 'negpercent'; 
-      // let marketCap = parseFloat(coin.marketCapUsd) > 1000000000 ? `$${(parseFloat(coin.marketCapUsd) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.marketCapUsd) / 1000000).toFixed(1)}M`
-      // let price = parseFloat(coin.priceUsd) > 0.1 ? parseFloat(coin.priceUsd).toFixed(2) : parseFloat(coin.priceUsd).toFixed(4)
-      // let tagName = coin.name.split(' ').join('-').toLowerCase(); 
-      //!
-
+          data = _this$props.data;
       var price = coin.price ? parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4) : null;
       var marketCap = coin.market_cap ? parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M") : null;
-      var percent = coin.price ? parseFloat(coin["1d"].price_change_pct * 100).toFixed(2) : null; // let percent = (coin["1d"].price_change_pct === undefined) ? null : parseFloat((coin["1d"].price_change_pct) * 100).toFixed(2) 
-      // debugger
-
-      console.log(percent);
-      console.log(coin.name);
-      var color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null; // const renderPrice = () => (
-      //     <th className={color}>
-      //         {percent}%
-      //     </th>
-      // )
+      var percent = coin.price ? parseFloat(coin["1d"].price_change_pct * 100).toFixed(2) : null;
+      var color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
 
       var Present = function Present() {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
@@ -674,14 +644,14 @@ function (_React$Component) {
           width: "32",
           height: "32"
         }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
-          className: "crypto-name"
+          className: "index-th"
         }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
           className: "crypto-link",
           to: "/price/".concat(coin.symbol)
         }, coin.name, " ", coin.symbol))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
           className: "index-th"
         }, "$", price), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
-          className: color
+          className: "index-th"
         }, percent, "%"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
           className: "index-th"
         }, marketCap));
@@ -58566,7 +58536,7 @@ exports.default = _ResizeDetector2.default;
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
