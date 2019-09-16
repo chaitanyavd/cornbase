@@ -93,6 +93,7 @@ button {
 
 .graph-controlbar-container {
     display: flex;
+    position: relative;
     -webkit-box-pack: justify;
     justify-content: space-between;
     align-items: flex-start;
@@ -103,6 +104,8 @@ button {
 
 .graph-price-content{
     display: flex;
+    width: 100%; 
+    justify-content: space-between; 
     flex-direction: row;
 }
 

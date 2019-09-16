@@ -20,12 +20,16 @@ class CoinIndexItem extends React.Component {
         const Present = () => (
             <tr>
                 <th className = "index-th">
-                    {this.props.orderNum + 1}
+                    <Link className="crypto-link" to={`/price/${coin.symbol}`}>
+                        {this.props.orderNum + 1}
+                    </Link>
                 </th>
 
                 <th className="index-th">
                     <div>
-                        <img src={`${coin.logo_url}`} width="32" height="32" />
+                        <Link className="crypto-link" to={`/price/${coin.symbol}`}>
+                            <img src={`${coin.logo_url}`} width="32" height="32" />
+                        </Link>
                     </div>
                 </th>
                 
@@ -39,15 +43,22 @@ class CoinIndexItem extends React.Component {
                 </th>
                 
                 <th className="index-th" >
-                    ${price}
+                    <Link className="crypto-link" to={`/price/${coin.symbol}`}>
+                        ${price}
+                    </Link>
                 </th>
                 
                 <th className="index-th">
-                    {percent}%
+                    <Link className="crypto-link" to={`/price/${coin.symbol}`}>
+                        <span className={color}>{percent}%</span>
+                    </Link>
                 </th>
 
                 <th className="index-th" >
-                    {marketCap}
+                    <Link className="crypto-link" to={`/price/${coin.
+                    symbol}`}>
+                        {marketCap}
+                    </Link>
                 </th>
 
             </tr>
