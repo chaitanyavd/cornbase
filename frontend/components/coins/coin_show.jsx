@@ -3,6 +3,11 @@ import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 import { GridLoader } from 'halogenium';
 
 class CoinShow extends React.Component {
+    
+    constructor(props) {
+        super(props)
+    }
+    
 
     componentDidMount() {
         this.props.fetchCoin(this.props.match.params.symbol);

@@ -15,8 +15,11 @@ class CoinIndexItem extends React.Component {
         let marketCap = coin.market_cap ? parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M` : null 
         let percent = coin.price ? parseFloat((coin["1d"].price_change_pct)*100).toFixed(2) : null 
         let color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null 
+        let fill = "rgb(244, 198, 34)"
+        // let stroke = "#becada"
+        let stroke = "rgb(244, 198, 34)"
 
-
+        
         const Present = () => (
             <tr>
                 <th className = "index-th">
@@ -55,10 +58,14 @@ class CoinIndexItem extends React.Component {
                 </th>
 
                 <th className="index-th" >
-                    <Link className="crypto-link" to={`/price/${coin.
-                    symbol}`}>
+                    <Link className="crypto-link" to={`/price/${coin.symbol}`}>
                         {marketCap}
                     </Link>
+                </th>
+                <th className="index-th" >
+                    <svg width = "23" height = "24" viewBox = " 0 0 24 23"> 
+                        <path d="M12.713 1.443l2.969 6.015 6.637.965a.794.794 0 0 1 .44 1.354l-4.804 4.681 1.135 6.612a.794.794 0 0 1-1.152.837L12 18.787l-5.938 3.121a.795.795 0 0 1-1.152-.838l1.134-6.612L1.24 9.777a.794.794 0 0 1 .44-1.354l6.638-.965 2.968-6.015a.795.795 0 0 1 1.425 0z" stroke={stroke} fill = {fill}> </path>
+                    </svg>  
                 </th>
 
             </tr>

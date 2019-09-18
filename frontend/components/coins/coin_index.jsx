@@ -80,6 +80,7 @@ class CoinIndex extends React.Component {
                         <th className="ttitles" >PRICE</th>
                         <th className="ttitles" >CHANGE</th>
                         <th className="ttitles" >MARKET CAP</th>
+                        <th className="ttitles" >FOLLOW</th>
                     </tr>
 
                         {results}

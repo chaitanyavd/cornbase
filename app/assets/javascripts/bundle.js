@@ -509,7 +509,9 @@ function (_React$Component) {
         className: "ttitles"
       }, "CHANGE"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
         className: "ttitles"
-      }, "MARKET CAP")), results))));
+      }, "MARKET CAP"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        className: "ttitles"
+      }, "FOLLOW")), results))));
     }
   }]);
 
@@ -633,6 +635,9 @@ function (_React$Component) {
       var marketCap = coin.market_cap ? parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M") : null;
       var percent = coin.price ? parseFloat(coin["1d"].price_change_pct * 100).toFixed(2) : null;
       var color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
+      var fill = "rgb(244, 198, 34)"; // let stroke = "#becada"
+
+      var stroke = "rgb(244, 198, 34)";
 
       var Present = function Present() {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
@@ -671,7 +676,17 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
           className: "crypto-link",
           to: "/price/".concat(coin.symbol)
-        }, marketCap)));
+        }, marketCap)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+          className: "index-th"
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
+          width: "23",
+          height: "24",
+          viewBox: " 0 0 24 23"
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+          d: "M12.713 1.443l2.969 6.015 6.637.965a.794.794 0 0 1 .44 1.354l-4.804 4.681 1.135 6.612a.794.794 0 0 1-1.152.837L12 18.787l-5.938 3.121a.795.795 0 0 1-1.152-.838l1.134-6.612L1.24 9.777a.794.794 0 0 1 .44-1.354l6.638-.965 2.968-6.015a.795.795 0 0 1 1.425 0z",
+          stroke: stroke,
+          fill: fill
+        }, " "))));
       };
 
       var Absent = function Absent() {
@@ -735,10 +750,10 @@ var CoinShow =
 function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(CoinShow, _React$Component);
 
-  function CoinShow() {
+  function CoinShow(props) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CoinShow);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinShow).apply(this, arguments));
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinShow).call(this, props));
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinShow, [{
