@@ -6,6 +6,7 @@ class CoinShow extends React.Component {
     
     constructor(props) {
         super(props)
+        this.state = { active: "24H"}
     }
     
 
@@ -38,9 +39,9 @@ class CoinShow extends React.Component {
         let allTimeHigh = parseFloat(coin.high) > 0.1 ? parseFloat(coin.high).toFixed(2) : parseFloat(coin.high).toFixed(4)
         let price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4)
         let volume = parseFloat(coin["1d"].volume) > 1000000000 ? `$${(parseFloat(coin["1d"].volume) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin["1d"].volume) / 1000000).toFixed(1)}M`
-
-        const close = this.props.data ? this.props.data.map((object) => (object.close)) : []
-
+        // debugger 
+        const close = this.props.data  ? this.props.data.map((object) => (object.close)) : []
+        // const close = (this.props.data === {}) ? [] : this.props.data.map((object) => (object.close)) //? tried to reverse the logic -- but problem persists
         let min = -Infinity;
         let max = Infinity;
         if (close.length >= 1) {
@@ -48,8 +49,9 @@ class CoinShow extends React.Component {
             max = close.reduce((acc, el) => (Math.max(acc, el)));
         }
         let change = max - min; 
-        let color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null 
-
+        // let change = this.props.data ? this.props.data[this.props.data.length - 1].close - this.props.data[0].close : 0
+        // let color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null 
+        // debugger
 
         return (
             <div className="show-container">
@@ -73,7 +75,7 @@ class CoinShow extends React.Component {
                                     <span>{price}</span>
                                 </div>
                                 <div className="graph-negpercent-change">
-                                    <span>-</span>
+                                    <span></span>
                                     <span>${change.toFixed(2)}</span>
                                     <span></span>
                                 </div>
@@ -81,22 +83,22 @@ class CoinShow extends React.Component {
 
                             <div className="graph-contolbar-selectors">
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchHour(coin.symbol)}>1H</button></span>
+                                    <span><button className={ this.state.active === "1H" ? "active-tp" : "inactive-tp" } onClick={() => this.props.fetchHour(coin.symbol).then(this.setState({ active: "1H"}))}>1H</button></span>
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchDay(coin.symbol)}>24H</button></span>
+                                    <span><button className={ this.state.active === "24H" ? "active-tp" : "inactive-tp" } onClick={() => this.props.fetchDay(coin.symbol).then(this.setState({ active: "24H" }))}>24H</button></span>
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchWeek(coin.symbol)}>1W</button></span>
+                                    <span><button className={ this.state.active === "1W" ? "active-tp" : "inactive-tp" } onClick={() => this.props.fetchWeek(coin.symbol).then(this.setState({ active: "1W" }))}>1W</button></span>
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchMonth(coin.symbol)}>1M</button></span>
+                                    <span><button className={ this.state.active === "1M" ? "active-tp" : "inactive-tp" } onClick={() => this.props.fetchMonth(coin.symbol).then(this.setState({ active: "1M" }))}>1M</button></span>
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchYear(coin.symbol)}>1Y</button></span>
+                                    <span><button className={ this.state.active === "1Y" ? "active-tp" : "inactive-tp" } onClick={() => this.props.fetchYear(coin.symbol).then(this.setState({ active: "1Y" }))}>1Y</button></span>
                                 </div>
                                 <div className="period-selector">
-                                    <span><button className="selects" onClick={() => this.props.fetchAll(coin.symbol)}>ALL</button></span>
+                                    <span><button className={ this.state.active === "ALL" ? "active-tp" : "inactive-tp" } onClick={() => this.props.fetchAll(coin.symbol).then(this.setState({ active: "ALL" }))}>ALL</button></span>
                                 </div>
 
                             </div>
@@ -114,7 +116,7 @@ class CoinShow extends React.Component {
                         <YAxis dataKey="close" domain={[min, max]} hide={true} />
 
                         {/* <Tooltip className="tooltip" /> */}
-                        <Tooltip className="tooltip" labelStyle={{ display: 'none' }} itemStyle={{ backgroundColor: "rgb(80, 80, 100)", fontSize: 18 }} />
+                        <Tooltip className="tooltip" labelStyle={{ display: 'none', text: "price" }} itemStyle={{ backgroundColor: "#34343b", fontSize: 22, color: "white", margin: "0", outline: "none" }} />
 
                         <Line className="line" cursor="cross-hair" type="monotone" dataKey="close" dot={false} strokeWidth={1.75} stroke='rgb(22, 82, 240)' yAxisId={0} />
                     </LineChart>

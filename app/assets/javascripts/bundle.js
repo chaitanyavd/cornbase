@@ -751,9 +751,15 @@ function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(CoinShow, _React$Component);
 
   function CoinShow(props) {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CoinShow);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinShow).call(this, props));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinShow).call(this, props));
+    _this.state = {
+      active: "24H"
+    };
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinShow, [{
@@ -779,7 +785,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       if (this.props.coin === undefined) return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(halogenium__WEBPACK_IMPORTED_MODULE_7__["GridLoader"], {
         id: "loader",
@@ -792,10 +798,12 @@ function (_React$Component) {
       var circSupply = parseFloat(coin.circulating_supply) > 1000000000 ? "".concat((parseFloat(coin.circulating_supply) / 1000000000).toFixed(1), "B ").concat(coin.symbol) : "".concat((parseFloat(coin.circulating_supply) / 1000000).toFixed(1), "M ").concat(coin.symbol);
       var allTimeHigh = parseFloat(coin.high) > 0.1 ? parseFloat(coin.high).toFixed(2) : parseFloat(coin.high).toFixed(4);
       var price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4);
-      var volume = parseFloat(coin["1d"].volume) > 1000000000 ? "$".concat((parseFloat(coin["1d"].volume) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin["1d"].volume) / 1000000).toFixed(1), "M");
+      var volume = parseFloat(coin["1d"].volume) > 1000000000 ? "$".concat((parseFloat(coin["1d"].volume) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin["1d"].volume) / 1000000).toFixed(1), "M"); // debugger 
+
       var close = this.props.data ? this.props.data.map(function (object) {
         return object.close;
-      }) : [];
+      }) : []; // const close = (this.props.data === {}) ? [] : this.props.data.map((object) => (object.close)) //? tried to reverse the logic -- but problem persists
+
       var min = -Infinity;
       var max = Infinity;
 
@@ -808,8 +816,10 @@ function (_React$Component) {
         });
       }
 
-      var change = max - min;
-      var color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null;
+      var change = max - min; // let change = this.props.data ? this.props.data[this.props.data.length - 1].close - this.props.data[0].close : 0
+      // let color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null 
+      // debugger
+
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "show-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -839,49 +849,61 @@ function (_React$Component) {
         className: "dollar-sign"
       }, "$"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, price)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "graph-negpercent-change"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "-"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "$", change.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "$", change.toFixed(2)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "graph-contolbar-selectors"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        className: "selects",
+        className: this.state.active === "1H" ? "active-tp" : "inactive-tp",
         onClick: function onClick() {
-          return _this.props.fetchHour(coin.symbol);
+          return _this2.props.fetchHour(coin.symbol).then(_this2.setState({
+            active: "1H"
+          }));
         }
       }, "1H"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        className: "selects",
+        className: this.state.active === "24H" ? "active-tp" : "inactive-tp",
         onClick: function onClick() {
-          return _this.props.fetchDay(coin.symbol);
+          return _this2.props.fetchDay(coin.symbol).then(_this2.setState({
+            active: "24H"
+          }));
         }
       }, "24H"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        className: "selects",
+        className: this.state.active === "1W" ? "active-tp" : "inactive-tp",
         onClick: function onClick() {
-          return _this.props.fetchWeek(coin.symbol);
+          return _this2.props.fetchWeek(coin.symbol).then(_this2.setState({
+            active: "1W"
+          }));
         }
       }, "1W"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        className: "selects",
+        className: this.state.active === "1M" ? "active-tp" : "inactive-tp",
         onClick: function onClick() {
-          return _this.props.fetchMonth(coin.symbol);
+          return _this2.props.fetchMonth(coin.symbol).then(_this2.setState({
+            active: "1M"
+          }));
         }
       }, "1M"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        className: "selects",
+        className: this.state.active === "1Y" ? "active-tp" : "inactive-tp",
         onClick: function onClick() {
-          return _this.props.fetchYear(coin.symbol);
+          return _this2.props.fetchYear(coin.symbol).then(_this2.setState({
+            active: "1Y"
+          }));
         }
       }, "1Y"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "period-selector"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        className: "selects",
+        className: this.state.active === "ALL" ? "active-tp" : "inactive-tp",
         onClick: function onClick() {
-          return _this.props.fetchAll(coin.symbol);
+          return _this2.props.fetchAll(coin.symbol).then(_this2.setState({
+            active: "ALL"
+          }));
         }
       }, "ALL")))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["LineChart"], {
         className: "chart",
@@ -904,11 +926,15 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Tooltip"], {
         className: "tooltip",
         labelStyle: {
-          display: 'none'
+          display: 'none',
+          text: "price"
         },
         itemStyle: {
-          backgroundColor: "rgb(80, 80, 100)",
-          fontSize: 18
+          backgroundColor: "#34343b",
+          fontSize: 22,
+          color: "white",
+          margin: "0",
+          outline: "none"
         }
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Line"], {
         className: "line",
@@ -981,7 +1007,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
-  debugger;
   return {
     coin: state.entities.coins[ownProps.match.params.symbol],
     symbol: ownProps.match.params.symbol,
@@ -2273,7 +2298,6 @@ var coinDataReducer = function coinDataReducer() {
 
   switch (action.type) {
     case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_DATA"]:
-      debugger;
       return action.data.Data;
 
     default:
