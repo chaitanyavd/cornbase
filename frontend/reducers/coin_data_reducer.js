@@ -5,7 +5,8 @@ const coinDataReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_DATA:
-            return action.data
+            debugger
+            return action.data.Data
         default:
             return state;
     }

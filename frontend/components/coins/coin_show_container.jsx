@@ -4,11 +4,11 @@ import CoinShow from './coin_show';
 
 
 const msp = (state, ownProps) => {
-
+    debugger
     return ({
         coin: state.entities.coins[ownProps.match.params.symbol], 
         symbol: ownProps.match.params.symbol,
-        data: state.entities.coinData.Data
+        data: state.entities.coinData
     })
 }
 

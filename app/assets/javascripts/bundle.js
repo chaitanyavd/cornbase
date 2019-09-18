@@ -981,10 +981,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state, ownProps) {
+  debugger;
   return {
     coin: state.entities.coins[ownProps.match.params.symbol],
     symbol: ownProps.match.params.symbol,
-    data: state.entities.coinData.Data
+    data: state.entities.coinData
   };
 };
 
@@ -2272,7 +2273,8 @@ var coinDataReducer = function coinDataReducer() {
 
   switch (action.type) {
     case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_DATA"]:
-      return action.data;
+      debugger;
+      return action.data.Data;
 
     default:
       return state;
