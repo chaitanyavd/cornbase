@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :users, only:[:create]
     resource :session, only:[:create, :destroy, :show]
     resources :coins, only:[:index, :show]
-
+    resources :watchlists
   end 
 end
 
