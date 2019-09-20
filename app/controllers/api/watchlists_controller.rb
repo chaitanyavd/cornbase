@@ -11,17 +11,17 @@ class Api::WatchlistsController < ApplicationController
             render json: @tickers
     end
 
-    def show 
-        # @watchlist = current_user.watchlists.find(params[:id])
-        # ticker = current_user.watchlists.pluck(:ticker).join(",")
-        # key = Rails.application.credentials.nomics[:api_key]
-        # uri = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{ticker}")
-        # @watchlists = Net::HTTP.get(uri)
+    # def show 
+    #     # @watchlist = current_user.watchlists.find(params[:id])
+    #     # ticker = current_user.watchlists.pluck(:ticker).join(",")
+    #     # key = Rails.application.credentials.nomics[:api_key]
+    #     # uri = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{ticker}")
+    #     # @watchlists = Net::HTTP.get(uri)
 
-        # render json: @ticker
+    #     # render json: @ticker
 
-        #?? HOW DO YOU FIND A SPECIFIC TICKER -- MANS BRAINFARTING
-    end 
+    #     #?? HOW DO YOU FIND A SPECIFIC TICKER -- MANS BRAINFARTING
+    # end 
 
     def create 
         @watchlist = Watchlist.new(watchlist_params)
