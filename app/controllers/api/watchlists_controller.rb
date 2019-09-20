@@ -3,12 +3,13 @@ class Api::WatchlistsController < ApplicationController
     before_action :require_logged_in
 
     def index 
+        # debugger 
             tickers = current_user.watchlists.pluck(:ticker).join(",")
             key = Rails.application.credentials.nomics[:api_key]
             uri = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{tickers}")
             @watchlists = Net::HTTP.get(uri)
-
-            render json: @tickers
+            # debugger 
+            render json: @watchlists
     end
 
     # def show 

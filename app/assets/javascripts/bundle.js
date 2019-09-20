@@ -299,6 +299,59 @@ var logout = function logout() {
 
 /***/ }),
 
+/***/ "./frontend/actions/watchlist_actions.js":
+/*!***********************************************!*\
+  !*** ./frontend/actions/watchlist_actions.js ***!
+  \***********************************************/
+/*! exports provided: RECEIVE_WATCHLISTS, RECEIVE_WATCHLIST, REMOVE_WATCHLIST, fetchWatchlists, createWatchlist, deleteWatchlist */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_WATCHLISTS", function() { return RECEIVE_WATCHLISTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_WATCHLIST", function() { return RECEIVE_WATCHLIST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_WATCHLIST", function() { return REMOVE_WATCHLIST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchWatchlists", function() { return fetchWatchlists; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createWatchlist", function() { return createWatchlist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteWatchlist", function() { return deleteWatchlist; });
+/* harmony import */ var _util_watchlist_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/watchlist_api_util */ "./frontend/util/watchlist_api_util.js");
+
+var RECEIVE_WATCHLISTS = 'RECEIVE_WATCHLISTS';
+var RECEIVE_WATCHLIST = 'RECEIVE_WATCHLIST';
+var REMOVE_WATCHLIST = 'REMOVE_WATCHLIST';
+var fetchWatchlists = function fetchWatchlists() {
+  return function (dispatch) {
+    return _util_watchlist_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchWatchlists"]().then(function (watchlists) {
+      return dispatch({
+        type: RECEIVE_WATCHLISTS,
+        watchlists: watchlists
+      });
+    });
+  };
+};
+var createWatchlist = function createWatchlist(watchlist) {
+  return function (dispatch) {
+    return _util_watchlist_api_util__WEBPACK_IMPORTED_MODULE_0__["createWatchlist"](watchlist).then(function (watchlist) {
+      return dispatch({
+        type: RECEIVE_WATCHLIST,
+        watchlist: watchlist
+      });
+    });
+  };
+};
+var deleteWatchlist = function deleteWatchlist(id) {
+  return function (dispatch) {
+    return _util_watchlist_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteWatchlist"](id).then(function (watchlist) {
+      return dispatch({
+        type: REMOVE_WATCHLIST,
+        watchlistId: watchlist.id
+      });
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/components/App.jsx":
 /*!*************************************!*\
   !*** ./frontend/components/App.jsx ***!
@@ -1928,6 +1981,7 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchCoins();
+      this.props.fetchWatchlists();
     }
   }, {
     key: "update",
@@ -1951,6 +2005,7 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
+      // debugger 
       var _this$props = this.props,
           coins = _this$props.coins,
           currentUser = _this$props.currentUser;
@@ -2032,21 +2087,15 @@ function (_React$Component) {
         }, "CHANGE"))))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("tbody", {
           className: "t-body"
         }, mapper)))));
-      };
+      }; // const loggedIn = () => (
+      //     <div className = "wip-container">
+      //         Hey Im here
+      //     </div>
+      // )
+      // return  currentUser ? loggedIn() : loggedOut();
 
-      var loggedIn = function loggedIn() {
-        return react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
-          className: "wip-container"
-        }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("img", {
-          className: "wip-img",
-          src: "https://static-assets.coinbase.com/earn/earn_dash_banner.png",
-          style: {
-            width: "100%"
-          }
-        }));
-      };
 
-      return currentUser ? loggedIn() : loggedOut();
+      return loggedOut();
     }
   }]);
 
@@ -2069,7 +2118,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
-/* harmony import */ var _splash_out__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splash_out */ "./frontend/components/splash/splash_out.jsx");
+/* harmony import */ var _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/watchlist_actions */ "./frontend/actions/watchlist_actions.js");
+/* harmony import */ var _splash_out__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./splash_out */ "./frontend/components/splash/splash_out.jsx");
+
 
 
 
@@ -2088,9 +2139,11 @@ var msp = function msp(_ref) {
   var session = _ref.session,
       _ref$entities = _ref.entities,
       coins = _ref$entities.coins,
+      watchlist = _ref$entities.watchlist,
       users = _ref$entities.users;
   return {
     coins: orderer(coins),
+    watchlist: orderer(watchlist),
     currentUser: users[session.id]
   };
 };
@@ -2099,6 +2152,9 @@ var mdp = function mdp(dispatch) {
   return {
     fetchCoins: function fetchCoins() {
       return dispatch(Object(_actions_coin_actions__WEBPACK_IMPORTED_MODULE_2__["fetchCoins"])());
+    },
+    fetchWatchlists: function fetchWatchlists() {
+      return dispatch(Object(_actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_3__["fetchWatchlists"])());
     },
     signup: function signup(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["signup"])(user));
@@ -2119,7 +2175,7 @@ var mdp = function mdp(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_splash_out__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_splash_out__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
 /***/ }),
 
@@ -2365,6 +2421,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _coins_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./coins_reducer */ "./frontend/reducers/coins_reducer.js");
 /* harmony import */ var _coin_data_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coin_data_reducer */ "./frontend/reducers/coin_data_reducer.js");
+/* harmony import */ var _watchlist_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./watchlist_reducer */ "./frontend/reducers/watchlist_reducer.js");
+
 
 
 
@@ -2372,7 +2430,8 @@ __webpack_require__.r(__webpack_exports__);
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   coins: _coins_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  coinData: _coin_data_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  coinData: _coin_data_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  watchlist: _watchlist_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -2589,6 +2648,89 @@ var usersReducer = function usersReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/watchlist_reducer.js":
+/*!************************************************!*\
+  !*** ./frontend/reducers/watchlist_reducer.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/watchlist_actions */ "./frontend/actions/watchlist_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
+// import { RECEIVE_COINS, RECEIVE_COIN } from '../actions/coin_actions';
+// import merge from "lodash/merge"
+// const coinsReducer = (state = {}, action) => {
+//     Object.freeze(state);
+//     let newState = merge({}, state)
+//     switch (action.type) {
+//         case RECEIVE_COINS:
+//             action.coins.forEach(coin => (newState[coin.id] = coin))
+//             return newState;
+//         case RECEIVE_COIN:
+//             action.coin.forEach(coin => newState[coin.id] = coin)
+//             return newState;
+//         default:
+//             return state;
+//     }
+// };
+// export default coinsReducer;
+// const PostsReducer = (oldState = {}, action) => {
+//     Object.freeze(oldState);
+//     const newState = merge({}, oldState);
+//     switch (action.type) {
+//         case RECEIVE_ALL_POSTS:
+//             return action.posts;
+//         case RECEIVE_POST:
+//             newState[action.post.id] = action.post;
+//             return newState;
+//         case REMOVE_POST:
+//             delete newState[action.postId]
+//             return newState;
+//         default:
+//             return oldState;
+//     }
+// };
+
+
+
+var watchlistReducer = function watchlistReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state);
+
+  switch (action.type) {
+    case _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_WATCHLISTS"]:
+      action.watchlists.forEach(function (watchlist) {
+        return newState[watchlist.id] = watchlist;
+      });
+      return newState;
+    // return action.watchlists; 
+
+    case _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_WATCHLIST"]:
+      action.watchlist.forEach(function (watchlist) {
+        return newState[watchlist.id] = watchlist;
+      });
+      return newState;
+    // newState[action.watchlist.id] = action.watchlist;
+    // return newState;
+
+    case _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_WATCHLIST"]:
+      delete newState[action.watchlistId];
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (watchlistReducer);
+
+/***/ }),
+
 /***/ "./frontend/store/store.js":
 /*!*********************************!*\
   !*** ./frontend/store/store.js ***!
@@ -2765,6 +2907,42 @@ var logout = function logout() {
   return $.ajax({
     method: 'DELETE',
     url: 'api/session'
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/watchlist_api_util.js":
+/*!*********************************************!*\
+  !*** ./frontend/util/watchlist_api_util.js ***!
+  \*********************************************/
+/*! exports provided: fetchWatchlists, deleteWatchlist, createWatchlist */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchWatchlists", function() { return fetchWatchlists; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteWatchlist", function() { return deleteWatchlist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createWatchlist", function() { return createWatchlist; });
+var fetchWatchlists = function fetchWatchlists() {
+  return $.ajax({
+    method: "GET",
+    url: "api/watchlists"
+  });
+};
+var deleteWatchlist = function deleteWatchlist(id) {
+  return $.ajax({
+    method: "DELETE",
+    url: "api/watchlists/".concat(id)
+  });
+};
+var createWatchlist = function createWatchlist(watchlist) {
+  return $.ajax({
+    method: "POST",
+    url: "api/watchlists",
+    data: {
+      watchlist: watchlist
+    }
   });
 };
 
@@ -62487,7 +62665,7 @@ exports.default = _ResizeDetector2.default;
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

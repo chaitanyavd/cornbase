@@ -12,6 +12,7 @@ class SplashOut extends React.Component {
     
     componentDidMount() {
         this.props.fetchCoins(); 
+        this.props.fetchWatchlists(); 
     }
 
     update(field) {
@@ -26,6 +27,7 @@ class SplashOut extends React.Component {
 
     render() {
 
+        // debugger 
         const { coins, currentUser } = this.props;
 
         const mapper = coins.map((coin, idx) => {
@@ -100,13 +102,14 @@ class SplashOut extends React.Component {
             </div>
         )
 
-        const loggedIn = () => (
-            <div className = "wip-container">
-                <img className="wip-img" src="https://static-assets.coinbase.com/earn/earn_dash_banner.png" style={{ width: "100%" }}/>
-            </div>
-        )
+        // const loggedIn = () => (
+        //     <div className = "wip-container">
+        //         Hey Im here
+        //     </div>
+        // )
 
-        return  currentUser ? loggedIn() : loggedOut();
+        // return  currentUser ? loggedIn() : loggedOut();
+        return  loggedOut(); 
         
     }
 
