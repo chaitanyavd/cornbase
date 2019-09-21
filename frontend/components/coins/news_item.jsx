@@ -4,8 +4,23 @@ import { Link } from 'react-router-dom';
 class NewsItem extends React.Component {
     constructor(props) {
         super(props)
-        
+        this.handleDate = this.handleDate.bind(this); 
+    }
 
+    handleDate(iso){
+        let date = new Date(iso)
+        let formattedDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+        let hours = Math.abs(date - Date.now()) / 36e5;
+
+        if (hours >= 24) {
+            return formattedDate
+        } else {
+            if (hours < 1) {
+                return "1 hour ago"
+            } else {
+                return `${hours.toFixed(0)} hours ago`
+            }
+        }
     }
     
     render() {
@@ -28,7 +43,7 @@ class NewsItem extends React.Component {
                             <p>{article.source.name}</p>
                         </a>
                         <a className="source-details-link" href = {article.url} target = "_blank">
-                            <p>{article.publishedAt}</p>
+                            <p>{this.handleDate(article.publishedAt)}</p>
                         </a>
                     </div>
                 </div>

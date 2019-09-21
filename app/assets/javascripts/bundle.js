@@ -1201,9 +1201,7 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(News, [{
     key: "render",
     value: function render() {
-      var news = this.props.news; // debugger
-      // { posts.map(post => <PostIndexItem post={post} key={post.id} deletePost={deletePost} />) }
-
+      var news = this.props.news;
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         id: "news-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -1212,10 +1210,10 @@ function (_React$Component) {
         id: "top-stories"
       }, "Top Stories")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         id: "article-container"
-      }, news.map(function (article) {
+      }, news.map(function (article, idx) {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
           article: article,
-          key: article.id
+          key: idx
         });
       })));
     }
@@ -1245,11 +1243,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -1261,51 +1262,72 @@ __webpack_require__.r(__webpack_exports__);
 var NewsItem =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(NewsItem, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(NewsItem, _React$Component);
 
   function NewsItem(props) {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, NewsItem);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(NewsItem).call(this, props));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(NewsItem).call(this, props));
+    _this.handleDate = _this.handleDate.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(NewsItem, [{
+    key: "handleDate",
+    value: function handleDate(iso) {
+      var date = new Date(iso);
+      var formattedDate = "".concat(date.getDate(), "/").concat(date.getMonth(), "/").concat(date.getFullYear());
+      var hours = Math.abs(date - Date.now()) / 36e5;
+
+      if (hours >= 24) {
+        return formattedDate;
+      } else {
+        if (hours < 1) {
+          return "1 hour ago";
+        } else {
+          return "".concat(hours.toFixed(0), " hours ago");
+        }
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var article = this.props.article;
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("article", {
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("article", {
         className: "article-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "article-content"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "article-title"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
         className: "news-link",
         href: article.url,
         target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         className: "h3title"
-      }, article.title))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+      }, article.title))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
         className: "news-description-link",
         href: article.url,
         target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
         className: "news-description"
-      }, article.description)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, article.description)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "article-details"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
         className: "source-details-link",
         href: article.url,
         target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, article.source.name)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, article.source.name)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
         className: "source-details-link",
         href: article.url,
         target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, article.publishedAt)))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, this.handleDate(article.publishedAt))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
         className: "news-thumbnail",
         href: article.url,
         target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
         src: "".concat(article.originalImageUrl),
         className: "news-image"
       })));
@@ -1313,7 +1335,7 @@ function (_React$Component) {
   }]);
 
   return NewsItem;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (NewsItem);
 

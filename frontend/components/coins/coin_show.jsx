@@ -42,7 +42,7 @@ class CoinShow extends React.Component {
         let price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4)
         let volume = parseFloat(coin["1d"].volume) > 1000000000 ? `$${(parseFloat(coin["1d"].volume) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin["1d"].volume) / 1000000).toFixed(1)}M`
         // debugger 
-        const close = this.props.data  ? this.props.data.map((object) => (object.close)) : []
+        const close = this.props.data ? this.props.data.map((object) => (object.close)) : []
         // const close = (this.props.data === {}) ? [] : this.props.data.map((object) => (object.close)) //? tried to reverse the logic -- but problem persists
         let min = -Infinity;
         let max = Infinity;
