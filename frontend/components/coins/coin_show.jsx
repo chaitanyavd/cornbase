@@ -1,7 +1,7 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 import { GridLoader } from 'halogenium';
-
+import News from "./news"; 
 class CoinShow extends React.Component {
     
     constructor(props) {
@@ -13,6 +13,8 @@ class CoinShow extends React.Component {
     componentDidMount() {
         this.props.fetchCoin(this.props.match.params.symbol);
         this.props.fetchDay(this.props.match.params.symbol);
+        this.props.fetchGeneralNews(); 
+        // debugger
     }
 
     componentDidUpdate(prevProps) {
@@ -33,7 +35,7 @@ class CoinShow extends React.Component {
         if (this.props.coin === undefined) return <GridLoader id="loader" color="rgb(22, 82, 240)" size="16px" margin="4px" />;
 
         const coin = this.props.coin ? this.props.coin : []
-
+        // debugger 
         let marketCap = parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M`
         let circSupply = parseFloat(coin.circulating_supply) > 1000000000 ? `${(parseFloat(coin.circulating_supply) / 1000000000).toFixed(1)}B ${coin.symbol}` : `${(parseFloat(coin.circulating_supply) / 1000000).toFixed(1)}M ${coin.symbol}`
         let allTimeHigh = parseFloat(coin.high) > 0.1 ? parseFloat(coin.high).toFixed(2) : parseFloat(coin.high).toFixed(4)
@@ -107,7 +109,7 @@ class CoinShow extends React.Component {
                     </div>
 
                     <LineChart className='chart'
-                        width={784}
+                        width={850}
                         height={230}
                         data={this.props.data}
                         margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
@@ -165,6 +167,9 @@ class CoinShow extends React.Component {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className = "news-container">
+                    <News news={this.props.news} />
                 </div>
             </div>
         )

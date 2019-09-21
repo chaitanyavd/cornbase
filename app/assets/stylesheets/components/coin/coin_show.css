@@ -87,8 +87,10 @@ button {
 .graph-column {
     display: flex;
     flex-direction: column;
-    width: 784px;
+    /* width: 784px; */
+    width: 850px;
     border: 1px solid #ddd; 
+    border-radius: 6px;
 }
 
 .graph-controlbar-container {
