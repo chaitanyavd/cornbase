@@ -6,12 +6,16 @@ export const fetchWatchlists = () => (
 )
 
 
-export const deleteWatchlist = id => (
+export const deleteWatchlist = id => {
+    debugger
+    return (
     $.ajax({
         method: "DELETE",
         url: `api/watchlists/${id}`
     })
-)
+)}
+
+
 
 export const createWatchlist = watchlist => (
     $.ajax({

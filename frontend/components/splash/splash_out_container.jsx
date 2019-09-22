@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { signup } from '../../actions/session_actions';
 import {fetchCoins} from '../../actions/coin_actions'; 
-import {fetchWatchlists} from '../../actions/watchlist_actions'; 
+import {fetchWatchlists, deleteWatchlist} from '../../actions/watchlist_actions'; 
 
 import SplashOut from './splash_out'; 
 
@@ -14,10 +14,10 @@ const orderer = (coins) => {
     return ordArr
 }
 
-const msp = ({ session, entities: { coins, watchlist, users } }) => {
+const msp = ({ session, entities: { coins, watchlists, users } }) => {
     return ({
         coins: orderer(coins),
-        watchlist: orderer(watchlist), 
+        watchlists: orderer(watchlists), 
         currentUser: users[session.id]
     })
 }
@@ -26,6 +26,7 @@ const msp = ({ session, entities: { coins, watchlist, users } }) => {
 const mdp = dispatch => ({
     fetchCoins: ()=> dispatch(fetchCoins()),
     fetchWatchlists: ()=> dispatch(fetchWatchlists()),
+    deleteWatchlist: (id) => dispatch(deleteWatchlist(id)), 
     signup: (user) => dispatch(signup(user)),
     openModal: (modal) => dispatch(openModal(modal))
 });

@@ -1,1 +1,1 @@
-json.extract! @watchlists
+json.extract! @watchlists, :ticker, :id

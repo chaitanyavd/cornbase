@@ -31,7 +31,8 @@ const NavBar = ({logout, currentUser, openModal}) => {
                     <Link className="login-link-out" to="/price">Prices</Link>
                 </nav>
             <div id = "butt-mod">
-                <button className="logout-button" onClick={() => openModal('profileAvatar')}><img src="profile-avatar.jpeg" width="32" height="32" /></button>
+                {/* <button className="logout-button" onClick={() => openModal('profileAvatar')}><img src="profile-avatar.jpeg" width="32" height="32" /></button> */}
+                <button className="logout-button" onClick={() => openModal('profileAvatar')}><img src="corn-avatar.jpg" width="50" height="50" /></button>
                 <Modal/>
             </div>
 

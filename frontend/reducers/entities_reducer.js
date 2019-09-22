@@ -9,7 +9,7 @@ const entitiesReducer = combineReducers({
     users: usersReducer, 
     coins: coinsReducer, 
     coinData: coinDataReducer, 
-    watchlist: watchlistReducer, 
+    watchlists: watchlistReducer, 
     news: newsReducer
     
 });

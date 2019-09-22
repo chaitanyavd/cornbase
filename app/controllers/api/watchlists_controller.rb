@@ -31,6 +31,7 @@ class Api::WatchlistsController < ApplicationController
 
 
     def destroy
+        debugger
         @watchlist = current_user.watchlists.find(params[:id])
         @watchlist.destroy
     end

@@ -5,11 +5,14 @@ class NewsItem extends React.Component {
     constructor(props) {
         super(props)
         this.handleDate = this.handleDate.bind(this); 
+        // this.handleThumbnail = this.handleThumbnail.bind(this); 
     }
 
     handleDate(iso){
-        let date = new Date(iso)
-        let formattedDate = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+        let date = new Date(iso); 
+        let month = date.getMonth(); 
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let formattedDate = `${months[month]} ${date.getDate()}`
         let hours = Math.abs(date - Date.now()) / 36e5;
 
         if (hours >= 24) {
@@ -22,6 +25,16 @@ class NewsItem extends React.Component {
             }
         }
     }
+
+    // handleThumbnail(image_url){
+    //     // debugger
+    //     $.get(image_url)
+    //         .done(function () {
+    //             return image_url
+    //         }).fail(function () {
+    //             return <div></div>
+    //         })
+    // }
     
     render() {
         const {article} = this.props
@@ -49,9 +62,8 @@ class NewsItem extends React.Component {
                 </div>
 
                 <a className="news-thumbnail" href = {article.url} target = "_blank">
-                    <img src={`${article.originalImageUrl}`} className = "news-image">
-
-                    </img>
+                    <img src={`${article.originalImageUrl}`} className = "news-image"></img>
+                    {/* <img src={`${this.handleThumbnail(article.originalImageUrl)}`} className = "news-image"></img> */}
                 </a>
 
             </article>

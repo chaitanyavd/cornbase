@@ -156,8 +156,10 @@
     overflow: hidden; 
     border-radius: 50%; 
     border: none; 
-    width:32px; 
-    height:32px; 
+    /* width:32px; 
+    height:32px;  */
+    width:50px; 
+    height:50px; 
     padding: 0; 
     -webkit-box-align: center;
 }
@@ -180,7 +182,8 @@
    right: 11.5%;
    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
    min-width: 208px;
-   height: 293px; 
+   height: 105px; 
+   border-radius: 5px; 
    box-shadow: rgba(17, 51, 83, 0.02) 0px 4px 12px 0px;
    background-color: rgb(255, 255, 255);
    z-index: 1000;

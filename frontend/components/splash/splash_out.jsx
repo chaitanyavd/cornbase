@@ -1,5 +1,7 @@
 import SplashOutItem from './splash_out_item';
-import CoinIndexItem from '../coins/coin_index_item'
+import CoinIndexItem from '../coins/coin_index_item'; 
+import Watchlist from '../watchlists/watchlist'; 
+import Portfolio from "../portfolio/portfolio"; 
 import React from "react";
 
 class SplashOut extends React.Component {
@@ -12,7 +14,7 @@ class SplashOut extends React.Component {
     
     componentDidMount() {
         this.props.fetchCoins(); 
-        this.props.fetchWatchlists(); 
+        this.props.fetchWatchlists();
     }
 
     update(field) {
@@ -27,7 +29,7 @@ class SplashOut extends React.Component {
 
     render() {
 
-        // debugger 
+
         const { coins, currentUser } = this.props;
 
         const mapper = coins.map((coin, idx) => {
@@ -102,14 +104,18 @@ class SplashOut extends React.Component {
             </div>
         )
 
-        // const loggedIn = () => (
-        //     <div className = "wip-container">
-        //         Hey Im here
-        //     </div>
-        // )
+        const loggedIn = () => {
+            return (
+            <div className = "homepage-container">
+                <Portfolio/> 
+                <Watchlist watchlists = {this.props.watchlists} deleteWatchlist = {this.props.deleteWatchlist}/>
+            </div>
+            )
+        }
 
-        // return  currentUser ? loggedIn() : loggedOut();
-        return  loggedOut(); 
+
+        return  currentUser ? loggedIn() : loggedOut();
+        // return  loggedOut(); 
         
     }
 
