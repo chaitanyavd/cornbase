@@ -4,36 +4,15 @@ class Api::WatchlistsController < ApplicationController
 
     def index 
         # debugger 
-        key = Rails.application.credentials.nomics[:api_key]
-
-        
-            tickers = current_user.watchlists.pluck(:ticker).join(",")
-            # debugger
-            # uri = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{tickers}")
-            # @watchlists = Net::HTTP.get(uri)
-            # # debugger 
-            # render json: @watchlists
-
-            # debugger 
-            # unless tickers == "" 
-            #     uri = = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{tickers}")
-            #     @watchlists = Net::HTTP.get(uri)
-            # end 
-
+        key = Rails.application.credentials.nomics[:api_key]       
+        tickers = current_user.watchlists.pluck(:ticker).join(",")
             if tickers == ""
-                # debugger 
-                # @watchlists = {"Nothing Here"}
                 render json: "ok"
             else 
                 uri = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{tickers}")
                 @watchlists = Net::HTTP.get(uri)
                 render json: @watchlists
             end 
-
-            
-            # render json: @watchlists
-
-
     end
 
     # def show 
@@ -55,8 +34,10 @@ class Api::WatchlistsController < ApplicationController
 
 
     def destroy
-        # debugger
-        @watchlist = current_user.watchlists.find(params[:id])
+        # @watchlist = current_user.watchlists.find_by(params[:ticker])
+        # @watchlist = current_user.watchlists.find_by(params[:ticker])
+        @watchlist = current_user.watchlists.find_by(ticker: params[:id])
+        debugger
         @watchlist.destroy
     end
 

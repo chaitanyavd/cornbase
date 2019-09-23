@@ -1,9 +1,6 @@
-import React from "React"
+import React from "react"; 
 
 class Portfolio extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     render () {
         return (
@@ -15,4 +12,4 @@ class Portfolio extends React.Component {
     
 }
 
-export default Portfolio
+export default Portfolio; 
