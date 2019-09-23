@@ -12,7 +12,7 @@ class CoinShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchCoin(this.props.match.params.symbol);
-        this.props.fetchDay(this.props.match.params.symbol);
+        this.props.fetchDay(this.props.match.params.symbol); 
         this.props.fetchGeneralNews(); 
         // debugger
     }
@@ -42,8 +42,11 @@ class CoinShow extends React.Component {
         let price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4)
         let volume = parseFloat(coin["1d"].volume) > 1000000000 ? `$${(parseFloat(coin["1d"].volume) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin["1d"].volume) / 1000000).toFixed(1)}M`
         // debugger 
-        const close = this.props.data ? this.props.data.map((object) => (object.close)) : []
-        // const close = (this.props.data === {}) ? [] : this.props.data.map((object) => (object.close)) //? tried to reverse the logic -- but problem persists
+        // debugger
+        // console.log(this.props.data);
+        const close = this.props.data.length ? this.props.data.map((object) => (object.close)) : [];
+        // const close = this.props.data ? this.props.data.map((object) => (object.close)) : []
+        // const close = (this.props.data === []) ? [] : this.props.data.map((object) => (object.close)) //? tried to reverse the logic -- but problem persists
         let min = -Infinity;
         let max = Infinity;
         if (close.length >= 1) {
@@ -52,7 +55,7 @@ class CoinShow extends React.Component {
         }
         let change = max - min; 
         // let change = this.props.data ? this.props.data[this.props.data.length - 1].close - this.props.data[0].close : 0
-        // let color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null 
+        let color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null 
         // debugger
 
         return (

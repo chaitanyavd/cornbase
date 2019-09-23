@@ -6,6 +6,15 @@ class Watchlist extends React.Component {
         super(props)
 
     }
+
+    componentDidMount() {
+        this.props.fetchWatchlists(); 
+    }
+    
+
+    // componentDidUpdate(){
+    //     this.props.fetchWatchlists(); 
+    // }
     
     
 

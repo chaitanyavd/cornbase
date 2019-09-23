@@ -7,7 +7,7 @@ export const fetchWatchlists = () => (
 
 
 export const deleteWatchlist = id => {
-    debugger
+
     return (
     $.ajax({
         method: "DELETE",

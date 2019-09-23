@@ -14,7 +14,7 @@ class SplashOut extends React.Component {
     
     componentDidMount() {
         this.props.fetchCoins(); 
-        this.props.fetchWatchlists();
+        // this.props.fetchWatchlists();
     }
 
     update(field) {
@@ -108,7 +108,7 @@ class SplashOut extends React.Component {
             return (
             <div className = "homepage-container">
                 <Portfolio/> 
-                <Watchlist watchlists = {this.props.watchlists} deleteWatchlist = {this.props.deleteWatchlist}/>
+                <Watchlist watchlists = {this.props.watchlists} fetchWatchlists = {this.props.fetchWatchlists} deleteWatchlist = {this.props.deleteWatchlist}/>
             </div>
             )
         }

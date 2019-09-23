@@ -5,11 +5,12 @@ import CoinShow from './coin_show';
 // import News from './news'; 
 
 const msp = (state, ownProps) => {
+    // debugger 
     return ({
         coin: state.entities.coins[ownProps.match.params.symbol], 
         symbol: ownProps.match.params.symbol,
-        data: state.entities.coinData,
-        news: state.entities.news
+        data: state.entities.coinData.length ? state.entities.coinData : [],
+        news: state.entities.news.length ? state.entities.news : []
     })
 }
 

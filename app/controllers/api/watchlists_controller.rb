@@ -4,12 +4,36 @@ class Api::WatchlistsController < ApplicationController
 
     def index 
         # debugger 
+        key = Rails.application.credentials.nomics[:api_key]
+
+        
             tickers = current_user.watchlists.pluck(:ticker).join(",")
-            key = Rails.application.credentials.nomics[:api_key]
-            uri = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{tickers}")
-            @watchlists = Net::HTTP.get(uri)
+            # debugger
+            # uri = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{tickers}")
+            # @watchlists = Net::HTTP.get(uri)
+            # # debugger 
+            # render json: @watchlists
+
             # debugger 
-            render json: @watchlists
+            # unless tickers == "" 
+            #     uri = = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{tickers}")
+            #     @watchlists = Net::HTTP.get(uri)
+            # end 
+
+            if tickers == ""
+                # debugger 
+                # @watchlists = {"Nothing Here"}
+                render json: "ok"
+            else 
+                uri = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{tickers}")
+                @watchlists = Net::HTTP.get(uri)
+                render json: @watchlists
+            end 
+
+            
+            # render json: @watchlists
+
+
     end
 
     # def show 
@@ -31,7 +55,7 @@ class Api::WatchlistsController < ApplicationController
 
 
     def destroy
-        debugger
+        # debugger
         @watchlist = current_user.watchlists.find(params[:id])
         @watchlist.destroy
     end
@@ -39,7 +63,7 @@ class Api::WatchlistsController < ApplicationController
     private 
 
     def watchlist_params 
-        params.require(:watchlist).permit(:user_id, :ticker)
+        params.require(:watchlist).permit(:user_id, :ticker, :id)
     end 
 
 end

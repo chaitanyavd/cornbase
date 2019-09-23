@@ -39,6 +39,7 @@
 
 
 import {RECEIVE_WATCHLISTS, RECEIVE_WATCHLIST, REMOVE_WATCHLIST} from '../actions/watchlist_actions'; 
+import {LOGOUT_CURRENT_USER} from '../actions/session_actions'; 
 import merge from 'lodash/merge'
 
 
@@ -47,18 +48,18 @@ const watchlistReducer = (state = {}, action) => {
     let newState = merge({}, state)
     switch(action.type) {
         case RECEIVE_WATCHLISTS: 
-            debugger
                action.watchlists.forEach(watchlist => (newState[watchlist.id] = watchlist))
               return newState;
             // return action.watchlists; 
         case RECEIVE_WATCHLIST: 
-            debugger
              action.watchlist.forEach(watchlist => newState[watchlist.id] = watchlist)
              return newState;
             // newState[action.watchlist.id] = action.watchlist;
             // return newState;
+        case LOGOUT_CURRENT_USER:
+            newState = {};
+            return newState; 
         case REMOVE_WATCHLIST: 
-            debugger
             delete newState[action.watchlistId]
             return newState; 
         default: 

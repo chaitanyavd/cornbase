@@ -384,7 +384,6 @@ var createWatchlist = function createWatchlist(watchlist) {
 
 var deleteWatchlist = function deleteWatchlist(id) {
   return function (dispatch) {
-    debugger;
     return _util_watchlist_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteWatchlist"](id).then(function (watchlist) {
       return dispatch({
         type: REMOVE_WATCHLIST,
@@ -900,10 +899,13 @@ function (_React$Component) {
       var allTimeHigh = parseFloat(coin.high) > 0.1 ? parseFloat(coin.high).toFixed(2) : parseFloat(coin.high).toFixed(4);
       var price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4);
       var volume = parseFloat(coin["1d"].volume) > 1000000000 ? "$".concat((parseFloat(coin["1d"].volume) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin["1d"].volume) / 1000000).toFixed(1), "M"); // debugger 
+      // debugger
+      // console.log(this.props.data);
 
-      var close = this.props.data ? this.props.data.map(function (object) {
+      var close = this.props.data.length ? this.props.data.map(function (object) {
         return object.close;
-      }) : []; // const close = (this.props.data === {}) ? [] : this.props.data.map((object) => (object.close)) //? tried to reverse the logic -- but problem persists
+      }) : []; // const close = this.props.data ? this.props.data.map((object) => (object.close)) : []
+      // const close = (this.props.data === []) ? [] : this.props.data.map((object) => (object.close)) //? tried to reverse the logic -- but problem persists
 
       var min = -Infinity;
       var max = Infinity;
@@ -918,8 +920,8 @@ function (_React$Component) {
       }
 
       var change = max - min; // let change = this.props.data ? this.props.data[this.props.data.length - 1].close - this.props.data[0].close : 0
-      // let color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null 
-      // debugger
+
+      var color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null; // debugger
 
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "show-container"
@@ -1114,11 +1116,12 @@ __webpack_require__.r(__webpack_exports__);
  // import News from './news'; 
 
 var msp = function msp(state, ownProps) {
+  // debugger 
   return {
     coin: state.entities.coins[ownProps.match.params.symbol],
     symbol: ownProps.match.params.symbol,
-    data: state.entities.coinData,
-    news: state.entities.news
+    data: state.entities.coinData.length ? state.entities.coinData : [],
+    news: state.entities.news.length ? state.entities.news : []
   };
 };
 
@@ -2301,8 +2304,7 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(SplashOut, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchCoins();
-      this.props.fetchWatchlists();
+      this.props.fetchCoins(); // this.props.fetchWatchlists();
     }
   }, {
     key: "update",
@@ -2414,6 +2416,7 @@ function (_React$Component) {
           className: "homepage-container"
         }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_portfolio_portfolio__WEBPACK_IMPORTED_MODULE_10__["default"], null), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_watchlists_watchlist__WEBPACK_IMPORTED_MODULE_9__["default"], {
           watchlists: _this3.props.watchlists,
+          fetchWatchlists: _this3.props.fetchWatchlists,
           deleteWatchlist: _this3.props.deleteWatchlist
         }));
       };
@@ -2650,6 +2653,14 @@ function (_React$Component) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Watchlist, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchWatchlists();
+    } // componentDidUpdate(){
+    //     this.props.fetchWatchlists(); 
+    // }
+
+  }, {
     key: "render",
     value: function render() {
       if (this.props.watchlists === undefined) return null;
@@ -2722,7 +2733,6 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, this.props.watchlist.name, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
         onClick: function onClick() {
           return _this.props.deleteWatchlist(_this.props.watchlist.symbol);
@@ -3129,10 +3139,15 @@ var usersReducer = function usersReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
+  var newState = Object.assign({}, state);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_CURRENT_USER"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, action.currentUser.id, action.currentUser));
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["LOGOUT_CURRENT_USER"]:
+      newState = {};
+      return newState;
 
     default:
       return state;
@@ -3153,8 +3168,9 @@ var usersReducer = function usersReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/watchlist_actions */ "./frontend/actions/watchlist_actions.js");
-/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
-/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
 // import { RECEIVE_COINS, RECEIVE_COIN } from '../actions/coin_actions';
 // import merge from "lodash/merge"
 // const coinsReducer = (state = {}, action) => {
@@ -3191,15 +3207,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var watchlistReducer = function watchlistReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
-  var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, state);
+  var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state);
 
   switch (action.type) {
     case _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_WATCHLISTS"]:
-      debugger;
       action.watchlists.forEach(function (watchlist) {
         return newState[watchlist.id] = watchlist;
       });
@@ -3207,7 +3223,6 @@ var watchlistReducer = function watchlistReducer() {
     // return action.watchlists; 
 
     case _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_WATCHLIST"]:
-      debugger;
       action.watchlist.forEach(function (watchlist) {
         return newState[watchlist.id] = watchlist;
       });
@@ -3215,8 +3230,11 @@ var watchlistReducer = function watchlistReducer() {
     // newState[action.watchlist.id] = action.watchlist;
     // return newState;
 
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["LOGOUT_CURRENT_USER"]:
+      newState = {};
+      return newState;
+
     case _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_WATCHLIST"]:
-      debugger;
       delete newState[action.watchlistId];
       return newState;
 
@@ -3458,7 +3476,6 @@ var fetchWatchlists = function fetchWatchlists() {
   });
 };
 var deleteWatchlist = function deleteWatchlist(id) {
-  debugger;
   return $.ajax({
     method: "DELETE",
     url: "api/watchlists/".concat(id)
