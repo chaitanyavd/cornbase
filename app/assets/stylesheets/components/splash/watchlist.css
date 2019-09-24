@@ -77,3 +77,22 @@
     background: rgb(255, 255, 255);
     border-spacing: 0px;
 }
+
+.watchlist-button{
+    outline: none; 
+    text-decoration: none; 
+    border: 0; 
+    padding: 0; 
+    cursor: pointer; 
+    /* background-color: #f5f5f5; */
+}
+/* .watchlist-button:focus {
+    outline: none; 
+    text-decoration: none; 
+} */
+.watchlist-button:hover {
+    outline: none; 
+    text-decoration: none; 
+    background-color:#f5f5f5;
+}
+

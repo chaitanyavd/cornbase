@@ -70,7 +70,7 @@ class CoinIndex extends React.Component {
                 <table className = "index-table">
                     <tbody>
                     <tr>
-                        <th className= "tableheader">Available on Coinbase</th>
+                        <th className= "tableheader">Available on Cornbase</th>
                     </tr>
                     
                     <tr className = "tabletitles">
