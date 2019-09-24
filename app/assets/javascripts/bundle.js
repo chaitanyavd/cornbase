@@ -541,7 +541,7 @@ function (_React$Component) {
       });
 
       if (matches.length === 0) {
-        matches.push('didnt find ya corns');
+        matches.push('Search for another Corn');
       }
 
       return matches;
@@ -576,9 +576,7 @@ function (_React$Component) {
         className: "index-page-content"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "index-table-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-        className: "index-table-top"
-      }, "Top cryptocurrency prices"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("section", {
         className: "index-table-search-section"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "index-table-search-div"
@@ -790,6 +788,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", {
           id: "failed-search-container"
         }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+          colspan: "6",
           id: "failed-search"
         }, coin, "..."));
       };
@@ -2910,7 +2909,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: color
       }, percent, "%"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
-        className: "splashout-tablerow-5"
+        className: "splashout-tablerow-4"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "tr-marketcap-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, marketCap))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {

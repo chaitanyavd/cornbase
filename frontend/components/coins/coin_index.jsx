@@ -33,7 +33,7 @@ class CoinIndex extends React.Component {
         });
 
         if (matches.length === 0) {
-            matches.push('didnt find ya corns');
+            matches.push('Search for another Corn');
         }
 
         return matches;
@@ -61,7 +61,7 @@ class CoinIndex extends React.Component {
             
             <div className = "index-table-container">
 
-                    <span className="index-table-top" >Top cryptocurrency prices</span>
+                    {/* <span className="index-table-top" >Top cryptocurrency prices</span> */}
                     <section className="index-table-search-section" >
                         <div className="index-table-search-div" >
                         <input className = "search" onChange={this.handleInput} value={this.state.inputVal} placeholder='Search all assets...' />        

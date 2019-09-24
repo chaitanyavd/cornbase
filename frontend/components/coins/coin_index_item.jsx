@@ -75,7 +75,7 @@ class CoinIndexItem extends React.Component {
         const Absent = ()=> (
 
             <tr id = "failed-search-container">
-                 <th id = "failed-search">
+                <th colspan="6" id = "failed-search">
                      {coin}...
                  </th>
             </tr>

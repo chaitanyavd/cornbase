@@ -61,7 +61,7 @@ class WatchlistItem extends React.Component {
                         <span className={color}>{percent}%</span>
                     </div>
                 </td>
-                <td className="splashout-tablerow-5">
+                <td className="splashout-tablerow-4">
                     <div className="tr-marketcap-container">
                         <span>{marketCap}</span>
                     </div>
