@@ -384,9 +384,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteWatchlist", function() { return deleteWatchlist; });
 /* harmony import */ var _util_watchlist_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/watchlist_api_util */ "./frontend/util/watchlist_api_util.js");
 
-var RECEIVE_WATCHLISTS = 'RECEIVE_WATCHLISTS';
-var RECEIVE_WATCHLIST = 'RECEIVE_WATCHLIST';
-var REMOVE_WATCHLIST = 'REMOVE_WATCHLIST';
+var RECEIVE_WATCHLISTS = "RECEIVE_WATCHLISTS";
+var RECEIVE_WATCHLIST = "RECEIVE_WATCHLIST";
+var REMOVE_WATCHLIST = "REMOVE_WATCHLIST";
 var fetchWatchlists = function fetchWatchlists() {
   return function (dispatch) {
     return _util_watchlist_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchWatchlists"]().then(function (watchlists) {
@@ -412,11 +412,10 @@ var createWatchlist = function createWatchlist(watchlist) {
 
 var deleteWatchlist = function deleteWatchlist(id) {
   return function (dispatch) {
-    debugger;
     return _util_watchlist_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteWatchlist"](id).then(function (watchlist) {
-      return dispatch({
+      dispatch({
         type: REMOVE_WATCHLIST,
-        watchlistId: watchlist.id
+        watchlistId: watchlist.ticker
       });
     });
   };
@@ -767,7 +766,7 @@ function (_React$Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CoinIndexItem);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinIndexItem).call(this, props));
-    _this.isWatchlist = _this.isWatchlist.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)); // this.state = {  coin: {symbol: ""}} 
+    _this.isWatchlist = _this.isWatchlist.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)); // this.state = {  coin: {symbol: ""}}
 
     return _this;
   } // componentDidMount() {
@@ -777,13 +776,15 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndexItem, [{
     key: "isWatchlist",
     value: function isWatchlist(id) {
-      this.props.watchlists.forEach(function (watchlist) {
-        if (watchlist.id === id) {
+      var watchlists = this.props.watchlists;
+
+      for (var i = 0; i < watchlists.length; i++) {
+        if (watchlists[i].id === id) {
           return true;
-        } else {
-          return false;
         }
-      });
+      }
+
+      return false;
     }
   }, {
     key: "render",
@@ -803,11 +804,11 @@ function (_React$Component) {
       var price = coin.price ? parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4) : null;
       var marketCap = coin.market_cap ? parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M") : null;
       var percent = coin.price ? parseFloat(coin["1d"].price_change_pct * 100).toFixed(2) : null;
-      var color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
-      var fill = "rgb(244, 198, 34)";
-      var stroke = "rgb(244, 198, 34)"; // let fill = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue"
-      // let stroke = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue"
-      // debugger 
+      var color = coin.price ? percent >= 0 ? "pospercent" : "negpercent" : null; // let fill = "rgb(244, 198, 34)";
+
+      var stroke = "rgb(244, 198, 34)";
+      var fill = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue"; // let stroke = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue"
+      // debugger
 
       var Present = function Present() {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {

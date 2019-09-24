@@ -43,7 +43,13 @@ class Api::WatchlistsController < ApplicationController
 
     def destroy
         @watchlist = current_user.watchlists.find_by(ticker: params[:id])
-        @watchlist.destroy
+        
+        if @watchlist.destroy
+                render json: @watchlist
+        else 
+            render json: @watchlist.errors.full_messages, status: 422 
+        end
+        
     end
 
     private 
