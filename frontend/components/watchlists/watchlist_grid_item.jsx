@@ -8,7 +8,7 @@ class WatchlistGridItem extends React.Component {
     }
 
     render() {
-        const { watchlist, deleteWatchlist, orderNum } = this.props;
+        const { watchlist, deleteWatchlist, orderNum, fetchDay } = this.props;
 
 
         if (this.props.watchlist === undefined) return null;
@@ -30,6 +30,14 @@ class WatchlistGridItem extends React.Component {
                         </div>
                         <div className = "grid-timeperiod">
                             <span>24H</span>
+                        </div>
+                    </div>
+                    <div className = "watchlist-grid-header-container">
+                        <div className = "grid-name-logo">
+                            <h3 className = "grid-price">${price}</h3>
+                        </div>
+                        <div className = "grid-percent">
+                            <span>{percent}%</span>
                         </div>
                     </div>
                 </div>

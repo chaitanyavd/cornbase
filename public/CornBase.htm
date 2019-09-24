@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)http://localhost:3000/#/ -->
+<html class="gr__localhost"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script>(function(){function XOwRP() {
+  //<![CDATA[
+  window.rVDymcH = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.xhFntqb = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  let WAIT_TIME = 100;
+
+  
+  if (!['http:', 'https:'].includes(window.location.protocol)) {
+    // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
+    window.PcSii = true;
+    window.PAqzk = 38.883333;
+    window.GEGAU = -77.000;
+  }
+
+  function waitGetCurrentPosition() {
+    if ((typeof window.PcSii !== 'undefined')) {
+      if (window.PcSii === true) {
+        window.iYeZdzu({
+          coords: {
+            latitude: window.PAqzk,
+            longitude: window.GEGAU,
+            accuracy: 10,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null,
+          },
+          timestamp: new Date().getTime(),
+        });
+      } else {
+        window.rVDymcH(window.iYeZdzu, window.IzOfqhT, window.jVRLN);
+      }
+    } else {
+      setTimeout(waitGetCurrentPosition, WAIT_TIME);
+    }
+  }
+
+  function waitWatchPosition() {
+    if ((typeof window.PcSii !== 'undefined')) {
+      if (window.PcSii === true) {
+        navigator.getCurrentPosition(window.lReWULt, window.qXrllqS, window.YAFnu);
+        return Math.floor(Math.random() * 10000); // random id
+      } else {
+        window.xhFntqb(window.lReWULt, window.qXrllqS, window.YAFnu);
+      }
+    } else {
+      setTimeout(waitWatchPosition, WAIT_TIME);
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+    window.iYeZdzu = successCallback;
+    window.IzOfqhT = errorCallback;
+    window.jVRLN = options;
+    waitGetCurrentPosition();
+  };
+  navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+    window.lReWULt = successCallback;
+    window.qXrllqS = errorCallback;
+    window.YAFnu = options;
+    waitWatchPosition();
+  };
+
+  const instantiate = (constructor, args) => {
+    const bind = Function.bind;
+    const unbind = bind.bind(bind);
+    return new (unbind(constructor, null).apply(null, args));
+  }
+
+  Blob = function (_Blob) {
+    function secureBlob(...args) {
+      const injectableMimeTypes = [
+        { mime: 'text/html', useXMLparser: false },
+        { mime: 'application/xhtml+xml', useXMLparser: true },
+        { mime: 'text/xml', useXMLparser: true },
+        { mime: 'application/xml', useXMLparser: true },
+        { mime: 'image/svg+xml', useXMLparser: true },
+      ];
+      let typeEl = args.find(arg => (typeof arg === 'object') && (typeof arg.type === 'string') && (arg.type));
+
+      if (typeof typeEl !== 'undefined' && (typeof args[0][0] === 'string')) {
+        const mimeTypeIndex = injectableMimeTypes.findIndex(mimeType => mimeType.mime.toLowerCase() === typeEl.type.toLowerCase());
+        if (mimeTypeIndex >= 0) {
+          let mimeType = injectableMimeTypes[mimeTypeIndex];
+          let injectedCode = `<script>(
+            ${XOwRP}
+          )();<\/script>`;
+    
+          let parser = new DOMParser();
+          let xmlDoc;
+          if (mimeType.useXMLparser === true) {
+            xmlDoc = parser.parseFromString(args[0].join(''), mimeType.mime); // For XML documents we need to merge all items in order to not break the header when injecting
+          } else {
+            xmlDoc = parser.parseFromString(args[0][0], mimeType.mime);
+          }
+
+          if (xmlDoc.getElementsByTagName("parsererror").length === 0) { // if no errors were found while parsing...
+            xmlDoc.documentElement.insertAdjacentHTML('afterbegin', injectedCode);
+    
+            if (mimeType.useXMLparser === true) {
+              args[0] = [new XMLSerializer().serializeToString(xmlDoc)];
+            } else {
+              args[0][0] = xmlDoc.documentElement.outerHTML;
+            }
+          }
+        }
+      }
+
+      return instantiate(_Blob, args); // arguments?
+    }
+
+    // Copy props and methods
+    let propNames = Object.getOwnPropertyNames(_Blob);
+    for (let i = 0; i < propNames.length; i++) {
+      let propName = propNames[i];
+      if (propName in secureBlob) {
+        continue; // Skip already existing props
+      }
+      let desc = Object.getOwnPropertyDescriptor(_Blob, propName);
+      Object.defineProperty(secureBlob, propName, desc);
+    }
+
+    secureBlob.prototype = _Blob.prototype;
+    return secureBlob;
+  }(Blob);
+
+  Object.freeze(navigator.geolocation);
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== window) {
+      return;
+    }
+    const message = event.data;
+    switch (message.method) {
+      case 'zsNzulD':
+        if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
+          window.PAqzk = message.info.coords.lat;
+          window.GEGAU = message.info.coords.lon;
+          window.PcSii = message.info.fakeIt;
+        }
+        break;
+      default:
+        break;
+    }
+  }, false);
+  //]]>
+}XOwRP();})()</script>
+    <title>CornBase</title>
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="SA4ncjICE7UNUPofI4WXKyrk3UfVAjjsZjIxzygwBX4ppUAFw57ERfYMnnz/Mfl7cGXjwfcAThGqYzwYGayaLw==">
+    
+    <link rel="stylesheet" media="all" href="./CornBase_files/coins.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/watchlists.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/coin_index.self-0d8e90ed55dc836d4c8144daf16e72ffeb5552864d2633c1930a2e9dac40bdcb.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/coin_show.self-761591023a1faa044b26dec8953cf3e21dfbc99acff64e5c1976a64f3834c9af.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/news.self-99b50e0c4b01aff3ed1a48fdcfbbbea25082149299e4ce239d4376255d01c488.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/homepage.self-25c4da9ef3e530246cb2150b0e75a9d0578c23ee8a32bae00aad0a2023e175c6.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/portfolio.self-22767e40aeb38b91d659afc455033ff23667695d076ae74102a49dfa075a0ff7.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/navbar.self-b8b8c26309f1e63b37dc85a816d38cffca863ccf321fff33453c41d9418e7b60.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/login_form.self-4516c2abccf1b7d81d765acdfca4d70763647d55e9a1159cec605120f4e69c50.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/signup_form.self-e3d08c9f7c09d1e2db8d0950655cb9341a092c39105343ea4520b0baa4946869.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/splash-out.self-cef5d068ddbd6cf623bb5708eafecaa370573d584c56f7897dbfafa799ead6aa.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/watchlist.self-8a7823bac0234b43f4e089270e256938e0adb312ed19d8f7037262c7dad9e2c9.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/reset.self-3c58b6c62ea78a200c613671f8746e8b2eccdca8e0628a1431f7606af498ec94.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/static_pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="reload">
+<link rel="stylesheet" media="all" href="./CornBase_files/application.self-58d65e2bfc864d623c8101523bc8839153d52af95aabb19855457968fb9c9101.css" data-turbolinks-track="reload">
+    <script src="./CornBase_files/rails-ujs.self-2b8935521e2301b06b45bd42e623eb0c0acf76c3a6ba383b7429c6a2884f8c23.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/activestorage.self-1ed4604ac2170045f1ffca4edb81a75246661555e4f9cf682bb8a21825e32e1c.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/coins.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/watchlists.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/bundle.self-b05753665f33358950063f346d399f8be486aacb5d9d92ff8876b5970a4ce248.js" data-turbolinks-track="reload"></script><style data-styled="" data-styled-version="4.3.2">
+/* sc-component-id: sc-bdVaJa */
+
+/* sc-component-id: sc-bwzfXH */
+
+/* sc-component-id: sc-htpNat */
+
+/* sc-component-id: sc-bxivhb */
+
+/* sc-component-id: sc-ifAKCX */
+
+/* sc-component-id: sc-EHOje */
+
+/* sc-component-id: sc-bZQynM */
+
+/* sc-component-id: sc-gzVnrw */
+
+/* sc-component-id: sc-htoDjs */
+
+/* sc-component-id: sc-dnqmqq */
+
+/* sc-component-id: sc-iwsKbI */
+
+/* sc-component-id: sc-gZMcBi */
+
+/* sc-component-id: sc-gqjmRU */
+
+/* sc-component-id: sc-VigVT */
+
+/* sc-component-id: sc-jTzLTM */
+
+/* sc-component-id: sc-fjdhpX */
+
+/* sc-component-id: sc-jzJRlG */
+
+/* sc-component-id: sc-cSHVUG */
+
+/* sc-component-id: sc-kAzzGY */
+
+/* sc-component-id: sc-chPdSV */
+
+/* sc-component-id: sc-kgoBCf */
+
+/* sc-component-id: sc-kGXeez */
+</style>
+<script src="./CornBase_files/action_cable.self-69fddfcddf4fdef9828648f9330d6ce108b93b82b0b8d3affffc59a114853451.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/cable.self-8484513823f404ed0c0f039f75243bfdede7af7919dda65f2e66391252443ce9.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/static_pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="reload"></script>
+<script src="./CornBase_files/application.self-5e866087125b4eb5e02a8365d73cdaeb7f2127bbb3f479fb54ab3ddb0d5c66af.js" data-turbolinks-track="reload"></script>
+  </head>
+
+  <body data-gr-c-s-loaded="true" style="zoom: 1;">
+    <main id="root"><div class="main-container"><div class="loggedin-navbar"><div class="navbar-container"><a class="cornbase-logo-loggedout" href="http://localhost:3000/#/"><h2>cornbase</h2></a><nav><a class="login-link-out" href="http://localhost:3000/#/price">Prices</a></nav><div id="butt-mod"><button class="logout-button"><img src="./CornBase_files/corn-avatar.jpg" width="50" height="50"></button></div></div></div><div class="homepage-container"><div id="portfolio-container"><h1 id="construction-title">Portfolio Chart Coming</h1></div><div id="watchlist-container"><div id="watchlist-header-wrapper"><div id="watchlist-title-wrapper"><h2 id="watchlist-header"><span>Following</span></h2></div><div id="widget-header-wrapper"><span><svg id="grid-svg" height="18" width="18" viewBox="0 0 18 18"><path d="M7.044 0H.783A.783.783 0 0 0 0 .783v6.26c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.782V.783A.783.783 0 0 0 7.044 0zM17.218 0h-6.261a.783.783 0 0 0-.783.783v6.26c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.782V.783A.783.783 0 0 0 17.217 0zM7.044 10.174H.783a.783.783 0 0 0-.783.782v6.261c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.783v-6.26a.783.783 0 0 0-.782-.783zM17.218 10.174h-6.261a.783.783 0 0 0-.783.782v6.261c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.783v-6.26a.783.783 0 0 0-.783-.783z" fill="rgb(190, 202, 218)"> </path></svg><svg id="list-svg" height="16" width="19" viewBox="0 0 19 16"><path d="M0 10.286c0 .63.512 1.143 1.143 1.143h16.714a1.143 1.143 0 0 0 0-2.286H1.143C.512 9.143 0 9.655 0 10.286zm0 4.571C0 15.488.512 16 1.143 16h16.714a1.143 1.143 0 0 0 0-2.286H1.143c-.631 0-1.143.512-1.143 1.143zm0-9.143c0 .631.512 1.143 1.143 1.143h16.714a1.143 1.143 0 1 0 0-2.286H1.143C.512 4.571 0 5.083 0 5.714zM1.143 0a1.143 1.143 0 1 0 0 2.286h16.714a1.143 1.143 0 1 0 0-2.286H1.143z" fill="rgb(190, 202, 218)"> </path></svg></span></div></div><div id="watchlist-grid-container"><a class="grid-link" href="http://localhost:3000/#/price/BTC"><div class="watchlist-grid-wrapper"><div class="watchlist-grid-header-container"><div class="grid-name-logo"><img class="grid-img" src="./CornBase_files/btc.svg" width="24" height="24"><h3 class="grid-name">Bitcoin</h3></div><div class="grid-timeperiod"><span>24H</span></div></div><div class="watchlist-grid-header-container"><div class="grid-name-logo"><h3 class="grid-price">$8505.15</h3></div><div class="grid-percent"><span>-12.62%</span></div></div></div></a><a class="grid-link" href="http://localhost:3000/#/price/ETH"><div class="watchlist-grid-wrapper"><div class="watchlist-grid-header-container"><div class="grid-name-logo"><img class="grid-img" src="./CornBase_files/eth.svg" width="24" height="24"><h3 class="grid-name">Ethereum</h3></div><div class="grid-timeperiod"><span>24H</span></div></div><div class="watchlist-grid-header-container"><div class="grid-name-logo"><h3 class="grid-price">$166.02</h3></div><div class="grid-percent"><span>-18.91%</span></div></div></div></a><a class="grid-link" href="http://localhost:3000/#/price/XRP"><div class="watchlist-grid-wrapper"><div class="watchlist-grid-header-container"><div class="grid-name-logo"><img class="grid-img" src="./CornBase_files/xrp.png" width="24" height="24"><h3 class="grid-name">Ripple</h3></div><div class="grid-timeperiod"><span>24H</span></div></div><div class="watchlist-grid-header-container"><div class="grid-name-logo"><h3 class="grid-price">$0.24</h3></div><div class="grid-percent"><span>-14.60%</span></div></div></div></a></div></div></div></div></main>
+  <script id="bootstrap-current-user" type="text/javascript">
+  	window.currentUser = {"id":58,"email":"demo@cornbase.com","first_name":"Demo","last_name":"User"}
+  </script>
+
+
+  
+
+</body></html>

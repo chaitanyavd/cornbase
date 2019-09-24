@@ -1,0 +1,510 @@
+.splashout-container{
+    min-height: var(--full-view-height,100vh);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    min-height: var(--full-view-height,100vh);
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    background-color: transparent;
+    flex: 1 1 auto;
+}
+
+.splashout-home-backdrop {
+    background-color: rgb(22, 82, 240);
+}
+
+.splashout-header-section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1180px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin: 0px auto;
+    padding: 35px 24px 200px;
+}
+
+.splashout-header-container {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    max-width: 660px;
+}
+
+.splashout-title{
+    display: block; 
+    font-size: 48px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 1.17;
+    margin: 0px;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.splashout-para {
+    opacity: 0.9;
+    font-size: 16px;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: normal;
+    line-height: 1.75;
+    color: rgb(255, 255, 255);
+    margin: 24px 0px;
+    box-sizing: border-box;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.splashout-get-started-form {
+    margin-top: 8px;
+    width: 455px;
+    display: flex;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+    line-height: 1.15;
+    text-size-adjust: 100%;
+}
+
+.splashout-email {
+    margin-right: 10px;
+    -webkit-appearance: none;
+    font-family: Graphik, sans-serif;
+    font-weight: normal;
+    line-height: 1.75;
+    color: rgb(11, 52, 102);
+    flex: 1 1 0%;
+    padding: 13px 16px 15px;
+    border-radius: 4px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial; 
+    overflow: visible;
+    margin: 0px;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    font: 400 18px system-ui;
+
+}
+
+.splashout-email:focus { 
+    border-color: rgb(22, 82, 240); 
+    outline: none;   
+}
+.splashout-email:focus::placeholder {
+    color: rgb(22, 82, 240);  
+}
+
+.splashout-button {
+    position: relative;
+    width: auto;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 16px;
+    background-color: rgb(5, 177, 105);
+    margin-left: 11px;
+    border-radius: 4px;
+    transition: all 80ms ease-in-out 0s;
+    padding: 24px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(5, 177, 105);
+    border-image: initial;
+    font-family: sans-serif;
+    line-height: 1.15;
+    box-sizing: border-box;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+}
+.splashout-button:focus { 
+    outline: none;   
+}
+
+.splashout-button-text {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    pointer-events: none;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    box-sizing: border-box; 
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+
+.splashout-table-backdrop {
+    flex-direction: row;
+    max-width: 1180px;
+    display: block;
+    margin: -175px auto 0px;
+    padding: 0px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(236, 239, 241);
+    border-image: initial;
+    box-sizing: border-box;
+}
+
+
+.splashout-table-container {
+    width: 100%; 
+    width: 890px; 
+    box-sizing: border-box; 
+    display: block; 
+}
+.splashout-table{
+    width: 100%;
+    caption-side: top;
+    padding: 0px;
+    background: rgb(255, 255, 255);
+    border-spacing: 0px;
+    border-radius: 4px; 
+    box-sizing: border-box;
+    display: table;
+    border-color: grey; 
+}
+
+.splashout-table-head{
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    display: table-header-group;
+    vertical-align: middle;
+}
+
+.splashout-tablehelpers {
+    padding-left: 32px;
+    text-align: left;
+    padding: 16px 0px;
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+}
+
+
+.splashout-tablehelper-div {
+    box-sizing: border-box; 
+    text-align: left; 
+    font-weight: bold; 
+    caption-side: top; 
+}
+
+.tablehead{
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(17, 51, 83, 0.3);
+    transition: color 200ms ease-in-out 0s;
+    display: block;
+    margin: 0px;
+    box-sizing: border-box; 
+    text-align: center; 
+}
+
+.tableheadname{
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(17, 51, 83, 0.3);
+    transition: color 200ms ease-in-out 0s;
+    display: block;
+    margin: 0px;
+    box-sizing: border-box; 
+    margin-left: 30px; 
+    text-align: left; 
+}
+
+.t-body {
+    padding: 0px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    display: table-row-group;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.t-row-container {
+    font-size: 18px;
+    user-select: none;
+    background: rgb(255, 255, 255);
+    box-sizing: border-box;
+    display: table-row;
+}
+
+.splashout-tablerow-1{
+    /* padding-left: 32px;  */
+    box-sizing: border-box; 
+    cursor: default;
+    width: 85px;
+    color: rgba(17, 51, 83, 0.6);
+    vertical-align: middle;
+    /* border-top: 1px solid rgb(236, 239, 241); */
+    font-size: 18px;
+    user-select: none;
+}
+
+.splashout-tablerow-1id{  
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; 
+    line-height: 1.3;
+    color: rgba(17, 51, 83, 0.6);
+    font-size: 18px;
+    display: block;
+    margin: 0px;
+    font-weight: 400;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+
+.splashout-tablerow-name-container{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+    min-width: 140px;
+    margin-left: 30px; 
+    color: rgba(17, 51, 83, 0.6);
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+.splashout-tablerow-img{
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 auto;
+    color: rgba(17, 51, 83, 0.6);
+}
+
+.img {
+    margin-right: 24px;
+}
+
+.splashout-tablerow-name{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row; 
+    color: rgba(17, 51, 83, 0.6);
+    text-decoration: none; 
+}
+.tr-title-span{
+    padding-right: 16px;
+    box-sizing: border-box;
+}
+
+.tr-title{
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.3;
+    color: rgb(5, 15, 25);
+    font-size: 18px;
+    font-weight: 400;  
+    display: block;
+    margin: 0px;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.tr-symbol{
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.3;
+    color: rgba(17, 51, 83, 0.6);
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+    margin: 0px;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.splashout-tablerow-2{
+    cursor: pointer;
+    /* border-top: 1px solid rgb(236, 239, 241); */
+    width: 600; 
+    height: 70
+}
+.tr-symbol, .tr-title{
+    text-decoration: none;
+    outline: none;  
+}
+
+.splashout-link {
+    text-decoration: none; 
+}
+.splashout-tablerow-3 {
+    cursor: default;
+    width: 132px;
+    /* border-top: 1px solid rgb(236, 239, 241); */
+    display: table-cell;
+    vertical-align: inherit;
+    box-sizing: border-box;
+}
+
+.splashout-tablerow-4 {
+    cursor: default;
+    width: 132px;
+    /* border-top: 1px solid rgb(236, 239, 241); */
+    display: table-cell;
+    vertical-align: inherit;
+    box-sizing: border-box;
+}
+
+.tr-marketcap-container{
+    display: flex;
+     font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    justify-content: center; 
+    flex-direction: row;
+    font-size: 18px;
+    user-select: none;
+}
+
+
+
+.tr-price-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    font-size: 18px;
+    user-select: none;
+}
+
+.tr-price{
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.3;
+    color: rgb(5, 15, 25);
+    font-size: 18px;
+    font-weight: 400;  
+    padding-left: 30px; 
+    display: block;
+    margin: 0px;
+    margin-block-start: 1.33em;
+    margin-left: 15px; 
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.splashout-tablerow-4{
+    cursor: default;
+    width: 100px;
+    border-top: 1px solid rgb(236, 239, 241);
+}
+
+.tr-percent-container{
+     font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    min-width: 76px;
+    margin-right: 20px;
+    color: rgb(223, 95, 103);
+    text-align: left;
+    display: block; 
+    box-sizing: border-box; 
+}  
+
+ .negpercent {
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    min-width: 76px;
+    margin-right: 20px;
+    padding-left: 30px; 
+    color: rgb(223, 95, 103);
+    text-align: left;
+    display: block; 
+    box-sizing: border-box; 
+ }
+
+ .pospercent {
+    color: rgb(5, 177, 105);
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    min-width: 76px;
+    margin-right: 20px;
+    padding-left: 30px; 
+    text-align: left;
+    display: block; 
+    box-sizing: border-box; 
+ }
+
+.wip-container{
+    position: relative;
+    text-align:center; 
+    color: rgb(13,41,62);
+}
+
+.wip-t {
+  position: absolute;
+  top: 55px;
+  left: 130px;
+  font-size: 60px;
+
+  font-family: fantasy;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+#external-links{
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 200px; 
+
+}
+
+.link-svg{
+    margin: 50px; 
+}
+

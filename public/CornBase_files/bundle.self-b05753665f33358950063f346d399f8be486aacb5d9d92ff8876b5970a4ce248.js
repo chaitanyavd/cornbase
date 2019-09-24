@@ -1,4 +1,5 @@
-/******/ (function(modules) { // webpackBootstrap
+/******/
+ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -189,34 +190,6 @@ var fetchHour = function fetchHour(symbol) {
         data: data
       });
     });
-  };
-};
-
-/***/ }),
-
-/***/ "./frontend/actions/grid-actions.js":
-/*!******************************************!*\
-  !*** ./frontend/actions/grid-actions.js ***!
-  \******************************************/
-/*! exports provided: OPEN_GRID, CLOSE_GRID, openGrid, closeGrid */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OPEN_GRID", function() { return OPEN_GRID; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_GRID", function() { return CLOSE_GRID; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "openGrid", function() { return openGrid; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeGrid", function() { return closeGrid; });
-var OPEN_GRID = "OPEN_GRID";
-var CLOSE_GRID = "CLOSE_GRID";
-var openGrid = function openGrid(grid) {
-  return {
-    type: OPEN_GRID
-  };
-};
-var closeGrid = function closeGrid() {
-  return {
-    type: CLOSE_GRID
   };
 };
 
@@ -2534,9 +2507,6 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", {
           className: "homepage-container"
         }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_portfolio_portfolio__WEBPACK_IMPORTED_MODULE_10__["default"], null), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_watchlists_watchlist__WEBPACK_IMPORTED_MODULE_9__["default"], {
-          grid: _this3.props.grid,
-          openGrid: _this3.props.openGrid,
-          closeGrid: _this3.props.closeGrid,
           watchlists: _this3.props.watchlists,
           fetchWatchlists: _this3.props.fetchWatchlists,
           deleteWatchlist: _this3.props.deleteWatchlist,
@@ -2568,9 +2538,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
 /* harmony import */ var _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/watchlist_actions */ "./frontend/actions/watchlist_actions.js");
-/* harmony import */ var _actions_grid_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/grid-actions */ "./frontend/actions/grid-actions.js");
-/* harmony import */ var _splash_out__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./splash_out */ "./frontend/components/splash/splash_out.jsx");
-
+/* harmony import */ var _splash_out__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./splash_out */ "./frontend/components/splash/splash_out.jsx");
 
 
 
@@ -2591,13 +2559,11 @@ var msp = function msp(_ref) {
       _ref$entities = _ref.entities,
       coins = _ref$entities.coins,
       watchlists = _ref$entities.watchlists,
-      users = _ref$entities.users,
-      grid = _ref.ui.grid;
+      users = _ref$entities.users;
   return {
     coins: orderer(coins),
     watchlists: orderer(watchlists),
-    currentUser: users[session.id],
-    grid: grid
+    currentUser: users[session.id]
   };
 };
 
@@ -2630,17 +2596,11 @@ var mdp = function mdp(dispatch) {
       return openModal;
     }(function (modal) {
       return dispatch(openModal(modal));
-    }),
-    openGrid: function openGrid(grid) {
-      return dispatch(Object(_actions_grid_actions__WEBPACK_IMPORTED_MODULE_4__["openGrid"])(grid));
-    },
-    closeGrid: function closeGrid() {
-      return dispatch(Object(_actions_grid_actions__WEBPACK_IMPORTED_MODULE_4__["closeGrid"])());
-    }
+    })
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_splash_out__WEBPACK_IMPORTED_MODULE_5__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_splash_out__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
 /***/ }),
 
@@ -2823,15 +2783,12 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       if (this.props.watchlists === undefined) return null;
       var _this$props = this.props,
           watchlists = _this$props.watchlists,
           deleteWatchlist = _this$props.deleteWatchlist,
           fetchDay = _this$props.fetchDay;
-      var listOn = this.state.listOn; // debugger
-
+      var listOn = this.state.listOn;
       var listMapper = watchlists.map(function (watchlist, idx) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_watchlist_list_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
           watchlist: watchlist,
@@ -2851,7 +2808,7 @@ function (_React$Component) {
       });
       var view;
 
-      if (!this.props.grid) {
+      if (listOn) {
         view = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
           id: "watchlist-list-container"
         }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -2902,7 +2859,7 @@ function (_React$Component) {
       } else {
         view = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
           id: "watchlist-grid-container"
-        }, gridMapper);
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", null, "GRID BABY"));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -2915,12 +2872,7 @@ function (_React$Component) {
         id: "watchlist-header"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", null, "Following"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         id: "widget-header-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
-        className: "watchlist-button",
-        onClick: function onClick() {
-          return _this2.props.openGrid();
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("svg", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("svg", {
         id: "grid-svg",
         height: "18",
         width: "18",
@@ -2928,12 +2880,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("path", {
         d: "M7.044 0H.783A.783.783 0 0 0 0 .783v6.26c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.782V.783A.783.783 0 0 0 7.044 0zM17.218 0h-6.261a.783.783 0 0 0-.783.783v6.26c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.782V.783A.783.783 0 0 0 17.217 0zM7.044 10.174H.783a.783.783 0 0 0-.783.782v6.261c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.783v-6.26a.783.783 0 0 0-.782-.783zM17.218 10.174h-6.261a.783.783 0 0 0-.783.782v6.261c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.783v-6.26a.783.783 0 0 0-.783-.783z",
         fill: "rgb(190, 202, 218)"
-      }, " "))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
-        className: "watchlist-button",
-        onClick: function onClick() {
-          return _this2.props.closeGrid();
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("svg", {
+      }, " ")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("svg", {
         id: "list-svg",
         height: "16",
         width: "19",
@@ -2941,7 +2888,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("path", {
         d: "M0 10.286c0 .63.512 1.143 1.143 1.143h16.714a1.143 1.143 0 0 0 0-2.286H1.143C.512 9.143 0 9.655 0 10.286zm0 4.571C0 15.488.512 16 1.143 16h16.714a1.143 1.143 0 0 0 0-2.286H1.143c-.631 0-1.143.512-1.143 1.143zm0-9.143c0 .631.512 1.143 1.143 1.143h16.714a1.143 1.143 0 1 0 0-2.286H1.143C.512 4.571 0 5.083 0 5.714zM1.143 0a1.143 1.143 0 1 0 0 2.286h16.714a1.143 1.143 0 1 0 0-2.286H1.143z",
         fill: "rgb(190, 202, 218)"
-      }, " ")))))), view);
+      }, " "))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        id: "watchlist-grid-container"
+      }, gridMapper));
     }
   }]);
 
@@ -3358,36 +3307,6 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 
 /***/ }),
 
-/***/ "./frontend/reducers/grid_reducer.js":
-/*!*******************************************!*\
-  !*** ./frontend/reducers/grid_reducer.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return gridReducer; });
-/* harmony import */ var _actions_grid_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/grid-actions */ "./frontend/actions/grid-actions.js");
-
-function gridReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  switch (action.type) {
-    case _actions_grid_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_GRID"]:
-      return true;
-
-    case _actions_grid_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_GRID"]:
-      return false;
-
-    default:
-      return state;
-  }
-}
-
-/***/ }),
-
 /***/ "./frontend/reducers/modal_reducer.js":
 /*!********************************************!*\
   !*** ./frontend/reducers/modal_reducer.js ***!
@@ -3571,13 +3490,10 @@ var sessionReducer = function sessionReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
-/* harmony import */ var _grid_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./grid_reducer */ "./frontend/reducers/grid_reducer.js");
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  grid: _grid_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 }));
 
 /***/ }),

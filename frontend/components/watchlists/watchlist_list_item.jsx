@@ -9,6 +9,8 @@ class WatchlistListItem extends React.Component {
         {/* <button onClick={() => deleteWatchlist(watchlist.symbol)}>Delete</button> */}
     }
 
+    
+
     render () {
         const {watchlist, deleteWatchlist, orderNum} = this.props; 
 

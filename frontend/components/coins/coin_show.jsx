@@ -111,18 +111,10 @@ class CoinShow extends React.Component {
                         </div>
                     </div>
 
-                    <LineChart className='chart'
-                        width={850}
-                        height={230}
-                        data={this.props.data}
-                        margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
-                    >
+                    <LineChart className='chart'width={850} height={230} data={this.props.data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
                         <XAxis dataKey="time" hide={true} />
                         <YAxis dataKey="close" domain={[min, max]} hide={true} />
-
-                        {/* <Tooltip className="tooltip" /> */}
                         <Tooltip className="tooltip" labelStyle={{ display: 'none', text: "price" }} itemStyle={{ backgroundColor: "#34343b", fontSize: 22, color: "white", margin: "0", outline: "none" }} />
-
                         <Line className="line" cursor="cross-hair" type="monotone" dataKey="close" dot={false} strokeWidth={1.75} stroke='rgb(22, 82, 240)' yAxisId={0} />
                     </LineChart>
 

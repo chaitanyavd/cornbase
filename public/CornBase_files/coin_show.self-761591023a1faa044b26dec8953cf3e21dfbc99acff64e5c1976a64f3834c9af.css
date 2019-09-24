@@ -1,0 +1,261 @@
+button {
+    text-decoration: none; 
+}
+.show-container {
+    display: flex;
+    flex-direction: column;
+    width: 1180px; 
+    flex: 1 1 auto;
+    box-sizing: inherit;
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    flex: 1 1 auto;
+    padding: 0px 24px;
+}
+
+
+.header-container{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 100%; 
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 32px 0px;
+    padding-left: 400px; 
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    box-sizing: inherit;
+}
+
+.header-information {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: inherit;
+}
+
+.show-logo {
+    width: 46px;
+    height: 46px;
+    margin-right: 24px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+}
+
+
+.header-name, .header-symbol {
+    display: flex;
+    flex-direction: row;
+    margin-left: 16px; 
+    -webkit-box-align: center;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+.header-name{
+    margin: 0px; 
+    display: block; 
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.3;
+    color: rgb(5, 15, 25);
+    font-size: 32px;
+    font-weight: 500;    
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;   
+}
+
+.header-symbol {
+    /* margin-bottom: 6px;  */
+    display: block; 
+    box-sizing: inherit; 
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.3;
+    color: rgba(17, 51, 83, 0.6);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.graph-column {
+    display: flex;
+    flex-direction: column;
+    /* width: 784px; */
+    width: 850px;
+    border: 1px solid #ddd; 
+    border-radius: 6px;
+}
+
+.graph-controlbar-container {
+    display: flex;
+    position: relative;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    height: auto;
+    padding: 24px 32px 16px;
+}
+
+.graph-price-content{
+    display: flex;
+    width: 100%; 
+    justify-content: space-between; 
+    flex-direction: row;
+}
+
+.graph-price-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: -16px;
+}
+
+.dollar-sign{
+    position: relative;
+    vertical-align: baseline;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.graph-price-big-number{
+    display: flex;
+    flex-direction: row;
+    font-size: 48px;
+    font-weight: 400;
+    color: rgb(5, 15, 25);
+    margin-left: 16px;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.graph-pospercent-change{
+    display: flex;
+    flex-direction: row;
+    padding-top: 6px;
+    margin-left: 16px;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    color: rgb(5, 177, 105); 
+    font-weight: 50; 
+    line-height: 1.3;
+    font-size: 18px;
+    font-weight: 400;
+}
+.graph-negpercent-change{
+    display: flex;
+    flex-direction: row;
+    padding-top: 6px;
+    margin-left: 16px;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    color: rgb(223, 95, 103);
+    font-weight: 50; 
+    line-height: 1.3;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.graph-contolbar-selectors{
+    align-self: flex-start;
+    margin-top: -4px;
+    flex-shrink: 0;
+}
+
+.period-selector{
+    display: inline-block;
+    cursor: pointer;
+    padding: 12px 8px;
+    text-decoration: none; 
+    color: transparent; 
+}
+
+.inactive-tp{
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(17, 51, 83, 0.3);
+    transition: color 200ms ease-in-out 0s; 
+    border: none; 
+    outline: none; 
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent; 
+}
+
+.inactive-tp:hover {
+    cursor: pointer;
+    background-color: transparent; 
+    color: rgb(5, 15, 25);
+}
+
+.active-tp {
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(22, 82, 240);
+    transition: color 200ms ease-in-out 0s; 
+    border: none; 
+    outline: none; 
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;  
+}
+
+
+
+.graph-assets-container{
+    display: flex;
+    border-top: 1px solid #ddd; 
+
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 18px 32px;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    font-weight: 400; 
+}
+
+.graph-asset{
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    width: 25%;
+    margin: 14px 0px;
+}
+
+.graph-asset-title{
+    position: relative;
+    display: inline-block;
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: rgba(17, 51, 83, 0.6);
+    transition: color 80ms ease-in-out 0s;
+    /* display: flex; */
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.graph-asset-value{
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.3;
+    color: rgb(5, 15, 25);
+    font-size: 18px;
+    font-weight: 400;
+}
+

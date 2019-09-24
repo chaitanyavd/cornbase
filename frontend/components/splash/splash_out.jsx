@@ -129,7 +129,7 @@ class SplashOut extends React.Component {
             return (
             <div className = "homepage-container">
                 <Portfolio/> 
-                <Watchlist  watchlists = {this.props.watchlists} fetchWatchlists = {this.props.fetchWatchlists} deleteWatchlist = {this.props.deleteWatchlist}/>
+                <Watchlist  grid = {this.props.grid} openGrid = {this.props.openGrid} closeGrid = {this.props.closeGrid} watchlists = {this.props.watchlists} fetchWatchlists = {this.props.fetchWatchlists} deleteWatchlist = {this.props.deleteWatchlist} fetchDay = {this.props.fetchDay}/>
             </div>
             )
         }
