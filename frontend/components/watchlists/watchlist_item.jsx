@@ -61,6 +61,18 @@ class WatchlistItem extends React.Component {
                         <span className={color}>{percent}%</span>
                     </div>
                 </td>
+                <td className="splashout-tablerow-5">
+                    <div className="tr-marketcap-container">
+                        <span>{marketCap}</span>
+                    </div>
+                </td>
+                <td className="splashout-tablerow-4">
+                    <div className="tr-follow-container">
+                        <svg width="23" height="24" viewBox=" 0 0 24 23">
+                            <path d="M12.713 1.443l2.969 6.015 6.637.965a.794.794 0 0 1 .44 1.354l-4.804 4.681 1.135 6.612a.794.794 0 0 1-1.152.837L12 18.787l-5.938 3.121a.795.795 0 0 1-1.152-.838l1.134-6.612L1.24 9.777a.794.794 0 0 1 .44-1.354l6.638-.965 2.968-6.015a.795.795 0 0 1 1.425 0z" stroke={stroke} fill={fill}> </path>
+                        </svg>  
+                    </div>
+                </td>
 
             </tr>
             )

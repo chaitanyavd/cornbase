@@ -30,7 +30,7 @@ class CoinIndexItem extends React.Component {
                 </th>
 
                 <th className="index-th">
-                    <div>
+                    <div className = "coin-logo-div">
                         <Link className="crypto-link" to={`/price/${coin.symbol}`}>
                             <img src={`${coin.logo_url}`} width="32" height="32" />
                         </Link>

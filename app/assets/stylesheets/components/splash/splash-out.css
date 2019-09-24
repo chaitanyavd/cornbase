@@ -303,12 +303,6 @@
     margin-inline-end: 0px;
 }
 
-.splashout-tablerow-2{
-    cursor: pointer;
-    border-top: 1px solid rgb(236, 239, 241);
-    width: 600; 
-    height: 70
-}
 
 .splashout-tablerow-name-container{
     display: flex;
@@ -336,7 +330,7 @@
 }
 
 .img {
-  margin-right: 24px;
+    margin-right: 24px;
 }
 
 .splashout-tablerow-name{
@@ -380,6 +374,12 @@
     margin-inline-end: 0px;
 }
 
+.splashout-tablerow-2{
+    cursor: pointer;
+    border-top: 1px solid rgb(236, 239, 241);
+    width: 600; 
+    height: 70
+}
 .tr-symbol, .tr-title{
     text-decoration: none;
     outline: none;  
@@ -396,6 +396,27 @@
     vertical-align: inherit;
     box-sizing: border-box;
 }
+
+.splashout-tablerow-4 {
+    cursor: default;
+    width: 132px;
+    border-top: 1px solid rgb(236, 239, 241);
+    display: table-cell;
+    vertical-align: inherit;
+    box-sizing: border-box;
+}
+
+.tr-marketcap-container{
+    display: flex;
+     font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    justify-content: center; 
+    flex-direction: row;
+    font-size: 18px;
+    user-select: none;
+}
+
+
+
 .tr-price-container {
     display: flex;
     align-items: flex-start;
@@ -414,6 +435,7 @@
     display: block;
     margin: 0px;
     margin-block-start: 1.33em;
+    margin-left: 15px; 
     margin-block-end: 1.33em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
