@@ -12,6 +12,7 @@ class CoinIndex extends React.Component {
     }
 
     componentDidMount() {
+        this.props.fetchWatchlists(); 
         this.props.fetchCoins();
     }
 
@@ -47,10 +48,10 @@ class CoinIndex extends React.Component {
     
     render() {
         
-        const {coins, fetchCoin, fetchYear, data} = this.props
+        const {coins, fetchCoin, fetchYear, data, createWatchlist, deleteWatchlist, watchlists} = this.props
         const results = this.matches().map((coin, idx) => {
             return (
-                <CoinIndexItem coin={coin} key = {idx} orderNum={idx} onClick={this.selectCoin} />  
+                <CoinIndexItem coin={coin} watchlists = {watchlists} key = {idx} orderNum={idx} onClick={this.selectCoin} createWatchlist = {createWatchlist} deleteWatchlist = {deleteWatchlist} />  
             );
         });
         

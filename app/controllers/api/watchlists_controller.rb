@@ -27,17 +27,22 @@ class Api::WatchlistsController < ApplicationController
     #     #?? HOW DO YOU FIND A SPECIFIC TICKER -- MANS BRAINFARTING
     # end 
 
-    def create 
-        @watchlist = Watchlist.new(watchlist_params)
-        render json: @watchlist.errors.full_messages, status: 422 unless @watchlist.save 
+    def create  
+        @watchlist = Watchlist.new(user_id: current_user.id, ticker: watchlist_params[:id])
+            if @watchlist.save
+                key = Rails.application.credentials.nomics[:api_key]
+                ticker = watchlist_params[:id]
+                uri = URI("https://api.nomics.com/v1/currencies/ticker?key=#{key}&ids=#{ticker}")
+                @watchlist = Net::HTTP.get(uri)
+                render json: @watchlist
+            else 
+                render json: @watchlist.errors.full_messages, status: 422 
+            end
     end 
 
 
     def destroy
-        # @watchlist = current_user.watchlists.find_by(params[:ticker])
-        # @watchlist = current_user.watchlists.find_by(params[:ticker])
         @watchlist = current_user.watchlists.find_by(ticker: params[:id])
-        # debugger
         @watchlist.destroy
     end
 

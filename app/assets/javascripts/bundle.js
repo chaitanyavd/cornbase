@@ -384,6 +384,7 @@ var createWatchlist = function createWatchlist(watchlist) {
 
 var deleteWatchlist = function deleteWatchlist(id) {
   return function (dispatch) {
+    debugger;
     return _util_watchlist_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteWatchlist"](id).then(function (watchlist) {
       return dispatch({
         type: REMOVE_WATCHLIST,
@@ -512,6 +513,7 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      this.props.fetchWatchlists();
       this.props.fetchCoins();
     }
   }, {
@@ -563,13 +565,19 @@ function (_React$Component) {
           coins = _this$props.coins,
           fetchCoin = _this$props.fetchCoin,
           fetchYear = _this$props.fetchYear,
-          data = _this$props.data;
+          data = _this$props.data,
+          createWatchlist = _this$props.createWatchlist,
+          deleteWatchlist = _this$props.deleteWatchlist,
+          watchlists = _this$props.watchlists;
       var results = this.matches().map(function (coin, idx) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_coin_index_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
           coin: coin,
+          watchlists: watchlists,
           key: idx,
           orderNum: idx,
-          onClick: _this3.selectCoin
+          onClick: _this3.selectCoin,
+          createWatchlist: createWatchlist,
+          deleteWatchlist: deleteWatchlist
         });
       });
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -627,7 +635,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
-/* harmony import */ var _coin_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./coin_index */ "./frontend/components/coins/coin_index.jsx");
+/* harmony import */ var _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/watchlist_actions */ "./frontend/actions/watchlist_actions.js");
+/* harmony import */ var _coin_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coin_index */ "./frontend/components/coins/coin_index.jsx");
+
 
 
 
@@ -644,9 +654,11 @@ var orderer = function orderer(coins) {
 var msp = function msp(_ref) {
   var _ref$entities = _ref.entities,
       coins = _ref$entities.coins,
-      coinData = _ref$entities.coinData;
+      coinData = _ref$entities.coinData,
+      watchlists = _ref$entities.watchlists;
   return {
     coins: orderer(coins),
+    watchlists: orderer(watchlists),
     data: coinData.Data
   };
 };
@@ -661,11 +673,20 @@ var mdp = function mdp(dispatch) {
     },
     fetchYear: function fetchYear(symbol) {
       return dispatch(Object(_actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__["fetchYear"])(symbol));
+    },
+    fetchWatchlists: function fetchWatchlists() {
+      return dispatch(Object(_actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_2__["fetchWatchlists"])());
+    },
+    deleteWatchlist: function deleteWatchlist(id) {
+      return dispatch(Object(_actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_2__["deleteWatchlist"])(id));
+    },
+    createWatchlist: function createWatchlist(watchlist) {
+      return dispatch(Object(_actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_2__["createWatchlist"])(watchlist));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_coin_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_coin_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
 
 /***/ }),
 
@@ -686,14 +707,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! querystring */ "./node_modules/querystring-es3/index.js");
-/* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(querystring__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! querystring */ "./node_modules/querystring-es3/index.js");
+/* harmony import */ var querystring__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(querystring__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -707,87 +731,116 @@ __webpack_require__.r(__webpack_exports__);
 var CoinIndexItem =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(CoinIndexItem, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(CoinIndexItem, _React$Component);
 
-  function CoinIndexItem() {
+  function CoinIndexItem(props) {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CoinIndexItem);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinIndexItem).apply(this, arguments));
-  }
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinIndexItem).call(this, props));
+    _this.isWatchlist = _this.isWatchlist.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)); // this.state = {  coin: {symbol: ""}} 
+
+    return _this;
+  } // componentDidMount() {
+  // }
+
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndexItem, [{
+    key: "isWatchlist",
+    value: function isWatchlist(id) {
+      this.props.watchlists.forEach(function (watchlist) {
+        if (watchlist.id === id) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
+      // debugger
       if (this.props.coin === undefined) return null;
+      if (this.props.watchlists === undefined) return null;
       var _this$props = this.props,
           coin = _this$props.coin,
           fetchYear = _this$props.fetchYear,
-          data = _this$props.data;
+          data = _this$props.data,
+          deleteWatchlist = _this$props.deleteWatchlist,
+          createWatchlist = _this$props.createWatchlist,
+          watchlists = _this$props.watchlists;
       var price = coin.price ? parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4) : null;
       var marketCap = coin.market_cap ? parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M") : null;
       var percent = coin.price ? parseFloat(coin["1d"].price_change_pct * 100).toFixed(2) : null;
       var color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
       var fill = "rgb(244, 198, 34)";
-      var stroke = "rgb(244, 198, 34)";
+      var stroke = "rgb(244, 198, 34)"; // let fill = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue"
+      // let stroke = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue"
+      // debugger 
 
       var Present = function Present() {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
           className: "index-th"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
           className: "crypto-link",
           to: "/price/".concat(coin.symbol)
-        }, _this.props.orderNum + 1)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        }, _this2.props.orderNum + 1)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
           className: "index-th"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
           className: "coin-logo-div"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
           className: "crypto-link",
           to: "/price/".concat(coin.symbol)
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
           src: "".concat(coin.logo_url),
           width: "32",
           height: "32"
-        })))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        })))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
           className: "index-th"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
           className: "crypto-link",
           to: "/price/".concat(coin.symbol)
-        }, coin.name, " ", coin.symbol))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        }, coin.name, " ", coin.symbol))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
           className: "index-th"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
           className: "crypto-link",
           to: "/price/".concat(coin.symbol)
-        }, "$", price)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        }, "$", price)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
           className: "index-th"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
           className: "crypto-link",
           to: "/price/".concat(coin.symbol)
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
           className: color
-        }, percent, "%"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        }, percent, "%"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
           className: "index-th"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
           className: "crypto-link",
           to: "/price/".concat(coin.symbol)
-        }, marketCap)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        }, marketCap)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
           className: "index-th"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+          onClick: function onClick() {
+            return createWatchlist(coin);
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("svg", {
           width: "23",
           height: "24",
           viewBox: " 0 0 24 23"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
-          d: "M12.713 1.443l2.969 6.015 6.637.965a.794.794 0 0 1 .44 1.354l-4.804 4.681 1.135 6.612a.794.794 0 0 1-1.152.837L12 18.787l-5.938 3.121a.795.795 0 0 1-1.152-.838l1.134-6.612L1.24 9.777a.794.794 0 0 1 .44-1.354l6.638-.965 2.968-6.015a.795.795 0 0 1 1.425 0z",
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("path", {
           stroke: stroke,
-          fill: fill
-        }, " "))));
+          fill: fill,
+          d: "M12.713 1.443l2.969 6.015 6.637.965a.794.794 0 0 1 .44 1.354l-4.804 4.681 1.135 6.612a.794.794 0 0 1-1.152.837L12 18.787l-5.938 3.121a.795.795 0 0 1-1.152-.838l1.134-6.612L1.24 9.777a.794.794 0 0 1 .44-1.354l6.638-.965 2.968-6.015a.795.795 0 0 1 1.425 0z"
+        }, " ")))));
       };
 
       var Absent = function Absent() {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tr", {
           id: "failed-search-container"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
           colspan: "6",
           id: "failed-search"
         }, coin, "..."));
@@ -802,7 +855,7 @@ function (_React$Component) {
   }]);
 
   return CoinIndexItem;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (CoinIndexItem);
 
@@ -2666,11 +2719,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _watchlist_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./watchlist_item */ "./frontend/components/watchlists/watchlist_item.jsx");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _watchlist_list_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./watchlist_list_item */ "./frontend/components/watchlists/watchlist_list_item.jsx");
+/* harmony import */ var _watchlist_grid_item__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./watchlist_grid_item */ "./frontend/components/watchlists/watchlist_grid_item.jsx");
+
+
 
 
 
@@ -2682,15 +2740,37 @@ __webpack_require__.r(__webpack_exports__);
 var Watchlist =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(Watchlist, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Watchlist, _React$Component);
 
   function Watchlist(props) {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Watchlist);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Watchlist).call(this, props));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Watchlist).call(this, props));
+    _this.state = {
+      listOn: true
+    };
+    _this.handleGridClick = _this.handleGridClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.handleListClick = _this.handleListClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Watchlist, [{
+    key: "handleGridClick",
+    value: function handleGridClick() {
+      this.setState({
+        listOn: false
+      });
+    }
+  }, {
+    key: "handleListClick",
+    value: function handleListClick() {
+      this.setState({
+        listOn: true
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchWatchlists();
@@ -2702,113 +2782,186 @@ function (_React$Component) {
       var _this$props = this.props,
           watchlists = _this$props.watchlists,
           deleteWatchlist = _this$props.deleteWatchlist;
-      var order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-      var mapper = watchlists.map(function (watchlist, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_watchlist_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      var listOn = this.state.listOn;
+      var listMapper = watchlists.map(function (watchlist, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_watchlist_list_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
           watchlist: watchlist,
           deleteWatchlist: deleteWatchlist,
           orderNum: idx,
           key: idx
         });
       });
+      var gridMapper = watchlists.map(function (watchlist, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_watchlist_grid_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          watchlist: watchlist,
+          deleteWatchlist: deleteWatchlist,
+          orderNum: idx,
+          key: idx
+        });
+      });
+      var view;
 
-      var list = function list() {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      if (listOn) {
+        view = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
           id: "watchlist-list-container"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
           id: "watchlist-list-wrapper"
-        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("table", {
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("table", {
           id: "watchlist-table"
-        })));
-      };
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("thead", {
+          className: "splashout-table-head"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+          className: "splashout-tablehelpers"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "splashout-tablehelper-div"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+          className: "tablehead"
+        }, "#"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+          className: "splashout-tablehelpers"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "splashout-tablehelper-div"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+          className: "tableheadname"
+        }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+          className: "splashout-tablehelpers"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "splashout-tablehelper-div"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+          className: "tablehead"
+        }, "PRICE"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+          className: "splashout-tablehelpers"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "splashout-tablehelper-div"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+          className: "tablehead"
+        }, "CHANGE"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+          className: "splashout-tablehelpers"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "splashout-tablehelper-div"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+          className: "tablehead"
+        }, "MARKET CAP"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+          className: "splashout-tablehelpers"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "splashout-tablehelper-div"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+          className: "tablehead"
+        }, "FOLLOW"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tbody", {
+          className: "t-body"
+        }, listMapper))));
+      } else {
+        view = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          id: "watchlist-grid-container"
+        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", null, "GRID BABY"));
+      }
 
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         id: "watchlist-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         id: "watchlist-header-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         id: "watchlist-title-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
         id: "watchlist-header"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "Following"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", null, "Following"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         id: "widget-header-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("svg", {
         id: "grid-svg",
         height: "18",
         width: "18",
         viewBox: "0 0 18 18"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("path", {
         d: "M7.044 0H.783A.783.783 0 0 0 0 .783v6.26c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.782V.783A.783.783 0 0 0 7.044 0zM17.218 0h-6.261a.783.783 0 0 0-.783.783v6.26c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.782V.783A.783.783 0 0 0 17.217 0zM7.044 10.174H.783a.783.783 0 0 0-.783.782v6.261c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.783v-6.26a.783.783 0 0 0-.782-.783zM17.218 10.174h-6.261a.783.783 0 0 0-.783.782v6.261c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.783v-6.26a.783.783 0 0 0-.783-.783z",
         fill: "rgb(190, 202, 218)"
-      }, " ")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
+      }, " ")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("svg", {
         id: "list-svg",
         height: "16",
         width: "19",
         viewBox: "0 0 19 16"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("path", {
         d: "M0 10.286c0 .63.512 1.143 1.143 1.143h16.714a1.143 1.143 0 0 0 0-2.286H1.143C.512 9.143 0 9.655 0 10.286zm0 4.571C0 15.488.512 16 1.143 16h16.714a1.143 1.143 0 0 0 0-2.286H1.143c-.631 0-1.143.512-1.143 1.143zm0-9.143c0 .631.512 1.143 1.143 1.143h16.714a1.143 1.143 0 1 0 0-2.286H1.143C.512 4.571 0 5.083 0 5.714zM1.143 0a1.143 1.143 0 1 0 0 2.286h16.714a1.143 1.143 0 1 0 0-2.286H1.143z",
         fill: "rgb(190, 202, 218)"
-      }, " "))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "watchlist-list-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "watchlist-list-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("table", {
-        id: "watchlist-table"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("thead", {
-        className: "splashout-table-head"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
-        className: "splashout-tablehelpers"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "splashout-tablehelper-div"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "tablehead"
-      }, "#"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
-        className: "splashout-tablehelpers"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "splashout-tablehelper-div"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "tableheadname"
-      }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
-        className: "splashout-tablehelpers"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "splashout-tablehelper-div"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "tablehead"
-      }, "PRICE"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
-        className: "splashout-tablehelpers"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "splashout-tablehelper-div"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "tablehead"
-      }, "CHANGE"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
-        className: "splashout-tablehelpers"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "splashout-tablehelper-div"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "tablehead"
-      }, "MARKET CAP"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
-        className: "splashout-tablehelpers"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "splashout-tablehelper-div"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
-        className: "tablehead"
-      }, "FOLLOW"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tbody", {
-        className: "t-body"
-      }, mapper)))));
+      }, " "))))));
     }
   }]);
 
   return Watchlist;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Watchlist);
 
 /***/ }),
 
-/***/ "./frontend/components/watchlists/watchlist_item.jsx":
-/*!***********************************************************!*\
-  !*** ./frontend/components/watchlists/watchlist_item.jsx ***!
-  \***********************************************************/
+/***/ "./frontend/components/watchlists/watchlist_grid_item.jsx":
+/*!****************************************************************!*\
+  !*** ./frontend/components/watchlists/watchlist_grid_item.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+
+
+var WatchlistGridItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WatchlistGridItem, _React$Component);
+
+  function WatchlistGridItem(props) {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, WatchlistGridItem);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(WatchlistGridItem).call(this, props));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(WatchlistGridItem, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          watchlist = _this$props.watchlist,
+          deleteWatchlist = _this$props.deleteWatchlist,
+          orderNum = _this$props.orderNum;
+      if (this.props.watchlist === undefined) return null;
+      var price = watchlist.price ? parseFloat(watchlist.price) > 0.1 ? parseFloat(watchlist.price).toFixed(2) : parseFloat(watchlist.price).toFixed(4) : null;
+      var marketCap = watchlist.market_cap ? parseFloat(watchlist.market_cap) > 1000000000 ? "$".concat((parseFloat(watchlist.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(watchlist.market_cap) / 1000000).toFixed(1), "M") : null;
+      var percent = watchlist.price ? parseFloat(watchlist["1d"].price_change_pct * 100).toFixed(2) : null;
+      var color = watchlist.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
+      var fill = "rgb(244, 198, 34)";
+      var stroke = "rgb(244, 198, 34)";
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null);
+    }
+  }]);
+
+  return WatchlistGridItem;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (WatchlistGridItem);
+
+/***/ }),
+
+/***/ "./frontend/components/watchlists/watchlist_list_item.jsx":
+/*!****************************************************************!*\
+  !*** ./frontend/components/watchlists/watchlist_list_item.jsx ***!
+  \****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2835,17 +2988,17 @@ __webpack_require__.r(__webpack_exports__);
 
  // import { deleteWatchlist } from '../../actions/watchlist_actions';
 
-var WatchlistItem =
+var WatchlistListItem =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WatchlistItem, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WatchlistListItem, _React$Component);
 
-  function WatchlistItem(props) {
+  function WatchlistListItem(props) {
     var _this;
 
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, WatchlistItem);
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, WatchlistListItem);
 
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(WatchlistItem).call(this, props)); // this.state = this.props.watchlist
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(WatchlistListItem).call(this, props)); // this.state = this.props.watchlist
 
     {
       /* <button onClick={() => deleteWatchlist(watchlist.symbol)}>Delete</button> */
@@ -2853,7 +3006,7 @@ function (_React$Component) {
     return _this;
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(WatchlistItem, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(WatchlistListItem, [{
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -2865,8 +3018,7 @@ function (_React$Component) {
       var marketCap = watchlist.market_cap ? parseFloat(watchlist.market_cap) > 1000000000 ? "$".concat((parseFloat(watchlist.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(watchlist.market_cap) / 1000000).toFixed(1), "M") : null;
       var percent = watchlist.price ? parseFloat(watchlist["1d"].price_change_pct * 100).toFixed(2) : null;
       var color = watchlist.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
-      var fill = "rgb(244, 198, 34)"; // let stroke = "#becada"
-
+      var fill = "rgb(244, 198, 34)";
       var stroke = "rgb(244, 198, 34)";
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", {
         className: "t-row-container "
@@ -2934,10 +3086,10 @@ function (_React$Component) {
     }
   }]);
 
-  return WatchlistItem;
+  return WatchlistListItem;
 }(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (WatchlistItem);
+/* harmony default export */ __webpack_exports__["default"] = (WatchlistListItem);
 
 /***/ }),
 
@@ -3364,39 +3516,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
-// import { RECEIVE_COINS, RECEIVE_COIN } from '../actions/coin_actions';
-// import merge from "lodash/merge"
-// const coinsReducer = (state = {}, action) => {
-//     Object.freeze(state);
-//     let newState = merge({}, state)
-//     switch (action.type) {
-//         case RECEIVE_COINS:
-//             action.coins.forEach(coin => (newState[coin.id] = coin))
-//             return newState;
-//         case RECEIVE_COIN:
-//             action.coin.forEach(coin => newState[coin.id] = coin)
-//             return newState;
-//         default:
-//             return state;
-//     }
-// };
-// export default coinsReducer;
-// const PostsReducer = (oldState = {}, action) => {
-//     Object.freeze(oldState);
-//     const newState = merge({}, oldState);
-//     switch (action.type) {
-//         case RECEIVE_ALL_POSTS:
-//             return action.posts;
-//         case RECEIVE_POST:
-//             newState[action.post.id] = action.post;
-//             return newState;
-//         case REMOVE_POST:
-//             delete newState[action.postId]
-//             return newState;
-//         default:
-//             return oldState;
-//     }
-// };
 
 
 
@@ -3413,21 +3532,19 @@ var watchlistReducer = function watchlistReducer() {
         return newState[watchlist.id] = watchlist;
       });
       return newState;
-    // return action.watchlists; 
 
     case _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_WATCHLIST"]:
       action.watchlist.forEach(function (watchlist) {
         return newState[watchlist.id] = watchlist;
       });
       return newState;
-    // newState[action.watchlist.id] = action.watchlist;
-    // return newState;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["LOGOUT_CURRENT_USER"]:
       newState = {};
       return newState;
 
     case _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_WATCHLIST"]:
+      debugger;
       delete newState[action.watchlistId];
       return newState;
 

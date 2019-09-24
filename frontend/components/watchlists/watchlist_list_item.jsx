@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'; 
 // import { deleteWatchlist } from '../../actions/watchlist_actions';
 
-class WatchlistItem extends React.Component {
+class WatchlistListItem extends React.Component {
     constructor(props) {
         super(props)
         // this.state = this.props.watchlist
@@ -20,9 +20,7 @@ class WatchlistItem extends React.Component {
         let percent = watchlist.price ? parseFloat((watchlist["1d"].price_change_pct) * 100).toFixed(2) : null
         let color = watchlist.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null
         let fill = "rgb(244, 198, 34)"
-        // let stroke = "#becada"
         let stroke = "rgb(244, 198, 34)"
-
 
         
         return (    
@@ -82,5 +80,5 @@ class WatchlistItem extends React.Component {
     
 }
 
-export default WatchlistItem
+export default WatchlistListItem
 
