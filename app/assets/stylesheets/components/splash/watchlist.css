@@ -55,3 +55,25 @@
     cursor: pointer; 
 }
 
+#watchlist-list-container{
+    display: flex;
+    flex-direction: row;
+    box-shadow: rgba(17, 51, 83, 0.02) 0px 4px 12px 0px;
+    flex-wrap: wrap;
+    -webkit-tap-highlight-color: transparent;
+    background: rgb(255, 255, 255);
+}
+
+#watchlist-list-wrapper{
+    width: 100%; 
+}
+
+#watchlist-table{
+    width: 100%;
+    max-width: 1142px;
+    border-collapse: separate;
+    caption-side: top;
+    padding: 0px;
+    background: rgb(255, 255, 255);
+    border-spacing: 0px;
+}

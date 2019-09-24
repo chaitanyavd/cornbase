@@ -219,6 +219,7 @@
     font-weight: bold;
 }
 
+
 .splashout-tablehelper-div {
     box-sizing: border-box; 
     text-align: left; 
@@ -241,6 +242,22 @@
     text-align: center; 
 }
 
+.tableheadname{
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(17, 51, 83, 0.3);
+    transition: color 200ms ease-in-out 0s;
+    display: block;
+    margin: 0px;
+    box-sizing: border-box; 
+    margin-left: 30px; 
+    text-align: left; 
+}
+
 .t-body {
     padding: 0px;
     border-width: initial;
@@ -261,7 +278,7 @@
 }
 
 .splashout-tablerow-1{
-    padding-left: 32px; 
+    /* padding-left: 32px;  */
     box-sizing: border-box; 
     cursor: default;
     width: 85px;
@@ -299,6 +316,7 @@
     align-items: center;
     flex-direction: row;
     min-width: 140px;
+    margin-left: 30px; 
     color: rgba(17, 51, 83, 0.6);
     flex: 1 1 auto;
     box-sizing: border-box;
@@ -392,6 +410,7 @@
     color: rgb(5, 15, 25);
     font-size: 18px;
     font-weight: 400;  
+    padding-left: 30px; 
     display: block;
     margin: 0px;
     margin-block-start: 1.33em;
@@ -420,6 +439,7 @@
     font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     min-width: 76px;
     margin-right: 20px;
+    padding-left: 30px; 
     color: rgb(223, 95, 103);
     text-align: left;
     display: block; 
@@ -431,6 +451,7 @@
     font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     min-width: 76px;
     margin-right: 20px;
+    padding-left: 30px; 
     text-align: left;
     display: block; 
     box-sizing: border-box; 

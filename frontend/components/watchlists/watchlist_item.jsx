@@ -26,10 +26,43 @@ class WatchlistItem extends React.Component {
 
         
         return (    
-            <li>
-                {watchlist.name}
-            </li>
-        
+            <tr className="t-row-container ">
+                <td className="splashout-tablerow-1">
+                    <h4 className="splashout-tablerow-1id" >{this.props.orderNum + 1}</h4>
+                </td>
+
+                <td className="splashout-tablerow-2">
+                    <Link className="splashout-link" to={"/signup"}>
+                        <div className="splashout-tablerow-name-container">
+
+                            <div className="splashout-tablerow-img">
+                                <img className="img" src={`${this.props.watchlist.logo_url}`} width="32" height="32" />
+                            </div>
+
+                            <div className="splashout-tablerow-name">
+                                <span className="tr-title-span">
+                                    <h4 className="tr-title" >{this.props.watchlist.name}</h4>
+                                </span>
+
+                                <h4 className="tr-symbol" >{this.props.watchlist.symbol}</h4>
+                            </div>
+                        </div>
+                    </Link>
+                </td>
+
+                <td className="splashout-tablerow-3">
+                    <div className="tr-price-container">
+                        <h4 className="tr-price">${price}</h4>
+                    </div>
+                </td>
+
+                <td className="splashout-tablerow-4">
+                    <div className="tr-percent-container">
+                        <span className={color}>{percent}%</span>
+                    </div>
+                </td>
+
+            </tr>
             )
     }
     

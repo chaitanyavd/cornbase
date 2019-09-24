@@ -2392,7 +2392,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
         }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("span", {
-          className: "tablehead"
+          className: "tableheadname"
         }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("th", {
           className: "splashout-tablehelpers"
         }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", {
@@ -2701,6 +2701,7 @@ function (_React$Component) {
       var _this$props = this.props,
           watchlists = _this$props.watchlists,
           deleteWatchlist = _this$props.deleteWatchlist;
+      var order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
       var mapper = watchlists.map(function (watchlist, idx) {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_watchlist_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
           watchlist: watchlist,
@@ -2709,6 +2710,17 @@ function (_React$Component) {
           key: idx
         });
       });
+
+      var list = function list() {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+          id: "watchlist-list-container"
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+          id: "watchlist-list-wrapper"
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("table", {
+          id: "watchlist-table"
+        })));
+      };
+
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         id: "watchlist-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -2735,7 +2747,53 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
         d: "M0 10.286c0 .63.512 1.143 1.143 1.143h16.714a1.143 1.143 0 0 0 0-2.286H1.143C.512 9.143 0 9.655 0 10.286zm0 4.571C0 15.488.512 16 1.143 16h16.714a1.143 1.143 0 0 0 0-2.286H1.143c-.631 0-1.143.512-1.143 1.143zm0-9.143c0 .631.512 1.143 1.143 1.143h16.714a1.143 1.143 0 1 0 0-2.286H1.143C.512 4.571 0 5.083 0 5.714zM1.143 0a1.143 1.143 0 1 0 0 2.286h16.714a1.143 1.143 0 1 0 0-2.286H1.143z",
         fill: "rgb(190, 202, 218)"
-      }, " "))))));
+      }, " "))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "watchlist-list-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "watchlist-list-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("table", {
+        id: "watchlist-table"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("thead", {
+        className: "splashout-table-head"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "splashout-tablehelpers"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablehelper-div"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "tablehead"
+      }, "#"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "splashout-tablehelpers"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablehelper-div"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "tableheadname"
+      }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "splashout-tablehelpers"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablehelper-div"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "tablehead"
+      }, "PRICE"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "splashout-tablehelpers"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablehelper-div"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "tablehead"
+      }, "CHANGE"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "splashout-tablehelpers"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablehelper-div"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "tablehead"
+      }, "MARKET CAP"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
+        className: "splashout-tablehelpers"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablehelper-div"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "tablehead"
+      }, "FOLLOW"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tbody", {
+        className: "t-body"
+      }, mapper)))));
     }
   }]);
 
@@ -2809,7 +2867,47 @@ function (_React$Component) {
       var fill = "rgb(244, 198, 34)"; // let stroke = "#becada"
 
       var stroke = "rgb(244, 198, 34)";
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", null, watchlist.name);
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", {
+        className: "t-row-container "
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+        className: "splashout-tablerow-1"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", {
+        className: "splashout-tablerow-1id"
+      }, this.props.orderNum + 1)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+        className: "splashout-tablerow-2"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        className: "splashout-link",
+        to: "/signup"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablerow-name-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablerow-img"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        className: "img",
+        src: "".concat(this.props.watchlist.logo_url),
+        width: "32",
+        height: "32"
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "splashout-tablerow-name"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: "tr-title-span"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", {
+        className: "tr-title"
+      }, this.props.watchlist.name)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", {
+        className: "tr-symbol"
+      }, this.props.watchlist.symbol))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+        className: "splashout-tablerow-3"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "tr-price-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", {
+        className: "tr-price"
+      }, "$", price))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+        className: "splashout-tablerow-4"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "tr-percent-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        className: color
+      }, percent, "%"))));
     }
   }]);
 

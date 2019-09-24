@@ -12,12 +12,22 @@ class Watchlist extends React.Component {
     }
     
     render() {
-        
+
         if (this.props.watchlists === undefined) return null;
         const {watchlists, deleteWatchlist} = this.props
+        let order = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+
         const mapper =  watchlists.map((watchlist, idx) => <WatchlistItem watchlist={watchlist} deleteWatchlist={deleteWatchlist} orderNum={idx} key={idx} />) 
 
+        const list = () => (
+            <div id = "watchlist-list-container">
+                <div id = "watchlist-list-wrapper">
+                    <table id = "watchlist-table">
 
+                    </table>
+                </div>
+            </div>
+        )
 
         return (
             <div id = "watchlist-container">
@@ -36,6 +46,58 @@ class Watchlist extends React.Component {
                                     <path d="M0 10.286c0 .63.512 1.143 1.143 1.143h16.714a1.143 1.143 0 0 0 0-2.286H1.143C.512 9.143 0 9.655 0 10.286zm0 4.571C0 15.488.512 16 1.143 16h16.714a1.143 1.143 0 0 0 0-2.286H1.143c-.631 0-1.143.512-1.143 1.143zm0-9.143c0 .631.512 1.143 1.143 1.143h16.714a1.143 1.143 0 1 0 0-2.286H1.143C.512 4.571 0 5.083 0 5.714zM1.143 0a1.143 1.143 0 1 0 0 2.286h16.714a1.143 1.143 0 1 0 0-2.286H1.143z" fill="rgb(190, 202, 218)"> </path>
                             </svg>
                         </span>
+                    </div>
+                </div>
+
+                {/* //!! BreakPOINT */}
+
+                <div id="watchlist-list-container">
+                    <div id="watchlist-list-wrapper">
+                        <table id="watchlist-table">
+                            <thead className="splashout-table-head">
+
+                                    <tr>
+                                        <th className="splashout-tablehelpers">
+                                            <div className="splashout-tablehelper-div">
+                                                <span className="tablehead">#</span>
+                                            </div>
+                                        </th>
+                                        <th className="splashout-tablehelpers">
+                                            <div className="splashout-tablehelper-div">
+                                                <span className="tableheadname">NAME</span>
+                                            </div>
+                                        </th>
+                                        <th className="splashout-tablehelpers">
+                                            <div className="splashout-tablehelper-div">
+                                                <span className="tablehead">PRICE</span>
+                                            </div>
+                                        </th>
+                                        <th className="splashout-tablehelpers">
+                                            <div className="splashout-tablehelper-div">
+                                                <span className="tablehead">CHANGE</span>
+                                            </div>
+                                        </th>
+                                        <th className="splashout-tablehelpers">
+                                            <div className="splashout-tablehelper-div">
+                                                <span className="tablehead">MARKET CAP</span>
+                                            </div>
+                                        </th>
+                                        <th className="splashout-tablehelpers">
+                                            <div className="splashout-tablehelper-div">
+                                                <span className="tablehead">FOLLOW</span>
+                                            </div>
+                                        </th>
+
+                                    </tr>
+
+
+
+                            </thead>
+                            <tbody className="t-body">
+                                {mapper}
+                            </tbody>
+
+                        </table>
                     </div>
                 </div>
             </div>

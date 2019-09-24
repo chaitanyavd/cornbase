@@ -76,7 +76,7 @@ class SplashOut extends React.Component {
                                     </th>
                                     <th className="splashout-tablehelpers">
                                         <div className="splashout-tablehelper-div">
-                                            <span className="tablehead">NAME</span>
+                                            <span className="tableheadname">NAME</span>
                                         </div>
                                     </th>
                                     <th className="splashout-tablehelpers">
