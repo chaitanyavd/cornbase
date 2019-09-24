@@ -1,0 +1,57 @@
+#watchlist-container{
+    display: flex;
+    width: 1000px; 
+    flex-direction: column;
+    box-shadow: rgba(17, 51, 83, 0.02) 0px 4px 12px 0px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 100px; 
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(236, 239, 241);
+    border-image: initial;
+}
+
+#watchlist-header-wrapper{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+    flex-shrink: 0;
+    height: 54px;
+    padding: 0px 24px;
+    border-bottom: 1px solid rgb(236, 239, 241);
+}
+
+#watchlist-title-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+#watchlist-header{
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.3;
+    color: rgb(5, 15, 25);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#widget-header-wrapper{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#grid-svg{
+    margin-right: 10px; 
+}
+
+#grid-svg, #list-svg {
+    cursor: pointer; 
+}
+

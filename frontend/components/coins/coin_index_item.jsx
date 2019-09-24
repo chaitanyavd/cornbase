@@ -16,8 +16,9 @@ class CoinIndexItem extends React.Component {
         let percent = coin.price ? parseFloat((coin["1d"].price_change_pct)*100).toFixed(2) : null 
         let color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null 
         let fill = "rgb(244, 198, 34)"
-        // let stroke = "#becada"
         let stroke = "rgb(244, 198, 34)"
+
+        
 
         
         const Present = () => (

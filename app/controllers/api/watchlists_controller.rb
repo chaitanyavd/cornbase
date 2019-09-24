@@ -37,7 +37,7 @@ class Api::WatchlistsController < ApplicationController
         # @watchlist = current_user.watchlists.find_by(params[:ticker])
         # @watchlist = current_user.watchlists.find_by(params[:ticker])
         @watchlist = current_user.watchlists.find_by(ticker: params[:id])
-        debugger
+        # debugger
         @watchlist.destroy
     end
 

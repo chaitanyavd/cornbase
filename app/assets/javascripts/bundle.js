@@ -731,8 +731,7 @@ function (_React$Component) {
       var marketCap = coin.market_cap ? parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M") : null;
       var percent = coin.price ? parseFloat(coin["1d"].price_change_pct * 100).toFixed(2) : null;
       var color = coin.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
-      var fill = "rgb(244, 198, 34)"; // let stroke = "#becada"
-
+      var fill = "rgb(244, 198, 34)";
       var stroke = "rgb(244, 198, 34)";
 
       var Present = function Present() {
@@ -2408,7 +2407,45 @@ function (_React$Component) {
           className: "tablehead"
         }, "CHANGE"))))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("tbody", {
           className: "t-body"
-        }, mapper)))));
+        }, mapper)))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", {
+          id: "external-links"
+        }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("a", {
+          href: "https://www.linkedin.com/in/chaitanya-desai-4602a6119/",
+          target: "_blank"
+        }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("svg", {
+          className: "link-svg",
+          width: "50",
+          height: "50",
+          viewBox: " 0 0 24 23"
+        }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("path", {
+          d: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
+          stroke: "rgb(22, 82, 240)",
+          fill: "rgb(22, 82, 240)"
+        }, " "))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("a", {
+          href: "https://github.com/chaitanyavd",
+          target: "_blank"
+        }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("svg", {
+          className: "link-svg",
+          width: "50",
+          height: "50",
+          viewBox: " 0 0 24 23"
+        }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("path", {
+          d: "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12",
+          stroke: "rgb(22, 82, 240)",
+          fill: "rgb(22, 82, 240)"
+        }, " "))), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("a", {
+          href: "mailto:chaitanya.v.de@gmail.com",
+          target: "_blank"
+        }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("svg", {
+          className: "link-svg",
+          width: "50",
+          height: "50",
+          viewBox: " 0 0 24 23"
+        }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("path", {
+          d: "M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.649 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.076 3 1.5 3H2l10 7.25L22 3h.5c.425 0 .8.162 1.069.432.27.268.431.643.431 1.068z",
+          stroke: "rgb(22, 82, 240)",
+          fill: "rgb(22, 82, 240)"
+        }, " ")))));
       };
 
       var loggedIn = function loggedIn() {
@@ -2656,27 +2693,49 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchWatchlists();
-    } // componentDidUpdate(){
-    //     this.props.fetchWatchlists(); 
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
       if (this.props.watchlists === undefined) return null;
       var _this$props = this.props,
           watchlists = _this$props.watchlists,
-          deleteWatchlist = _this$props.deleteWatchlist; // debugger
-
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "watchlist-container"
-      }, watchlists.map(function (watchlist, idx) {
+          deleteWatchlist = _this$props.deleteWatchlist;
+      var mapper = watchlists.map(function (watchlist, idx) {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_watchlist_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
           watchlist: watchlist,
           deleteWatchlist: deleteWatchlist,
+          orderNum: idx,
           key: idx
         });
-      }));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "watchlist-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "watchlist-header-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "watchlist-title-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
+        id: "watchlist-header"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "Following"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "widget-header-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
+        id: "grid-svg",
+        height: "18",
+        width: "18",
+        viewBox: "0 0 18 18"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        d: "M7.044 0H.783A.783.783 0 0 0 0 .783v6.26c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.782V.783A.783.783 0 0 0 7.044 0zM17.218 0h-6.261a.783.783 0 0 0-.783.783v6.26c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.782V.783A.783.783 0 0 0 17.217 0zM7.044 10.174H.783a.783.783 0 0 0-.783.782v6.261c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.783v-6.26a.783.783 0 0 0-.782-.783zM17.218 10.174h-6.261a.783.783 0 0 0-.783.782v6.261c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.783v-6.26a.783.783 0 0 0-.783-.783z",
+        fill: "rgb(190, 202, 218)"
+      }, " ")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
+        id: "list-svg",
+        height: "16",
+        width: "19",
+        viewBox: "0 0 19 16"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
+        d: "M0 10.286c0 .63.512 1.143 1.143 1.143h16.714a1.143 1.143 0 0 0 0-2.286H1.143C.512 9.143 0 9.655 0 10.286zm0 4.571C0 15.488.512 16 1.143 16h16.714a1.143 1.143 0 0 0 0-2.286H1.143c-.631 0-1.143.512-1.143 1.143zm0-9.143c0 .631.512 1.143 1.143 1.143h16.714a1.143 1.143 0 1 0 0-2.286H1.143C.512 4.571 0 5.083 0 5.714zM1.143 0a1.143 1.143 0 1 0 0 2.286h16.714a1.143 1.143 0 1 0 0-2.286H1.143z",
+        fill: "rgb(190, 202, 218)"
+      }, " "))))));
     }
   }]);
 
@@ -2723,21 +2782,34 @@ function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WatchlistItem, _React$Component);
 
   function WatchlistItem(props) {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, WatchlistItem);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(WatchlistItem).call(this, props));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(WatchlistItem).call(this, props)); // this.state = this.props.watchlist
+
+    {
+      /* <button onClick={() => deleteWatchlist(watchlist.symbol)}>Delete</button> */
+    }
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(WatchlistItem, [{
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this$props = this.props,
+          watchlist = _this$props.watchlist,
+          deleteWatchlist = _this$props.deleteWatchlist,
+          orderNum = _this$props.orderNum;
+      if (this.props.watchlist === undefined) return null;
+      var price = watchlist.price ? parseFloat(watchlist.price) > 0.1 ? parseFloat(watchlist.price).toFixed(2) : parseFloat(watchlist.price).toFixed(4) : null;
+      var marketCap = watchlist.market_cap ? parseFloat(watchlist.market_cap) > 1000000000 ? "$".concat((parseFloat(watchlist.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(watchlist.market_cap) / 1000000).toFixed(1), "M") : null;
+      var percent = watchlist.price ? parseFloat(watchlist["1d"].price_change_pct * 100).toFixed(2) : null;
+      var color = watchlist.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
+      var fill = "rgb(244, 198, 34)"; // let stroke = "#becada"
 
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, this.props.watchlist.name, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.props.deleteWatchlist(_this.props.watchlist.symbol);
-        }
-      }, "Delete"));
+      var stroke = "rgb(244, 198, 34)";
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", null, watchlist.name);
     }
   }]);
 

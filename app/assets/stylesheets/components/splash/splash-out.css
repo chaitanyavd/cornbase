@@ -185,19 +185,17 @@
 
 .splashout-table-container {
     width: 100%; 
-    height: 378px;
     width: 890px; 
-    height: 378px; 
     box-sizing: border-box; 
     display: block; 
 }
 .splashout-table{
     width: 100%;
-    border-collapse: separate;
     caption-side: top;
     padding: 0px;
     background: rgb(255, 255, 255);
     border-spacing: 0px;
+    border-radius: 4px; 
     box-sizing: border-box;
     display: table;
     border-color: grey; 
@@ -454,3 +452,16 @@
 
   -webkit-font-smoothing: antialiased;
 }
+
+#external-links{
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 200px; 
+
+}
+
+.link-svg{
+    margin: 50px; 
+}
+
