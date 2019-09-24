@@ -87,6 +87,7 @@ class Watchlist extends React.Component {
         }
 
         return (
+
             <div id = "watchlist-container">
                 <div id = "watchlist-header-wrapper">
                     <div id= "watchlist-title-wrapper">
@@ -110,8 +111,9 @@ class Watchlist extends React.Component {
                     </div>
                 </div>
             {/* //!!  BREEEAK POINT*/}
-
-
+                <div id = "watchlist-grid-container">
+                    {gridMapper}
+                </div>
 
            
             </div>

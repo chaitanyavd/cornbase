@@ -2881,7 +2881,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("path", {
         d: "M0 10.286c0 .63.512 1.143 1.143 1.143h16.714a1.143 1.143 0 0 0 0-2.286H1.143C.512 9.143 0 9.655 0 10.286zm0 4.571C0 15.488.512 16 1.143 16h16.714a1.143 1.143 0 0 0 0-2.286H1.143c-.631 0-1.143.512-1.143 1.143zm0-9.143c0 .631.512 1.143 1.143 1.143h16.714a1.143 1.143 0 1 0 0-2.286H1.143C.512 4.571 0 5.083 0 5.714zM1.143 0a1.143 1.143 0 1 0 0 2.286h16.714a1.143 1.143 0 1 0 0-2.286H1.143z",
         fill: "rgb(190, 202, 218)"
-      }, " "))))));
+      }, " "))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        id: "watchlist-grid-container"
+      }, gridMapper));
     }
   }]);
 
@@ -2947,7 +2949,25 @@ function (_React$Component) {
       var color = watchlist.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
       var fill = "rgb(244, 198, 34)";
       var stroke = "rgb(244, 198, 34)";
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null);
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        className: "grid-link",
+        to: "/price/".concat(watchlist.symbol)
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "watchlist-grid-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "watchlist-grid-header-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "grid-name-logo"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        className: "grid-img",
+        src: "".concat(this.props.watchlist.logo_url),
+        width: "24",
+        height: "24"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
+        className: "grid-name"
+      }, watchlist.name)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "grid-timeperiod"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "24H")))));
     }
   }]);
 

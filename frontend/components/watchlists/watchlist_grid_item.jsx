@@ -21,9 +21,19 @@ class WatchlistGridItem extends React.Component {
         let stroke = "rgb(244, 198, 34)"
 
         return (
-                <div>
-                    
+            <Link className = "grid-link" to={`/price/${watchlist.symbol}`}>
+                <div className = "watchlist-grid-wrapper">
+                    <div className = "watchlist-grid-header-container">
+                        <div className = "grid-name-logo">
+                            <img className="grid-img" src={`${this.props.watchlist.logo_url}`} width="24" height="24" />
+                            <h3 className = "grid-name">{watchlist.name}</h3>
+                        </div>
+                        <div className = "grid-timeperiod">
+                            <span>24H</span>
+                        </div>
+                    </div>
                 </div>
+            </Link>
         )
     }
     
