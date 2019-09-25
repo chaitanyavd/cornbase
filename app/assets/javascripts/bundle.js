@@ -1647,18 +1647,27 @@ var NavBar = function NavBar(_ref) {
       className: "loggedin-navbar"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "navbar-container"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      id: "navbar-session-buttons"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       className: "cornbase-logo-loggedout",
       to: "/"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "cornbase")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "cornbase")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+      id: "home-button"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "login-link-out",
+      to: "/"
+    }, "Home")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+      id: "home-button"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       className: "login-link-out",
       to: "/price"
-    }, "Prices")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, "Prices"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       id: "butt-mod"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "logout-button",
       onClick: function onClick() {
-        return openModal('profileAvatar');
+        return openModal("profileAvatar");
       }
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
       src: "corn-avatar.jpg",
@@ -3740,7 +3749,6 @@ var watchlistReducer = function watchlistReducer() {
       return newState;
 
     case _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_WATCHLIST"]:
-      debugger;
       delete newState[action.watchlistId];
       return newState;
 

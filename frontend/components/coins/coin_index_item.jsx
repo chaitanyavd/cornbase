@@ -39,9 +39,7 @@ class CoinIndexItem extends React.Component {
       watchlists
     } = this.props;
 
-    let price = coin.price
-      ? parseFloat(coin.price) > 0.1
-        ? parseFloat(coin.price).toFixed(2)
+    let price = coin.price ? parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2)
         : parseFloat(coin.price).toFixed(4)
       : null;
     let marketCap = coin.market_cap

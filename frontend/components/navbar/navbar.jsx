@@ -24,22 +24,37 @@ const NavBar = ({logout, currentUser, openModal}) => {
     )
 
     const loggedIn = () => (
-        <div className = "loggedin-navbar">
-            <div className="navbar-container" >
-                <Link className="cornbase-logo-loggedout" to="/"><h2>cornbase</h2></Link>
-                <nav>
-                    <Link className="login-link-out" to="/price">Prices</Link>
-                </nav>
-            <div id = "butt-mod">
-                {/* <button className="logout-button" onClick={() => openModal('profileAvatar')}><img src="profile-avatar.jpeg" width="32" height="32" /></button> */}
-                <button className="logout-button" onClick={() => openModal('profileAvatar')}><img src="corn-avatar.jpg" width="50" height="50" /></button>
-                <Modal/>
-            </div>
-
-            </div>
+      <div className="loggedin-navbar">
+        <div className="navbar-container">
+          <div id="navbar-session-buttons">
+            <Link className="cornbase-logo-loggedout" to="/">
+              <h2>cornbase</h2>
+            </Link>
+            <nav id="home-button">
+              <Link className="login-link-out" to="/">
+                Home
+              </Link>
+            </nav>
+            <nav id="home-button">
+              <Link className="login-link-out" to="/price">
+                Prices
+              </Link>
+            </nav>
+          </div>
+          <div id="butt-mod">
+            <button
+              className="logout-button"
+              onClick={() => openModal("profileAvatar")}
+            >
+              <img src="corn-avatar.jpg" width="50" height="50" />
+            </button>
+            <Modal />
+          </div>
         </div>
-    )
+      </div>
+    );
     return currentUser ? loggedIn() : loggedOut();
 }
 
 export default NavBar; 
+

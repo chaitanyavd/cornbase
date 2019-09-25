@@ -25,6 +25,8 @@
 .cornbase-logo-loggedout{
     text-decoration: none; 
     color:  rgb(22, 82, 240);
+    margin-right: 100px;
+    margin-bottom: 10px;
 }
 
 .loggedin-navbar {
@@ -41,7 +43,6 @@
     font-size: 30px;
     padding: 24px;
     border-bottom: 1px solid rgb(236, 239, 241); 
-
 
 }
 
@@ -253,4 +254,15 @@
     font-weight: 400; 
     font-size: 16px; 
     cursor: pointer;
+}
+
+#navbar-session-buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#home-button{
+    margin-left: 50px; 
 }

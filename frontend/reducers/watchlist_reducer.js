@@ -18,7 +18,6 @@ const watchlistReducer = (state = {}, action) => {
             newState = {};
             return newState; 
         case REMOVE_WATCHLIST: 
-            debugger 
             delete newState[action.watchlistId]
             return newState; 
         default: 
