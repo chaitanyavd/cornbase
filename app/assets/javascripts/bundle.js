@@ -2549,6 +2549,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement("div", {
           className: "homepage-container"
         }, react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_portfolio_portfolio__WEBPACK_IMPORTED_MODULE_10__["default"], null), react__WEBPACK_IMPORTED_MODULE_11___default.a.createElement(_watchlists_watchlist__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          data: _this3.props.data,
           grid: _this3.props.grid,
           openGrid: _this3.props.openGrid,
           closeGrid: _this3.props.closeGrid,
@@ -2607,10 +2608,12 @@ var msp = function msp(_ref) {
       coins = _ref$entities.coins,
       watchlists = _ref$entities.watchlists,
       users = _ref$entities.users,
+      coinData = _ref$entities.coinData,
       grid = _ref.ui.grid;
   return {
     coins: orderer(coins),
     watchlists: orderer(watchlists),
+    data: coinData.length ? coinData : [],
     currentUser: users[session.id],
     grid: grid
   };
@@ -2844,11 +2847,13 @@ function (_React$Component) {
       var _this$props = this.props,
           watchlists = _this$props.watchlists,
           deleteWatchlist = _this$props.deleteWatchlist,
-          fetchDay = _this$props.fetchDay;
+          fetchDay = _this$props.fetchDay,
+          data = _this$props.data;
       var listOn = this.state.listOn; // debugger
 
       var listMapper = watchlists.map(function (watchlist, idx) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_watchlist_list_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          fetchDay: fetchDay,
           watchlist: watchlist,
           deleteWatchlist: deleteWatchlist,
           orderNum: idx,
@@ -2858,6 +2863,7 @@ function (_React$Component) {
       var gridMapper = watchlists.map(function (watchlist, idx) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_watchlist_grid_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
           watchlist: watchlist,
+          data: data,
           fetchDay: fetchDay,
           deleteWatchlist: deleteWatchlist,
           orderNum: idx,
@@ -2989,6 +2995,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
+
 
 
 
@@ -3020,9 +3028,27 @@ function (_React$Component) {
       var price = watchlist.price ? parseFloat(watchlist.price) > 0.1 ? parseFloat(watchlist.price).toFixed(2) : parseFloat(watchlist.price).toFixed(4) : null;
       var marketCap = watchlist.market_cap ? parseFloat(watchlist.market_cap) > 1000000000 ? "$".concat((parseFloat(watchlist.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(watchlist.market_cap) / 1000000).toFixed(1), "M") : null;
       var percent = watchlist.price ? parseFloat(watchlist["1d"].price_change_pct * 100).toFixed(2) : null;
-      var color = watchlist.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
+      var color = watchlist.price ? percent >= 0 ? "pospercent" : "negpercent" : null;
       var fill = "rgb(244, 198, 34)";
-      var stroke = "rgb(244, 198, 34)";
+      var stroke = "rgb(244, 198, 34)"; // debugger;
+
+      var close = this.props.data.length ? this.props.data.map(function (object) {
+        return object.close;
+      }) : []; // const close = this.props.data ? this.props.data.map((object) => (object.close)) : []
+      // const close = (this.props.data === []) ? [] : this.props.data.map((object) => (object.close)) //? tried to reverse the logic -- but problem persists
+
+      var min = -Infinity;
+      var max = Infinity;
+
+      if (close.length >= 1) {
+        min = close.reduce(function (acc, el) {
+          return Math.min(acc, el);
+        });
+        max = close.reduce(function (acc, el) {
+          return Math.max(acc, el);
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
         className: "grid-link",
         to: "/price/".concat(watchlist.symbol)
@@ -3049,7 +3075,37 @@ function (_React$Component) {
         className: "grid-price"
       }, "$", price)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "grid-percent"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, percent, "%")))));
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, percent, "%"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "watchlist-grid-graph-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_7__["LineChart"], {
+        className: "grid-chart",
+        width: 359.70,
+        height: 100,
+        data: this.props.data,
+        zIndex: "1",
+        margin: {
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_7__["XAxis"], {
+        dataKey: "time",
+        hide: true
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_7__["YAxis"], {
+        dataKey: "close",
+        domain: [min, max],
+        hide: true
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_7__["Line"], {
+        className: "line",
+        cursor: "cross-hair",
+        type: "monotone",
+        dataKey: "close",
+        dot: false,
+        strokeWidth: 1.75,
+        stroke: "rgb(22, 82, 240)",
+        yAxisId: 0
+      })))));
     }
   }]);
 
@@ -3109,6 +3165,11 @@ function (_React$Component) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(WatchlistListItem, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchDay(this.props.watchlist.symbol);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,

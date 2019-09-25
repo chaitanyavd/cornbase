@@ -15,13 +15,15 @@ const orderer = (coins) => {
     return ordArr
 }
 
-const msp = ({ session, entities: { coins, watchlists, users }, ui: {grid} }) => {
-    return ({
-        coins: orderer(coins),
-        watchlists: orderer(watchlists), 
-        currentUser: users[session.id], 
-        grid: grid
-    })
+const msp = ({ session, entities: { coins, watchlists, users, coinData }, ui: {grid} }) => {
+    
+    return {
+      coins: orderer(coins),
+      watchlists: orderer(watchlists),
+      data: coinData.length ? coinData : [],
+      currentUser: users[session.id],
+      grid: grid
+    };
 }
 
 

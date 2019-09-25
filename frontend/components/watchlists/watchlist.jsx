@@ -27,12 +27,12 @@ class Watchlist extends React.Component {
     render() {
 
         if (this.props.watchlists === undefined) return null;
-        const {watchlists, deleteWatchlist, fetchDay} = this.props
+        const {watchlists, deleteWatchlist, fetchDay, data} = this.props
         const listOn = this.state.listOn; 
         // debugger
 
-        const listMapper =  watchlists.map((watchlist, idx) => <WatchlistListItem watchlist={watchlist} deleteWatchlist={deleteWatchlist} orderNum={idx} key={idx} />) 
-        const gridMapper =  watchlists.map((watchlist, idx) => <WatchlistGridItem watchlist={watchlist} fetchDay = {fetchDay} deleteWatchlist={deleteWatchlist} orderNum={idx} key={idx} />) 
+        const listMapper =  watchlists.map((watchlist, idx) => <WatchlistListItem fetchDay = {fetchDay}watchlist={watchlist} deleteWatchlist={deleteWatchlist} orderNum={idx} key={idx} />) 
+        const gridMapper =  watchlists.map((watchlist, idx) => <WatchlistGridItem watchlist={watchlist} data = {data}fetchDay = {fetchDay} deleteWatchlist={deleteWatchlist} orderNum={idx} key={idx} />) 
         
         let view; 
         if (!this.props.grid) { view = 
