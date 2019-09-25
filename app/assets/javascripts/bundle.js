@@ -530,7 +530,7 @@ function (_React$Component) {
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinIndex).call(this, props));
     _this.state = {
-      inputValue: ''
+      inputValue: ""
     };
     _this.selectCoin = _this.selectCoin.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.handleInput = _this.handleInput.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
@@ -540,8 +540,8 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchWatchlists();
       this.props.fetchCoins();
+      this.props.fetchWatchlists();
     }
   }, {
     key: "handleInput",
@@ -570,7 +570,7 @@ function (_React$Component) {
       });
 
       if (matches.length === 0) {
-        matches.push('Search for another Corn');
+        matches.push("Search for another Corn");
       }
 
       return matches;
@@ -776,10 +776,12 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndexItem, [{
     key: "isWatchlist",
     value: function isWatchlist(id) {
-      var watchlists = this.props.watchlists;
+      var watchlists = this.props.watchlists; // debugger;
 
       for (var i = 0; i < watchlists.length; i++) {
         if (watchlists[i].id === id) {
+          console.log(id);
+          console.log(watchlists[i].id);
           return true;
         }
       }
@@ -804,10 +806,21 @@ function (_React$Component) {
       var price = coin.price ? parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4) : null;
       var marketCap = coin.market_cap ? parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M") : null;
       var percent = coin.price ? parseFloat(coin["1d"].price_change_pct * 100).toFixed(2) : null;
-      var color = coin.price ? percent >= 0 ? "pospercent" : "negpercent" : null; // let fill = "rgb(244, 198, 34)";
-
-      var stroke = "rgb(244, 198, 34)";
-      var fill = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue"; // let stroke = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue"
+      var color = coin.price ? percent >= 0 ? "pospercent" : "negpercent" : null;
+      var percentSymbol = coin.price ? percent >= 0 ? "+" : "" : null;
+      var fill = "rgb(244, 198, 34)";
+      var stroke = "rgb(244, 198, 34)"; // let fill = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue";
+      // let stroke = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue";
+      // let fill = coin.symbol
+      //   ? this.isWatchlist(coin.symbol)
+      //     ? "rgb(244, 198, 34)"
+      //     : "blue"
+      //   : "none";
+      // let stroke = coin.symbol
+      //   ? this.isWatchlist(coin.symbol)
+      //     ? "rgb(244, 198, 34)"
+      //     : "blue"
+      //   : "none";
       // debugger
 
       var Present = function Present() {
@@ -844,7 +857,7 @@ function (_React$Component) {
           to: "/price/".concat(coin.symbol)
         }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
           className: color
-        }, percent, "%"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        }, percentSymbol, percent, "%"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
           className: "index-th"
         }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["Link"], {
           className: "crypto-link",
@@ -852,6 +865,7 @@ function (_React$Component) {
         }, marketCap)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
           className: "index-th"
         }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+          className: "createGridButton",
           onClick: function onClick() {
             return createWatchlist(coin);
           }

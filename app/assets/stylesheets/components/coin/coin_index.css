@@ -1,34 +1,35 @@
-
 .tableheader {
-    border-bottom: none; 
-    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    line-height: 3;
-    color: rgb(5, 15, 25);
-    font-size: 18px;
-    font-weight: 500;
-
+  border-bottom: none;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  line-height: 3;
+  color: rgb(5, 15, 25);
+  font-size: 18px;
+  font-weight: 500;
 }
 .tabletitles {
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(17, 51, 83, 0.3) 
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(17, 51, 83, 0.3);
 }
 
-.ttitles{
-    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    padding: 18px;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(17, 51, 83, 0.3);
-    transition: color 200ms ease-in-out 0s;
+.ttitles {
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  padding: 18px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(17, 51, 83, 0.3);
+  transition: color 200ms ease-in-out 0s;
 }
-
 
 /* .index-table-container {
     display: flex; 
@@ -37,128 +38,130 @@
 } */
 
 .index-table {
-    display: flex; 
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    
-    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    font-weight: 100; 
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
-    width: 1178; 
-    border: 1px; 
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-weight: 100;
+
+  width: 1178;
+  border: 1px;
 }
 
 .negpercent {
-  color: rgb(223, 95, 103); 
+  color: rgb(223, 95, 103);
 }
 
 .pospercent {
   color: rgb(5, 177, 105);
 }
 
-
 .crypto-link {
   text-decoration: none;
-  color: rgba(17, 51, 83, 0.6); 
+  color: rgba(17, 51, 83, 0.6);
 }
 
 .index-table-top {
-    text-align: center; 
-    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 2.5;
-    color: rgb(5, 15, 25);
-    margin-top: 15px; ;
-    box-sizing: border-box;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-
+  text-align: center;
+  font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 2.5;
+  color: rgb(5, 15, 25);
+  margin-top: 15px;
+  box-sizing: border-box;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
 .index-page-content {
-  display: flex; 
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;   
-  text-align: center; 
+  align-items: center;
+  text-align: center;
 }
 
 .index-table-search-section {
-
-    /* -webkit-box-align: center; */
-    align-items: center;
-    width: 100%;
-    justify-content: center; 
-    box-shadow: rgba(17, 51, 83, 0.02) 0px 4px 12px 0px;
-    margin-top: 32px; 
-    margin-bottom: 32px;
-    /* padding: 20px 32px; */
-    padding-top: 20px; 
-    padding-bottom: 20px; 
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(236, 239, 241);
-    border-image: initial;
-    background: rgb(255, 255, 255);
-    border-radius: 4px;
+  /* -webkit-box-align: center; */
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  box-shadow: rgba(17, 51, 83, 0.02) 0px 4px 12px 0px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  /* padding: 20px 32px; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(236, 239, 241);
+  border-image: initial;
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
 }
 
 .index-table-search-div {
-
-    flex-direction: row;
-    align-items: center; 
-    justify-content: center; 
-    text-align: left;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
 }
 
 .search {
-    -webkit-appearance: textfield;
-    outline-offset: -2px;
-    background-image: none;
-    background-color: transparent;
-    box-shadow: none;
-    -webkit-appearance: none;
-    font-size: 18px;
-    border-width: initial;
-    border-style: none;
-    border-color: initial;
-    border-image: initial;
-    font-family: sans-serif;
-    text-rendering: auto;
-    color: initial;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    margin-left: 50px; 
-    width: 100%; 
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+  background-image: none;
+  background-color: transparent;
+  box-shadow: none;
+  -webkit-appearance: none;
+  font-size: 18px;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  font-family: sans-serif;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin-left: 50px;
+  width: 100%;
 }
 
 .search:focus {
-  outline: none; 
+  outline: none;
 }
 
 #failed-search-container {
-  margin-top: 12px; 
-  display: flex; 
-  flex-direction: row; 
-  justify-content: center; 
-  align-content: center; 
+  margin-top: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
 }
-
-
 
 #failed-search {
-  font-size: 20px; 
-  color: grey; 
-  border: none; 
+  font-size: 20px;
+  color: grey;
+  border: none;
 }
 
+.createGridButton {
+  text-decoration: none;
+  border: none;
+}

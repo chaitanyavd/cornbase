@@ -15,8 +15,11 @@ class CoinIndexItem extends React.Component {
 
   isWatchlist(id) {
     let watchlists = this.props.watchlists;
+    // debugger;
     for (let i = 0; i < watchlists.length; i++) {
       if (watchlists[i].id === id) {
+        console.log(id);
+        console.log(watchlists[i].id);
         return true;
       }
     }
@@ -54,10 +57,24 @@ class CoinIndexItem extends React.Component {
         ? "pospercent"
         : "negpercent"
       : null;
-    // let fill = "rgb(244, 198, 34)";
+    let percentSymbol = coin.price ? (percent >= 0 ? "+" : "") : null;
+
+    let fill = "rgb(244, 198, 34)";
     let stroke = "rgb(244, 198, 34)";
-    let fill = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue";
-    // let stroke = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue"
+
+    // let fill = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue";
+    // let stroke = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue";
+    // let fill = coin.symbol
+    //   ? this.isWatchlist(coin.symbol)
+    //     ? "rgb(244, 198, 34)"
+    //     : "blue"
+    //   : "none";
+
+    // let stroke = coin.symbol
+    //   ? this.isWatchlist(coin.symbol)
+    //     ? "rgb(244, 198, 34)"
+    //     : "blue"
+    //   : "none";
 
     // debugger
 
@@ -94,7 +111,10 @@ class CoinIndexItem extends React.Component {
 
         <th className="index-th">
           <Link className="crypto-link" to={`/price/${coin.symbol}`}>
-            <span className={color}>{percent}%</span>
+            <span className={color}>
+              {percentSymbol}
+              {percent}%
+            </span>
           </Link>
         </th>
 
@@ -104,7 +124,10 @@ class CoinIndexItem extends React.Component {
           </Link>
         </th>
         <th className="index-th">
-          <button onClick={() => createWatchlist(coin)}>
+          <button
+            className="createGridButton"
+            onClick={() => createWatchlist(coin)}
+          >
             <svg width="23" height="24" viewBox=" 0 0 24 23">
               <path
                 stroke={stroke}
