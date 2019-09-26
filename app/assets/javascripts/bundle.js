@@ -482,6 +482,166 @@ var App = function App() {
 
 /***/ }),
 
+/***/ "./frontend/components/coins/coin_chart/coin_chart.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/coins/coin_chart/coin_chart.jsx ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _custom_tooltip__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./custom_tooltip */ "./frontend/components/coins/coin_chart/custom_tooltip.jsx");
+/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
+
+
+
+
+
+
+
+
+
+var CoinChart =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(CoinChart, _React$Component);
+
+  function CoinChart(props) {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CoinChart);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinChart).call(this, props));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinChart, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          min = _this$props.min,
+          max = _this$props.max,
+          data = _this$props.data;
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_7__["LineChart"], {
+        className: "chart",
+        width: 850,
+        height: 230,
+        data: data,
+        margin: {
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_7__["XAxis"], {
+        dataKey: "time",
+        hide: true
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_7__["YAxis"], {
+        dataKey: "close",
+        domain: [min, max],
+        hide: true
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_7__["Tooltip"], {
+        content: react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_custom_tooltip__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          label: "price"
+        })
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_7__["Line"], {
+        className: "line",
+        cursor: "cross-hair",
+        type: "monotone",
+        dataKey: "close",
+        dot: false,
+        strokeWidth: 1.75,
+        stroke: "rgb(22, 82, 240)",
+        yAxisId: 0
+      }));
+    }
+  }]);
+
+  return CoinChart;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (CoinChart);
+
+/***/ }),
+
+/***/ "./frontend/components/coins/coin_chart/custom_tooltip.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/coins/coin_chart/custom_tooltip.jsx ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CustomTooltip; });
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var CustomTooltip =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(CustomTooltip, _React$Component);
+
+  function CustomTooltip(props) {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CustomTooltip);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CustomTooltip).call(this, props));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CustomTooltip, [{
+    key: "render",
+    value: function render() {
+      var active = this.props.active;
+
+      if (active) {
+        var payload = this.props.payload;
+
+        if (payload && payload[0] && payload[0].payload) {
+          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "custom-tooltip"
+          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+            className: "tooltip-text"
+          }, "$".concat(payload[0].payload.close)));
+        }
+      }
+
+      return null;
+    }
+  }]);
+
+  return CustomTooltip;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+
+
+/***/ }),
+
 /***/ "./frontend/components/coins/coin_index.jsx":
 /*!**************************************************!*\
   !*** ./frontend/components/coins/coin_index.jsx ***!
@@ -928,7 +1088,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
 /* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! halogenium */ "./node_modules/halogenium/lib/Halogenium.js");
 /* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _news__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./news */ "./frontend/components/coins/news.jsx");
+/* harmony import */ var _coin_chart_coin_chart__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./coin_chart/coin_chart */ "./frontend/components/coins/coin_chart/coin_chart.jsx");
+/* harmony import */ var _news__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./news */ "./frontend/components/coins/news.jsx");
+
 
 
 
@@ -1104,47 +1266,11 @@ function (_React$Component) {
             active: "ALL"
           }));
         }
-      }, "ALL")))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["LineChart"], {
-        className: "chart",
-        width: 850,
-        height: 230,
+      }, "ALL")))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_coin_chart_coin_chart__WEBPACK_IMPORTED_MODULE_8__["default"], {
         data: this.props.data,
-        margin: {
-          top: 0,
-          right: 0,
-          left: 0,
-          bottom: 0
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["XAxis"], {
-        dataKey: "time",
-        hide: true
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["YAxis"], {
-        dataKey: "close",
-        domain: [min, max],
-        hide: true
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Tooltip"], {
-        className: "tooltip",
-        labelStyle: {
-          display: 'none',
-          text: "price"
-        },
-        itemStyle: {
-          backgroundColor: "#34343b",
-          fontSize: 22,
-          color: "white",
-          margin: "0",
-          outline: "none"
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_6__["Line"], {
-        className: "line",
-        cursor: "cross-hair",
-        type: "monotone",
-        dataKey: "close",
-        dot: false,
-        strokeWidth: 1.75,
-        stroke: "rgb(22, 82, 240)",
-        yAxisId: 0
-      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        max: max,
+        min: min
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "horizontal-axis"
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "graph-assets-container"
@@ -1180,7 +1306,7 @@ function (_React$Component) {
         className: "graph-asset-value"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "#", coin.rank, " most held"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "news-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news__WEBPACK_IMPORTED_MODULE_9__["default"], {
         news: this.props.news
       })));
     }
@@ -3196,13 +3322,16 @@ function (_React$Component) {
         className: "t-row-container "
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
         className: "splashout-tablerow-1"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        className: "crypto-link",
+        to: "/price/".concat(watchlist.symbol)
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", {
         className: "splashout-tablerow-1id"
-      }, this.props.orderNum + 1)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+      }, this.props.orderNum + 1))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
         className: "splashout-tablerow-2"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
         className: "splashout-link",
-        to: "/signup"
+        to: "/price/".concat(watchlist.symbol)
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "splashout-tablerow-name-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -3222,22 +3351,34 @@ function (_React$Component) {
         className: "tr-symbol"
       }, this.props.watchlist.symbol))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
         className: "splashout-tablerow-3"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        className: "crypto-link",
+        to: "/price/".concat(watchlist.symbol)
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "tr-price-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h4", {
         className: "tr-price"
-      }, "$", price))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+      }, "$", price)))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
         className: "splashout-tablerow-4"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        className: "crypto-link",
+        to: "/price/".concat(watchlist.symbol)
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "tr-percent-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: color
-      }, percent, "%"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+      }, percent, "%")))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
         className: "splashout-tablerow-4"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        className: "crypto-link",
+        to: "/price/".concat(watchlist.symbol)
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "tr-marketcap-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, marketCap))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, marketCap)))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
         className: "splashout-tablerow-4"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+        className: "crypto-link",
+        to: "/price/".concat(watchlist.symbol)
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "tr-follow-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
@@ -3254,7 +3395,7 @@ function (_React$Component) {
         d: "M12.713 1.443l2.969 6.015 6.637.965a.794.794 0 0 1 .44 1.354l-4.804 4.681 1.135 6.612a.794.794 0 0 1-1.152.837L12 18.787l-5.938 3.121a.795.795 0 0 1-1.152-.838l1.134-6.612L1.24 9.777a.794.794 0 0 1 .44-1.354l6.638-.965 2.968-6.015a.795.795 0 0 1 1.425 0z",
         stroke: stroke,
         fill: fill
-      }, " "))))));
+      }, " ")))))));
     }
   }]);
 

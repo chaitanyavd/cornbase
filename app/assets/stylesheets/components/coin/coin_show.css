@@ -259,3 +259,21 @@ button {
     font-weight: 400;
 }
 
+.custom-tooltip{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    width: 200px;    
+    height: 70px; 
+    border-radius: 8px; 
+    background-color: rgba(9, 1, 7, 0.9); 
+}
+
+.tooltip-text{
+    font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    line-height: 1.3;
+    color: white; 
+    font-size: 22px; 
+    font-weight: 400;
+}
