@@ -592,10 +592,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -606,15 +609,49 @@ __webpack_require__.r(__webpack_exports__);
 var CustomTooltip =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(CustomTooltip, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(CustomTooltip, _React$Component);
 
   function CustomTooltip(props) {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CustomTooltip);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CustomTooltip).call(this, props));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CustomTooltip).call(this, props));
+    _this.formatDate = _this.formatDate.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CustomTooltip, [{
+    key: "formatDate",
+    value: function formatDate(UTC) {
+      var utcDate = new Date(UTC * 1000);
+      var date = utcDate.getDate();
+      var hour = utcDate.getHours();
+      var minute = utcDate.getMinutes();
+      var month = utcDate.getMonth();
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      var hours = {
+        0: 12,
+        13: 1,
+        14: 2,
+        15: 3,
+        16: 4,
+        17: 5,
+        18: 6,
+        19: 7,
+        20: 8,
+        21: 9,
+        22: 10,
+        23: 11
+      };
+
+      if (Object.keys(hours).includes(hour.toString())) {
+        return "".concat(months[month], " ").concat(date, " ").concat(hours[hour], ":").concat(minute, "PM");
+      } else {
+        return "".concat(months[month], " ").concat(date, " ").concat(hour, ":").concat(minute, "AM");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var active = this.props.active;
@@ -623,11 +660,13 @@ function (_React$Component) {
         var payload = this.props.payload;
 
         if (payload && payload[0] && payload[0].payload) {
-          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+          return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
             className: "custom-tooltip"
-          }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+          }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
             className: "tooltip-text"
-          }, "$".concat(payload[0].payload.close)));
+          }, "$".concat(payload[0].payload.close)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+            className: "tooltip-text-date"
+          }, this.formatDate(payload[0].payload.time)));
         }
       }
 
@@ -636,7 +675,7 @@ function (_React$Component) {
   }]);
 
   return CustomTooltip;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
 
 
 
