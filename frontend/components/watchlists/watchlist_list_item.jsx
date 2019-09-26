@@ -6,6 +6,7 @@ class WatchlistListItem extends React.Component {
     constructor(props) {
         super(props)
         // this.state = this.props.watchlist
+
         {/* <button onClick={() => deleteWatchlist(watchlist.symbol)}>Delete</button> */}
     }
 
@@ -24,6 +25,7 @@ class WatchlistListItem extends React.Component {
         let price = watchlist.price ? parseFloat(watchlist.price) > 0.1 ? parseFloat(watchlist.price).toFixed(2) : parseFloat(watchlist.price).toFixed(4) : null
         let marketCap = watchlist.market_cap ? parseFloat(watchlist.market_cap) > 1000000000 ? `$${(parseFloat(watchlist.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(watchlist.market_cap) / 1000000).toFixed(1)}M` : null
         let percent = watchlist.price ? parseFloat((watchlist["1d"].price_change_pct) * 100).toFixed(2) : null
+        let percentSymbol = watchlist.price ? (percent >= 0 ? "+" : "") : null;
         let color = watchlist.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null
         let fill = "rgb(244, 198, 34)"
         let stroke = "rgb(244, 198, 34)"
@@ -78,7 +80,7 @@ class WatchlistListItem extends React.Component {
             <td className="splashout-tablerow-4">
               <Link className="crypto-link" to={`/price/${watchlist.symbol}`}>
                 <div className="tr-percent-container">
-                  <span className={color}>{percent}%</span>
+                  <span className={color}>{percentSymbol}{percent}%</span>
                 </div>
               </Link>
             </td>
@@ -90,7 +92,7 @@ class WatchlistListItem extends React.Component {
               </Link>
             </td>
             <td className="splashout-tablerow-4">
-              <Link className="crypto-link" to={`/price/${watchlist.symbol}`}>
+
                 <div className="tr-follow-container">
                   <button
                     className="watchlist-button"
@@ -112,7 +114,7 @@ class WatchlistListItem extends React.Component {
                     </svg>
                   </button>
                 </div>
-              </Link>
+
             </td>
           </tr>
         );

@@ -24,13 +24,20 @@ class WatchlistGridItem extends React.Component {
     let percent = watchlist.price
       ? parseFloat(watchlist["1d"].price_change_pct * 100).toFixed(2)
       : null;
+    let percentSymbol = watchlist.price ? (percent >= 0 ? "+" : "") : null;
     let color = watchlist.price
       ? percent >= 0
         ? "pospercent"
         : "negpercent"
       : null;
     let fill = "rgb(244, 198, 34)";
-    let stroke = "rgb(244, 198, 34)";
+    let stroke = watchlist.price
+      ? percent >= 0
+        ? "rgb(5,177,105)"
+        : "rgb(223,95,103)"
+      : null; 
+
+
     // debugger;
     const close = this.props.data.length
       ? this.props.data.map(object => object.close)
@@ -65,8 +72,8 @@ class WatchlistGridItem extends React.Component {
             <div className="grid-name-logo">
               <h3 className="grid-price">${price}</h3>
             </div>
-            <div className="grid-percent">
-              <span>{percent}%</span>
+            <div className={color}>
+              <span>{percentSymbol}{percent}%</span>
             </div>
           </div>
           <div className="watchlist-grid-graph-container">
@@ -87,7 +94,7 @@ class WatchlistGridItem extends React.Component {
                 dataKey="close"
                 dot={false}
                 strokeWidth={1.75}
-                stroke="rgb(22, 82, 240)"
+                stroke={stroke}
                 yAxisId={0}
               />
             </LineChart>

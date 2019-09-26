@@ -1124,6 +1124,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! halogenium */ "./node_modules/halogenium/lib/Halogenium.js");
+/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -1145,6 +1148,15 @@ function (_React$Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(About, [{
     key: "render",
     value: function render() {
+      if (this.props.metadata === undefined) {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(halogenium__WEBPACK_IMPORTED_MODULE_6__["GridLoader"], {
+          id: "loader",
+          color: "rgb(22, 82, 240)",
+          size: "16px",
+          margin: "4px"
+        });
+      }
+
       var metadata = this.props.metadata; // debugger
 
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -3048,15 +3060,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
 /* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _watchlist_list_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./watchlist_list_item */ "./frontend/components/watchlists/watchlist_list_item.jsx");
-/* harmony import */ var _watchlist_grid_item__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./watchlist_grid_item */ "./frontend/components/watchlists/watchlist_grid_item.jsx");
-
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _watchlist_list_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./watchlist_list_item */ "./frontend/components/watchlists/watchlist_list_item.jsx");
+/* harmony import */ var _watchlist_grid_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./watchlist_grid_item */ "./frontend/components/watchlists/watchlist_grid_item.jsx");
 
 
 
@@ -3069,37 +3078,15 @@ __webpack_require__.r(__webpack_exports__);
 var Watchlist =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Watchlist, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(Watchlist, _React$Component);
 
   function Watchlist(props) {
-    var _this;
-
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Watchlist);
 
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Watchlist).call(this, props));
-    _this.state = {
-      listOn: true
-    };
-    _this.handleGridClick = _this.handleGridClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    _this.handleListClick = _this.handleListClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    return _this;
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Watchlist).call(this, props));
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Watchlist, [{
-    key: "handleGridClick",
-    value: function handleGridClick() {
-      this.setState({
-        listOn: false
-      });
-    }
-  }, {
-    key: "handleListClick",
-    value: function handleListClick() {
-      this.setState({
-        listOn: true
-      });
-    }
-  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchWatchlists();
@@ -3107,18 +3094,19 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this = this;
 
       if (this.props.watchlists === undefined) return null;
       var _this$props = this.props,
           watchlists = _this$props.watchlists,
           deleteWatchlist = _this$props.deleteWatchlist,
           fetchDay = _this$props.fetchDay,
-          data = _this$props.data;
-      var listOn = this.state.listOn; // debugger
+          data = _this$props.data; // debugger
 
+      var listFill = this.props.grid ? "rgb(190, 202, 218)" : "rgb(22, 82, 240)";
+      var gridFill = !this.props.grid ? "rgb(190, 202, 218)" : "rgb(22, 82, 240)";
       var listMapper = watchlists.map(function (watchlist, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_watchlist_list_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_watchlist_list_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
           fetchDay: fetchDay,
           watchlist: watchlist,
           deleteWatchlist: deleteWatchlist,
@@ -3127,7 +3115,7 @@ function (_React$Component) {
         });
       });
       var gridMapper = watchlists.map(function (watchlist, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_watchlist_grid_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_watchlist_grid_item__WEBPACK_IMPORTED_MODULE_7__["default"], {
           watchlist: watchlist,
           data: data,
           fetchDay: fetchDay,
@@ -3139,101 +3127,103 @@ function (_React$Component) {
       var view;
 
       if (!this.props.grid) {
-        view = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        view = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
           id: "watchlist-list-container"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
           id: "watchlist-list-wrapper"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("table", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("table", {
           id: "watchlist-table"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("thead", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("thead", {
           className: "splashout-table-head"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
           className: "splashout-tablehelpers"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
           className: "tablehead"
-        }, "#"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        }, "#"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
           className: "splashout-tablehelpers"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
           className: "tableheadname"
-        }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        }, "NAME"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
           className: "splashout-tablehelpers"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
           className: "tablehead"
-        }, "PRICE"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        }, "PRICE"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
           className: "splashout-tablehelpers"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
           className: "tablehead"
-        }, "CHANGE"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        }, "CHANGE"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
           className: "splashout-tablehelpers"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
           className: "tablehead"
-        }, "MARKET CAP"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
+        }, "MARKET CAP"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("th", {
           className: "splashout-tablehelpers"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
           className: "splashout-tablehelper-div"
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
           className: "tablehead"
-        }, "FOLLOW"))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tbody", {
+        }, "FOLLOW"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("tbody", {
           className: "t-body"
         }, listMapper))));
       } else {
-        view = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        view = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
           id: "watchlist-grid-container"
         }, gridMapper);
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         id: "watchlist-container"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         id: "watchlist-header-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         id: "watchlist-title-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
         id: "watchlist-header"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", null, "Following"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "Following"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         id: "widget-header-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
+        id: "widgetss"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
         className: "watchlist-button",
         onClick: function onClick() {
-          return _this2.props.openGrid();
+          return _this.props.openGrid();
         }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("svg", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
         id: "grid-svg",
         height: "18",
         width: "18",
         viewBox: "0 0 18 18"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("path", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
         d: "M7.044 0H.783A.783.783 0 0 0 0 .783v6.26c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.782V.783A.783.783 0 0 0 7.044 0zM17.218 0h-6.261a.783.783 0 0 0-.783.783v6.26c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.782V.783A.783.783 0 0 0 17.217 0zM7.044 10.174H.783a.783.783 0 0 0-.783.782v6.261c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.783v-6.26a.783.783 0 0 0-.782-.783zM17.218 10.174h-6.261a.783.783 0 0 0-.783.782v6.261c0 .433.35.783.783.783h6.26c.433 0 .783-.35.783-.783v-6.26a.783.783 0 0 0-.783-.783z",
-        fill: "rgb(190, 202, 218)"
-      }, " "))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+        fill: gridFill
+      }, " "))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
         className: "watchlist-button",
         onClick: function onClick() {
-          return _this2.props.closeGrid();
+          return _this.props.closeGrid();
         }
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("svg", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("svg", {
         id: "list-svg",
         height: "16",
         width: "19",
         viewBox: "0 0 19 16"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("path", {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("path", {
         d: "M0 10.286c0 .63.512 1.143 1.143 1.143h16.714a1.143 1.143 0 0 0 0-2.286H1.143C.512 9.143 0 9.655 0 10.286zm0 4.571C0 15.488.512 16 1.143 16h16.714a1.143 1.143 0 0 0 0-2.286H1.143c-.631 0-1.143.512-1.143 1.143zm0-9.143c0 .631.512 1.143 1.143 1.143h16.714a1.143 1.143 0 1 0 0-2.286H1.143C.512 4.571 0 5.083 0 5.714zM1.143 0a1.143 1.143 0 1 0 0 2.286h16.714a1.143 1.143 0 1 0 0-2.286H1.143z",
-        fill: "rgb(190, 202, 218)"
+        fill: listFill
       }, " ")))))), view);
     }
   }]);
 
   return Watchlist;
-}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Watchlist);
 
@@ -3294,9 +3284,10 @@ function (_React$Component) {
       var price = watchlist.price ? parseFloat(watchlist.price) > 0.1 ? parseFloat(watchlist.price).toFixed(2) : parseFloat(watchlist.price).toFixed(4) : null;
       var marketCap = watchlist.market_cap ? parseFloat(watchlist.market_cap) > 1000000000 ? "$".concat((parseFloat(watchlist.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(watchlist.market_cap) / 1000000).toFixed(1), "M") : null;
       var percent = watchlist.price ? parseFloat(watchlist["1d"].price_change_pct * 100).toFixed(2) : null;
+      var percentSymbol = watchlist.price ? percent >= 0 ? "+" : "" : null;
       var color = watchlist.price ? percent >= 0 ? "pospercent" : "negpercent" : null;
       var fill = "rgb(244, 198, 34)";
-      var stroke = "rgb(244, 198, 34)"; // debugger;
+      var stroke = watchlist.price ? percent >= 0 ? "rgb(5,177,105)" : "rgb(223,95,103)" : null; // debugger;
 
       var close = this.props.data.length ? this.props.data.map(function (object) {
         return object.close;
@@ -3340,8 +3331,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
         className: "grid-price"
       }, "$", price)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "grid-percent"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, percent, "%"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: color
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, percentSymbol, percent, "%"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "watchlist-grid-graph-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(recharts__WEBPACK_IMPORTED_MODULE_7__["LineChart"], {
         className: "grid-chart",
@@ -3369,7 +3360,7 @@ function (_React$Component) {
         dataKey: "close",
         dot: false,
         strokeWidth: 1.75,
-        stroke: "rgb(22, 82, 240)",
+        stroke: stroke,
         yAxisId: 0
       })))));
     }
@@ -3446,6 +3437,7 @@ function (_React$Component) {
       var price = watchlist.price ? parseFloat(watchlist.price) > 0.1 ? parseFloat(watchlist.price).toFixed(2) : parseFloat(watchlist.price).toFixed(4) : null;
       var marketCap = watchlist.market_cap ? parseFloat(watchlist.market_cap) > 1000000000 ? "$".concat((parseFloat(watchlist.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(watchlist.market_cap) / 1000000).toFixed(1), "M") : null;
       var percent = watchlist.price ? parseFloat(watchlist["1d"].price_change_pct * 100).toFixed(2) : null;
+      var percentSymbol = watchlist.price ? percent >= 0 ? "+" : "" : null;
       var color = watchlist.price ? percent >= 0 ? 'pospercent' : 'negpercent' : null;
       var fill = "rgb(244, 198, 34)";
       var stroke = "rgb(244, 198, 34)";
@@ -3498,7 +3490,7 @@ function (_React$Component) {
         className: "tr-percent-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", {
         className: color
-      }, percent, "%")))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
+      }, percentSymbol, percent, "%")))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
         className: "splashout-tablerow-4"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
         className: "crypto-link",
@@ -3507,9 +3499,6 @@ function (_React$Component) {
         className: "tr-marketcap-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, marketCap)))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("td", {
         className: "splashout-tablerow-4"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
-        className: "crypto-link",
-        to: "/price/".concat(watchlist.symbol)
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "tr-follow-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
@@ -3526,7 +3515,7 @@ function (_React$Component) {
         d: "M12.713 1.443l2.969 6.015 6.637.965a.794.794 0 0 1 .44 1.354l-4.804 4.681 1.135 6.612a.794.794 0 0 1-1.152.837L12 18.787l-5.938 3.121a.795.795 0 0 1-1.152-.838l1.134-6.612L1.24 9.777a.794.794 0 0 1 .44-1.354l6.638-.965 2.968-6.015a.795.795 0 0 1 1.425 0z",
         stroke: stroke,
         fill: fill
-      }, " ")))))));
+      }, " "))))));
     }
   }]);
 

@@ -1,4 +1,5 @@
 import React from "react"; 
+import { GridLoader } from "halogenium";
 
 
 export default class About extends React.Component{
@@ -7,7 +8,18 @@ export default class About extends React.Component{
     }
 
     render() {
-        
+
+        if (this.props.metadata === undefined){
+            return (
+              <GridLoader
+                id="loader"
+                color="rgb(22, 82, 240)"
+                size="16px"
+                margin="4px"
+              />
+            );
+        }
+
         const {metadata} = this.props
         // debugger
         return (
