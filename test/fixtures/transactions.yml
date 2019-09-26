@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  coin_id: 1
+  num_coins: 1
+  price: 1.5
+  order_type: MyString
+  transaction_date: 2019-09-26 14:37:49
+
+two:
+  user_id: 1
+  coin_id: 1
+  num_coins: 1
+  price: 1.5
+  order_type: MyString
+  transaction_date: 2019-09-26 14:37:49
