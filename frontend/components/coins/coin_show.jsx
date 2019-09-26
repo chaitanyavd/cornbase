@@ -2,6 +2,7 @@ import React from 'react';
 import { GridLoader } from 'halogenium';
 import CoinChart from './coin_chart/coin_chart'; 
 import News from "./news"; 
+import About from './coin_metadata'; 
 class CoinShow extends React.Component {
     
     constructor(props) {
@@ -13,7 +14,8 @@ class CoinShow extends React.Component {
     componentDidMount() {
         this.props.fetchCoin(this.props.match.params.symbol);
         this.props.fetchDay(this.props.match.params.symbol); 
-        this.props.fetchGeneralNews(); 
+        this.props.fetchGeneralNews();
+        this.props.fetchCoinMetadatum(this.props.match.params.symbol);  
     }
 
     componentDidUpdate(prevProps) {
@@ -32,20 +34,15 @@ class CoinShow extends React.Component {
     render() {
 
         if (this.props.coin === undefined) return <GridLoader id="loader" color="rgb(22, 82, 240)" size="16px" margin="4px" />;
-
-        const coin = this.props.coin ? this.props.coin : []
         // debugger 
+        const coin = this.props.coin ? this.props.coin : []
         let marketCap = parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M`
         let circSupply = parseFloat(coin.circulating_supply) > 1000000000 ? `${(parseFloat(coin.circulating_supply) / 1000000000).toFixed(1)}B ${coin.symbol}` : `${(parseFloat(coin.circulating_supply) / 1000000).toFixed(1)}M ${coin.symbol}`
         let allTimeHigh = parseFloat(coin.high) > 0.1 ? parseFloat(coin.high).toFixed(2) : parseFloat(coin.high).toFixed(4)
         let price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4)
         let volume = parseFloat(coin["1d"].volume) > 1000000000 ? `$${(parseFloat(coin["1d"].volume) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin["1d"].volume) / 1000000).toFixed(1)}M`
-        // debugger 
-        // debugger
-        // console.log(this.props.data);
         const close = this.props.data.length ? this.props.data.map((object) => (object.close)) : [];
-        // const close = this.props.data ? this.props.data.map((object) => (object.close)) : []
-        // const close = (this.props.data === []) ? [] : this.props.data.map((object) => (object.close)) //? tried to reverse the logic -- but problem persists
+        
         let min = -Infinity;
         let max = Infinity;
         if (close.length >= 1) {
@@ -53,9 +50,8 @@ class CoinShow extends React.Component {
             max = close.reduce((acc, el) => (Math.max(acc, el)));
         }
         let change = max - min; 
-        // let change = this.props.data ? this.props.data[this.props.data.length - 1].close - this.props.data[0].close : 0
+
         let color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null 
-        // debugger
 
         return (
           <div className="show-container">
@@ -244,6 +240,9 @@ class CoinShow extends React.Component {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className = "about-container">
+                <About metadata = {this.props.metadata}/>
             </div>
             <div className="news-container">
               <News news={this.props.news} />

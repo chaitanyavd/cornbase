@@ -1,4 +1,5 @@
 
+
 //? API CALL FOR COIN DATA: 
 
 export const fetchCoin = (symbol) => {
@@ -6,6 +7,15 @@ export const fetchCoin = (symbol) => {
     $.ajax({
         method: "GET", 
         url: `api/coins/${symbol}`
+    })
+    )
+}
+
+export const fetchCoinMetadatum = (symbol) => {
+    return ( 
+    $.ajax({
+        method: "GET", 
+        url: `api/metadata/${symbol}`
     })
     )
 }

@@ -7,15 +7,11 @@ class CoinIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.isWatchlist = this.isWatchlist.bind(this);
-    // this.state = {  coin: {symbol: ""}}
   }
 
-  // componentDidMount() {
-  // }
 
   isWatchlist(id) {
     let watchlists = this.props.watchlists;
-    // debugger;
     for (let i = 0; i < watchlists.length; i++) {
       if (watchlists[i].id === id) {
         console.log(id);
@@ -27,7 +23,6 @@ class CoinIndexItem extends React.Component {
   }
 
   render() {
-    // debugger
     if (this.props.coin === undefined) return null;
     if (this.props.watchlists === undefined) return null;
     const {
@@ -60,21 +55,6 @@ class CoinIndexItem extends React.Component {
     let fill = "rgb(244, 198, 34)";
     let stroke = "rgb(244, 198, 34)";
 
-    // let fill = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue";
-    // let stroke = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue";
-    // let fill = coin.symbol
-    //   ? this.isWatchlist(coin.symbol)
-    //     ? "rgb(244, 198, 34)"
-    //     : "blue"
-    //   : "none";
-
-    // let stroke = coin.symbol
-    //   ? this.isWatchlist(coin.symbol)
-    //     ? "rgb(244, 198, 34)"
-    //     : "blue"
-    //   : "none";
-
-    // debugger
 
     const Present = () => (
       <tr>
@@ -92,7 +72,6 @@ class CoinIndexItem extends React.Component {
           </div>
         </th>
 
-        {/* <th className="crypto-name" > */}
         <th className="index-th">
           <div>
             <Link className="crypto-link" to={`/price/${coin.symbol}`}>

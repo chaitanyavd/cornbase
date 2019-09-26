@@ -54,7 +54,7 @@ export default class CustomTooltip extends React.Component {
     
     render() {
     const { active, cursorStyle } = this.props;
-      console.log(cursorStyle)
+
 
     if (active) {
         const { payload } = this.props;

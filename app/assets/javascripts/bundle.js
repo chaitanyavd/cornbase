@@ -90,7 +90,7 @@
 /*!******************************************!*\
   !*** ./frontend/actions/coin_actions.js ***!
   \******************************************/
-/*! exports provided: RECEIVE_COINS, RECEIVE_COIN, RECEIVE_DATA, fetchCoins, fetchCoin, fetchAll, fetchYear, fetchMonth, fetchWeek, fetchDay, fetchHour */
+/*! exports provided: RECEIVE_COINS, RECEIVE_COIN, RECEIVE_DATA, RECEIVE_METADATA, fetchCoins, fetchCoin, fetchCoinMetadatum, fetchAll, fetchYear, fetchMonth, fetchWeek, fetchDay, fetchHour */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,8 +98,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COINS", function() { return RECEIVE_COINS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COIN", function() { return RECEIVE_COIN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_DATA", function() { return RECEIVE_DATA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_METADATA", function() { return RECEIVE_METADATA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoins", function() { return fetchCoins; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinMetadatum", function() { return fetchCoinMetadatum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAll", function() { return fetchAll; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchYear", function() { return fetchYear; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchMonth", function() { return fetchMonth; });
@@ -111,6 +113,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_COINS = "RECEIVE_COINS";
 var RECEIVE_COIN = "RECEIVE_COIN";
 var RECEIVE_DATA = "RECEIVE_DATA";
+var RECEIVE_METADATA = "RECEIVE_METADATA";
 var fetchCoins = function fetchCoins() {
   return function (dispatch) {
     return _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCoins"]().then(function (coins) {
@@ -127,6 +130,16 @@ var fetchCoin = function fetchCoin(symbol) {
       return dispatch({
         type: RECEIVE_COIN,
         coin: coin
+      });
+    });
+  };
+};
+var fetchCoinMetadatum = function fetchCoinMetadatum(symbol) {
+  return function (dispatch) {
+    return _util_coin_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchCoinMetadatum"](symbol).then(function (metadatum) {
+      return dispatch({
+        type: RECEIVE_METADATA,
+        metadatum: metadatum
       });
     });
   };
@@ -657,7 +670,6 @@ function (_React$Component) {
       var _this$props = this.props,
           active = _this$props.active,
           cursorStyle = _this$props.cursorStyle;
-      console.log(cursorStyle);
 
       if (active) {
         var payload = this.props.payload;
@@ -968,17 +980,14 @@ function (_React$Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, CoinIndexItem);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(CoinIndexItem).call(this, props));
-    _this.isWatchlist = _this.isWatchlist.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)); // this.state = {  coin: {symbol: ""}}
-
+    _this.isWatchlist = _this.isWatchlist.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     return _this;
-  } // componentDidMount() {
-  // }
-
+  }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(CoinIndexItem, [{
     key: "isWatchlist",
     value: function isWatchlist(id) {
-      var watchlists = this.props.watchlists; // debugger;
+      var watchlists = this.props.watchlists;
 
       for (var i = 0; i < watchlists.length; i++) {
         if (watchlists[i].id === id) {
@@ -995,7 +1004,6 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      // debugger
       if (this.props.coin === undefined) return null;
       if (this.props.watchlists === undefined) return null;
       var _this$props = this.props,
@@ -1011,19 +1019,7 @@ function (_React$Component) {
       var color = coin.price ? percent >= 0 ? "pospercent" : "negpercent" : null;
       var percentSymbol = coin.price ? percent >= 0 ? "+" : "" : null;
       var fill = "rgb(244, 198, 34)";
-      var stroke = "rgb(244, 198, 34)"; // let fill = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue";
-      // let stroke = this.isWatchlist(coin.symbol) ? "rgb(244, 198, 34)" : "blue";
-      // let fill = coin.symbol
-      //   ? this.isWatchlist(coin.symbol)
-      //     ? "rgb(244, 198, 34)"
-      //     : "blue"
-      //   : "none";
-      // let stroke = coin.symbol
-      //   ? this.isWatchlist(coin.symbol)
-      //     ? "rgb(244, 198, 34)"
-      //     : "blue"
-      //   : "none";
-      // debugger
+      var stroke = "rgb(244, 198, 34)";
 
       var Present = function Present() {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("th", {
@@ -1106,6 +1102,100 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/coins/coin_metadata.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/coins/coin_metadata.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return About; });
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var About =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(About, _React$Component);
+
+  function About(props) {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, About);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(About).call(this, props));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(About, [{
+    key: "render",
+    value: function render() {
+      var metadata = this.props.metadata; // debugger
+
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-description-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
+        id: "about-name"
+      }, "About ", metadata.name)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-descrition-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", {
+        id: "about-decription"
+      }, metadata.description)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-links-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-links-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-links-header-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-links-header"
+      }, "RESOURCES")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-links-tags"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        id: "about-link-web",
+        href: "".concat(metadata.urls.website)
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        id: "official-website-logo",
+        src: "https://www.coinbase.com/assets/resource_types/globe-58759be91aea7a349aff0799b2cba4e93028c83ebb77ca73fd18aba31050fc33.png",
+        target: "_blank"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-link-web-text"
+      }, "Official Website")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        id: "about-link-web",
+        href: "".concat(metadata.urls.technical_doc)
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        id: "official-website-logo",
+        src: "https://www.coinbase.com/assets/resource_types/white_paper-1129060acdfdb91628bf872c279435c9ce93245a40f0227d98f0aa0a93548cb4.png",
+        target: "_blank"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-link-web-text"
+      }, "White Paper"))))));
+    }
+  }]);
+
+  return About;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+
+
+/***/ }),
+
 /***/ "./frontend/components/coins/coin_show.jsx":
 /*!*************************************************!*\
   !*** ./frontend/components/coins/coin_show.jsx ***!
@@ -1131,6 +1221,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _coin_chart_coin_chart__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coin_chart/coin_chart */ "./frontend/components/coins/coin_chart/coin_chart.jsx");
 /* harmony import */ var _news__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./news */ "./frontend/components/coins/news.jsx");
+/* harmony import */ var _coin_metadata__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./coin_metadata */ "./frontend/components/coins/coin_metadata.jsx");
+
 
 
 
@@ -1164,6 +1256,7 @@ function (_React$Component) {
       this.props.fetchCoin(this.props.match.params.symbol);
       this.props.fetchDay(this.props.match.params.symbol);
       this.props.fetchGeneralNews();
+      this.props.fetchCoinMetadatum(this.props.match.params.symbol);
     }
   }, {
     key: "componentDidUpdate",
@@ -1189,22 +1282,17 @@ function (_React$Component) {
         color: "rgb(22, 82, 240)",
         size: "16px",
         margin: "4px"
-      });
-      var coin = this.props.coin ? this.props.coin : []; // debugger 
+      }); // debugger 
 
+      var coin = this.props.coin ? this.props.coin : [];
       var marketCap = parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M");
       var circSupply = parseFloat(coin.circulating_supply) > 1000000000 ? "".concat((parseFloat(coin.circulating_supply) / 1000000000).toFixed(1), "B ").concat(coin.symbol) : "".concat((parseFloat(coin.circulating_supply) / 1000000).toFixed(1), "M ").concat(coin.symbol);
       var allTimeHigh = parseFloat(coin.high) > 0.1 ? parseFloat(coin.high).toFixed(2) : parseFloat(coin.high).toFixed(4);
       var price = parseFloat(coin.price) > 0.1 ? parseFloat(coin.price).toFixed(2) : parseFloat(coin.price).toFixed(4);
-      var volume = parseFloat(coin["1d"].volume) > 1000000000 ? "$".concat((parseFloat(coin["1d"].volume) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin["1d"].volume) / 1000000).toFixed(1), "M"); // debugger 
-      // debugger
-      // console.log(this.props.data);
-
+      var volume = parseFloat(coin["1d"].volume) > 1000000000 ? "$".concat((parseFloat(coin["1d"].volume) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin["1d"].volume) / 1000000).toFixed(1), "M");
       var close = this.props.data.length ? this.props.data.map(function (object) {
         return object.close;
-      }) : []; // const close = this.props.data ? this.props.data.map((object) => (object.close)) : []
-      // const close = (this.props.data === []) ? [] : this.props.data.map((object) => (object.close)) //? tried to reverse the logic -- but problem persists
-
+      }) : [];
       var min = -Infinity;
       var max = Infinity;
 
@@ -1217,10 +1305,8 @@ function (_React$Component) {
         });
       }
 
-      var change = max - min; // let change = this.props.data ? this.props.data[this.props.data.length - 1].close - this.props.data[0].close : 0
-
-      var color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null; // debugger
-
+      var change = max - min;
+      var color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null;
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "show-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -1345,6 +1431,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "Popularity on Cornbase")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "graph-asset-value"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "#", coin.rank, " most held"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "about-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_coin_metadata__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        metadata: this.props.metadata
+      })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "news-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news__WEBPACK_IMPORTED_MODULE_8__["default"], {
         news: this.props.news
@@ -1383,6 +1473,7 @@ var msp = function msp(state, ownProps) {
     coin: state.entities.coins[ownProps.match.params.symbol],
     symbol: ownProps.match.params.symbol,
     data: state.entities.coinData.length ? state.entities.coinData : [],
+    metadata: state.entities.coinMetadata[ownProps.match.params.symbol],
     news: state.entities.news.length ? state.entities.news : []
   };
 };
@@ -1415,6 +1506,9 @@ var mdp = function mdp(dispatch) {
     },
     fetchGeneralNews: function fetchGeneralNews() {
       return dispatch(Object(_actions_news_actions__WEBPACK_IMPORTED_MODULE_2__["fetchGeneralNews"])());
+    },
+    fetchCoinMetadatum: function fetchCoinMetadatum(symbol) {
+      return dispatch(Object(_actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCoinMetadatum"])(symbol));
     }
   };
 };
@@ -1462,10 +1556,7 @@ function (_React$Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, News);
 
     return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(News).call(this, props));
-  } // componentDidMount() {
-  //     this.props.fetchGeneralNews(); 
-  // }
-
+  }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(News, [{
     key: "render",
@@ -3529,6 +3620,43 @@ var coinDataReducer = function coinDataReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/coin_metadata_reducer.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/coin_metadata_reducer.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/coin_actions */ "./frontend/actions/coin_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var coinMetadataReducer = function coinMetadataReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_coin_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_METADATA"]:
+      return action.metadatum.data;
+    // debugger
+    //  action.metadatum.data.forEach(data => (newState[data.id] = data));
+    // return newState; 
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (coinMetadataReducer);
+;
+
+/***/ }),
+
 /***/ "./frontend/reducers/coins_reducer.js":
 /*!********************************************!*\
   !*** ./frontend/reducers/coins_reducer.js ***!
@@ -3587,6 +3715,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _coin_data_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coin_data_reducer */ "./frontend/reducers/coin_data_reducer.js");
 /* harmony import */ var _watchlist_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./watchlist_reducer */ "./frontend/reducers/watchlist_reducer.js");
 /* harmony import */ var _news_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./news_reducer */ "./frontend/reducers/news_reducer.js");
+/* harmony import */ var _coin_metadata_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coin_metadata_reducer */ "./frontend/reducers/coin_metadata_reducer.js");
+
 
 
 
@@ -3597,6 +3727,7 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   coins: _coins_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   coinData: _coin_data_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  coinMetadata: _coin_metadata_reducer__WEBPACK_IMPORTED_MODULE_6__["default"],
   watchlists: _watchlist_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
   news: _news_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
@@ -3974,12 +4105,13 @@ var configureStore = function configureStore() {
 /*!****************************************!*\
   !*** ./frontend/util/coin_api_util.js ***!
   \****************************************/
-/*! exports provided: fetchCoin, fetchCoins, fetchCoinAllData, fetchCoinYearData, fetchCoinMonthData, fetchCoinWeekData, fetchCoinDayData, fetchCoinHourData */
+/*! exports provided: fetchCoin, fetchCoinMetadatum, fetchCoins, fetchCoinAllData, fetchCoinYearData, fetchCoinMonthData, fetchCoinWeekData, fetchCoinDayData, fetchCoinHourData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoin", function() { return fetchCoin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinMetadatum", function() { return fetchCoinMetadatum; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoins", function() { return fetchCoins; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinAllData", function() { return fetchCoinAllData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCoinYearData", function() { return fetchCoinYearData; });
@@ -3992,6 +4124,12 @@ var fetchCoin = function fetchCoin(symbol) {
   return $.ajax({
     method: "GET",
     url: "api/coins/".concat(symbol)
+  });
+};
+var fetchCoinMetadatum = function fetchCoinMetadatum(symbol) {
+  return $.ajax({
+    method: "GET",
+    url: "api/metadata/".concat(symbol)
   });
 };
 var fetchCoins = function fetchCoins() {

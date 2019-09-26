@@ -3,6 +3,7 @@ import * as coinApiUtil from '../util/coin_api_util'
 export const RECEIVE_COINS = "RECEIVE_COINS";
 export const RECEIVE_COIN = "RECEIVE_COIN";
 export const RECEIVE_DATA = "RECEIVE_DATA";
+export const RECEIVE_METADATA = "RECEIVE_METADATA"; 
 
 
 export const fetchCoins = () => (dispatch) => (
@@ -11,6 +12,10 @@ export const fetchCoins = () => (dispatch) => (
 
 export const fetchCoin = (symbol) => (dispatch) => (
     coinApiUtil.fetchCoin(symbol).then(coin => dispatch({type: RECEIVE_COIN, coin}))
+)
+
+export const fetchCoinMetadatum = (symbol) => (dispatch) => (
+    coinApiUtil.fetchCoinMetadatum(symbol).then(metadatum => dispatch({type: RECEIVE_METADATA, metadatum}))
 )
 
 export const fetchAll = (symbol) => (dispatch) => (

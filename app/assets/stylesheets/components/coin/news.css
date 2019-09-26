@@ -1,9 +1,10 @@
 
 #news-container{
-    margin-top: 50px; 
+
     display: flex;
     flex-direction: row;
     flex: 1 1 auto;
+
     /* padding: 32px 32px 0px;  */
 } 
 
@@ -12,7 +13,8 @@
     flex-direction: column;
     width: 784px;
     padding: 32px 32px 0px; 
-    margin-top: 100px;
+    margin-top: 24px;
+    margin-bottom: 150px; 
     box-shadow: rgba(17, 51, 83, 0.02) 0px 4px 12px 0px;
     overflow: hidden;
     background: white;

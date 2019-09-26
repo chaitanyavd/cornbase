@@ -6,10 +6,6 @@ class News extends React.Component {
         super(props)
     }
 
-    // componentDidMount() {
-    //     this.props.fetchGeneralNews(); 
-    // }
-
     render() {
         const {news} = this.props
         return (

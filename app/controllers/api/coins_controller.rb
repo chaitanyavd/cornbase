@@ -21,5 +21,13 @@ class Api::CoinsController < ApplicationController
     # def coin_params 
     #     params.require(:coin).permit(:name, :symbol, :price, :currency, :id, :rank, :high, :circulating_supply)
     # end 
-    
+    # def show 
+    #     # key = Rails.application.credentials.nomics[:api_key]
+    #     #? How do you store a key again?
+    #     debugger
+    #     uri = URI("https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?CMC_PRO_API_KEY=ef706d65-7d7d-4e9a-94a7-ec4b62468e15&symbol=#{params[:id]}")
+    #     @metadata = Net::HTTP.get(uri)
+    #     render json: @metadata 
+
+    # end 
 end

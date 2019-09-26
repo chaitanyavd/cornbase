@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :session, only:[:create, :destroy, :show]
     resources :coins, only:[:index, :show]
     resources :watchlists, only:[:index, :create, :destroy]
+    resources :metadata, only:[:show]
   end 
 end
 
