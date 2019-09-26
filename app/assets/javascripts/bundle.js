@@ -465,7 +465,7 @@ var App = function App() {
     component: _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: "/price/:symbol",
+    path: ["/price/:symbol"],
     component: _coins_coin_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["AuthRoute"], {
     exact: true,
@@ -654,7 +654,10 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var active = this.props.active;
+      var _this$props = this.props,
+          active = _this$props.active,
+          cursorStyle = _this$props.cursorStyle;
+      console.log(cursorStyle);
 
       if (active) {
         var payload = this.props.payload;
@@ -1124,12 +1127,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var recharts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! recharts */ "./node_modules/recharts/es6/index.js");
-/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! halogenium */ "./node_modules/halogenium/lib/Halogenium.js");
-/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _coin_chart_coin_chart__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./coin_chart/coin_chart */ "./frontend/components/coins/coin_chart/coin_chart.jsx");
-/* harmony import */ var _news__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./news */ "./frontend/components/coins/news.jsx");
-
+/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! halogenium */ "./node_modules/halogenium/lib/Halogenium.js");
+/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _coin_chart_coin_chart__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coin_chart/coin_chart */ "./frontend/components/coins/coin_chart/coin_chart.jsx");
+/* harmony import */ var _news__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./news */ "./frontend/components/coins/news.jsx");
 
 
 
@@ -1162,7 +1163,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchCoin(this.props.match.params.symbol);
       this.props.fetchDay(this.props.match.params.symbol);
-      this.props.fetchGeneralNews(); // debugger
+      this.props.fetchGeneralNews();
     }
   }, {
     key: "componentDidUpdate",
@@ -1183,7 +1184,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      if (this.props.coin === undefined) return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(halogenium__WEBPACK_IMPORTED_MODULE_7__["GridLoader"], {
+      if (this.props.coin === undefined) return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(halogenium__WEBPACK_IMPORTED_MODULE_6__["GridLoader"], {
         id: "loader",
         color: "rgb(22, 82, 240)",
         size: "16px",
@@ -1305,7 +1306,7 @@ function (_React$Component) {
             active: "ALL"
           }));
         }
-      }, "ALL")))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_coin_chart_coin_chart__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }, "ALL")))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_coin_chart_coin_chart__WEBPACK_IMPORTED_MODULE_7__["default"], {
         data: this.props.data,
         max: max,
         min: min
@@ -1345,7 +1346,7 @@ function (_React$Component) {
         className: "graph-asset-value"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "#", coin.rank, " most held"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "news-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news__WEBPACK_IMPORTED_MODULE_8__["default"], {
         news: this.props.news
       })));
     }

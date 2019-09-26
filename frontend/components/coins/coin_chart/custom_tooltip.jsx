@@ -43,7 +43,7 @@ export default class CustomTooltip extends React.Component {
         22: 10, 
         23: 11  
         }
-        
+
       if (Object.keys(hours).includes(hour.toString())) {
         return `${months[month]} ${date} ${hours[hour]}:${minute}PM`;
       } else {
@@ -53,7 +53,8 @@ export default class CustomTooltip extends React.Component {
     }
     
     render() {
-    const { active } = this.props;
+    const { active, cursorStyle } = this.props;
+      console.log(cursorStyle)
 
     if (active) {
         const { payload } = this.props;

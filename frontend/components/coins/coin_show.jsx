@@ -1,5 +1,4 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 import { GridLoader } from 'halogenium';
 import CoinChart from './coin_chart/coin_chart'; 
 import News from "./news"; 
@@ -15,7 +14,6 @@ class CoinShow extends React.Component {
         this.props.fetchCoin(this.props.match.params.symbol);
         this.props.fetchDay(this.props.match.params.symbol); 
         this.props.fetchGeneralNews(); 
-        // debugger
     }
 
     componentDidUpdate(prevProps) {

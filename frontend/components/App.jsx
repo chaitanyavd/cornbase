@@ -9,16 +9,19 @@ import CoinShowContainer from './coins/coin_show_container';
 import { AuthRoute } from '../util/route_util';
 
 const App = () => (
-    <div className = "main-container">
-        <NavBarContainer/>
-        <Route exact path="/" component={SplashOutContainer} />
-        <Route exact path="/price" component={CoinIndexContainer} />
-        <Route  exact path="/price/:symbol" component={CoinShowContainer} />
-        <AuthRoute exact path="/login" component={LoginFormContainer} />
-        <AuthRoute exact path="/signup" component={SignupFormContainer} />
-
-    </div>
-)
+  <div className="main-container">
+    <NavBarContainer />
+    <Route exact path="/" component={SplashOutContainer} />
+    <Route exact path="/price" component={CoinIndexContainer} />
+    <Route
+      exact
+      path={(["/price/:symbol"])}
+      component={CoinShowContainer}
+    />
+    <AuthRoute exact path="/login" component={LoginFormContainer} />
+    <AuthRoute exact path="/signup" component={SignupFormContainer} />
+  </div>
+);
 
 export default App; 
 
