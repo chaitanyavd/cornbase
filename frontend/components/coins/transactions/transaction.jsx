@@ -10,8 +10,7 @@ class Transaction extends React.Component{
 
     render(){
         return (
-            <div>
-                YO
+            <div id = "transaction-container">
             </div>
         )
     }
