@@ -31,7 +31,7 @@
 
 .loggedin-navbar {
     display: flex; 
-    justify-content: space-around;
+    justify-content: space-between;
     box-sizing: border-box; 
     flex-direction: row;
     align-items: center;
@@ -207,6 +207,7 @@
 
 #butt-mod{
     position: relative; 
+    margin-right: 200px; 
 }
 
 .modal-user-container{    
@@ -261,6 +262,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    margin-left: 100px; 
 }
 
 #home-button{
