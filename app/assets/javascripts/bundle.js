@@ -1126,8 +1126,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! halogenium */ "./node_modules/halogenium/lib/Halogenium.js");
 /* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _coin_chart_coin_chart__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../coin_chart/coin_chart */ "./frontend/components/coins/coin_chart/coin_chart.jsx");
-/* harmony import */ var _news_news__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../news/news */ "./frontend/components/news/news.jsx");
-/* harmony import */ var _metadata_coin_metadata__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../metadata/coin_metadata */ "./frontend/components/coins/metadata/coin_metadata.jsx");
+/* harmony import */ var _transactions_transaction__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../transactions/transaction */ "./frontend/components/coins/transactions/transaction.jsx");
+/* harmony import */ var _news_news__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../news/news */ "./frontend/components/news/news.jsx");
+/* harmony import */ var _metadata_coin_metadata__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../metadata/coin_metadata */ "./frontend/components/coins/metadata/coin_metadata.jsx");
+
 
 
 
@@ -1229,6 +1231,8 @@ function (_React$Component) {
       }, coin.name), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "header-symbol"
       }, "(", coin.symbol, ")"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "body-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         id: "left-container"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "graph-column"
@@ -1340,13 +1344,15 @@ function (_React$Component) {
         className: "graph-asset-value"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "#", coin.rank, " most held"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "about-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_metadata_coin_metadata__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_metadata_coin_metadata__WEBPACK_IMPORTED_MODULE_10__["default"], {
         metadata: this.props.metadata
       })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "news-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news_news__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news_news__WEBPACK_IMPORTED_MODULE_9__["default"], {
         news: this.props.news
-      }))));
+      }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "right-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_transactions_transaction__WEBPACK_IMPORTED_MODULE_8__["default"], null))));
     }
   }]);
 
@@ -1528,6 +1534,59 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
 
 
+
+/***/ }),
+
+/***/ "./frontend/components/coins/transactions/transaction.jsx":
+/*!****************************************************************!*\
+  !*** ./frontend/components/coins/transactions/transaction.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var Transaction =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(Transaction, _React$Component);
+
+  function Transaction(props) {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Transaction);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Transaction).call(this, props));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Transaction, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, "YO");
+    }
+  }]);
+
+  return Transaction;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Transaction);
 
 /***/ }),
 

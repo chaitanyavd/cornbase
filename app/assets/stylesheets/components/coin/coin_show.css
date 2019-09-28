@@ -24,12 +24,17 @@ button {
     align-items: center;
     flex-direction: row;
     padding: 32px 0px;
-    padding-left: 400px; 
+    padding-left: 310px; 
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizelegibility;
     font-family: Graphik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     box-sizing: inherit;
+}
+
+#body-container{
+    display: flex; 
+    flex-direction: row; 
 }
 
 .header-information {

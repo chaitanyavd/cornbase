@@ -1,6 +1,7 @@
 import React from 'react';
 import { GridLoader } from 'halogenium';
 import CoinChart from '../coin_chart/coin_chart'
+import Transaction from '../transactions/transaction'; 
 import News from "../../news/news"; 
 import About from '../metadata/coin_metadata'
 class CoinShow extends React.Component {
@@ -67,186 +68,191 @@ class CoinShow extends React.Component {
                 <div className="header-symbol">({coin.symbol})</div>
               </div>
             </div>
-            <div id = "left-container">
-              <div className="graph-column">
-                <div className="graph-controlbar-container">
-                  <div className="graph-price-content">
-                    <div className="graph-price-container">
-                      <div className="graph-price-big-number">
-                        <span className="dollar-sign">$</span>
-                        <span>{price}</span>
+            <div id="body-container">
+              <div id="left-container">
+                <div className="graph-column">
+                  <div className="graph-controlbar-container">
+                    <div className="graph-price-content">
+                      <div className="graph-price-container">
+                        <div className="graph-price-big-number">
+                          <span className="dollar-sign">$</span>
+                          <span>{price}</span>
+                        </div>
+                        <div className="graph-negpercent-change">
+                          <span></span>
+                          <span>${change.toFixed(2)}</span>
+                          <span></span>
+                        </div>
                       </div>
-                      <div className="graph-negpercent-change">
-                        <span></span>
-                        <span>${change.toFixed(2)}</span>
-                        <span></span>
+
+                      <div className="graph-contolbar-selectors">
+                        <div className="period-selector">
+                          <span>
+                            <button
+                              className={
+                                this.state.active === "1H"
+                                  ? "active-tp"
+                                  : "inactive-tp"
+                              }
+                              onClick={() =>
+                                this.props
+                                  .fetchHour(coin.symbol)
+                                  .then(this.setState({ active: "1H" }))
+                              }
+                            >
+                              1H
+                            </button>
+                          </span>
+                        </div>
+                        <div className="period-selector">
+                          <span>
+                            <button
+                              className={
+                                this.state.active === "24H"
+                                  ? "active-tp"
+                                  : "inactive-tp"
+                              }
+                              onClick={() =>
+                                this.props
+                                  .fetchDay(coin.symbol)
+                                  .then(this.setState({ active: "24H" }))
+                              }
+                            >
+                              24H
+                            </button>
+                          </span>
+                        </div>
+                        <div className="period-selector">
+                          <span>
+                            <button
+                              className={
+                                this.state.active === "1W"
+                                  ? "active-tp"
+                                  : "inactive-tp"
+                              }
+                              onClick={() =>
+                                this.props
+                                  .fetchWeek(coin.symbol)
+                                  .then(this.setState({ active: "1W" }))
+                              }
+                            >
+                              1W
+                            </button>
+                          </span>
+                        </div>
+                        <div className="period-selector">
+                          <span>
+                            <button
+                              className={
+                                this.state.active === "1M"
+                                  ? "active-tp"
+                                  : "inactive-tp"
+                              }
+                              onClick={() =>
+                                this.props
+                                  .fetchMonth(coin.symbol)
+                                  .then(this.setState({ active: "1M" }))
+                              }
+                            >
+                              1M
+                            </button>
+                          </span>
+                        </div>
+                        <div className="period-selector">
+                          <span>
+                            <button
+                              className={
+                                this.state.active === "1Y"
+                                  ? "active-tp"
+                                  : "inactive-tp"
+                              }
+                              onClick={() =>
+                                this.props
+                                  .fetchYear(coin.symbol)
+                                  .then(this.setState({ active: "1Y" }))
+                              }
+                            >
+                              1Y
+                            </button>
+                          </span>
+                        </div>
+                        <div className="period-selector">
+                          <span>
+                            <button
+                              className={
+                                this.state.active === "ALL"
+                                  ? "active-tp"
+                                  : "inactive-tp"
+                              }
+                              onClick={() =>
+                                this.props
+                                  .fetchAll(coin.symbol)
+                                  .then(this.setState({ active: "ALL" }))
+                              }
+                            >
+                              ALL
+                            </button>
+                          </span>
+                        </div>
                       </div>
                     </div>
+                  </div>
 
-                    <div className="graph-contolbar-selectors">
-                      <div className="period-selector">
-                        <span>
-                          <button
-                            className={
-                              this.state.active === "1H"
-                                ? "active-tp"
-                                : "inactive-tp"
-                            }
-                            onClick={() =>
-                              this.props
-                                .fetchHour(coin.symbol)
-                                .then(this.setState({ active: "1H" }))
-                            }
-                          >
-                            1H
-                          </button>
-                        </span>
+                  <CoinChart data={this.props.data} max={max} min={min} />
+
+                  <div className="horizontal-axis"></div>
+                  <div className="graph-assets-container">
+                    <div className="graph-asset">
+                      <div className="graph-asset-title">
+                        <span>Market cap</span>
                       </div>
-                      <div className="period-selector">
-                        <span>
-                          <button
-                            className={
-                              this.state.active === "24H"
-                                ? "active-tp"
-                                : "inactive-tp"
-                            }
-                            onClick={() =>
-                              this.props
-                                .fetchDay(coin.symbol)
-                                .then(this.setState({ active: "24H" }))
-                            }
-                          >
-                            24H
-                          </button>
-                        </span>
+                      <div className="graph-asset-value">
+                        <span>{marketCap}</span>
                       </div>
-                      <div className="period-selector">
-                        <span>
-                          <button
-                            className={
-                              this.state.active === "1W"
-                                ? "active-tp"
-                                : "inactive-tp"
-                            }
-                            onClick={() =>
-                              this.props
-                                .fetchWeek(coin.symbol)
-                                .then(this.setState({ active: "1W" }))
-                            }
-                          >
-                            1W
-                          </button>
-                        </span>
+                    </div>
+                    <div className="graph-asset">
+                      <div className="graph-asset-title">
+                        <span>Volume (24 hrs)</span>
                       </div>
-                      <div className="period-selector">
-                        <span>
-                          <button
-                            className={
-                              this.state.active === "1M"
-                                ? "active-tp"
-                                : "inactive-tp"
-                            }
-                            onClick={() =>
-                              this.props
-                                .fetchMonth(coin.symbol)
-                                .then(this.setState({ active: "1M" }))
-                            }
-                          >
-                            1M
-                          </button>
-                        </span>
+                      <div className="graph-asset-value">
+                        <span>{volume}</span>
                       </div>
-                      <div className="period-selector">
-                        <span>
-                          <button
-                            className={
-                              this.state.active === "1Y"
-                                ? "active-tp"
-                                : "inactive-tp"
-                            }
-                            onClick={() =>
-                              this.props
-                                .fetchYear(coin.symbol)
-                                .then(this.setState({ active: "1Y" }))
-                            }
-                          >
-                            1Y
-                          </button>
-                        </span>
+                    </div>
+                    <div className="graph-asset">
+                      <div className="graph-asset-title">
+                        <span>Circulating Supply</span>
                       </div>
-                      <div className="period-selector">
-                        <span>
-                          <button
-                            className={
-                              this.state.active === "ALL"
-                                ? "active-tp"
-                                : "inactive-tp"
-                            }
-                            onClick={() =>
-                              this.props
-                                .fetchAll(coin.symbol)
-                                .then(this.setState({ active: "ALL" }))
-                            }
-                          >
-                            ALL
-                          </button>
-                        </span>
+                      <div className="graph-asset-value">
+                        <span>{circSupply}</span>
+                      </div>
+                    </div>
+                    <div className="graph-asset">
+                      <div className="graph-asset-title">
+                        <span>All-time high</span>
+                      </div>
+                      <div className="graph-asset-value">
+                        <span>${allTimeHigh}</span>
+                      </div>
+                    </div>
+                    <div className="graph-asset">
+                      <div className="graph-asset-title">
+                        <span>Popularity on Cornbase</span>
+                      </div>
+                      <div className="graph-asset-value">
+                        <span>#{coin.rank} most held</span>
                       </div>
                     </div>
                   </div>
                 </div>
-
-                <CoinChart data={this.props.data} max={max} min={min} />
-
-                <div className="horizontal-axis"></div>
-                <div className="graph-assets-container">
-                  <div className="graph-asset">
-                    <div className="graph-asset-title">
-                      <span>Market cap</span>
-                    </div>
-                    <div className="graph-asset-value">
-                      <span>{marketCap}</span>
-                    </div>
-                  </div>
-                  <div className="graph-asset">
-                    <div className="graph-asset-title">
-                      <span>Volume (24 hrs)</span>
-                    </div>
-                    <div className="graph-asset-value">
-                      <span>{volume}</span>
-                    </div>
-                  </div>
-                  <div className="graph-asset">
-                    <div className="graph-asset-title">
-                      <span>Circulating Supply</span>
-                    </div>
-                    <div className="graph-asset-value">
-                      <span>{circSupply}</span>
-                    </div>
-                  </div>
-                  <div className="graph-asset">
-                    <div className="graph-asset-title">
-                      <span>All-time high</span>
-                    </div>
-                    <div className="graph-asset-value">
-                      <span>${allTimeHigh}</span>
-                    </div>
-                  </div>
-                  <div className="graph-asset">
-                    <div className="graph-asset-title">
-                      <span>Popularity on Cornbase</span>
-                    </div>
-                    <div className="graph-asset-value">
-                      <span>#{coin.rank} most held</span>
-                    </div>
-                  </div>
+                <div className="about-container">
+                  <About metadata={this.props.metadata} />
+                </div>
+                <div className="news-container">
+                  <News news={this.props.news} />
                 </div>
               </div>
-              <div className="about-container">
-                <About metadata={this.props.metadata} />
-              </div>
-              <div className="news-container">
-                <News news={this.props.news} />
+              <div id="right-container">
+                <Transaction />
               </div>
             </div>
           </div>
