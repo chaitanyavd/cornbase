@@ -1,5 +1,5 @@
 import SplashOutItem from './splash_out_item';
-import CoinIndexItem from '../coins/coin_index_item'; 
+import CoinIndexItem from '../coins/coin_index/coin_index_item'; 
 import Watchlist from '../watchlists/watchlist'; 
 import Portfolio from "../portfolio/portfolio"; 
 import React from "react";

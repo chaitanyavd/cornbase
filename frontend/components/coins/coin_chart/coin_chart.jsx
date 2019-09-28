@@ -22,7 +22,10 @@ class CoinChart extends React.Component{
             <XAxis dataKey="time" hide={true} />
             <YAxis dataKey="close" domain={[min, max]} hide={true} />
 
-            <Tooltip content = {<CustomTooltip label = "price" />}></Tooltip>
+            <Tooltip
+              content={<CustomTooltip label="price" />}
+            >
+            </Tooltip>
 
             <Line
               className="line"

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'; 
-import {fetchCoins, fetchCoin, fetchYear} from '../../actions/coin_actions';
-import {fetchWatchlists, createWatchlist, deleteWatchlist} from "../../actions/watchlist_actions"; 
+import {fetchCoins, fetchCoin, fetchYear} from '../../../actions/coin_actions';
+import {fetchWatchlists, createWatchlist, deleteWatchlist} from "../../../actions/watchlist_actions"; 
 import CoinIndex from './coin_index'; 
 
 

@@ -452,8 +452,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _splash_splash_out_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./splash/splash_out_container */ "./frontend/components/splash/splash_out_container.jsx");
 /* harmony import */ var _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_form/login_form_container */ "./frontend/components/session_form/login_form_container.jsx");
 /* harmony import */ var _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.jsx");
-/* harmony import */ var _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coins/coin_index_container */ "./frontend/components/coins/coin_index_container.jsx");
-/* harmony import */ var _coins_coin_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coins/coin_show_container */ "./frontend/components/coins/coin_show_container.jsx");
+/* harmony import */ var _coins_coin_index_coin_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coins/coin_index/coin_index_container */ "./frontend/components/coins/coin_index/coin_index_container.jsx");
+/* harmony import */ var _coins_coin_show_coin_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coins/coin_show/coin_show_container */ "./frontend/components/coins/coin_show/coin_show_container.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 
 
@@ -475,11 +475,11 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/price",
-    component: _coins_coin_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _coins_coin_index_coin_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: ["/price/:symbol"],
-    component: _coins_coin_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _coins_coin_show_coin_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_8__["AuthRoute"], {
     exact: true,
     path: "/login",
@@ -696,10 +696,10 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/coins/coin_index.jsx":
-/*!**************************************************!*\
-  !*** ./frontend/components/coins/coin_index.jsx ***!
-  \**************************************************/
+/***/ "./frontend/components/coins/coin_index/coin_index.jsx":
+/*!*************************************************************!*\
+  !*** ./frontend/components/coins/coin_index/coin_index.jsx ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -719,7 +719,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _coin_index_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coin_index_item */ "./frontend/components/coins/coin_index_item.jsx");
+/* harmony import */ var _coin_index_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coin_index_item */ "./frontend/components/coins/coin_index/coin_index_item.jsx");
 /* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! halogenium */ "./node_modules/halogenium/lib/Halogenium.js");
 /* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_8__);
 
@@ -865,19 +865,19 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/coins/coin_index_container.jsx":
-/*!************************************************************!*\
-  !*** ./frontend/components/coins/coin_index_container.jsx ***!
-  \************************************************************/
+/***/ "./frontend/components/coins/coin_index/coin_index_container.jsx":
+/*!***********************************************************************!*\
+  !*** ./frontend/components/coins/coin_index/coin_index_container.jsx ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
-/* harmony import */ var _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/watchlist_actions */ "./frontend/actions/watchlist_actions.js");
-/* harmony import */ var _coin_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coin_index */ "./frontend/components/coins/coin_index.jsx");
+/* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
+/* harmony import */ var _actions_watchlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/watchlist_actions */ "./frontend/actions/watchlist_actions.js");
+/* harmony import */ var _coin_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coin_index */ "./frontend/components/coins/coin_index/coin_index.jsx");
 
 
 
@@ -931,10 +931,10 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/coins/coin_index_item.jsx":
-/*!*******************************************************!*\
-  !*** ./frontend/components/coins/coin_index_item.jsx ***!
-  \*******************************************************/
+/***/ "./frontend/components/coins/coin_index/coin_index_item.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/coins/coin_index/coin_index_item.jsx ***!
+  \******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1102,116 +1102,10 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/coins/coin_metadata.jsx":
-/*!*****************************************************!*\
-  !*** ./frontend/components/coins/coin_metadata.jsx ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return About; });
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! halogenium */ "./node_modules/halogenium/lib/Halogenium.js");
-/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_6__);
-
-
-
-
-
-
-
-
-var About =
-/*#__PURE__*/
-function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(About, _React$Component);
-
-  function About(props) {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, About);
-
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(About).call(this, props));
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(About, [{
-    key: "render",
-    value: function render() {
-      if (this.props.metadata === undefined) {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(halogenium__WEBPACK_IMPORTED_MODULE_6__["GridLoader"], {
-          id: "loader",
-          color: "rgb(22, 82, 240)",
-          size: "16px",
-          margin: "4px"
-        });
-      }
-
-      var metadata = this.props.metadata; // debugger
-
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "about-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "about-description-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
-        id: "about-name"
-      }, "About ", metadata.name)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "about-descrition-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", {
-        id: "about-decription"
-      }, metadata.description)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "about-links-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "about-links-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "about-links-header-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "about-links-header"
-      }, "RESOURCES")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "about-links-tags"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
-        id: "about-link-web",
-        href: "".concat(metadata.urls.website)
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
-        id: "official-website-logo",
-        src: "https://www.coinbase.com/assets/resource_types/globe-58759be91aea7a349aff0799b2cba4e93028c83ebb77ca73fd18aba31050fc33.png",
-        target: "_blank"
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "about-link-web-text"
-      }, "Official Website")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
-        id: "about-link-web",
-        href: "".concat(metadata.urls.technical_doc)
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
-        id: "official-website-logo",
-        src: "https://www.coinbase.com/assets/resource_types/white_paper-1129060acdfdb91628bf872c279435c9ce93245a40f0227d98f0aa0a93548cb4.png",
-        target: "_blank"
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "about-link-web-text"
-      }, "White Paper"))))));
-    }
-  }]);
-
-  return About;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
-
-
-
-/***/ }),
-
-/***/ "./frontend/components/coins/coin_show.jsx":
-/*!*************************************************!*\
-  !*** ./frontend/components/coins/coin_show.jsx ***!
-  \*************************************************/
+/***/ "./frontend/components/coins/coin_show/coin_show.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/coins/coin_show/coin_show.jsx ***!
+  \***********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1231,9 +1125,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! halogenium */ "./node_modules/halogenium/lib/Halogenium.js");
 /* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _coin_chart_coin_chart__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./coin_chart/coin_chart */ "./frontend/components/coins/coin_chart/coin_chart.jsx");
-/* harmony import */ var _news__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./news */ "./frontend/components/coins/news.jsx");
-/* harmony import */ var _coin_metadata__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./coin_metadata */ "./frontend/components/coins/coin_metadata.jsx");
+/* harmony import */ var _coin_chart_coin_chart__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../coin_chart/coin_chart */ "./frontend/components/coins/coin_chart/coin_chart.jsx");
+/* harmony import */ var _news_news__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../news/news */ "./frontend/components/news/news.jsx");
+/* harmony import */ var _metadata_coin_metadata__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../metadata/coin_metadata */ "./frontend/components/coins/metadata/coin_metadata.jsx");
 
 
 
@@ -1335,6 +1229,8 @@ function (_React$Component) {
       }, coin.name), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "header-symbol"
       }, "(", coin.symbol, ")"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "left-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "graph-column"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "graph-controlbar-container"
@@ -1444,13 +1340,13 @@ function (_React$Component) {
         className: "graph-asset-value"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("span", null, "#", coin.rank, " most held"))))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "about-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_coin_metadata__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_metadata_coin_metadata__WEBPACK_IMPORTED_MODULE_9__["default"], {
         metadata: this.props.metadata
       })), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "news-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news_news__WEBPACK_IMPORTED_MODULE_8__["default"], {
         news: this.props.news
-      })));
+      }))));
     }
   }]);
 
@@ -1461,19 +1357,19 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/coins/coin_show_container.jsx":
-/*!***********************************************************!*\
-  !*** ./frontend/components/coins/coin_show_container.jsx ***!
-  \***********************************************************/
+/***/ "./frontend/components/coins/coin_show/coin_show_container.jsx":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/coins/coin_show/coin_show_container.jsx ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
-/* harmony import */ var _actions_news_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/news_actions */ "./frontend/actions/news_actions.js");
-/* harmony import */ var _coin_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coin_show */ "./frontend/components/coins/coin_show.jsx");
+/* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
+/* harmony import */ var _actions_news_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/news_actions */ "./frontend/actions/news_actions.js");
+/* harmony import */ var _coin_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coin_show */ "./frontend/components/coins/coin_show/coin_show.jsx");
 
 
 
@@ -1529,15 +1425,16 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/coins/news.jsx":
-/*!********************************************!*\
-  !*** ./frontend/components/coins/news.jsx ***!
-  \********************************************/
+/***/ "./frontend/components/coins/metadata/coin_metadata.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/coins/metadata/coin_metadata.jsx ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return About; });
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
@@ -1550,7 +1447,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _news_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./news_item */ "./frontend/components/coins/news_item.jsx");
+/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! halogenium */ "./node_modules/halogenium/lib/Halogenium.js");
+/* harmony import */ var halogenium__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(halogenium__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
@@ -1559,169 +1457,77 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var News =
+var About =
 /*#__PURE__*/
 function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(News, _React$Component);
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(About, _React$Component);
 
-  function News(props) {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, News);
+  function About(props) {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, About);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(News).call(this, props));
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(About).call(this, props));
   }
 
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(News, [{
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(About, [{
     key: "render",
     value: function render() {
-      var news = this.props.news;
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "news-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "news-header-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
-        id: "top-stories"
-      }, "Top Stories")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        id: "article-container"
-      }, news.map(function (article, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          article: article,
-          key: idx
+      if (this.props.metadata === undefined) {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(halogenium__WEBPACK_IMPORTED_MODULE_6__["GridLoader"], {
+          id: "loader",
+          color: "rgb(22, 82, 240)",
+          size: "16px",
+          margin: "4px"
         });
-      })));
+      }
+
+      var metadata = this.props.metadata; // debugger
+
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-description-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
+        id: "about-name"
+      }, "About ", metadata.name)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-descrition-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", {
+        id: "about-decription"
+      }, metadata.description)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-links-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-links-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-links-header-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-links-header"
+      }, "RESOURCES")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-links-tags"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        id: "about-link-web",
+        href: "".concat(metadata.urls.website)
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        id: "official-website-logo",
+        src: "https://www.coinbase.com/assets/resource_types/globe-58759be91aea7a349aff0799b2cba4e93028c83ebb77ca73fd18aba31050fc33.png",
+        target: "_blank"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-link-web-text"
+      }, "Official Website")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
+        id: "about-link-web",
+        href: "".concat(metadata.urls.technical_doc)
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
+        id: "official-website-logo",
+        src: "https://www.coinbase.com/assets/resource_types/white_paper-1129060acdfdb91628bf872c279435c9ce93245a40f0227d98f0aa0a93548cb4.png",
+        target: "_blank"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "about-link-web-text"
+      }, "White Paper"))))));
     }
   }]);
 
-  return News;
+  return About;
 }(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (News);
 
-/***/ }),
-
-/***/ "./frontend/components/coins/news_item.jsx":
-/*!*************************************************!*\
-  !*** ./frontend/components/coins/news_item.jsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-
-
-
-
-
-
-var NewsItem =
-/*#__PURE__*/
-function (_React$Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(NewsItem, _React$Component);
-
-  function NewsItem(props) {
-    var _this;
-
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, NewsItem);
-
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(NewsItem).call(this, props));
-    _this.handleDate = _this.handleDate.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)); // this.handleThumbnail = this.handleThumbnail.bind(this); 
-
-    return _this;
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(NewsItem, [{
-    key: "handleDate",
-    value: function handleDate(iso) {
-      var date = new Date(iso);
-      var month = date.getMonth();
-      var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      var formattedDate = "".concat(months[month], " ").concat(date.getDate());
-      var hours = Math.abs(date - Date.now()) / 36e5;
-
-      if (hours >= 24) {
-        return formattedDate;
-      } else {
-        if (hours < 1) {
-          return "1 hour ago";
-        } else {
-          return "".concat(hours.toFixed(0), " hours ago");
-        }
-      }
-    } // handleThumbnail(image_url){
-    //     // debugger
-    //     $.get(image_url)
-    //         .done(function () {
-    //             return image_url
-    //         }).fail(function () {
-    //             return <div></div>
-    //         })
-    // }
-
-  }, {
-    key: "render",
-    value: function render() {
-      var article = this.props.article;
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("article", {
-        className: "article-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "article-content"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "article-title"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
-        className: "news-link",
-        href: article.url,
-        target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
-        className: "h3title"
-      }, article.title))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
-        className: "news-description-link",
-        href: article.url,
-        target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
-        className: "news-description"
-      }, article.description)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "article-details"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
-        className: "source-details-link",
-        href: article.url,
-        target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, article.source.name)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
-        className: "source-details-link",
-        href: article.url,
-        target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, this.handleDate(article.publishedAt))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
-        className: "news-thumbnail",
-        href: article.url,
-        target: "_blank"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-        src: "".concat(article.originalImageUrl),
-        className: "news-image"
-      })));
-    }
-  }]);
-
-  return NewsItem;
-}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (NewsItem);
 
 /***/ }),
 
@@ -1990,6 +1796,202 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_navbar__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/news/news.jsx":
+/*!*******************************************!*\
+  !*** ./frontend/components/news/news.jsx ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _news_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./news_item */ "./frontend/components/news/news_item.jsx");
+
+
+
+
+
+
+
+
+var News =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(News, _React$Component);
+
+  function News(props) {
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, News);
+
+    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(News).call(this, props));
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(News, [{
+    key: "render",
+    value: function render() {
+      var news = this.props.news;
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "news-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "news-header-container"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
+        id: "top-stories"
+      }, "Top Stories")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        id: "article-container"
+      }, news.map(function (article, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_news_item__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          article: article,
+          key: idx
+        });
+      })));
+    }
+  }]);
+
+  return News;
+}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (News);
+
+/***/ }),
+
+/***/ "./frontend/components/news/news_item.jsx":
+/*!************************************************!*\
+  !*** ./frontend/components/news/news_item.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+
+
+
+var NewsItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(NewsItem, _React$Component);
+
+  function NewsItem(props) {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, NewsItem);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(NewsItem).call(this, props));
+    _this.handleDate = _this.handleDate.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this)); // this.handleThumbnail = this.handleThumbnail.bind(this); 
+
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(NewsItem, [{
+    key: "handleDate",
+    value: function handleDate(iso) {
+      var date = new Date(iso);
+      var month = date.getMonth();
+      var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      var formattedDate = "".concat(months[month], " ").concat(date.getDate());
+      var hours = Math.abs(date - Date.now()) / 36e5;
+
+      if (hours >= 24) {
+        return formattedDate;
+      } else {
+        if (hours < 1) {
+          return "1 hour ago";
+        } else {
+          return "".concat(hours.toFixed(0), " hours ago");
+        }
+      }
+    } // handleThumbnail(image_url){
+    //     // debugger
+    //     $.get(image_url)
+    //         .done(function () {
+    //             return image_url
+    //         }).fail(function () {
+    //             return <div></div>
+    //         })
+    // }
+
+  }, {
+    key: "render",
+    value: function render() {
+      var article = this.props.article;
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("article", {
+        className: "article-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "article-content"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "article-title"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+        className: "news-link",
+        href: article.url,
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
+        className: "h3title"
+      }, article.title))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+        className: "news-description-link",
+        href: article.url,
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
+        className: "news-description"
+      }, article.description)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "article-details"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+        className: "source-details-link",
+        href: article.url,
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, article.source.name)), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+        className: "source-details-link",
+        href: article.url,
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", null, this.handleDate(article.publishedAt))))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("a", {
+        className: "news-thumbnail",
+        href: article.url,
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
+        src: "".concat(article.originalImageUrl),
+        className: "news-image"
+      })));
+    }
+  }]);
+
+  return NewsItem;
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (NewsItem);
 
 /***/ }),
 
@@ -2639,7 +2641,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _splash_out_item__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./splash_out_item */ "./frontend/components/splash/splash_out_item.jsx");
-/* harmony import */ var _coins_coin_index_item__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../coins/coin_index_item */ "./frontend/components/coins/coin_index_item.jsx");
+/* harmony import */ var _coins_coin_index_coin_index_item__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../coins/coin_index/coin_index_item */ "./frontend/components/coins/coin_index/coin_index_item.jsx");
 /* harmony import */ var _watchlists_watchlist__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../watchlists/watchlist */ "./frontend/components/watchlists/watchlist.jsx");
 /* harmony import */ var _portfolio_portfolio__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../portfolio/portfolio */ "./frontend/components/portfolio/portfolio.jsx");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
