@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :coins, only:[:index, :show]
     resources :watchlists, only:[:index, :create, :destroy]
     resources :metadata, only:[:show]
+    resources :transactions, only:[:index, :create]
   end 
 end
 
