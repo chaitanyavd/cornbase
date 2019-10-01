@@ -380,6 +380,45 @@ var logout = function logout() {
 
 /***/ }),
 
+/***/ "./frontend/actions/transaction_actions.js":
+/*!*************************************************!*\
+  !*** ./frontend/actions/transaction_actions.js ***!
+  \*************************************************/
+/*! exports provided: RECEIVE_TRANSACTIONS, RECEIVE_TRANSACTION, createTransaction, fetchTransactions */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TRANSACTIONS", function() { return RECEIVE_TRANSACTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TRANSACTION", function() { return RECEIVE_TRANSACTION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTransaction", function() { return createTransaction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTransactions", function() { return fetchTransactions; });
+/* harmony import */ var _util_transaction_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/transaction_api_util */ "./frontend/util/transaction_api_util.js");
+
+var RECEIVE_TRANSACTIONS = "RECEIVE_TRANSACTIONS";
+var RECEIVE_TRANSACTION = "RECEIVE_TRANSACTION";
+var createTransaction = function createTransaction(transaction) {
+  return function (dispatch) {
+    return _util_transaction_api_util__WEBPACK_IMPORTED_MODULE_0__["createTransaction"](transaction).then(function (transaction) {
+      return dispatch({
+        type: RECEIVE_TRANSACTION,
+        transaction: transaction
+      });
+    });
+  };
+};
+var fetchTransactions = function fetchTransactions() {
+  return function (dispatch) {
+    return _util_transaction_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchTransactions"]().then(function (transactions) {
+      return dispatch({
+        type: RECEIVE_TRANSACTIONS.transactions
+      });
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/watchlist_actions.js":
 /*!***********************************************!*\
   !*** ./frontend/actions/watchlist_actions.js ***!
@@ -3787,6 +3826,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _watchlist_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./watchlist_reducer */ "./frontend/reducers/watchlist_reducer.js");
 /* harmony import */ var _news_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./news_reducer */ "./frontend/reducers/news_reducer.js");
 /* harmony import */ var _coin_metadata_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./coin_metadata_reducer */ "./frontend/reducers/coin_metadata_reducer.js");
+/* harmony import */ var _transactions_reducer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./transactions_reducer */ "./frontend/reducers/transactions_reducer.js");
+
 
 
 
@@ -3798,6 +3839,7 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   coins: _coins_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   coinData: _coin_data_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  transactions: _transactions_reducer__WEBPACK_IMPORTED_MODULE_7__["default"],
   coinMetadata: _coin_metadata_reducer__WEBPACK_IMPORTED_MODULE_6__["default"],
   watchlists: _watchlist_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
   news: _news_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -4025,6 +4067,50 @@ var sessionReducer = function sessionReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sessionReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/transactions_reducer.js":
+/*!***************************************************!*\
+  !*** ./frontend/reducers/transactions_reducer.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_transaction_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/transaction_actions */ "./frontend/actions/transaction_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+var transactionReducer = function transactionReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_2___default()({}, state);
+
+  switch (action.type) {
+    case _actions_transaction_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRANSACTIONS"]:
+      return action.transaction;
+
+    case _actions_transaction_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TRANSACTION"]:
+      newState[action.transaction.id] = action.transaction;
+      return newState;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["LOGOUT_CURRENT_USER"]:
+      newState = {};
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (transactionReducer);
 
 /***/ }),
 
@@ -4356,6 +4442,35 @@ var logout = function logout() {
   return $.ajax({
     method: 'DELETE',
     url: 'api/session'
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/transaction_api_util.js":
+/*!***********************************************!*\
+  !*** ./frontend/util/transaction_api_util.js ***!
+  \***********************************************/
+/*! exports provided: createTransaction, fetchTransactions */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createTransaction", function() { return createTransaction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchTransactions", function() { return fetchTransactions; });
+var createTransaction = function createTransaction(transaction) {
+  return $.ajax({
+    method: "POST",
+    url: "api/transactions",
+    data: {
+      transaction: transaction
+    }
+  });
+};
+var fetchTransactions = function fetchTransactions() {
+  return $.ajax({
+    method: "GET",
+    url: "api/transactions"
   });
 };
 
@@ -64114,7 +64229,7 @@ exports.default = _ResizeDetector2.default;
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
