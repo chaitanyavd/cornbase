@@ -124,3 +124,11 @@
     border-color: rgb(22, 82, 240);
     outline: none;     
 }
+
+.login-button:hover { 
+    cursor: pointer;
+}
+
+.demo-button:hover { 
+    cursor: pointer;      
+}

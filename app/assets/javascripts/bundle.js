@@ -1229,8 +1229,7 @@ function (_React$Component) {
         color: "rgb(22, 82, 240)",
         size: "16px",
         margin: "4px"
-      }); // debugger 
-
+      });
       var coin = this.props.coin ? this.props.coin : [];
       var marketCap = parseFloat(coin.market_cap) > 1000000000 ? "$".concat((parseFloat(coin.market_cap) / 1000000000).toFixed(1), "B") : "$".concat((parseFloat(coin.market_cap) / 1000000).toFixed(1), "M");
       var circSupply = parseFloat(coin.circulating_supply) > 1000000000 ? "".concat((parseFloat(coin.circulating_supply) / 1000000000).toFixed(1), "B ").concat(coin.symbol) : "".concat((parseFloat(coin.circulating_supply) / 1000000).toFixed(1), "M ").concat(coin.symbol);
@@ -1410,7 +1409,10 @@ function (_React$Component) {
         news: this.props.news
       }))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         id: "right-container"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_transactions_transaction__WEBPACK_IMPORTED_MODULE_8__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_transactions_transaction__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        createTransaction: this.props.createTransaction,
+        coin: coin
+      }))));
     }
   }]);
 
@@ -1433,7 +1435,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../actions/coin_actions */ "./frontend/actions/coin_actions.js");
 /* harmony import */ var _actions_news_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/news_actions */ "./frontend/actions/news_actions.js");
-/* harmony import */ var _coin_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./coin_show */ "./frontend/components/coins/coin_show/coin_show.jsx");
+/* harmony import */ var _actions_transaction_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/transaction_actions */ "./frontend/actions/transaction_actions.js");
+/* harmony import */ var _coin_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./coin_show */ "./frontend/components/coins/coin_show/coin_show.jsx");
+
 
 
 
@@ -1479,13 +1483,19 @@ var mdp = function mdp(dispatch) {
     fetchGeneralNews: function fetchGeneralNews() {
       return dispatch(Object(_actions_news_actions__WEBPACK_IMPORTED_MODULE_2__["fetchGeneralNews"])());
     },
+    createTransaction: function createTransaction(transaction) {
+      return dispatch(Object(_actions_transaction_actions__WEBPACK_IMPORTED_MODULE_3__["createTransaction"])(transaction));
+    },
+    fetchTransactions: function fetchTransactions() {
+      return dispatch(Object(_actions_transaction_actions__WEBPACK_IMPORTED_MODULE_3__["fetchTransactions"])());
+    },
     fetchCoinMetadatum: function fetchCoinMetadatum(symbol) {
       return dispatch(Object(_actions_coin_actions__WEBPACK_IMPORTED_MODULE_1__["fetchCoinMetadatum"])(symbol));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_coin_show__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_coin_show__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
 /***/ }),
 
@@ -1568,7 +1578,9 @@ function (_React$Component) {
         id: "about-links-tags"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
         id: "about-link-web",
-        href: "".concat(metadata.urls.website)
+        href: "".concat(metadata.urls.website),
+        t: true,
+        arget: "_blank"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
         id: "official-website-logo",
         src: "https://www.coinbase.com/assets/resource_types/globe-58759be91aea7a349aff0799b2cba4e93028c83ebb77ca73fd18aba31050fc33.png",
@@ -1577,7 +1589,8 @@ function (_React$Component) {
         id: "about-link-web-text"
       }, "Official Website")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("a", {
         id: "about-link-web",
-        href: "".concat(metadata.urls.technical_doc)
+        href: "".concat(metadata.urls.technical_doc),
+        target: "_blank"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("img", {
         id: "official-website-logo",
         src: "https://www.coinbase.com/assets/resource_types/white_paper-1129060acdfdb91628bf872c279435c9ce93245a40f0227d98f0aa0a93548cb4.png",
@@ -1629,9 +1642,19 @@ function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(Transaction, _React$Component);
 
   function Transaction(props) {
+    var _this;
+
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Transaction);
 
-    return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Transaction).call(this, props));
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Transaction).call(this, props));
+    var coin = _this.props.coin;
+    _this.state = {
+      ticker: coin.id,
+      price: coin.price,
+      num_coins: 0,
+      order_type: 'buy'
+    };
+    return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Transaction, [{
@@ -3394,6 +3417,11 @@ function (_React$Component) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(WatchlistGridItem, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchDay(this.props.watchlist.symbol);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -3540,14 +3568,12 @@ function (_React$Component) {
       /* <button onClick={() => deleteWatchlist(watchlist.symbol)}>Delete</button> */
     }
     return _this;
-  }
+  } // componentDidMount() {
+  //     this.props.fetchDay(this.props.watchlist.symbol);
+  // }
+
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(WatchlistListItem, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchDay(this.props.watchlist.symbol);
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -64229,7 +64255,7 @@ exports.default = _ResizeDetector2.default;
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

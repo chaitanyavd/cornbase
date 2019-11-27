@@ -10,9 +10,9 @@ class WatchlistListItem extends React.Component {
         {/* <button onClick={() => deleteWatchlist(watchlist.symbol)}>Delete</button> */}
     }
 
-    componentDidMount() {
-        this.props.fetchDay(this.props.watchlist.symbol);
-    }
+    // componentDidMount() {
+    //     this.props.fetchDay(this.props.watchlist.symbol);
+    // }
     
     
 

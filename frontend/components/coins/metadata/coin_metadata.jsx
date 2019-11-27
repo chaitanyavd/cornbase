@@ -38,7 +38,10 @@ export default class About extends React.Component{
                 </div>
 
                 <div id="about-links-tags">
-                  <a id="about-link-web" href={`${metadata.urls.website}`}>
+                  <a id="about-link-web" 
+                  href={`${metadata.urls.website}`} t
+                  arget="_blank"
+                  >
                     <img
                       id="official-website-logo"
                       src="https://www.coinbase.com/assets/resource_types/globe-58759be91aea7a349aff0799b2cba4e93028c83ebb77ca73fd18aba31050fc33.png"
@@ -49,6 +52,7 @@ export default class About extends React.Component{
                   <a
                     id="about-link-web"
                     href={`${metadata.urls.technical_doc}`}
+                    target="_blank"
                   >
                     <img
                       id="official-website-logo"

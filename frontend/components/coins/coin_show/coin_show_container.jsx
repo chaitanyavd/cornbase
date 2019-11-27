@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'; 
 import { fetchCoins, fetchCoinMetadatum, fetchCoin, fetchAll, fetchYear, fetchMonth, fetchWeek, fetchDay, fetchHour} from "../../../actions/coin_actions"
 import {fetchCoinNews, fetchGeneralNews} from '../../../actions/news_actions'; 
+import {createTransaction, fetchTransactions} from '../../../actions/transaction_actions'; 
 import CoinShow from './coin_show'; 
 // import News from './news'; 
 
@@ -24,7 +25,9 @@ const mdp = (dispatch) => ({
     fetchDay: (symbol) => dispatch(fetchDay(symbol)),
     fetchHour: (symbol) => dispatch(fetchHour(symbol)), 
     fetchCoinNews: (name) => dispatch(fetchCoinNews(name)), 
-    fetchGeneralNews: () => dispatch(fetchGeneralNews()), 
+    fetchGeneralNews: () => dispatch(fetchGeneralNews()),
+    createTransaction: (transaction) => dispatch(createTransaction(transaction)),
+    fetchTransactions: ()=> dispatch(fetchTransactions()),
     fetchCoinMetadatum: (symbol) => dispatch(fetchCoinMetadatum(symbol))
 })
 

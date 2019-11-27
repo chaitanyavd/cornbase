@@ -35,7 +35,6 @@ class CoinShow extends React.Component {
     render() {
 
         if (this.props.coin === undefined) return <GridLoader id="loader" color="rgb(22, 82, 240)" size="16px" margin="4px" />;
-        // debugger 
         const coin = this.props.coin ? this.props.coin : []
         let marketCap = parseFloat(coin.market_cap) > 1000000000 ? `$${(parseFloat(coin.market_cap) / 1000000000).toFixed(1)}B` : `$${(parseFloat(coin.market_cap) / 1000000).toFixed(1)}M`
         let circSupply = parseFloat(coin.circulating_supply) > 1000000000 ? `${(parseFloat(coin.circulating_supply) / 1000000000).toFixed(1)}B ${coin.symbol}` : `${(parseFloat(coin.circulating_supply) / 1000000).toFixed(1)}M ${coin.symbol}`
@@ -51,10 +50,12 @@ class CoinShow extends React.Component {
             max = close.reduce((acc, el) => (Math.max(acc, el)));
         }
         let change = max - min; 
-
         let color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null 
         let fill = "rgb(244, 198, 34)";
         let stroke = "rgb(244, 198, 34)";
+
+
+
 
         return (
           <div className="show-container">
@@ -269,7 +270,7 @@ class CoinShow extends React.Component {
                 </div>
               </div>
               <div id="right-container">
-                <Transaction />
+                <Transaction createTransaction = {this.props.createTransaction} coin = {coin}/>
               </div>
             </div>
           </div>

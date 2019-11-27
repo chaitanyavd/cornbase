@@ -4,7 +4,7 @@ import { GridLoader } from "halogenium";
 
 class CoinIndex extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); 
     this.state = { inputValue: "" };
     this.selectCoin = this.selectCoin.bind(this);
     this.handleInput = this.handleInput.bind(this);
@@ -54,6 +54,7 @@ class CoinIndex extends React.Component {
       deleteWatchlist,
       watchlists
     } = this.props;
+    
     const results = this.matches().map((coin, idx) => {
       return (
         <CoinIndexItem

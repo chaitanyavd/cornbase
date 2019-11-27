@@ -6,6 +6,10 @@ class WatchlistGridItem extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchDay(this.props.watchlist.symbol);
+  }
+
   render() {
     const { watchlist, deleteWatchlist, orderNum, fetchDay } = this.props;
 
