@@ -20,6 +20,7 @@ class CoinIndex extends React.Component {
   }
 
   matches() {
+    
     const matches = [];
     if (this.state.inputValue.length === 0) {
       return this.props.coins;
