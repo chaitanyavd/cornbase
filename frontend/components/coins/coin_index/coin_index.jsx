@@ -1,6 +1,6 @@
 import React from "react";
 import CoinIndexItem from "./coin_index_item";
-import { GridLoader } from "halogenium";
+import { GridLoader } from "halogenium"
 
 class CoinIndex extends React.Component {
   constructor(props) {
