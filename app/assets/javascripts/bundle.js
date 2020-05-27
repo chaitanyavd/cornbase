@@ -1252,7 +1252,7 @@ function (_React$Component) {
       }
 
       var change = max - min;
-      var color = change ? change >= 0 ? 'graph-pospercent-change' : 'graph-negpercent-change' : null;
+      var color = change ? change >= 0 ? "graph-pospercent-change" : "graph-negpercent-change" : null;
       var fill = "rgb(244, 198, 34)";
       var stroke = "rgb(244, 198, 34)";
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -64255,7 +64255,7 @@ exports.default = _ResizeDetector2.default;
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
