@@ -3,10 +3,8 @@ import { fetchCoins, fetchCoinMetadatum, fetchCoin, fetchAll, fetchYear, fetchMo
 import {fetchCoinNews, fetchGeneralNews} from '../../../actions/news_actions'; 
 import {createTransaction, fetchTransactions} from '../../../actions/transaction_actions'; 
 import CoinShow from './coin_show'; 
-// import News from './news'; 
 
 const msp = (state, ownProps) => {
-    // debugger 
     return {
       coin: state.entities.coins[ownProps.match.params.symbol],
       symbol: ownProps.match.params.symbol,

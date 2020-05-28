@@ -1,48 +1,57 @@
-import React from "react"; 
-import CustomTooltip from './custom_tooltip'; 
-import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
+import React from 'react'
+import {CoinHighlights} from "../coin_info/coin_highlights"
+import {CoinLineChart} from "./coin_line_chart"
+import {CoinControlbar} from "./coin_controlbar"
 
 
-class CoinChart extends React.Component{
-    constructor(props) {
-        super(props)
-    }
+export const CoinChart =  (props) =>  {
+    const {
+        marketCap,
+        volume,
+        supply,
+        symbol,
+        high,
+        rank,
+        price,
+        change,
+        data,
+        max,
+        min,
+        active,
+        setActive,
+        fetchHour,
+        fetchDay,
+        fetchMonth,
+        fetchWeek,
+        fetchYear,
+        fetchAll,
+    } = props; 
 
-
-    render() {
-        const {min, max, data} = this.props; 
-        return (
-          <LineChart
-            className="chart"
-            width={850}
-            height={230}
-            data={data}
-            margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
-          >
-            <XAxis dataKey="time" hide={true} />
-            <YAxis dataKey="close" domain={[min, max]} hide={true} />
-
-            <Tooltip
-              content={<CustomTooltip label="price" />}
-            >
-            </Tooltip>
-
-            <Line
-              className="line"
-              cursor="cross-hair"
-              type="monotone"
-              dataKey="close"
-              dot={false}
-              strokeWidth={1.75}
-              stroke="rgb(22, 82, 240)"
-              yAxisId={0}
+    return (
+        <div className='graph-column'>
+            <CoinControlbar
+                fetchAll={fetchAll}
+                fetchDay={fetchDay}
+                fetchMonth={fetchMonth}
+                fetchYear = {fetchYear}
+                fetchHour={fetchHour}
+                fetchWeek={fetchWeek}
+                symbol={symbol}
+                setActive={setActive}
+                active={active}
+                price={price}
+                change={change}
             />
-          </LineChart>
-        );
-    }
-    
+            <CoinLineChart data={data} max={max} min={min} />
+            <CoinHighlights
+                marketCap={marketCap}
+                volume={volume}
+                supply={supply}
+                symbol={symbol}
+                high={high}
+                rank={rank}
+            />
+        </div>
+    );
 }
-
-
-export default CoinChart; 
 

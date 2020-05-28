@@ -9,15 +9,19 @@ class News extends React.Component {
     render() {
         const {news} = this.props
         return (
-                <div id = "news-wrapper"> 
-                    <div id = "news-header-container">
-                        <h2 id = "top-stories">Top Stories</h2>
+            <div className='news-container'>
+                <div id='news-wrapper'>
+                    <div id='news-header-container'>
+                        <h2 id='top-stories'>Top Stories</h2>
                     </div>
-                    <div id = "article-container">
-                        {news.map((article, idx) => <NewsItem article={article} key = {idx} />)}
+                    <div id='article-container'>
+                        {news.map((article, idx) => (
+                            <NewsItem article={article} key={idx} />
+                        ))}
                     </div>
-                </div> 
-        )
+                </div>
+            </div>
+        );
     }
 
     
